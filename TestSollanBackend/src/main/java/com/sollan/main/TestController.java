@@ -10,8 +10,10 @@ import com.sollan.timer.service.TimerService;
 @RestController
 public class TestController {
 
+
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/api/test", method = RequestMethod.GET)
 	public String test() {
 		return "135678";
 		
