@@ -6,4 +6,6 @@ public interface TimerService {
 
 	long getTimeElapsed();
 
+	String displayTimer();
+
 }

@@ -8,31 +8,28 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
 
-import com.sollan.utils.ThreadUtils;
 
 @Service
 public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
+	long secondsForTest = 2355;
+	boolean timerStarted = false;
 	
 	@Override
 	public void startTimer() {
+		
+	if (timerStarted == false) {
 		timeInMilis.set(0);
-		Date startTime = new Date();
-		Date endTime =  new Date();
-		endTime.setTime(1000*/*60**/6);
+		timerStarted = true;
 		System.out.println("started timer");
 		ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
 		timer.scheduleAtFixedRate(() -> {
 			timeInMilis.set(timeInMilis.addAndGet(1000));
 		}, 0, 1, TimeUnit.SECONDS);
-		ThreadUtils.runInThread(new Runnable() {
-			@Override
-			public void run() {
-				do{
-					startTime.setTime(startTime.getTime()+1000);
-				}while(startTime.before(endTime));
-			}
-		});
+	}
+	else {
+		
+	}
 
 		// Date timerDate = new Date();
 		// timerDate.setTime(1000 * 60 * 40);
@@ -45,4 +42,16 @@ public class TimerServiceImpl implements TimerService {
 		return timeInMilis.get();
 		
 	}
+	
+	@Override
+	public String displayTimer() {
+		
+		long timer =  (secondsForTest - (timeInMilis.get())/1000);
+		long minutes = timer/60;
+		long seconds = timer%60;
+		
+		String timerDisplayer = (minutes + ":" + String.format("%02d", seconds));
+		return timerDisplayer;
+	}
+	
 }

@@ -23,4 +23,9 @@ public class TimerController {
 		return timerService.getTimeElapsed();
 	}
 	
+	@RequestMapping(value ="/displayTimer", method = RequestMethod.GET)
+	public String displayTimer() {
+		return timerService.displayTimer();
+	}
+	
 }
