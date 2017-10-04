@@ -8,9 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class TestSollanBackendApplication {
-
+public class TestApp {
+	
 	public static void main(String[] args) {
-		SpringApplication.run(TestSollanBackendApplication.class, args);
+		SpringApplication.run(TestApp.class, args);
+		
 	}
 }
