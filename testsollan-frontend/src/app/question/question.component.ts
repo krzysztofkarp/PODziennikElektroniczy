@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  questionId;
+  
+  
+  
+  
+  constructor(private route: ActivatedRoute) { }
 
+  
+  
+  
+  
+  
   ngOnInit() {
+    this.route.params
+      .subscribe(params => {
+        this.questionId = + params['id'];
+      })
+  }
+
+  nextQ(){
+    if(this.questionId<40)
+      this.questionId++;
+  }
+
+  previousQ(){
+    if(this.questionId>1)
+      this.questionId--;
   }
 
 }

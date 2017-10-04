@@ -10,7 +10,7 @@ export class QuestionsService {
    }
 
       loadQuestion() {
-
+     
     }
 
 }
