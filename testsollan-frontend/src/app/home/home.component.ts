@@ -16,6 +16,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/question']);
   }
 
+  startTimer() {
+    this.router.navigate(['/timer']);
+  }
+
   ngOnInit() {
   }
 
