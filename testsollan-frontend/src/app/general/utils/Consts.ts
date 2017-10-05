@@ -1,5 +1,5 @@
 export class Consts {
-
+    
     static Headers = class {
         static Key = class {
             const static ACCEPT = 'Accept';
@@ -13,10 +13,10 @@ export class Consts {
     static BackendMapping = class {
         const static INDEX = "/api"
         static Timer = class {
-            const static START = Consts.BackendMapping.INDEX+"/start";
-            const static TIME_ELAPSED = Consts.BackendMapping.INDEX+"/timeElapsed";
-            const static GET_TIME = Consts.BackendMapping.INDEX+"/getTime";
+            const static START = "/start";
+            const static TIME_ELAPSED ="/timeElapsed";
+            const static GET_TIME = "/getTime";
         }
     }
-
+    //Consts.BackendMapping.INDEX+
 }

@@ -12,12 +12,13 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
 
-  startTest() {
-    this.router.navigate(['/question']);
-  }
 
   startTimer() {
     this.router.navigate(['/timer']);
+  }
+
+  startTest(){
+    this.router.navigate(['/question', 1]);
   }
 
   ngOnInit() {

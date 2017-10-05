@@ -1,4 +1,4 @@
-import { Consts } from '../home/utils/Consts';
+import { Consts } from '../general/utils/Consts';
 import { BackendService } from '../general/backend/backend.service';
 import { TimerComponent } from './../timer/timer.component';
 import { Injectable } from '@angular/core';

@@ -1,3 +1,29 @@
-<p>
-  question works!
-</p>
+<md-grid-list cols="8" rowHeight="100px">
+    <md-grid-tile colspan="1" rowspan="8">
+      <button [routerLink]="['/question', 1 ]" color="accent" md-fab>
+        <md-icon>first_page</md-icon></button>
+      <button color="accent"  (click)="previousQ()" md-fab>
+        <md-icon>chevron_left</md-icon></button>
+    </md-grid-tile>
+    <md-grid-tile colspan="6" rowspan="8" *ngIf="questionsLoaded"><img src="{{images[questionId-1]}}"></md-grid-tile>
+    <md-grid-tile colspan="1" rowspan="8">
+      <button color="accent"  (click)="nextQ()" md-fab>
+        <md-icon>chevron_right</md-icon></button>
+      <button [routerLink]="['/question', 40 ]" color="accent" md-fab>
+          <md-icon>last_page</md-icon></button>
+      </md-grid-tile>
+      <md-grid-tile colspan="6" rowspan="2" class="answers"> 
+        <md-radio-group *ngIf="answersLoaded" class="example-radio-group"> 
+          <md-radio-button 
+            class="example-radio-button" 
+            *ngFor="let answer of answers" 
+            [value]="answer.id"
+            #radio
+            (change)="addAnswer(radio)">
+              {{answer.name}}
+          </md-radio-button>
+        </md-radio-group>
+     </md-grid-tile>
+     <md-grid-tile colspan="2" rowspan="2"> <button color="accent"  (click)="nextQ()" md-raised-button>Finish</button></md-grid-tile>
+
+</md-grid-list>

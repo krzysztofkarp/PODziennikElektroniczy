@@ -1,4 +1,4 @@
-import { Consts } from '../../home/utils/Consts';
+import { Consts } from '../utils/Consts';
 import { Observable } from 'rxjs/Rx';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -30,7 +30,7 @@ export class BackendService {
     return { params: params, headers: headers };
   }
   private getUri(uri: string) {
-    return uri;
+    return Consts.BackendMapping.INDEX+uri;
   }
 }
 

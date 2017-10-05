@@ -15,10 +15,15 @@ public class TestController {
 
 	@RequestMapping(value = "/api/test", method = RequestMethod.GET)
 	public String test() {
+		
+		
+		
 		return "135678";
 		
 	}
+}
+
 	
 	
 
-}
+
