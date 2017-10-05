@@ -1,7 +1,9 @@
+import { HttpModule } from '@angular/http';
+import { QuestionsService } from './services/questions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdRadioModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 
@@ -24,6 +26,8 @@ import { QuestionsComponent } from './questions/questions.component';
     MdCheckboxModule,
     MdGridListModule,
     MdIconModule,
+    MdRadioModule,
+    HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'question', component: QuestionsComponent, children: [
@@ -31,7 +35,7 @@ import { QuestionsComponent } from './questions/questions.component';
       ] }
     ])
   ],
-  providers: [],
+  providers: [QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

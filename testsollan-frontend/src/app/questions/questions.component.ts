@@ -14,13 +14,13 @@ export class QuestionsComponent implements OnInit {
     {text: 'Two', cols: 6, rows: 1, color: 'lightgreen'},
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
   ];
-  
-  
+
+
   constructor() { }
 
 
   ngOnInit() {
-  
+
   }
 
 }

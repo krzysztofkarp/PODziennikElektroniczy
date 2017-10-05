@@ -21,12 +21,9 @@ public class TestController {
 		return "135678";
 		
 	}
-<<<<<<< HEAD:TestSollanBackend/src/main/java/com/sollan/TestController.java
 }
 
-=======
 	
 	
 
-}
->>>>>>> f8ba86cffadb859280cca298247f9f7b2d6d3ac4:TestSollanBackend/src/main/java/com/sollan/main/TestController.java
+
