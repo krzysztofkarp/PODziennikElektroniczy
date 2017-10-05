@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdGridListModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 
@@ -23,10 +23,12 @@ import { QuestionsComponent } from './questions/questions.component';
     MdButtonModule,
     MdCheckboxModule,
     MdGridListModule,
+    MdIconModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'question/:id', component: QuestionComponent },
-      { path: 'question', component: QuestionsComponent }
+      { path: 'question', component: QuestionsComponent, children: [
+        { path: ':id', component: QuestionComponent }
+      ] }
     ])
   ],
   providers: [],

@@ -1,3 +1,15 @@
-<p>
-  question works!
-</p>
+<md-grid-list cols="8" rowHeight="800px">
+    <md-grid-tile colspan="1">
+      <button [routerLink]="['/question', 1 ]" color="accent" md-fab>
+        <md-icon>first_page</md-icon></button>
+      <button [routerLink]="['/question', questionId -1]" color="accent"  (click)="previousQ()" md-fab>
+        <md-icon>chevron_left</md-icon></button>
+    </md-grid-tile>
+    <md-grid-tile colspan="6">{{questionId}}</md-grid-tile>
+    <md-grid-tile colspan="1">
+      <button [routerLink]="['/question', questionId +1 ]" color="accent"  (click)="nextQ()" md-fab>
+        <md-icon>chevron_right</md-icon></button>
+      <button [routerLink]="['/question', 40 ]" color="accent" md-fab>
+          <md-icon>last_page</md-icon></button>
+      </md-grid-tile>
+</md-grid-list>
