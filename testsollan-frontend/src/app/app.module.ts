@@ -1,3 +1,6 @@
+import { BackendService } from './general/backend/backend.service';
+import { TimerService } from './timer/timer.service';
+import { TimerComponent } from './timer/timer.component';
 import { HttpModule } from '@angular/http';
 import { QuestionsService } from './services/questions.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +23,8 @@ import { ResultComponent } from './result/result.component';
     HomeComponent,
     QuestionComponent,
     QuestionsComponent,
-    ResultComponent
+    ResultComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +43,14 @@ import { ResultComponent } from './result/result.component';
         { path: ':id', component: QuestionComponent }
       ]},
       { path: 'result', component: ResultComponent },
+      { path: 'timer', component: TimerComponent },      
     ])
   ],
-  providers: [QuestionsService],
+  providers: [
+    QuestionsService,
+    TimerService,
+    BackendService  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

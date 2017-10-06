@@ -26,6 +26,9 @@ export class TimerService {
 
     });
   }
+  startTimer() {
+    return this.backendService.get(Consts.BackendMapping.Timer.START).do;
+  }
 
   // private parseData(res: Response) {
   //   return res.json() || [];

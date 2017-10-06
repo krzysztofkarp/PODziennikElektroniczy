@@ -1,3 +1,4 @@
+import { TimerService } from '../timer/timer.service';
 import { questionPath } from './../utils/constants';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,14 +11,17 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private timerService: TimerService) { }
 
   ngOnInit() {
     localStorage.clear();
   }
 
   start() {
+    this.timerService.startTimer();    
     this.router.navigate([questionPath, 1]);
     localStorage.setItem('currentQuestionId', '1');
   }
+  
+ 
 }

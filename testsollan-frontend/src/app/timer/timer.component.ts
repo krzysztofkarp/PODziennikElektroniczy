@@ -2,7 +2,7 @@ import { timeout } from 'rxjs/operator/timeout';
 import { TimerService } from './timer.service';
 import { Http } from '@angular/http';
 import { Component, OnInit, Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,22 +12,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 @Injectable()
-export class TimerComponent {
+export class TimerComponent implements OnInit {
   time: string;
+  timerLoaded: boolean = false;
   // errorMessage: string;
   // timer: TimerComponent[];
-  
+
   constructor(private timerService: TimerService) { }
 
   getTimer() {
-    console.log("start");
-     this.timerService.getTimer()
-      .subscribe(time => this.time = time);
-      //   timer => this.timer = timer,
-      //   error => this.errorMessage = error
-      console.log("end");
-      
-  }   
- 
+    this.timerService.getTimer()
+      .subscribe(time => this.time = time)
+  }
 
+  startTimer() {
+    this.timerService.startTimer();
+    Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
+
+  }
+
+  public ngOnInit(): void {
+    this.startTimer();
+  }
 }
+

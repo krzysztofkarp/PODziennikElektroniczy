@@ -27,4 +27,8 @@ export class QuestionsComponent implements OnInit {
     this.router.navigate([resultPath]);
   }
 
+  timerResponse(){
+    
+  }
+
 }
