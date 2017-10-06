@@ -1,3 +1,4 @@
+import { timeout } from 'rxjs/operator/timeout';
 import { TimerService } from './timer.service';
 import { Http } from '@angular/http';
 import { Component, OnInit, Injectable } from '@angular/core';
@@ -19,12 +20,14 @@ export class TimerComponent {
   constructor(private timerService: TimerService) { }
 
   getTimer() {
+    console.log("start");
      this.timerService.getTimer()
-      .subscribe(
-       time => this.time = time
+      .subscribe(time => this.time = time);
       //   timer => this.timer = timer,
       //   error => this.errorMessage = error
-     );
-  }
-  
+      console.log("end");
+      
+  }   
+ 
+
 }
