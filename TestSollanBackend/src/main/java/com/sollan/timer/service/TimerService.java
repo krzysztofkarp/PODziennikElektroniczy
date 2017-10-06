@@ -2,10 +2,10 @@ package com.sollan.timer.service;
 
 public interface TimerService {
 
-	void startTimer();
+	String startTimer();
 
 	long getTimeElapsed();
 
-	String displayTimer();
+	String getCurrentTime();
 
 }

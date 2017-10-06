@@ -13,8 +13,8 @@ public class TimerController {
 	TimerService timerService;
 	
 	@RequestMapping(value ="/start", method = RequestMethod.GET)
-	public void start() {
-		timerService.startTimer();
+	public String start() {
+		return timerService.startTimer();
 		
 	}
 
@@ -23,9 +23,9 @@ public class TimerController {
 		return timerService.getTimeElapsed();
 	}
 	
-	@RequestMapping(value ="/displayTimer", method = RequestMethod.GET)
-	public String displayTimer() {
-		return timerService.displayTimer();
+	@RequestMapping(value ="/getTime", method = RequestMethod.GET)
+	public String getTime() {
+		return timerService.getCurrentTime();
 	}
 	
 }
