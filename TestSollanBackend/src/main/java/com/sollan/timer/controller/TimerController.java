@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sollan.main.Response;
 import com.sollan.timer.service.TimerService;
 
 @RestController
@@ -23,9 +24,11 @@ public class TimerController {
 		return timerService.getTimeElapsed();
 	}
 	
-	@RequestMapping(value ="/getTime", method = RequestMethod.GET)
-	public String getTime() {
-		return timerService.getCurrentTime();
+	@RequestMapping(value ="/api/getTime", method = RequestMethod.GET)
+	public Response<String> getTime() {
+		Response<String> response = new Response<>();
+		response.setItem(timerService.getCurrentTime());
+		return response;
 	}
 	
 }

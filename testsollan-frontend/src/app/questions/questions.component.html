@@ -1,7 +1,10 @@
-<md-grid-list cols="2" rowHeight="10:1">
-    <md-grid-tile color="accent">Question</md-grid-tile>
-    <md-grid-tile color="accent">Timer</md-grid-tile>
-</md-grid-list>
+<md-toolbar color="primary">
+    <span>Question {{questionId}}</span>
+    <span class="example-spacer"></span>
+    <span>Time 40:00</span>
+    <md-icon class="example-icon">schedule</md-icon>
+    <button (click)="finish()" color="accent" md-raised-button>Finish</button>
+</md-toolbar>
 <router-outlet></router-outlet>
 
 
