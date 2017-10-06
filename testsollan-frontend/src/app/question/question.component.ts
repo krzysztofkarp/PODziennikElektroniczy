@@ -1,9 +1,10 @@
+import { questionPath, resultPath } from './../utils/constants';
 import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-question',
+  selector: 'question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css']
 })
@@ -13,11 +14,10 @@ export class QuestionComponent implements OnInit {
   answers = [];
   currentAnswers = [];
   images = [];
-  userAnswers = [];
   questionId;
 
   questionsLoaded: boolean = false;
- 
+  currentAnswerId;
   answersLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute,
@@ -25,6 +25,7 @@ export class QuestionComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    
     this.service.getQuestions()
       .subscribe(questions => {
         this.questions = questions;
@@ -37,61 +38,88 @@ export class QuestionComponent implements OnInit {
           this.answers[x] = answers[x];
         }
         this.answersLoaded = true;
+    });
 
-      });
+    this.images = this.service.getImages();
 
     this.route.params
     .subscribe(params => {
       this.questionId = + params['id'];
     });
 
-    this.images = this.service.getImages();
-
+    //Getting previously checked answers from localStorage
     this.currentAnswers = JSON.parse(localStorage.getItem('answers'));
 
-    
+    if(this.currentAnswers===null)
+      this.currentAnswers = [];
 
+      this.currentAnswerId = this.findAnswerById();
+      
     }
 
-  nextQ() {
+  nextQuestion() {
     if (this.questionId < 40) {
       this.questionId++;
+      this.currentAnswerId = this.findAnswerById();
+     
     }
-    this.router.navigate(['/question', this.questionId]);
+    this.router.navigate([questionPath, this.questionId]);
+    this.storeCurrentQuestionId();
+   }
 
-    
-  }
-
-  previousQ() {
+  previousQuestion() {
     if (this.questionId > 1) {
       this.questionId--;
+      this.currentAnswerId = this.findAnswerById();
     }
-    this.router.navigate(['/question', this.questionId]);
+    this.router.navigate([questionPath, this.questionId]);
+    this.storeCurrentQuestionId();
+  }
 
+  firstQuestion() {
+    this.router.navigate([questionPath, 1]);
+    this.questionId = 1;
+    this.storeCurrentQuestionId();
+  }
+
+  lastQuestion() {
+    this.router.navigate([questionPath, 40]);
+    this.questionId = 40;
+    this.storeCurrentQuestionId();
   }
 
   addAnswer(radio: HTMLInputElement) {
-
-    let newAnswer = {
+      let newAnswer = {
       id: this.questionId,
       value: radio.value
     };
 
-   let found = this.currentAnswers.find(ans => {
-        return ans.id === newAnswer.id
+   let found = this.currentAnswers.find(a => {
+        return a.id === newAnswer.id
       });
 
-    
-
-      if(found) {
-        found.value = newAnswer.value;
+   if(found) {
+     found.value = newAnswer.value;
       } else {
         this.currentAnswers.push(newAnswer);
       }
       
     localStorage.setItem('answers', JSON.stringify(this.currentAnswers));
-  
 }
+
+  findAnswerById(){
+      let found = this.currentAnswers.find(ans => {
+        return ans.id === this.questionId;
+      });
+
+      return found ? found.value : null;
+  }
+
+  storeCurrentQuestionId() {
+    localStorage.setItem('currentQuestionId', this.questionId);
+  }
+
+ 
 
 
 }

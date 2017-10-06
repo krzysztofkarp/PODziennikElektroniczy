@@ -4,8 +4,8 @@
 @include mat-core();
 
 //Define a custom theme
-$app-primary: mat-palette($mat-blue, 800);
-$app-accent: mat-palette($mat-orange, 700);
+$app-primary: mat-palette($mat-blue, 900);
+$app-accent: mat-palette($mat-yellow, 900);
 $app-warn: mat-palette($mat-red, 900);
 
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
