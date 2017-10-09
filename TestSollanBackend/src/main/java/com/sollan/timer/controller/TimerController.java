@@ -13,14 +13,14 @@ public class TimerController {
 	@Autowired
 	TimerService timerService;
 	
-	@RequestMapping(value ="/api/start", method = RequestMethod.GET)
-	public Response<String> start() {
+	@RequestMapping(value ="api/startTimer", method = RequestMethod.GET)
+	public Response<String> startTimer() {
 		Response<String> response = new Response<>();
-		response.setItem(timerService.startTimer());
+		response.setItem(timerService.startTimerS());
 		return response;
 	}
 
-	@RequestMapping(value ="/timeElapsed", method = RequestMethod.GET)
+	@RequestMapping(value ="/api/timeElapsed", method = RequestMethod.GET)
 	public long timeElapsed() {
 		return timerService.getTimeElapsed();
 	}

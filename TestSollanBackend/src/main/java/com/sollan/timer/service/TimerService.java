@@ -2,7 +2,7 @@ package com.sollan.timer.service;
 
 public interface TimerService {
 
-	String startTimer();
+	String startTimerS();
 
 	long getTimeElapsed();
 

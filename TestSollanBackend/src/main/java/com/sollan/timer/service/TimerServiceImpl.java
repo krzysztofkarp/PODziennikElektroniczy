@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
-	long secondsForTest = 2400;
+	long secondsForTest = 20;
 	boolean timerStarted;
 
 	@Override
-	public String startTimer() {
+	public String startTimerS() {
 
 		if (timerStarted == false) {
 			timeInMilis.set(0);

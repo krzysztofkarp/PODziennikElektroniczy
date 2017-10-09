@@ -13,9 +13,10 @@ export class Consts {
     static BackendMapping = class {
         const static INDEX = "/api"
         static Timer = class {
-            const static START = "/start";
             const static TIME_ELAPSED ="/timeElapsed";
             const static GET_TIME = "/getTime";
+            const static START = "/startTimer";
+            
         }
     }
     //Consts.BackendMapping.INDEX+
