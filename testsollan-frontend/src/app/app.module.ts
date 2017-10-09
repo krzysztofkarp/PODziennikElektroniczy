@@ -1,12 +1,12 @@
 import { BackendService } from './general/backend/backend.service';
-import { TimerService } from './timer/timer.service';
 import { TimerComponent } from './timer/timer.component';
+import { TimerService } from './timer/timer.service';
 import { HttpModule } from '@angular/http';
 import { QuestionsService } from './services/questions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdRadioModule, MdToolbarModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdRadioModule, MdToolbarModule, MdProgressSpinnerModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 
@@ -23,7 +23,7 @@ import { ResultComponent } from './result/result.component';
     HomeComponent,
     QuestionComponent,
     QuestionsComponent,
-    ResultComponent,
+    ResultComponent, 
     TimerComponent
   ],
   imports: [
@@ -35,6 +35,7 @@ import { ResultComponent } from './result/result.component';
     MdGridListModule,
     MdToolbarModule,
     MdIconModule,
+    MdProgressSpinnerModule,
     MdRadioModule,
     HttpModule,
     RouterModule.forRoot([
@@ -43,14 +44,9 @@ import { ResultComponent } from './result/result.component';
         { path: ':id', component: QuestionComponent }
       ]},
       { path: 'result', component: ResultComponent },
-      { path: 'timerC', component: TimerComponent },      
     ])
   ],
-  providers: [
-    QuestionsService,
-    TimerService,
-    BackendService  
-  ],
+  providers: [QuestionsService, TimerService, BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

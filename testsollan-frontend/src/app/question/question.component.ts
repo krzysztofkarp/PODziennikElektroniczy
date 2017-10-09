@@ -15,6 +15,7 @@ export class QuestionComponent implements OnInit {
   currentAnswers = [];
   images = [];
   questionId;
+  isLoading: boolean = true;
 
   questionsLoaded: boolean = false;
   currentAnswerId;
@@ -24,23 +25,18 @@ export class QuestionComponent implements OnInit {
               private service: QuestionsService,
               private router: Router) { }
 
-  ngOnInit() {
+              
+              
+    ngDoCheck(){
+      if(this.answers.length === 0)
+      this.loadAnswers();
+    }
+  
+    ngOnInit() {
     
-    this.service.getQuestions()
-      .subscribe(questions => {
-        this.questions = questions;
-        this.questionsLoaded = true;
-    });
-
-    this.service.getAnswers()
-      .subscribe(answers => {
-        for (let x = 0; x < 4; x++) {
-          this.answers[x] = answers[x];
-        }
-        this.answersLoaded = true;
-    });
-
     this.images = this.service.getImages();
+
+    console.log('init');
 
     this.route.params
     .subscribe(params => {
@@ -54,6 +50,8 @@ export class QuestionComponent implements OnInit {
       this.currentAnswers = [];
 
       this.currentAnswerId = this.findAnswerById();
+
+      this.storeCurrentQuestionId();
       
     }
 
@@ -61,10 +59,10 @@ export class QuestionComponent implements OnInit {
     if (this.questionId < 40) {
       this.questionId++;
       this.currentAnswerId = this.findAnswerById();
-     
-    }
-    this.router.navigate([questionPath, this.questionId]);
-    this.storeCurrentQuestionId();
+     }
+     this.loadAnswers();
+     this.router.navigate([questionPath, this.questionId]);
+     this.storeCurrentQuestionId();
    }
 
   previousQuestion() {
@@ -72,6 +70,7 @@ export class QuestionComponent implements OnInit {
       this.questionId--;
       this.currentAnswerId = this.findAnswerById();
     }
+    this.loadAnswers();
     this.router.navigate([questionPath, this.questionId]);
     this.storeCurrentQuestionId();
   }
@@ -80,12 +79,14 @@ export class QuestionComponent implements OnInit {
     this.router.navigate([questionPath, 1]);
     this.questionId = 1;
     this.storeCurrentQuestionId();
+    this.loadAnswers();
   }
 
   lastQuestion() {
     this.router.navigate([questionPath, 40]);
     this.questionId = 40;
     this.storeCurrentQuestionId();
+    this.loadAnswers();
   }
 
   addAnswer(radio: HTMLInputElement) {
@@ -117,6 +118,15 @@ export class QuestionComponent implements OnInit {
 
   storeCurrentQuestionId() {
     localStorage.setItem('currentQuestionId', this.questionId);
+  }
+
+  loadAnswers(){
+    this.service.getAnswers({"questionId": this.questionId})
+    .subscribe(answers => {
+      this.answers = answers;
+      this.answersLoaded = true;
+      // this.isLoading = false;
+  });
   }
 
  

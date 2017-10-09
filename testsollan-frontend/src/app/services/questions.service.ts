@@ -1,3 +1,5 @@
+import { Consts } from './../general/utils/Consts';
+import { BackendService } from './../general/backend/backend.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -6,22 +8,29 @@ import 'rxjs/add/operator/map';
 export class QuestionsService {
 
   url = 'http://jsonplaceholder.typicode.com/posts';
-  aurl = 'http://jsonplaceholder.typicode.com/users';
 
-  constructor(private http: Http) {
+
+  constructor(private backendService: BackendService) {
 
 
    }
 
-   getQuestions() {
-   return this.http.get(this.url)
-        .map(response => response.json());
-   }
+  //  getQuestions() {
+  //  return this.http.get(this.url)
+  //       .map(response => response.json());
+  //  }
 
-   getAnswers() {
-    return this.http.get(this.aurl)
-         .map(response => response.json());
-    }
+   getAnswers(questionId) {
+    return this.backendService.get(Consts.BackendMapping.Answers.GET_ANSWERS, questionId).map(response => {
+      if (response.ok) {
+        console.log(response.items);
+        return response.items;
+      } else {
+        return 0;
+      }
+
+    });
+  }
 
   getImages () {
     let images = [];

@@ -12,17 +12,15 @@ import com.sollan.testsollan.question.service.QuestionService;
 
 @RestController
 public class QuestionController {
-	
+
 	@Autowired
 	QuestionService questionService;
-	
-	@RequestMapping(value ="/api/answers", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/api/answers", method = RequestMethod.GET)
 	public Response<Answer> get(@RequestParam("questionId") int id) {
 		Response<Answer> response = new Response<>();
 		response.setItems(questionService.getAnswers(id));
 		return response;
 	}
-
-	
 
 }
