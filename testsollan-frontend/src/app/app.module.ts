@@ -44,6 +44,8 @@ import { ResultComponent } from './result/result.component';
         { path: ':id', component: QuestionComponent }
       ]},
       { path: 'result', component: ResultComponent },
+      { path: 'timer', component: TimerComponent },
+      
     ])
   ],
   providers: [QuestionsService, TimerService, BackendService],

@@ -13,7 +13,7 @@ export class Consts {
     static BackendMapping = class {
         const static INDEX = "/api"
         static Timer = class {
-            const static START = "/start";
+            const static START = "/startTimer";
             const static TIME_ELAPSED ="/timeElapsed";
             const static GET_TIME = "/getTime";
         }

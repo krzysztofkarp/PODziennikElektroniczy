@@ -5,7 +5,7 @@
       <button color="accent"  (click)="previousQuestion()" md-fab>
         <md-icon>chevron_left</md-icon></button>
     </md-grid-tile>
-    <md-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded"><img src="{{images[questionId-1]}}"></md-grid-tile>
+      <md-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded"><img src="{{images[questionId-1]}}" ></md-grid-tile>
     <md-grid-tile colspan="1" rowspan="8">
       <button color="accent"  (click)="nextQuestion()" md-fab>
         <md-icon>chevron_right</md-icon></button>
