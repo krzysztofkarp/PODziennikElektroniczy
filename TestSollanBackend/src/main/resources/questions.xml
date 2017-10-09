@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+<question questionId="1" answerId="3">
+	<answer id="1" content="ABCD"></answer>
+	<answer id="2" content="Compilation fails."></answer>
+	<answer id="3" content="C is printed before exiting with an error message. "></answer>
+	<answer id="4" content="BC is printed before exiting with an error message."></answer>
+</question>
+<question questionId="2" answerId="3">
+	<answer id="1" content="a and b"></answer>
+	<answer id="2" content="b and c"></answer>
+	<answer id="3" content="c and d"></answer>
+	<answer id="4" content="a and c"></answer>
+</question>
+<question questionId="3" answerId="2">
+	<answer id="1" content="2"></answer>
+	<answer id="2" content="4"></answer>
+	<answer id="3" content="8"></answer>
+	<answer id="4" content="16"></answer>
+</question>
+<question questionId="4" answerId="4">
+	<answer id="1" content="ABCD"></answer>
+	<answer id="2" content="ACBD"></answer>
+	<answer id="3" content="CDAB"></answer>
+	<answer id="4" content="Indeterminate output"></answer>
+</question>
+<question questionId="5" answerId="2">
+	<answer id="1" content="0"></answer>
+	<answer id="2" content="1"></answer>
+	<answer id="3" content="2"></answer>
+	<answer id="4" content="3"></answer>
+</question>
+<question questionId="6" answerId="1">
+	<answer id="1" content="a, b and d"></answer>
+	<answer id="2" content="b, c and d"></answer>
+	<answer id="3" content="a, b and c"></answer>
+	<answer id="4" content="c and 4"></answer>
+</question>
+<question questionId="7" answerId="1">
+	<answer id="1" content="The notifyAll() method must be called from a synchronized context."></answer>
+	<answer id="2" content="To call wait(), an object must own the lock on the thread."></answer>
+	<answer id="3" content="The notify() method is defined in class java.lang.Thread."></answer>
+	<answer id="4" content="The notify() method causes a thread to immediately release its locks."></answer>
+</question>
+<question questionId="8" answerId="3">
+	<answer id="1" content="public class MyRunnable extends Runnable{public void run(){}}"></answer>
+	<answer id="2" content="public class MyRunnable extends Object{public void run(){}}"></answer>
+	<answer id="3" content="public class MyRunnable implements Runnable{public void run(){}}"></answer>
+	<answer id="4" content="public class MyRunnable implements Runnable{void run(){}}"></answer>
+</question>
+<question questionId="9" answerId="3">
+	<answer id="1" content="Compilation error."></answer>
+	<answer id="2" content="Will print in this order: x = 1 y = 1 x = 2 y = 2 x = 3 y = 3 x = 4 y = 4 x = 5 y = 5... but the output will be produced by both threads running simultaneously."></answer>
+	<answer id="3" content="Will print in this order: x = 1 y = 1 x = 2 y = 2 x = 3 y = 3 x = 4 y = 4 x = 5 y = 5... but the output will be produced by first one thread then the other. This is guaranteed by the synchronised code."></answer>
+	<answer id="4" content="Will print in this order x = 1 y = 2 x = 3 y = 4 x = 5 y = 6 x = 7 y = 8..."></answer>
+</question>
+<question questionId="10" answerId="3">
+	<answer id="1" content="a and b"></answer>
+	<answer id="2" content="b and c"></answer>
+	<answer id="3" content="c and d"></answer>
+	<answer id="4" content="a and d"></answer>
+</question>
+<question questionId="11" answerId="2">
+	<answer id="1" content="Memory is reclaimed by calling Runtime.gc()."></answer>
+	<answer id="2" content="Objects are not collected if they are accessible from live threads"></answer>
+	<answer id="3" content="An OutOfMemory error is only thrown if a single block of memory cannot be found that is large enough for a particular requirement"></answer>
+	<answer id="4" content="Objects that have finalize() methods always have their finalize() methods called before the program ends."></answer>
+</question>
+<question questionId="12" answerId="3">
+	<answer id="1" content="a"></answer>
+	<answer id="2" content="b"></answer>
+	<answer id="3" content="c"></answer>
+	<answer id="4" content="d"></answer>
+</question>
+<question questionId="13" answerId="3">
+	<answer id="1" content="0 1 2"></answer>
+	<answer id="2" content="0 1 2 1 2 2"></answer>
+	<answer id="3" content="Compilation fails at line 11"></answer>
+	<answer id="4" content="Compilation fails at line 12"></answer>
+</question>
+<question questionId="14" answerId="2">
+	<answer id="1" content="A static method cannot be synchronized."></answer>
+	<answer id="2" content="If a class has synchronized code, multiple threads can still access the nonsynchronized code."></answer>
+	<answer id="3" content="Variables can be protected from concurrent access problems by marking them with the synchronized keyword."></answer>
+	<answer id="4" content="When a thread sleeps, it releases its locks."></answer>
+</question>
+<question questionId="15" answerId="3">
+	<answer id="1" content="public."></answer>
+	<answer id="2" content="private."></answer>
+	<answer id="3" content="protected."></answer>
+	<answer id="4" content="transient."></answer>
+</question>
+<question questionId="16" answerId="4">
+	<answer id="1" content="After line 11."></answer>
+	<answer id="2" content="After line 12."></answer>
+	<answer id="3" content="After line 13."></answer>
+	<answer id="4" content="Garbage collector never invoked in methodA()."></answer>
+</question>
+<question questionId="17" answerId="4">
+	<answer id="1" content="i = 6 and j = 5."></answer>
+	<answer id="2" content="i = 5 and j = 5"></answer>
+	<answer id="3" content="i = 6 and j = 6."></answer>
+	<answer id="4" content="i = 5 and j = 6."></answer>
+</question>
+<question questionId="18" answerId="2">
+	<answer id="1" content="result = 1"></answer>
+	<answer id="2" content="result = 10"></answer>
+	<answer id="3" content="result = 11"></answer>
+	<answer id="4" content="result = 11010"></answer>
+</question>
+<question questionId="19" answerId="1">
+	<answer id="1" content="1"></answer>
+	<answer id="2" content="2"></answer>
+	<answer id="3" content="3"></answer>
+	<answer id="4" content="4"></answer>
+</question>
+<question questionId="20" answerId="4">
+	<answer id="1" content="0"></answer>
+	<answer id="2" content="1"></answer>
+	<answer id="3" content="2"></answer>
+	<answer id="4" content="Compilation fails"></answer>
+</question>
+<question questionId="21" answerId="4">
+	<answer id="1" content="This program will compile successfully."></answer>
+	<answer id="2" content="This program fails to compile due to an error at line 9."></answer>
+	<answer id="3" content="This program fails to compile due to an error at line 10."></answer>
+	<answer id="4" content="This program fails to compile due to an error at line 18."></answer>
+</question>
+<question questionId="22" answerId="2">
+	<answer id="1" content="5 3."></answer>
+	<answer id="2" content="8 2."></answer>
+	<answer id="3" content="8 3."></answer>
+	<answer id="4" content="8 5."></answer>
+</question>
+<question questionId="23" answerId="4">
+	<answer id="1" content="a and b."></answer>
+	<answer id="2" content="b and c."></answer>
+	<answer id="3" content="c and d."></answer>
+	<answer id="4" content="d and e."></answer>
+</question>
+<question questionId="24" answerId="3">
+	<answer id="1" content="protected int a;"></answer>
+	<answer id="2" content="transient int b = 3;"></answer>
+	<answer id="3" content="private synchronized int e;"></answer>
+	<answer id="4" content="volatile int d;"></answer>
+</question>
+<question questionId="25" answerId="3">
+	<answer id="1" content="TreeMap"></answer>
+	<answer id="2" content="HashMap"></answer>
+	<answer id="3" content="LinkedHashMap"></answer>
+	<answer id="4" content="The answer depends on the implementation of the existing instance"></answer>
+</question>
+<question questionId="26" answerId="4">
+	<answer id="1" content="a and c"></answer>
+	<answer id="2" content="b and d."></answer>
+	<answer id="3" content="a and e"></answer>
+	<answer id="4" content="b and f"></answer>
+</question>
+<question questionId="27" answerId="2">
+	<answer id="1" content="a, b and d"></answer>
+	<answer id="2" content="a, c and f."></answer>
+	<answer id="3" content="c and e"></answer>
+	<answer id="4" content="e"></answer>
+</question>
+<question questionId="28" answerId="1">
+	<answer id="1" content="int[ ] ia = new int[15];"></answer>
+	<answer id="2" content="float fa = new float[20];"></answer>
+	<answer id="3" content="char[ ] ca = 'Some String'"></answer>
+	<answer id="4" content="int ia[ ] [ ] = { 4, 5, 6 }, { 1,2,3 };"></answer>
+</question>
+<question questionId="29" answerId="3">
+	<answer id="1" content="Compilation fails."></answer>
+	<answer id="2" content="An error occurs at runtime."></answer>
+	<answer id="3" content="It prints 'foobarhi'"></answer>
+	<answer id="4" content="It prints 'barhi'"></answer>
+</question>
+<question questionId="30" answerId="1">
+	<answer id="1" content="wait()"></answer>
+	<answer id="2" content="notify()"></answer>
+	<answer id="3" content="notifyall()"></answer>
+	<answer id="4" content="exits synchronized code"></answer>
+</question>
+<question questionId="31" answerId="4">
+	<answer id="1" content="ADC"></answer>
+	<answer id="2" content="Compilation fails"></answer>
+	<answer id="3" content="B"></answer>
+	<answer id="4" content="ACD"></answer>
+</question>
+<question questionId="32" answerId="4">
+	<answer id="1" content="I1I2"></answer>
+	<answer id="2" content="I1"></answer>
+	<answer id="3" content="I2"></answer>
+	<answer id="4" content="Compilation fails"></answer>
+</question>
+<question questionId="33" answerId="1">
+	<answer id="1" content="Runtime exception"></answer>
+	<answer id="2" content="Compilation fails"></answer>
+	<answer id="3" content="null"></answer>
+	<answer id="4" content="Empty string will be printed"></answer>
+</question>
+<question questionId="34" answerId="1">
+	<answer id="1" content="DCAC"></answer>
+	<answer id="2" content="Compilation fails"></answer>
+	<answer id="3" content="DC is printed before  runtime exception at line 12"></answer>
+	<answer id="4" content="D is printed before runtime exception at line 10"></answer>
+</question>
+<question questionId="35" answerId="2">
+	<answer id="1" content="ABCD"></answer>
+	<answer id="2" content="D"></answer>
+	<answer id="3" content="BCD"></answer>
+	<answer id="4" content="CD"></answer>
+</question>
+<question questionId="36" answerId="3">
+	<answer id="1" content="A E"></answer>
+	<answer id="2" content="A B C D E F G"></answer>
+	<answer id="3" content="A B C D E"></answer>
+	<answer id="4" content="A B C D E G"></answer>
+</question>
+<question questionId="37" answerId="4">
+	<answer id="1" content="BDEACF"></answer>
+	<answer id="2" content="AFCBED"></answer>
+	<answer id="3" content="ACFBDE"></answer>
+	<answer id="4" content="ABCFDE"></answer>
+</question>
+<question questionId="38" answerId="2">
+	<answer id="1" content="Invocation 1 is the only one that will compile fine"></answer>
+	<answer id="2" content="Invocation 1 and 3 will compile fine"></answer>
+	<answer id="3" content="Invocation 1 2 3 will compile fine"></answer>
+	<answer id="4" content="All invocations will not compile"></answer>
+</question>
+<question questionId="39" answerId="4">
+	<answer id="1" content="Only I5"></answer>
+	<answer id="2" content="All are valid"></answer>
+	<answer id="3" content="I5 I8 I9"></answer>
+	<answer id="4" content="I5 I9"></answer>
+</question>
+<question questionId="40" answerId="2">
+	<answer id="1" content="a b c"></answer>
+	<answer id="2" content="Only a"></answer>
+	<answer id="3" content="e d"></answer>
+	<answer id="4" content="a c d"></answer>
+</question>
+</questions>
