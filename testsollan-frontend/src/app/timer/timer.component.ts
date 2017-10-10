@@ -15,12 +15,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TimerComponent implements OnInit {
   time: string;
   timerLoaded: boolean = false;
-  // errorMessage: string;
-  // timer: TimerComponent[];
 
   constructor(private timerService: TimerService) { }
-
-
 
   startTimer() {
     this.timerService.startTimer();
@@ -33,7 +29,7 @@ export class TimerComponent implements OnInit {
   }
   
   public ngOnInit(): void {
-    this.startTimer();
+   this.startTimer();
   }
 }
 

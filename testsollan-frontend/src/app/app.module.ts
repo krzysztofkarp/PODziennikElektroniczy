@@ -1,3 +1,4 @@
+import { ResultholderService } from './result/resultholder.service';
 import { BackendService } from './general/backend/backend.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
@@ -6,7 +7,7 @@ import { QuestionsService } from './services/questions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdRadioModule, MdToolbarModule, MdProgressSpinnerModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdRadioModule, MdToolbarModule, MdProgressSpinnerModule, MdTableModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 
@@ -35,6 +36,7 @@ import { ResultComponent } from './result/result.component';
     MdGridListModule,
     MdToolbarModule,
     MdIconModule,
+    MdTableModule,
     MdProgressSpinnerModule,
     MdRadioModule,
     HttpModule,
@@ -44,11 +46,9 @@ import { ResultComponent } from './result/result.component';
         { path: ':id', component: QuestionComponent }
       ]},
       { path: 'result', component: ResultComponent },
-      { path: 'timer', component: TimerComponent },
-      
     ])
   ],
-  providers: [QuestionsService, TimerService, BackendService],
+  providers: [QuestionsService, TimerService, BackendService,TimerComponent, ResultholderService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

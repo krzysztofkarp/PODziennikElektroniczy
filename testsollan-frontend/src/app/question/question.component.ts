@@ -125,7 +125,6 @@ export class QuestionComponent implements OnInit {
     .subscribe(answers => {
       this.answers = answers;
       this.answersLoaded = true;
-      // this.isLoading = false;
   });
   }
 

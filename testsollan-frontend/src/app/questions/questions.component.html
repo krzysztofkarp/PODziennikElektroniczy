@@ -1,5 +1,14 @@
 <md-toolbar color="primary">
     <span>Question {{questionId}}</span>
+   <md-radio-group>
+    <md-radio-button 
+    class="example-radio-button" 
+    *ngFor="let result of results" 
+    [value]="result.id"
+    #radio
+    (change)="addAnswer(radio)">
+  </md-radio-button>
+   </md-radio-group>
     <span class="example-spacer"></span>
     <span><timer></timer></span>
     <md-icon class="example-icon">schedule</md-icon>

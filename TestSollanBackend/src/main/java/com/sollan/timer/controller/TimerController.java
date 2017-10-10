@@ -13,7 +13,7 @@ public class TimerController {
 	@Autowired
 	TimerService timerService;
 	
-	@RequestMapping(value ="api/startTimer", method = RequestMethod.GET)
+	@RequestMapping(value ="/api/startTimer", method = RequestMethod.GET)
 	public Response<String> startTimer() {
 		Response<String> response = new Response<>();
 		response.setItem(timerService.startTimerS());
