@@ -68,4 +68,9 @@ public class Response<T> {
 	public void setItems(Collection<T> items) {
 		this.items = items;
 	}
+
+	public void getItem(boolean timeStarted) {
+		// TODO Auto-generated method stub
+		
+	}
 }

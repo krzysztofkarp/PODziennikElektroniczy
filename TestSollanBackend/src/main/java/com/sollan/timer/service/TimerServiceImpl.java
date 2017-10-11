@@ -1,5 +1,6 @@
 package com.sollan.timer.service;
 
+import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -10,9 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
-	long secondsForTest = 2400;
+	long secondsForTest = 4800;
 	boolean timerStarted;
-
+	
 	@Override
 	public String startTimerS() {
 
@@ -53,6 +54,12 @@ public class TimerServiceImpl implements TimerService {
 
 		String timerDisplayer = (minutes + ":" + String.format("%02d", seconds));
 		return timerDisplayer;
+	}
+	
+	@Override
+	public boolean timeStarted() {
+		return this.timerStarted;
+
 	}
 
 }

@@ -17,5 +17,10 @@ md-grid-tile{
   background-color: #0d47a1;
 }
 
-  
+.scrollable
+{
+  overflow: auto;
+  max-width: 1250px;  
+  max-height: 850px;
+}  
 

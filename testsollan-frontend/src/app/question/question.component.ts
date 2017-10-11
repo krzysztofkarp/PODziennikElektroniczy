@@ -1,4 +1,5 @@
-import { questionPath, resultPath } from './../utils/constants';
+import { HomeService } from '../home/home.service';
+import { homePath, questionPath, resultPath } from './../utils/constants';
 import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
+  
 
   questions = [];
   answers = [];
@@ -23,21 +25,32 @@ export class QuestionComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private service: QuestionsService,
-              private router: Router) { }
+              private router: Router,
+              private homeService: HomeService
+            ) { }
 
               
               
     ngDoCheck(){
       if(this.answers.length === 0)
       this.loadAnswers();
+      
+      // *** Working redirecting 
+
+      // if (sessionStorage.getItem('wasStarted') == 'yes') {
+      //   if (this.homeService.getWasStarted()) {
+      //   } else {
+      //     this.router.navigate([homePath]);
+      //     sessionStorage.clear();        
+      //   }
+      // } else {
+        
+      // }
     }
   
     ngOnInit() {
-    
     this.images = this.service.getImages();
-
     console.log('init');
-
     this.route.params
     .subscribe(params => {
       this.questionId = + params['id'];

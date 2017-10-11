@@ -21,6 +21,11 @@ export class Consts {
         static Answers = class {
             const static GET_ANSWERS = "/answers";
         }
+
+        static Checkers = class {
+            const static GET_WAS_STARTED = "/getTimerStarted";            
+        }
+
     }
 
    

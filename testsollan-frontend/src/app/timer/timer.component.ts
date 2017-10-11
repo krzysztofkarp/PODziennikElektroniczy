@@ -14,7 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Injectable()
 export class TimerComponent implements OnInit {
   time: string;
-  timerLoaded: boolean = false;
   // errorMessage: string;
   // timer: TimerComponent[];
 

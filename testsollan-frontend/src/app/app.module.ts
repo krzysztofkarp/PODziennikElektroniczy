@@ -1,3 +1,4 @@
+import { HomeService } from './home/home.service';
 import { BackendService } from './general/backend/backend.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
@@ -48,7 +49,7 @@ import { ResultComponent } from './result/result.component';
       
     ])
   ],
-  providers: [QuestionsService, TimerService, BackendService],
+  providers: [QuestionsService, TimerService, BackendService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

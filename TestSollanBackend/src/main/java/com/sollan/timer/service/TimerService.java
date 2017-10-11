@@ -8,4 +8,6 @@ public interface TimerService {
 
 	String getCurrentTime();
 
+	boolean timeStarted();
+
 }
