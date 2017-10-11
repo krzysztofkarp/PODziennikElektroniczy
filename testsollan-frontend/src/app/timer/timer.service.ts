@@ -31,14 +31,12 @@ export class TimerService {
   }
   
   getTimer() {
-    
     return this.backendService.get(Consts.BackendMapping.Timer.GET_TIME).map(response => {
       if (response.ok) {
         if(response.item !== "0:00"){
-        console.log(response.item);
         return response.item;
         }else{
-          this.router.navigate([resultPath]);
+          //this.router.navigate([resultPath]);
         }
       } else {
         return 0;

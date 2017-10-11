@@ -10,11 +10,10 @@ import com.sollan.timer.service.TimerService;
 
 @RestController
 public class TimerController {
+	
 	@Autowired
 	TimerService timerService;
 	
-	
-
 	@RequestMapping(value ="/api/timeElapsed", method = RequestMethod.GET)
 	public long timeElapsed() {
 		return timerService.getTimeElapsed();

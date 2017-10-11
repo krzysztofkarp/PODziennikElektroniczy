@@ -5,16 +5,21 @@
       <button color="accent"  (click)="previousQuestion()" md-fab>
         <md-icon>chevron_left</md-icon></button>
     </md-grid-tile>
+<<<<<<< HEAD
    
       <md-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded"> <div class="scrollable"><img src="{{images[questionId-1]}}" ></div></md-grid-tile>
 
+=======
+    <md-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded"><img src="{{images[questionId-1]}}"></md-grid-tile>
+>>>>>>> 10493771e30db38d3ff1dfab20ee50ddead4ff12
     <md-grid-tile colspan="1" rowspan="8">
       <button color="accent"  (click)="nextQuestion()" md-fab>
         <md-icon>chevron_right</md-icon></button>
       <button  (click)="lastQuestion()" color="accent" md-fab>
           <md-icon>last_page</md-icon></button>
       </md-grid-tile>
-      <md-grid-tile colspan="8" rowspan="2" class="answers-border"> 
+      <md-grid-tile colspan="8" rowspan="2" class="answers-border">
+        <md-progress-spinner mode="indeterminate" *ngIf="!answersLoaded"></md-progress-spinner>
         <md-radio-group [(ngModel)]="currentAnswerId" *ngIf="answersLoaded" name="group" class="example-radio-group"> 
           <md-radio-button 
             class="example-radio-button" 

@@ -16,15 +16,22 @@ import com.sollan.testsollan.question.model.Questions;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
-	// private Collection<Question> questions;
-	//
-	// @PostConstruct
-	// private void init() {
-	// this.questions= loadQuestions();
-	// }
-	//
+	 private Collection<Question> questions;
+	
+	 @PostConstruct
+	 private void init() {
+	 this.questions= loadQuestions();
+	 }
+	
 
-	private Collection<Question> loadQuestions() {
+	@Override
+	public Collection<Question> getQuestions() {
+		return questions;
+	}
+
+
+	@Override
+	public Collection<Question> loadQuestions() {
 
 		try {
 			JAXBContext jc = JAXBContext.newInstance(Questions.class, Question.class);
@@ -39,7 +46,8 @@ public class QuestionServiceImpl implements QuestionService {
 
 		return null;
 	}
-
+	
+	
 	@Override
 	public Collection<Answer> getAnswers(int questionId) {
 

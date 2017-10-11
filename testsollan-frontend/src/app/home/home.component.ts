@@ -1,8 +1,11 @@
+import { TimerService } from '../timer/timer.service';
 import { Observable } from 'rxjs/Rx';
 import { HomeService } from './home.service';
 import { Consts } from '../general/utils/Consts';
 import { BackendService } from '../general/backend/backend.service';
-import { homePath, questionPath } from './../utils/constants';
+import { homePath } from './../utils/constants';
+import { TimerComponent } from './../timer/timer.component';
+import { questionPath } from './../utils/constants';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,7 +17,10 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   checker: boolean;
-  constructor(private router: Router, private homeService: HomeService) {
+  constructor(
+    private router: Router, 
+    private homeService: HomeService,
+  ) {
 
   }
 

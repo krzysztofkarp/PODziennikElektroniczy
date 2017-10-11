@@ -1,3 +1,5 @@
+import { ResultholderService } from './../result/resultholder.service';
+import { BackendService } from './../general/backend/backend.service';
 import { resultPath } from './../utils/constants';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from './../services/questions.service';
@@ -11,9 +13,14 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionsComponent implements OnInit {
 
  
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, 
+              private router: Router,
+              private service: QuestionsService,
+              private holder: ResultholderService) { }
 
   private questionId;
+  private answers;
+  private result: any = {};
 
   ngOnInit() {
     
@@ -24,7 +31,16 @@ export class QuestionsComponent implements OnInit {
   }
 
   finish() {
-    this.router.navigate([resultPath]);
+    this.answers = JSON.parse(localStorage.getItem('answers'));
+    this.service.getResult(this.answers)
+      .subscribe(result => {
+        this.result = result;
+        this.holder.dispatchResult(this.result);
+        this.router.navigate([resultPath]);
+        
+      });
+    
+    
   }
 
 }
