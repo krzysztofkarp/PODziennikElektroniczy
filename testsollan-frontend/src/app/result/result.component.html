@@ -1,9 +1,13 @@
-<md-grid-list cols="2" rowHeight="2:1">
-    <md-grid-tile *ngFor="let answer of answers">
-      <span>Question {{answer.questionId}}</span><span>
-        <md-icon title="xx" *ngIf="answer.correct">check_box</md-icon>
-        <md-icon *ngIf="!answer.correct">indeterminate_check_box</md-icon>
-      </span></md-grid-tile>
-    <md-grid-tile *ngFor="let answer of answers">{{answer.questionId}}</md-grid-tile>
-  </md-grid-list>
+<mat-toolbar color="primary">
+    <span>Points: {{points}} / 40</span>
+    <span class="example-spacer"></span>
+    <span>{{percent | percent}}</span>
+</mat-toolbar>
+<mat-grid-list cols="2" rowHeight="4:1">
+    <mat-grid-tile *ngFor="let answer of answers">
+     <b>Question  {{answer.questionId}}</b>
+        <mat-icon title="xx" class="goodanswer" *ngIf="answer.correct">check_box</mat-icon>
+        <mat-icon class="wronganswer" *ngIf="!answer.correct" >indeterminate_check_box</mat-icon>
+      </mat-grid-tile>
+  </mat-grid-list>
 

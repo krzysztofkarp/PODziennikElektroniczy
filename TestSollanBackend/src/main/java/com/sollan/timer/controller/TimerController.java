@@ -19,10 +19,25 @@ public class TimerController {
 		response.setItem(timerService.startTimerS());
 		return response;
 	}
+	
+	@RequestMapping(value ="/api/stopTimer", method = RequestMethod.GET)
+	public Response<String> stopTimer() {
+		Response<String> response = new Response<>();
+		response.setItem(timerService.stopTimerS());
+		return response;
+	}
 
 	@RequestMapping(value ="/api/timeElapsed", method = RequestMethod.GET)
 	public long timeElapsed() {
 		return timerService.getTimeElapsed();
+	}
+	
+	@RequestMapping(value ="/api/timerStatus", method = RequestMethod.GET)
+	public Response<Boolean> getTimerStatus() {
+		Response<Boolean> response = new Response<>();
+		response.setItem(timerService.getTimerStatus());
+		return response;
+		
 	}
 	
 	@RequestMapping(value ="/api/getTime", method = RequestMethod.GET)

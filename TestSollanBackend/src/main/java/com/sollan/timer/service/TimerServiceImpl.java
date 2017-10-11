@@ -37,12 +37,24 @@ public class TimerServiceImpl implements TimerService {
 		// System.out.println(timerDate.getTime());
 
 	}
+	
+	@Override
+	public String stopTimerS() {
+		if (timerStarted == true) {
+			timeInMilis.set(0);
+			timerStarted = false;
+		}
+		return "Timer stopped"+ getTimeElapsed();
+	}
+	
+	
 
 	@Override
 	public long getTimeElapsed() {
 		return timeInMilis.get();
 
 	}
+	
 
 	@Override
 	public String getCurrentTime() {
@@ -54,5 +66,15 @@ public class TimerServiceImpl implements TimerService {
 		String timerDisplayer = (minutes + ":" + String.format("%02d", seconds));
 		return timerDisplayer;
 	}
+
+	@Override
+	public boolean getTimerStatus() {
+		
+		return this.timerStarted;
+	}
+
+
+
+
 
 }

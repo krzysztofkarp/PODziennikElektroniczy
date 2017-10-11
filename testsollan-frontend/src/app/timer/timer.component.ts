@@ -16,20 +16,20 @@ export class TimerComponent implements OnInit {
   time: string;
   timerLoaded: boolean = false;
 
-  constructor(private timerService: TimerService) { }
+  constructor(private timerService: TimerService, private router: Router) { }
 
   startTimer() {
     this.timerService.startTimer();
-    Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
+      Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
 
   }
   getTimer() {
     this.timerService.getTimer()
-      .subscribe(time => this.time = time)
+      .subscribe(time => this.time = time);
   }
   
-  public ngOnInit(): void {
-   this.startTimer();
+  ngOnInit() {
+    this.startTimer();
   }
 }
 

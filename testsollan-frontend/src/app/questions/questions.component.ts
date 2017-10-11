@@ -1,6 +1,8 @@
+import { TimerComponent } from './../timer/timer.component';
+import { TimerService } from './../timer/timer.service';
+import { resultPath, questionPath } from './../general/utils/constants';
 import { ResultholderService } from './../result/resultholder.service';
 import { BackendService } from './../general/backend/backend.service';
-import { resultPath } from './../utils/constants';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +17,7 @@ export class QuestionsComponent implements OnInit {
  
   constructor(private route: ActivatedRoute, 
               private router: Router,
+              private timerService: TimerService,
               private service: QuestionsService,
               private holder: ResultholderService) { }
 
@@ -37,7 +40,7 @@ export class QuestionsComponent implements OnInit {
         this.result = result;
         this.holder.dispatchResult(this.result);
         this.router.navigate([resultPath]);
-        
+        this.timerService.stopTimer();
       });
     
     

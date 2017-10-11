@@ -1,3 +1,4 @@
+import { resultPath } from './../general/utils/constants';
 import { QuestionsComponent } from '../questions/questions.component';
 import { QuestionComponent } from '../question/question.component';
 import { Consts } from '../general/utils/Consts';
@@ -7,13 +8,12 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { resultPath } from './../utils/constants';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from './../services/questions.service';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-@Injectable()
 
+@Injectable()
 export class TimerService {
   
   constructor(private backendService: BackendService, private router: Router) {
@@ -29,6 +29,17 @@ export class TimerService {
       }
     });
   }
+
+  stopTimer() {
+    return this.backendService.get(Consts.BackendMapping.Timer.STOP).subscribe(response => {
+      if(response.ok){
+        console.log(response.item);
+        return response.item;
+      }else{
+        return null;
+      }
+    });
+  }
   
   getTimer() {
     return this.backendService.get(Consts.BackendMapping.Timer.GET_TIME).map(response => {
@@ -36,14 +47,24 @@ export class TimerService {
         if(response.item !== "0:00"){
         return response.item;
         }else{
-          //this.router.navigate([resultPath]);
+          this.stopTimer();
+          this.router.navigate([resultPath]);
         }
       } else {
         return 0;
       }
-
     });
   }
+
+    getTimerStatus(){
+      return this.backendService.get(Consts.BackendMapping.Timer.GET_STATUS).subscribe(response => {
+        if(response.ok){
+          console.log(response.item);
+          return response.item;
+         }else{
+          return null;
+        }
+    })}
   
   
 
