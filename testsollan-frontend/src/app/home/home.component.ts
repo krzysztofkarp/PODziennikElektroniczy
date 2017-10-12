@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
     this.timerService.startTimer();
     this.router.navigate([questionPath, 1]);
     localStorage.setItem('currentQuestionId', '1');
-    
     sessionStorage.setItem('wasStarted', 'yes');
   }
 

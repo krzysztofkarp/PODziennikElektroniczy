@@ -34,17 +34,20 @@ export class QuestionsComponent implements OnInit {
   }
 
   finish() {
-    this.answers = JSON.parse(localStorage.getItem('answers'));
-    this.service.getResult(this.answers)
-      .subscribe(result => {
-        this.result = result;
-        this.holder.dispatchResult(this.result);
-        this.router.navigate([resultPath]);
-        this.timerService.stopTimer();
-        sessionStorage.setItem('wasStarted', 'no');
-      });
+    
+    if(this.answers = JSON.parse(localStorage.getItem('answers')))
+        this.service.getResult(this.answers)
+          .subscribe(result => {
+            this.result = result;
+            this.holder.dispatchResult(this.result);
+            this.router.navigate([resultPath]);
+            this.timerService.stopTimer();
+            sessionStorage.setItem('wasStarted', 'no');
+          });
+    else console.log('nie ma');
     
     
   }
+
 
 }
