@@ -21,7 +21,7 @@ export class TimerComponent implements OnInit {
 
   startTimer() {
     if (sessionStorage.getItem('wasStarted') == 'yes') {
-      this.timerService.startTimer();
+      //this.timerService.startTimer();
       Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer()); 
     } else {
       this.router.navigate([homePath]);

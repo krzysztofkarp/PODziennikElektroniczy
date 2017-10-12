@@ -20,12 +20,15 @@ export class ResultComponent implements OnInit {
   points: any;
   percent: any;
   answers: any[];
+  questionId;
 
   ngOnInit() {
-   
-    let id = localStorage.getItem('currentQuestionId');
-    let isRunning = this.timerService.getTimerStatus();
+  
+    this.questionId = localStorage.getItem('currentQuestionId');
 
+    if (sessionStorage.getItem('wasStarted') == 'yes') {
+      this.router.navigate([questionPath, this.questionId]);
+    }       
  
     this.points = this.holder.points;
     this.answers = this.holder.answers;

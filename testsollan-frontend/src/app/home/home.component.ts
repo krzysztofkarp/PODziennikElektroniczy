@@ -1,4 +1,4 @@
-import { TimerService } from '../timer/timer.service';
+import { TimerService } from './../timer/timer.service';
 import { Observable } from 'rxjs/Rx';
 import { HomeService } from './home.service';
 import { Consts } from '../general/utils/Consts';
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router, 
     private homeService: HomeService,
+    private timerService: TimerService
   ) {}
 
   ngOnInit() {
@@ -28,7 +29,9 @@ export class HomeComponent implements OnInit {
 
   ngDoCheck(){
     if (sessionStorage.getItem('wasStarted') == 'yes') {
-      if (this.homeService.getWasStarted()) {
+      this.homeService.getWasStarted()
+        .subscribe(started => this.checker = started);
+      if (this.checker) {
         this.router.navigate([questionPath, 1]);
       } else {
         this.router.navigate([homePath]);
@@ -39,6 +42,8 @@ export class HomeComponent implements OnInit {
   }
 
   start() {
+
+    this.timerService.startTimer();
     this.router.navigate([questionPath, 1]);
     localStorage.setItem('currentQuestionId', '1');
     

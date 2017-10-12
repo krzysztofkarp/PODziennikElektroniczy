@@ -1,6 +1,5 @@
 package com.sollan.timer.service;
 
-import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +12,7 @@ public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
 	long secondsForTest = 2400;
 	boolean timerStarted;
-	ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+	ScheduledExecutorService timer;
 	@Override
 	public String startTimerS() {
 
@@ -22,13 +21,14 @@ public class TimerServiceImpl implements TimerService {
 			timerStarted = true;
 			System.out.println("started timer");
 //			ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+			timer = Executors.newScheduledThreadPool(1);
 			timer.scheduleAtFixedRate(() -> {
 				timeInMilis.set(timeInMilis.addAndGet(1000));
 				if (timeInMilis.get() >= secondsForTest * 1000) {
 					timer.shutdown();
 				}
 			}, 0, 1, TimeUnit.SECONDS);
-			return "OK";
+			return "Timer started";
 		} else {
 			return "ERROR";
 		}
@@ -66,12 +66,6 @@ public class TimerServiceImpl implements TimerService {
 	public boolean timeStarted() {
 		return this.timerStarted;
 
-	}
-
-	@Override
-	public boolean getTimerStatus() {
-		
-		return this.timerStarted;
 	}
 
 

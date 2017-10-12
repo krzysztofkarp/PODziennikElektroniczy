@@ -56,15 +56,7 @@ export class TimerService {
     });
   }
 
-    getTimerStatus(){
-      return this.backendService.get(Consts.BackendMapping.Timer.GET_STATUS).subscribe(response => {
-        if(response.ok){
-          console.log(response.item);
-          return response.item;
-         }else{
-          return null;
-        }
-    })}
+  
   
   
 

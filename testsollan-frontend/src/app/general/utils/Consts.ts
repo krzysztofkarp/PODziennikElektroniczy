@@ -16,7 +16,6 @@ export class Consts {
             const static START = '/startTimer';
             const static STOP = '/stopTimer';
             const static GET_TIME = '/getTime';
-            const static GET_STATUS = '/timerStatus';
         };
 
         static Answers = class {
