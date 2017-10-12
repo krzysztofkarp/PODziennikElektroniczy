@@ -15,7 +15,6 @@ export class Consts {
         static Timer = class {
             const static START = '/startTimer';
             const static STOP = '/stopTimer';
-            const static TIME_ELAPSED = '/timeElapsed';
             const static GET_TIME = '/getTime';
             const static GET_STATUS = '/timerStatus';
         };
