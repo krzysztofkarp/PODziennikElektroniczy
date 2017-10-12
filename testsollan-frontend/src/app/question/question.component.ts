@@ -37,15 +37,15 @@ export class QuestionComponent implements OnInit {
       
       // *** Working redirecting 
 
-      // if (sessionStorage.getItem('wasStarted') == 'yes') {
-      //   if (this.homeService.getWasStarted()) {
-      //   } else {
-      //     this.router.navigate([homePath]);
-      //     sessionStorage.clear();        
-      //   }
-      // } else {
+      if (sessionStorage.getItem('wasStarted') == 'yes') {
+        if (this.homeService.getWasStarted()) {
+        } else {
+          this.router.navigate([homePath]);
+          sessionStorage.clear();        
+        }
+      } else {
         
-      // }
+      }
     }
   
     ngOnInit() {

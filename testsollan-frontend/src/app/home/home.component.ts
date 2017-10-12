@@ -28,24 +28,24 @@ export class HomeComponent implements OnInit {
     localStorage.clear();
   }
 
-  //*** Working Redirecting (Commented, because it disrupts workflow)
 
-  // ngDoCheck(){
-  //   if (sessionStorage.getItem('wasStarted') == 'yes') {
-  //     if (this.homeService.getWasStarted()) {
-  //       this.router.navigate([questionPath, 1]);
-  //     } else {
-  //       this.router.navigate([homePath]);
-  //       sessionStorage.clear();        
-  //     }
-  //   } else {
-  //   }
-  // }
+  ngDoCheck(){
+    if (sessionStorage.getItem('wasStarted') == 'yes') {
+      if (this.homeService.getWasStarted()) {
+        this.router.navigate([questionPath, 1]);
+      } else {
+        this.router.navigate([homePath]);
+        sessionStorage.clear();        
+      }
+    } else {
+    }
+  }
+
   start() {
     this.router.navigate([questionPath, 1]);
     localStorage.setItem('currentQuestionId', '1');
     
-    // sessionStorage.setItem('wasStarted', 'yes');
+    sessionStorage.setItem('wasStarted', 'yes');
   }
 
 

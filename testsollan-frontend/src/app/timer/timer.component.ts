@@ -1,3 +1,4 @@
+import { homePath } from '../utils/constants';
 import { timeout } from 'rxjs/operator/timeout';
 import { TimerService } from './timer.service';
 import { Http } from '@angular/http';
@@ -14,27 +15,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Injectable()
 export class TimerComponent implements OnInit {
   time: string;
-<<<<<<< HEAD
-  // errorMessage: string;
-  // timer: TimerComponent[];
-=======
-  timerLoaded: boolean = false;
->>>>>>> 10493771e30db38d3ff1dfab20ee50ddead4ff12
-
-  constructor(private timerService: TimerService) { }
+  constructor(private timerService: TimerService,
+    private router: Router,) { }
 
   startTimer() {
-    this.timerService.startTimer();
-    Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
-
+    if (sessionStorage.getItem('wasStarted') == 'yes') {
+      this.timerService.startTimer();
+      Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer()); 
+    } else {
+      this.router.navigate([homePath]);
+      sessionStorage.clear(); 
+    }
+    
   }
   getTimer() {
     this.timerService.getTimer()
       .subscribe(time => this.time = time)
   }
-  
+
   public ngOnInit(): void {
-   this.startTimer();
+    this.startTimer();
   }
 }
 
