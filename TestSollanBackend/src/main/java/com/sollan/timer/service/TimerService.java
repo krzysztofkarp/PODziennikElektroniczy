@@ -6,8 +6,6 @@ public interface TimerService {
 	
 	String stopTimerS();
 	
-	boolean getTimerStatus();
-
 	String getCurrentTime();
 
 	boolean timeStarted();

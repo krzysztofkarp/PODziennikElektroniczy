@@ -27,15 +27,6 @@ public class TimerController {
 		return response;
 	}
 
-	
-	@RequestMapping(value ="/api/timerStatus", method = RequestMethod.GET)
-	public Response<Boolean> getTimerStatus() {
-		Response<Boolean> response = new Response<>();
-		response.setItem(timerService.getTimerStatus());
-		return response;
-		
-	}
-	
 	@RequestMapping(value ="/api/getTime", method = RequestMethod.GET)
 	public Response<String> getTime() {
 		Response<String> response = new Response<>();

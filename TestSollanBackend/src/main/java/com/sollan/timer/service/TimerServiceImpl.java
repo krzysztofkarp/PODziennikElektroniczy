@@ -1,6 +1,5 @@
 package com.sollan.timer.service;
 
-import java.util.Collection;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +28,7 @@ public class TimerServiceImpl implements TimerService {
 					timer.shutdown();
 				}
 			}, 0, 1, TimeUnit.SECONDS);
-			return "OK";
+			return "Timer started";
 		} else {
 			return "ERROR";
 		}
@@ -67,12 +66,6 @@ public class TimerServiceImpl implements TimerService {
 	public boolean timeStarted() {
 		return this.timerStarted;
 
-	}
-
-	@Override
-	public boolean getTimerStatus() {
-		
-		return this.timerStarted;
 	}
 
 

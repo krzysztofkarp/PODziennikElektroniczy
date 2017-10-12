@@ -41,6 +41,7 @@ export class QuestionsComponent implements OnInit {
         this.holder.dispatchResult(this.result);
         this.router.navigate([resultPath]);
         this.timerService.stopTimer();
+        sessionStorage.setItem('wasStarted', 'no');
       });
     
     

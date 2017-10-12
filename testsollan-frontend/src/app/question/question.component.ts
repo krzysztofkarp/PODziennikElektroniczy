@@ -1,5 +1,5 @@
-import { TimerService } from '../timer/timer.service';
 import { HomeService } from '../home/home.service';
+import { TimerService } from './../timer/timer.service';
 import { homePath, questionPath, resultPath } from './../general/utils/constants';
 import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,8 +27,9 @@ export class QuestionComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private service: QuestionsService,
               private router: Router,
-              private homeService: HomeService,
-              private timerService: TimerService) { }
+              private timerService: TimerService,
+              private homeService: HomeService) { }
+         
 
               
               
@@ -38,27 +39,24 @@ export class QuestionComponent implements OnInit {
       
       // *** Working redirecting 
 
-      if (sessionStorage.getItem('wasStarted') == 'yes') {
-        if (this.homeService.getWasStarted()) {
-        } else {
+      if (sessionStorage.getItem('wasStarted') !== 'yes') {
           this.router.navigate([homePath]);
           sessionStorage.clear();        
-        }
+        
       } else {
         
       }
     }
   
     ngOnInit() {
+    this.images = this.service.getImages();
+    console.log('init');
       
-    this.images = this.service.getImages()
-
     this.route.params
     .subscribe(params => {
       this.questionId = + params['id'];
     });
 
-    //Getting previously checked answers from localStorage
     this.currentAnswers = JSON.parse(localStorage.getItem('answers'));
 
     if (this.currentAnswers === null)
