@@ -51,9 +51,7 @@ export class QuestionComponent implements OnInit {
   
     ngOnInit() {
       
-    this.images = this.service.getImages();
-    console.log(this.timerService.getTimerStatus());
-
+    this.images = this.service.getImages()
 
     this.route.params
     .subscribe(params => {
