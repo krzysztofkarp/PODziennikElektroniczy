@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
-	long secondsForTest = 4800;
+	long secondsForTest = 2400;
 	boolean timerStarted;
-	ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+	ScheduledExecutorService timer;
 	@Override
 	public String startTimerS() {
 
@@ -22,6 +22,7 @@ public class TimerServiceImpl implements TimerService {
 			timerStarted = true;
 			System.out.println("started timer");
 //			ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+			timer = Executors.newScheduledThreadPool(1);
 			timer.scheduleAtFixedRate(() -> {
 				timeInMilis.set(timeInMilis.addAndGet(1000));
 				if (timeInMilis.get() >= secondsForTest * 1000) {
