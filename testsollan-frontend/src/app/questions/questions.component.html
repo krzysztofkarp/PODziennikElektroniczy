@@ -1,19 +1,11 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
     <span>Question {{questionId}}</span>
-   <md-radio-group>
-    <md-radio-button 
-    class="example-radio-button" 
-    *ngFor="let result of results" 
-    [value]="result.id"
-    #radio
-    (change)="addAnswer(radio)">
-  </md-radio-button>
-   </md-radio-group>
+    <span></span>
     <span class="example-spacer"></span>
     <span><timer></timer></span>
-    <md-icon class="example-icon">schedule</md-icon>
-    <button (click)="finish()" color="accent" md-raised-button>Finish</button>
-</md-toolbar>
+    <mat-icon class="example-icon">schedule</mat-icon>
+    <button (click)="finish()" color="accent" mat-raised-button>Finish</button>
+</mat-toolbar>
 <router-outlet></router-outlet>
 
 

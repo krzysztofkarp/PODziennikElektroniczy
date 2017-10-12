@@ -11,7 +11,7 @@ export class ResultholderService {
 
   dispatchResult(result){
     this._answers = result.results;
-    this._points = result.points
+    this._points = result.points;
   }
 
   get answers(){

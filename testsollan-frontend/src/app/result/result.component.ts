@@ -1,5 +1,7 @@
+import { questionPath } from './../general/utils/constants';
+import { TimerService } from './../timer/timer.service';
 import { ResultholderService } from './resultholder.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -11,18 +13,30 @@ import 'rxjs/add/operator/map';
 export class ResultComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private holder: ResultholderService) { }
+              private holder: ResultholderService,
+              private router: Router,
+              private timerService: TimerService) { }
 
   points: any;
+  percent: any;
   answers: any[];
 
   ngOnInit() {
    
-      this.points = this.holder.points;
-      this.answers = this.holder.answers;
+    let id = localStorage.getItem('currentQuestionId');
+    let isRunning = this.timerService.getTimerStatus();
+
+    //  if(isRunning)
+    //     this.router.navigate([questionPath + '/' + id]);
+    //  else
+        this.points = this.holder.points;
+        this.answers = this.holder.answers;
+        this.percent = this.holder.points/40;
+
     
        
       }
+      
         
         
     

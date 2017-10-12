@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { HomeService } from '../home/home.service';
 import { homePath, questionPath, resultPath } from './../utils/constants';
+=======
+import { TimerService } from './../timer/timer.service';
+import { questionPath } from './../general/utils/constants';
+>>>>>>> cf23a7095d739c33f94d21dfb56c93aee1f08ed9
 import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +22,7 @@ export class QuestionComponent implements OnInit {
   currentAnswers = [];
   images = [];
   questionId;
-  isLoading: boolean = true;
+  isRunning;
 
   questionsLoaded: boolean = false;
   currentAnswerId;
@@ -26,13 +31,17 @@ export class QuestionComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private service: QuestionsService,
               private router: Router,
+<<<<<<< HEAD
               private homeService: HomeService
             ) { }
+=======
+              private timerService: TimerService) { }
+>>>>>>> cf23a7095d739c33f94d21dfb56c93aee1f08ed9
 
               
               
     ngDoCheck(){
-      if(this.answers.length === 0)
+      if (this.answers.length === 0)
       this.loadAnswers();
       
       // *** Working redirecting 
@@ -49,8 +58,16 @@ export class QuestionComponent implements OnInit {
     }
   
     ngOnInit() {
+<<<<<<< HEAD
     this.images = this.service.getImages();
     console.log('init');
+=======
+      
+    this.images = this.service.getImages();
+    console.log(this.timerService.getTimerStatus());
+
+
+>>>>>>> cf23a7095d739c33f94d21dfb56c93aee1f08ed9
     this.route.params
     .subscribe(params => {
       this.questionId = + params['id'];
@@ -59,11 +76,11 @@ export class QuestionComponent implements OnInit {
     //Getting previously checked answers from localStorage
     this.currentAnswers = JSON.parse(localStorage.getItem('answers'));
 
-    if(this.currentAnswers===null)
+    if (this.currentAnswers === null)
       this.currentAnswers = [];
 
       this.currentAnswerId = this.findAnswerById();
-
+      
       this.storeCurrentQuestionId();
       
     }
@@ -112,12 +129,12 @@ export class QuestionComponent implements OnInit {
         return a.id === newAnswer.id
       });
 
-   if(found) {
+   if (found) {
      found.value = newAnswer.value;
       } else {
         this.currentAnswers.push(newAnswer);
       }
-      
+
     localStorage.setItem('answers', JSON.stringify(this.currentAnswers));
 }
 
@@ -141,7 +158,7 @@ export class QuestionComponent implements OnInit {
   });
   }
 
- 
+
 
 
 }

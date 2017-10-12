@@ -22,7 +22,6 @@ public class ValidationServiceImpl implements ValidationService{
 	@Override
 	public ValidationResult validate(List<UserAnswer> answers) {
 		
-	
 		Collection<AnswerResult> correctAnswers = new ArrayList<>();
 		int points = 0;
 		boolean correct = false;

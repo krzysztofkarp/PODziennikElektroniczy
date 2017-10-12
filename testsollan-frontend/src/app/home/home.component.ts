@@ -3,14 +3,13 @@ import { Observable } from 'rxjs/Rx';
 import { HomeService } from './home.service';
 import { Consts } from '../general/utils/Consts';
 import { BackendService } from '../general/backend/backend.service';
-import { homePath } from './../utils/constants';
+import { homePath } from './../general/utils/constants';
+import { questionPath } from './../general/utils/constants';
 import { TimerComponent } from './../timer/timer.component';
-import { questionPath } from './../utils/constants';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
@@ -20,9 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router, 
     private homeService: HomeService,
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     localStorage.clear();

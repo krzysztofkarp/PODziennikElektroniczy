@@ -1,4 +1,6 @@
 import { HomeService } from './home/home.service';
+import { MdComponentsModule } from './../md-components.module';
+import { PercentPipe } from '@angular/common';
 import { ResultholderService } from './result/resultholder.service';
 import { BackendService } from './general/backend/backend.service';
 import { TimerComponent } from './timer/timer.component';
@@ -8,8 +10,8 @@ import { QuestionsService } from './services/questions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdRadioModule, MdToolbarModule, MdProgressSpinnerModule, MdTableModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -25,31 +27,32 @@ import { ResultComponent } from './result/result.component';
     HomeComponent,
     QuestionComponent,
     QuestionsComponent,
-    ResultComponent, 
+    ResultComponent,
     TimerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MdButtonModule,
-    MdCheckboxModule,
-    MdGridListModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdTableModule,
-    MdProgressSpinnerModule,
-    MdRadioModule,
+    MdComponentsModule,
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'question', component: QuestionsComponent, children: [
-        { path: ':id', component: QuestionComponent }
-      ]},
+      {
+        path: 'question', component: QuestionsComponent, children: [
+          { path: ':id', component: QuestionComponent }
+        ]
+      },
       { path: 'result', component: ResultComponent },
     ])
   ],
-  providers: [QuestionsService, TimerService, BackendService,HomeService, TimerComponent, ResultholderService], 
+  providers: [QuestionsService,
+    TimerService,
+    BackendService,
+    TimerComponent,
+    ResultholderService,
+    HomeService,
+    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

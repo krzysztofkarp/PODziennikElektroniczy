@@ -5,8 +5,17 @@
     min-width: 300px;
   }
   
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }
+  .example-spacer {
+    flex: 1 1 auto;
+}
+
+.goodanswer{
+  color: green;
+}
+
+.wronganswer{
+  color: red;
+}
+
+
 

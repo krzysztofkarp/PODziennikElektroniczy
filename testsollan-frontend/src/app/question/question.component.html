@@ -1,28 +1,27 @@
-<md-grid-list cols="8" rowHeight="100px">
-    <md-grid-tile colspan="1" rowspan="8">
-      <button (click)="firstQuestion()" color="accent" md-fab>
-        <md-icon>first_page</md-icon></button>
-      <button color="accent"  (click)="previousQuestion()" md-fab>
-        <md-icon>chevron_left</md-icon></button>
-    </md-grid-tile>
-             <md-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded"> <div class="scrollable"><img src="{{images[questionId-1]}}" ></div></md-grid-tile>
-    <md-grid-tile colspan="1" rowspan="8">
-      <button color="accent"  (click)="nextQuestion()" md-fab>
-        <md-icon>chevron_right</md-icon></button>
-      <button  (click)="lastQuestion()" color="accent" md-fab>
-          <md-icon>last_page</md-icon></button>
-      </md-grid-tile>
-      <md-grid-tile colspan="8" rowspan="2" class="answers-border">
-        <md-progress-spinner mode="indeterminate" *ngIf="!answersLoaded"></md-progress-spinner>
-        <md-radio-group [(ngModel)]="currentAnswerId" *ngIf="answersLoaded" name="group" class="example-radio-group"> 
-          <md-radio-button 
+<mat-grid-list cols="8" rowHeight="100px">
+    <mat-grid-tile colspan="1" rowspan="8">
+      <button (click)="firstQuestion()" color="accent" mat-fab>
+        <mat-icon>first_page</mat-icon></button>
+      <button color="accent"  (click)="previousQuestion()" mat-fab>
+        <mat-icon>chevron_left</mat-icon></button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded"><img src="{{images[questionId-1]}}"></mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="8">
+      <button color="accent"  (click)="nextQuestion()" mat-fab>
+        <mat-icon>chevron_right</mat-icon></button>
+      <button  (click)="lastQuestion()" color="accent" mat-fab>
+          <mat-icon>last_page</mat-icon></button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="8" rowspan="2" class="answers-border">
+        <mat-radio-group [(ngModel)]="currentAnswerId" *ngIf="answersLoaded" name="group" class="example-radio-group"> 
+          <mat-radio-button 
             class="example-radio-button" 
             *ngFor="let answer of answers" 
             [value]="answer.id"
             #radio
             (change)="addAnswer(radio)">
               {{answer.content}}
-          </md-radio-button>
-        </md-radio-group>
-      </md-grid-tile>
-</md-grid-list>
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-grid-tile>
+</mat-grid-list>
