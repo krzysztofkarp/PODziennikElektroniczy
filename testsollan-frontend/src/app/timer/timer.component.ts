@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { homePath } from '../general/utils/constants';
 import { timeout } from 'rxjs/operator/timeout';
 import { TimerService } from './timer.service';
@@ -30,7 +31,11 @@ export class TimerComponent implements OnInit {
   }
   getTimer() {
     this.timerService.getTimer()
-      .subscribe(time => this.time = time);
+      .subscribe(time => {
+        this.time = time;
+        console.log(this.time);  
+      });
+          
   }
   
   ngOnInit() {

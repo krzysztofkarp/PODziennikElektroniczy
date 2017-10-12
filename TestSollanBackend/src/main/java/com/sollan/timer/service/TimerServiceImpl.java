@@ -13,7 +13,7 @@ public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
 	long secondsForTest = 4800;
 	boolean timerStarted;
-	
+	ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
 	@Override
 	public String startTimerS() {
 
@@ -21,7 +21,7 @@ public class TimerServiceImpl implements TimerService {
 			timeInMilis.set(0);
 			timerStarted = true;
 			System.out.println("started timer");
-			ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+//			ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
 			timer.scheduleAtFixedRate(() -> {
 				timeInMilis.set(timeInMilis.addAndGet(1000));
 				if (timeInMilis.get() >= secondsForTest * 1000) {
@@ -42,19 +42,13 @@ public class TimerServiceImpl implements TimerService {
 	@Override
 	public String stopTimerS() {
 		if (timerStarted == true) {
-			timeInMilis.set(0);
+			timer.shutdown();
 			timerStarted = false;
 		}
-		return "Timer stopped"+ getTimeElapsed();
+		return "Timer stopped";
 	}
 	
 	
-
-	@Override
-	public long getTimeElapsed() {
-		return timeInMilis.get();
-
-	}
 	
 
 	@Override

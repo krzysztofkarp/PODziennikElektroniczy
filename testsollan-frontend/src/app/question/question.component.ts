@@ -1,10 +1,6 @@
-<<<<<<< HEAD
+import { TimerService } from '../timer/timer.service';
 import { HomeService } from '../home/home.service';
-import { homePath, questionPath, resultPath } from './../utils/constants';
-=======
-import { TimerService } from './../timer/timer.service';
-import { questionPath } from './../general/utils/constants';
->>>>>>> cf23a7095d739c33f94d21dfb56c93aee1f08ed9
+import { homePath, questionPath, resultPath } from './../general/utils/constants';
 import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,12 +27,8 @@ export class QuestionComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private service: QuestionsService,
               private router: Router,
-<<<<<<< HEAD
-              private homeService: HomeService
-            ) { }
-=======
+              private homeService: HomeService,
               private timerService: TimerService) { }
->>>>>>> cf23a7095d739c33f94d21dfb56c93aee1f08ed9
 
               
               
@@ -58,16 +50,11 @@ export class QuestionComponent implements OnInit {
     }
   
     ngOnInit() {
-<<<<<<< HEAD
-    this.images = this.service.getImages();
-    console.log('init');
-=======
       
     this.images = this.service.getImages();
     console.log(this.timerService.getTimerStatus());
 
 
->>>>>>> cf23a7095d739c33f94d21dfb56c93aee1f08ed9
     this.route.params
     .subscribe(params => {
       this.questionId = + params['id'];

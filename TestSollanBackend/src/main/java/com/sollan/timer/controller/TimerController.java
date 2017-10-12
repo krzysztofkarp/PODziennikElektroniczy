@@ -27,10 +27,6 @@ public class TimerController {
 		return response;
 	}
 
-	@RequestMapping(value ="/api/timeElapsed", method = RequestMethod.GET)
-	public long timeElapsed() {
-		return timerService.getTimeElapsed();
-	}
 	
 	@RequestMapping(value ="/api/timerStatus", method = RequestMethod.GET)
 	public Response<Boolean> getTimerStatus() {
@@ -52,4 +48,5 @@ public class TimerController {
 		response.getItem(timerService.timeStarted());
 		return response;
 	}
+	
 }
