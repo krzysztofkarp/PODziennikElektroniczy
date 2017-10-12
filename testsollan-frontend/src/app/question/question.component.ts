@@ -39,7 +39,7 @@ export class QuestionComponent implements OnInit {
       
       // *** Working redirecting 
 
-      if (sessionStorage.getItem('wasStarted') !== 'yes') {
+      if (!sessionStorage.getItem('wasStarted')) {
           this.router.navigate([homePath]);
           sessionStorage.clear();        
         

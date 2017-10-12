@@ -6,7 +6,7 @@
 <mat-grid-list cols="2" rowHeight="4:1">
     <mat-grid-tile *ngFor="let answer of answers">
      <b>Question  {{answer.questionId}}</b>
-        <mat-icon title="xx" class="goodanswer" *ngIf="answer.correct">check_box</mat-icon>
+        <mat-icon class="goodanswer" *ngIf="answer.correct">check_box</mat-icon>
         <mat-icon class="wronganswer" *ngIf="!answer.correct" >indeterminate_check_box</mat-icon>
       </mat-grid-tile>
   </mat-grid-list>

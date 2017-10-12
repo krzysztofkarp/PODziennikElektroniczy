@@ -1,3 +1,4 @@
+import { ResultholderService } from './../result/resultholder.service';
 import { resultPath } from './../general/utils/constants';
 import { QuestionsComponent } from '../questions/questions.component';
 import { QuestionComponent } from '../question/question.component';
@@ -15,8 +16,11 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TimerService {
+
+  answers;
+  result;
   
-  constructor(private backendService: BackendService, private router: Router) {
+  constructor(private backendService: BackendService, private router: Router, private holder: ResultholderService, private service: QuestionsService) {
   }
   
   startTimer() {
@@ -47,8 +51,15 @@ export class TimerService {
         if(response.item !== "0:00"){
         return response.item;
         }else{
-          this.stopTimer();
-          this.router.navigate([resultPath]);
+          if(this.answers = JSON.parse(localStorage.getItem('answers')))
+          this.service.getResult(this.answers)
+            .subscribe(result => {
+              this.result = result;
+              this.holder.dispatchResult(this.result);
+              this.stopTimer();
+              sessionStorage.setItem('wasStarted', 'no');
+            });
+      else console.log('nie ma');
         }
       } else {
         return 0;

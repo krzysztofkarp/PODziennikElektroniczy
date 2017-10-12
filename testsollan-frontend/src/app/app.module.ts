@@ -44,6 +44,7 @@ import { ResultComponent } from './result/result.component';
         ]
       },
       { path: 'result', component: ResultComponent },
+      { path: '**', component: HomeComponent }
     ])
   ],
   providers: [QuestionsService,
