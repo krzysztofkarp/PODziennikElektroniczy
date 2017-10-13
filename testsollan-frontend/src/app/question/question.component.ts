@@ -58,7 +58,6 @@ export class QuestionComponent implements OnInit {
         
     }
   
-
   nextQuestion() {
     if (this.questionId < 40) {
       this.questionId++;

@@ -20,7 +20,6 @@ public class TimerServiceImpl implements TimerService {
 			timeInMilis.set(0);
 			timerStarted = true;
 			System.out.println("started timer");
-//			ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
 			timer = Executors.newScheduledThreadPool(1);
 			timer.scheduleAtFixedRate(() -> {
 				timeInMilis.set(timeInMilis.addAndGet(1000));
@@ -33,10 +32,7 @@ public class TimerServiceImpl implements TimerService {
 			return "ERROR";
 		}
 
-		// Date timerDate = new Date();
-		// timerDate.setTime(1000 * 60 * 40);
-		// System.out.println(timerDate.getTime());
-
+		
 	}
 	
 	@Override

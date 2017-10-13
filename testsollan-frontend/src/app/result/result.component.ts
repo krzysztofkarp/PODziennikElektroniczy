@@ -1,4 +1,4 @@
-import { questionPath } from './../general/utils/constants';
+import { questionPath, homePath } from './../general/utils/constants';
 import { TimerService } from './../timer/timer.service';
 import { ResultholderService } from './resultholder.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 export class ResultComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private holder: ResultholderService,
+
               private router: Router,
               private timerService: TimerService) { }
 
@@ -28,11 +28,13 @@ export class ResultComponent implements OnInit {
 
     if (sessionStorage.getItem('wasStarted') == 'yes') {
       this.router.navigate([questionPath, this.questionId]);
-    }       
+    } else if (!sessionStorage.getItem('wasStarted')){
+      this.router.navigate([homePath]);
+    }  
  
-    this.points = this.holder.points;
+    this.points = localStorage.getItem('points');
     this.answers = JSON.parse(localStorage.getItem('final'));
-    this.percent = this.holder.points/40;
+    this.percent = this.points/40;
   }
 
  

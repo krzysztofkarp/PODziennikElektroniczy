@@ -13,6 +13,7 @@ export class ResultholderService {
     this._answers = result.results;
     this._points = result.points;
     localStorage.setItem('final', JSON.stringify(this._answers));
+    localStorage.setItem('points', this._points);
   }
 
   get answers(){

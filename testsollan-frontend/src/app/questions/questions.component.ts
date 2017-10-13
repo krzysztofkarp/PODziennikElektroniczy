@@ -40,7 +40,7 @@ export class QuestionsComponent implements OnInit {
             this.holder.holdResult(this.result);
             this.router.navigate([resultPath]);
             this.timerService.stopTimer();
-            sessionStorage.clear();        
+            sessionStorage.setItem('wasStarted', 'no');        
           });
     else alert('Nie zaznaczono żadnej odpowiedzi!');
     
