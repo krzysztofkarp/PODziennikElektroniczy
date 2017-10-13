@@ -31,13 +31,14 @@ export class HomeComponent implements OnInit {
     if (sessionStorage.getItem('wasStarted') == 'yes') {
       this.homeService.getWasStarted()
         .subscribe(started => this.checker = started);
-      if (this.checker) {
+      if (!this.checker) {
         this.router.navigate([questionPath, 1]);
       } else {
         this.router.navigate([homePath]);
-        sessionStorage.clear();        
+        sessionStorage.clear();                
       }
     } else {
+      
     }
   }
 
@@ -49,7 +50,4 @@ export class HomeComponent implements OnInit {
     
     sessionStorage.setItem('wasStarted', 'yes');
   }
-
-
-
 }

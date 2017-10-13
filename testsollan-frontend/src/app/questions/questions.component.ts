@@ -5,13 +5,16 @@ import { ResultholderService } from './../result/resultholder.service';
 import { BackendService } from './../general/backend/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from './../services/questions.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.css']
+  styleUrls: ['./questions.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
 })
+
 export class QuestionsComponent implements OnInit {
 
  
@@ -26,7 +29,6 @@ export class QuestionsComponent implements OnInit {
   private result: any = {};
 
   ngOnInit() {
-    
    }
 
   ngDoCheck() {

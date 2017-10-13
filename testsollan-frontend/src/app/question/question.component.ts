@@ -41,7 +41,6 @@ export class QuestionComponent implements OnInit {
 
       if (sessionStorage.getItem('wasStarted') !== 'yes') {
           this.router.navigate([homePath]);
-          sessionStorage.clear();        
         
       } else {
         

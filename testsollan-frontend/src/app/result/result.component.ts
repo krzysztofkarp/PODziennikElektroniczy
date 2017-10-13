@@ -13,9 +13,10 @@ import 'rxjs/add/operator/map';
 export class ResultComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private holder: ResultholderService,
-              private router: Router,
-              private timerService: TimerService) { }
+    private holder: ResultholderService,
+    private router: Router,
+    private timerService: TimerService,
+  ) { }
 
   points: any;
   percent: any;
@@ -23,24 +24,21 @@ export class ResultComponent implements OnInit {
   questionId;
 
   ngOnInit() {
-  
-    this.questionId = localStorage.getItem('currentQuestionId');
 
+    this.questionId = localStorage.getItem('currentQuestionId');
     if (sessionStorage.getItem('wasStarted') == 'yes') {
       this.router.navigate([questionPath, this.questionId]);
-    }       
- 
+    }
+
     this.points = this.holder.points;
     this.answers = this.holder.answers;
-    this.percent = this.holder.points/40;
+    this.percent = this.holder.points / 40;
 
-    
-       
-      }
-      
-        
-        
-    
+
+
   }
+
+
+}
 
 

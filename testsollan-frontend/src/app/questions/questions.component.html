@@ -1,12 +1,17 @@
 <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon class="md-24">menu</mat-icon>
+    </button>￼
     <span>Question {{questionId}}</span>
     <span></span>
+
+
     <span class="example-spacer"></span>
-    <span><timer></timer></span>
+    <span></span>
+    <span>
+        <timer></timer>
+    </span>
     <mat-icon class="example-icon">schedule</mat-icon>
     <button (click)="finish()" color="accent" mat-raised-button>Finish</button>
 </mat-toolbar>
 <router-outlet></router-outlet>
-
-
-
