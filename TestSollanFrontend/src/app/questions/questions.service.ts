@@ -16,7 +16,6 @@ export class QuestionsService {
    getAnswers(questionId) {
     return this.backendService.get(Consts.BackendMapping.Answers.GET_ANSWERS, questionId).map(response => {
       if (response.ok) {
-        console.log(response.items);
         return response.items;
       } else {
         return 0;
@@ -28,7 +27,6 @@ export class QuestionsService {
   getResult(answers) {
     return this.backendService.post(Consts.BackendMapping.Answers.CHECK_ANSWERS, answers).map(response => {
       if (response.ok) {
-        console.log(response.item);
         return response.item;
       } else {
         return 0;

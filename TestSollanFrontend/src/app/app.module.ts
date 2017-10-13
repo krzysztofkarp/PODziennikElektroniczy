@@ -29,7 +29,7 @@ import { ResultComponent } from './result/result.component';
     QuestionComponent,
     QuestionsComponent,
     ResultComponent,
-    TimerComponent
+    TimerComponent,
   ],
   imports: [
     BrowserModule,

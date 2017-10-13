@@ -25,13 +25,13 @@ export class TimerService {
               private holder: ResultholderService, 
               private service: QuestionsService) {
   }
-  
+
   startTimer() {
     return this.backendService.get(Consts.BackendMapping.Timer.START).subscribe(response => {
-      if(response.ok){
+      if (response.ok) {
         console.log(response.item);
         return response.item;
-      }else{
+      } else {
         return null;
       }
     });
@@ -39,15 +39,15 @@ export class TimerService {
 
   stopTimer() {
     return this.backendService.get(Consts.BackendMapping.Timer.STOP).subscribe(response => {
-      if(response.ok){
+      if (response.ok) {
         console.log(response.item);
         return response.item;
-      }else{
+      } else {
         return null;
       }
     });
   }
-  
+
   getTimer() {
     return this.backendService.get(Consts.BackendMapping.Timer.GET_TIME).map(response => {
       if (response.ok) {
@@ -65,14 +65,13 @@ export class TimerService {
             });
         }
       } else {
-        return 0;
       }
     });
   }
 
-  
-  
-  
+
+
+
 
   // private parseData(res: Response) {
   //   return res.json() || [];

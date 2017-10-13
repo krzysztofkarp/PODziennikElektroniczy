@@ -23,9 +23,8 @@ export class ResultComponent implements OnInit {
   questionId;
 
   ngOnInit() {
-  
-    this.questionId = localStorage.getItem('currentQuestionId');
 
+    this.questionId = localStorage.getItem('currentQuestionId');
     if (sessionStorage.getItem('wasStarted') == 'yes') {
       this.router.navigate([questionPath, this.questionId]);
     } else if (!sessionStorage.getItem('wasStarted')){
@@ -43,5 +42,8 @@ export class ResultComponent implements OnInit {
         
     
   }
+
+
+}
 
 

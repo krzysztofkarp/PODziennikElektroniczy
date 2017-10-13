@@ -11,8 +11,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.css']
+  styleUrls: ['./questions.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
 })
+
 export class QuestionsComponent implements OnInit {
 
  

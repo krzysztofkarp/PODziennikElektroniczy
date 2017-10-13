@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
         this.router.navigate([questionPath, 1]);
       } else {
         this.router.navigate([homePath]);
-        sessionStorage.clear();        
+        sessionStorage.clear();                
       }
     }
   }
@@ -51,7 +51,4 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('currentQuestionId', '1');
     sessionStorage.setItem('wasStarted', 'yes');
   }
-
-
-
 }

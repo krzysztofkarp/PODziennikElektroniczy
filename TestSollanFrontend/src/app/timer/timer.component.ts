@@ -17,11 +17,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TimerComponent implements OnInit {
   time: string;
   constructor(private timerService: TimerService,
-    private router: Router,) { }
+    private router: Router) { }
 
   startTimer() {
     if (sessionStorage.getItem('wasStarted') == 'yes') {
-      //this.timerService.startTimer();
+      this.timerService.startTimer();
       Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer()); 
     } else {
       this.router.navigate([homePath]);
@@ -34,7 +34,6 @@ export class TimerComponent implements OnInit {
       .subscribe(time => {
         this.time = time;
       });
-          
   }
   
   ngOnInit() {
