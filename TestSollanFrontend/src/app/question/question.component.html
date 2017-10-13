@@ -1,16 +1,16 @@
 <mat-grid-list cols="8" rowHeight="100px">
-  <mat-grid-tile colspan="1" rowspan="8">
+  <mat-grid-tile colspan="1" rowspan="6">
     <button (click)="firstQuestion()" color="accent" mat-fab>
         <mat-icon>first_page</mat-icon></button>
     <button color="accent" (click)="previousQuestion()" mat-fab>
         <mat-icon>chevron_left</mat-icon></button>
   </mat-grid-tile>
-  <mat-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded">
+  <mat-grid-tile colspan="6" rowspan="6" *ngIf="answersLoaded">
     <div class="scrollable">
       <img src="{{images[questionId-1]}}">
     </div>
   </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="8">
+  <mat-grid-tile colspan="1" rowspan="6">
     <button color="accent" (click)="nextQuestion()" mat-fab>
         <mat-icon>chevron_right</mat-icon></button>
     <button (click)="lastQuestion()" color="accent" mat-fab>
