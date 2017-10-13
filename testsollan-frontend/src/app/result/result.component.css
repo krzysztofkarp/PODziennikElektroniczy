@@ -17,5 +17,16 @@
   color: red;
 }
 
+mat-grid-tile{
+  background-color: lightblue;
+}
+
+mat-list-item{
+  text-align: center;
+  padding-top: 1px;
+}
+
+
+
 
 

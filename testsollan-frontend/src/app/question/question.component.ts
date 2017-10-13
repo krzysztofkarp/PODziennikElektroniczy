@@ -1,7 +1,7 @@
+import { QuestionsService } from './../questions/questions.service';
 import { HomeService } from '../home/home.service';
 import { TimerService } from './../timer/timer.service';
 import { homePath, questionPath, resultPath } from './../general/utils/constants';
-import { QuestionsService } from './../services/questions.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -18,47 +18,29 @@ export class QuestionComponent implements OnInit {
   currentAnswers = [];
   images = [];
   questionId;
-  isRunning;
 
   questionsLoaded: boolean = false;
   currentAnswerId;
   answersLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute,
-              private service: QuestionsService,
+              private questionsService: QuestionsService,
               private router: Router,
               private timerService: TimerService,
               private homeService: HomeService) { }
          
 
-              
-              
-    ngDoCheck(){
-      if (this.answers.length === 0)
-      this.loadAnswers();
-      
-      // *** Working redirecting 
+  ngOnInit() {
+    this.images = this.questionsService.getImages();
 
-      if (sessionStorage.getItem('wasStarted') !== 'yes') {
-          this.router.navigate([homePath]);
-        
-      } else {
-        
-      }
-    }
-  
-    ngOnInit() {
-    this.images = this.service.getImages();
-    console.log('init');
-      
     this.route.params
-    .subscribe(params => {
+      .subscribe(params => {
       this.questionId = + params['id'];
     });
 
     this.currentAnswers = JSON.parse(localStorage.getItem('answers'));
 
-    if (this.currentAnswers === null)
+    if (!this.currentAnswers)
       this.currentAnswers = [];
 
       this.currentAnswerId = this.findAnswerById();
@@ -67,6 +49,15 @@ export class QuestionComponent implements OnInit {
       
     }
 
+  ngDoCheck(){
+    if (!this.answers.length)
+      this.loadAnswers();
+      
+    if (!sessionStorage.getItem('wasStarted')) 
+      this.router.navigate([homePath]);
+        
+    }
+  
   nextQuestion() {
     if (this.questionId < 40) {
       this.questionId++;
@@ -125,7 +116,7 @@ export class QuestionComponent implements OnInit {
         return ans.id === this.questionId;
       });
 
-      return found ? found.value : null;
+        return found ? found.value : null;
   }
 
   storeCurrentQuestionId() {
@@ -133,11 +124,11 @@ export class QuestionComponent implements OnInit {
   }
 
   loadAnswers(){
-    this.service.getAnswers({"questionId": this.questionId})
+    this.questionsService.getAnswers({"questionId": this.questionId})
     .subscribe(answers => {
       this.answers = answers;
       this.answersLoaded = true;
-  });
+      });
   }
 
 

@@ -1,3 +1,4 @@
+import { QuestionsService } from './questions/questions.service';
 import { HomeService } from './home/home.service';
 import { MdComponentsModule } from './../md-components.module';
 import { PercentPipe } from '@angular/common';
@@ -6,7 +7,7 @@ import { BackendService } from './general/backend/backend.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
 import { HttpModule } from '@angular/http';
-import { QuestionsService } from './services/questions.service';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +45,7 @@ import { ResultComponent } from './result/result.component';
         ]
       },
       { path: 'result', component: ResultComponent },
+      { path: '**', component: HomeComponent }
     ])
   ],
   providers: [QuestionsService,
