@@ -4,14 +4,15 @@ import { Injectable } from '@angular/core';
 export class ResultholderService {
 
   result;
-  private _answers;
-  private _points;
+  private _answers: any[];
+  private _points: any;
   
   constructor() { }
 
-  dispatchResult(result){
+  holdResult(result){
     this._answers = result.results;
     this._points = result.points;
+    localStorage.setItem('final', JSON.stringify(this._answers));
   }
 
   get answers(){

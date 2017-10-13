@@ -31,7 +31,7 @@ export class ResultComponent implements OnInit {
     }       
  
     this.points = this.holder.points;
-    this.answers = this.holder.answers;
+    this.answers = JSON.parse(localStorage.getItem('final'));
     this.percent = this.holder.points/40;
   }
 

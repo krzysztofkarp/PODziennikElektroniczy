@@ -1,3 +1,4 @@
+import { QuestionsService } from './../questions/questions.service';
 import { ResultholderService } from './../result/resultholder.service';
 import { resultPath } from './../general/utils/constants';
 import { QuestionsComponent } from '../questions/questions.component';
@@ -10,7 +11,6 @@ import { Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuestionsService } from './../services/questions.service';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -20,7 +20,10 @@ export class TimerService {
   answers;
   result;
   
-  constructor(private backendService: BackendService, private router: Router, private holder: ResultholderService, private service: QuestionsService) {
+  constructor(private backendService: BackendService, 
+              private router: Router, 
+              private holder: ResultholderService, 
+              private service: QuestionsService) {
   }
   
   startTimer() {
@@ -55,11 +58,11 @@ export class TimerService {
           this.service.getResult(this.answers)
             .subscribe(result => {
               this.result = result;
-              this.holder.dispatchResult(this.result);
+              this.holder.holdResult(this.result);
+              this.router.navigate([resultPath]);
               this.stopTimer();
               sessionStorage.setItem('wasStarted', 'no');
             });
-      else console.log('nie ma');
         }
       } else {
         return 0;

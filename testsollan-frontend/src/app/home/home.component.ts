@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
           this.checker = started
           console.log(started);
         });
-      if (!this.checker) {
+      
+        if (!this.checker) {
         this.router.navigate([questionPath, 1]);
       } else {
         this.router.navigate([homePath]);
@@ -45,7 +46,6 @@ export class HomeComponent implements OnInit {
   }
 
   start() {
-
     this.timerService.startTimer();
     this.router.navigate([questionPath, 1]);
     localStorage.setItem('currentQuestionId', '1');

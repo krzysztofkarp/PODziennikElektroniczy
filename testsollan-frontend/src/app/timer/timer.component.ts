@@ -33,7 +33,6 @@ export class TimerComponent implements OnInit {
     this.timerService.getTimer()
       .subscribe(time => {
         this.time = time;
-        console.log(this.time);  
       });
           
   }

@@ -21,6 +21,7 @@ public class AnswerServiceImpl implements AnswerService {
 	private void init() {
 		this.answers= loadAnswers();
 	}
+	
 	private Collection<Answer> loadAnswers() {
 
 		try {
@@ -37,7 +38,6 @@ public class AnswerServiceImpl implements AnswerService {
 		return null;
 	}
 	
-	//public Answer getAnswerById(Integer questionId)
 	
 	public static void main(String[] args) {
 		AnswerServiceImpl a = new AnswerServiceImpl();
