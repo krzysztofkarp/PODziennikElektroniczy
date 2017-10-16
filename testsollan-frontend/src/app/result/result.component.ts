@@ -14,8 +14,8 @@ export class ResultComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
 
-              private router: Router,
-              private timerService: TimerService) { }
+    private router: Router,
+    private timerService: TimerService) { }
 
   points: any;
   percent: any;
@@ -27,23 +27,14 @@ export class ResultComponent implements OnInit {
     this.questionId = localStorage.getItem('currentQuestionId');
     if (sessionStorage.getItem('wasStarted') == 'yes') {
       this.router.navigate([questionPath, this.questionId]);
-    } else if (!sessionStorage.getItem('wasStarted')){
+    } else if (!sessionStorage.getItem('wasStarted')) {
       this.router.navigate([homePath]);
-    }  
- 
+    }
+
     this.points = localStorage.getItem('points');
     this.answers = JSON.parse(localStorage.getItem('final'));
-    this.percent = this.points/40;
+    this.percent = this.points / 40;
   }
-
- 
-      
-        
-        
-    
-  }
-
-
 }
 
 

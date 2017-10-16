@@ -15,7 +15,6 @@
         <mat-icon>chevron_right</mat-icon></button>
     <button (click)="lastQuestion()" color="accent" mat-fab>
           <mat-icon>last_page</mat-icon></button>
-  </mat-grid-tile>
   <mat-grid-tile colspan="8" rowspan="2" class="answers-border">
     <mat-radio-group [(ngModel)]="currentAnswerId" *ngIf="answersLoaded" name="group" class="example-radio-group">
       <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer.id" #radio (change)="addAnswer(radio)">
