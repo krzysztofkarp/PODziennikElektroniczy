@@ -2,11 +2,9 @@ import { QuestionsService } from './questions.service';
 import { TimerComponent } from './../timer/timer.component';
 import { TimerService } from './../timer/timer.service';
 import { resultPath, questionPath } from './../general/utils/constants';
-import { ResultholderService } from './../result/resultholder.service';
 import { BackendService } from './../general/backend/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'questions',
@@ -16,14 +14,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   preserveWhitespaces: false,
 })
 
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit, DoCheck {
 
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private timerService: TimerService,
-              private questionsService: QuestionsService,
-              private holder: ResultholderService) { }
+              private questionsService: QuestionsService) { }
 
   private questionId;
   private answers;
@@ -37,11 +34,10 @@ export class QuestionsComponent implements OnInit {
 
   finish() {
     if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
-        let name = localStorage.getItem('name');
+        const name = localStorage.getItem('name');
         this.questionsService.validateAnswers(this.answers, name)
           .subscribe(result => {
             this.result = result;
-            this.holder.holdResult(this.result);
             this.router.navigate([resultPath]);
             this.timerService.stopTimer();
             sessionStorage.setItem('wasStarted', 'no');

@@ -1,8 +1,6 @@
 import { QuestionsService } from './questions/questions.service';
-import { HomeService } from './home/home.service';
 import { MdComponentsModule } from './../md-components.module';
 import { PercentPipe } from '@angular/common';
-import { ResultholderService } from './result/resultholder.service';
 import { BackendService } from './general/backend/backend.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
@@ -52,8 +50,6 @@ import { ResultComponent } from './result/result.component';
     TimerService,
     BackendService,
     TimerComponent,
-    ResultholderService,
-    HomeService,
     { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }],
   bootstrap: [AppComponent]
 })

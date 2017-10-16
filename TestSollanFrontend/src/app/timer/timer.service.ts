@@ -1,5 +1,4 @@
 import { QuestionsService } from './../questions/questions.service';
-import { ResultholderService } from './../result/resultholder.service';
 import { resultPath } from './../general/utils/constants';
 import { QuestionsComponent } from '../questions/questions.component';
 import { QuestionComponent } from '../question/question.component';
@@ -22,7 +21,6 @@ export class TimerService {
 
   constructor(private backendService: BackendService,
               private router: Router,
-              private holder: ResultholderService,
               private service: QuestionsService) {
   }
 
@@ -55,11 +53,10 @@ export class TimerService {
         return response.item;
         } else {
           if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
-            let name = localStorage.getItem('name');
+            const name = localStorage.getItem('name');
           this.service.validateAnswers(this.answers, name)
             .subscribe(result => {
               this.result = result;
-              this.holder.holdResult(this.result);
               this.router.navigate([resultPath]);
               this.stopTimer();
               sessionStorage.setItem('wasStarted', 'no');
@@ -69,4 +66,17 @@ export class TimerService {
       }
     });
   }
+
+  getWasStarted() {
+    return this.backendService.get(Consts.BackendMapping.Checkers.GET_WAS_STARTED)
+    .map(response => {
+      if (response.ok) {
+        return response.item;
+      }else {
+        return 0;
+      }
+    });
+  }
+
+
 }

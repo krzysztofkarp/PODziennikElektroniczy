@@ -20,14 +20,14 @@ export class TimerComponent implements OnInit {
     private router: Router) { }
 
   startTimer() {
-    if (sessionStorage.getItem('wasStarted') == 'yes') {
+    if (sessionStorage.getItem('wasStarted') === 'yes') {
       this.timerService.startTimer();
-      Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer()); 
+      Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
     } else {
       this.router.navigate([homePath]);
-      sessionStorage.clear(); 
+      sessionStorage.clear();
     }
-    
+
   }
   getTimer() {
     this.timerService.getTimer()
@@ -35,7 +35,7 @@ export class TimerComponent implements OnInit {
         this.time = time;
       });
   }
-  
+
   ngOnInit() {
     this.startTimer();
   }

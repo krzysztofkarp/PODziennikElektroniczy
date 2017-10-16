@@ -1,7 +1,6 @@
 import { QuestionsService } from './../questions/questions.service';
 import { questionPath, homePath } from './../general/utils/constants';
 import { TimerService } from './../timer/timer.service';
-import { ResultholderService } from './resultholder.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -14,7 +13,6 @@ import 'rxjs/add/operator/map';
 export class ResultComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-
               private router: Router,
               private timerService: TimerService,
               private questionService: QuestionsService) { }

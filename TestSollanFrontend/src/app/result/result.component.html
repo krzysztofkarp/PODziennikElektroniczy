@@ -5,8 +5,8 @@
 </mat-toolbar>
 <mat-list>
     <mat-list-item *ngFor="let answer of answers">
-        <mat-icon mat-list-icon class="goodanswer" *ngIf="answer.correct">check_box</mat-icon>
-        <mat-icon mat-list-icon class="wronganswer" *ngIf="!answer.correct" >indeterminate_check_box</mat-icon>
+        <mat-icon mat-list-icon color="accent" *ngIf="answer.correct">check_box</mat-icon>
+        <mat-icon mat-list-icon color="primary" *ngIf="!answer.correct" >indeterminate_check_box</mat-icon>
         <p mat-line>Question {{answer.questionId}}</p>
     </mat-list-item>
 </mat-list>

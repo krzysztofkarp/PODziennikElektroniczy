@@ -29,6 +29,7 @@ export class QuestionsService {
     return this.backendService.post(Consts.BackendMapping.Answers.CHECK_ANSWERS, answers, {'name': name})
       .map(response => {
         if (response.ok) {
+          console.log(response.item);
           return response.item;
       } else {
           return 0;

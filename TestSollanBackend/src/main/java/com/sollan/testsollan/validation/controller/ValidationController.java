@@ -23,7 +23,8 @@ public class ValidationController {
 	@RequestMapping(value ="/api/validateAnswers", method = RequestMethod.POST)
 	public Response<String> validate(@RequestBody List<UserAnswer> answers, @RequestParam("name") String name) {
 		validator.validate(answers, name);
-		Response<String> response = new Response<>("Answers validated.");
+		Response<String> response = new Response<>();
+		response.setItem("Answers validated");
 		return response;
 	}
 	
