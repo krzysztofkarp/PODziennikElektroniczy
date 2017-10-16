@@ -16,7 +16,6 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   checker: boolean;
-  name;
 
   constructor(
     private router: Router,
@@ -47,10 +46,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  start() {
+  start(name) {
     this.timerService.startTimer();
     this.router.navigate([questionPath, 1]);
     localStorage.setItem('currentQuestionId', '1');
+    localStorage.setItem('name', name);
     sessionStorage.setItem('wasStarted', 'yes');
   }
 }

@@ -37,7 +37,8 @@ export class QuestionsComponent implements OnInit {
 
   finish() {
     if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
-        this.questionsService.validateAnswers(this.answers)
+        let name = localStorage.getItem('name');
+        this.questionsService.validateAnswers(this.answers, name)
           .subscribe(result => {
             this.result = result;
             this.holder.holdResult(this.result);

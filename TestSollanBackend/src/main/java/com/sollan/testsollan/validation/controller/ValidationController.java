@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sollan.testsollan.answer.model.UserAnswer;
@@ -20,9 +21,9 @@ public class ValidationController {
 	ValidationServiceImpl validator;
 
 	@RequestMapping(value ="/api/validateAnswers", method = RequestMethod.POST)
-	public Response<ValidationResult> validate(@RequestBody List<UserAnswer> answers) {
-		validator.validate(answers);
-		Response<ValidationResult> response = new Response<>(validator.getResult());
+	public Response<String> validate(@RequestBody List<UserAnswer> answers, @RequestParam("name") String name) {
+		validator.validate(answers, name);
+		Response<String> response = new Response<>("Answers validated.");
 		return response;
 	}
 	

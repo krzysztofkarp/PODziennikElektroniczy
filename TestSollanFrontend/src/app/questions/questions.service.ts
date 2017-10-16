@@ -25,8 +25,8 @@ export class QuestionsService {
     });
   }
 
-  validateAnswers(answers) {
-    return this.backendService.post(Consts.BackendMapping.Answers.CHECK_ANSWERS, answers)
+  validateAnswers(answers, name) {
+    return this.backendService.post(Consts.BackendMapping.Answers.CHECK_ANSWERS, answers, {'name': name})
       .map(response => {
         if (response.ok) {
           return response.item;
@@ -40,6 +40,7 @@ export class QuestionsService {
     return this.backendService.get(Consts.BackendMapping.Answers.GET_RESULT)
       .map(response => {
         if (response.ok) {
+          console.log(response.item);
           return response.item;
         } else {
           return 0;

@@ -20,7 +20,7 @@ export class ResultComponent implements OnInit {
               private questionService: QuestionsService) { }
 
   points: any;
-  percent: any;
+  name;
   answers;
   questionId;
 
@@ -37,17 +37,10 @@ export class ResultComponent implements OnInit {
     .subscribe(result => {
       this.points = result.points;
       this.answers = result.results;
+      this.name = result.name;
     });
   }
-
-
-
-
-
-
-
-
-  }
+}
 
 
 

@@ -7,5 +7,5 @@ import com.sollan.testsollan.validation.model.ValidationResult;
 
 public interface ValidationService {
 
-	void validate(List<UserAnswer> answers);
+	void validate(List<UserAnswer> answers, String name);
 }

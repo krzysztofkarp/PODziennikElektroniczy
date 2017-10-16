@@ -19,10 +19,10 @@ export class TimerService {
 
   answers;
   result;
-  
-  constructor(private backendService: BackendService, 
-              private router: Router, 
-              private holder: ResultholderService, 
+
+  constructor(private backendService: BackendService,
+              private router: Router,
+              private holder: ResultholderService,
               private service: QuestionsService) {
   }
 
@@ -55,7 +55,8 @@ export class TimerService {
         return response.item;
         } else {
           if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
-          this.service.validateAnswers(this.answers)
+            let name = localStorage.getItem('name');
+          this.service.validateAnswers(this.answers, name)
             .subscribe(result => {
               this.result = result;
               this.holder.holdResult(this.result);
@@ -68,19 +69,4 @@ export class TimerService {
       }
     });
   }
-
-
-
-
-
-  // private parseData(res: Response) {
-  //   return res.json() || [];
-  // }
-
-  // private handleError(error: Response | any) {
-  //   let errorMessage: string;
-
-  //   errorMessage = error.message ? error.message : error.toString();
-  //   return Observable.throw(errorMessage);
-  // }
 }

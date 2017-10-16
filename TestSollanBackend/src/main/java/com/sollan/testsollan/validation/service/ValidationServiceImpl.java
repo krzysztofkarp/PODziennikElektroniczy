@@ -22,7 +22,7 @@ public class ValidationServiceImpl implements ValidationService{
 	private ValidationResult result;
 
 	@Override
-	public void validate(List<UserAnswer> answers) {
+	public void validate(List<UserAnswer> answers, String name) {
 		
 		Collection<AnswerResult> correctAnswers = new ArrayList<>();
 		int points = 0;
@@ -42,7 +42,7 @@ public class ValidationServiceImpl implements ValidationService{
 				
 		}
 		
-		this.result =  new ValidationResult(points, correctAnswers);
+		this.result =  new ValidationResult(points, correctAnswers, name);
 		
 			
 			
