@@ -7,40 +7,52 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class QuestionsService {
 
- 
+ images;
+
   constructor(private backendService: BackendService) {
 
 
    }
 
    getAnswers(questionId) {
-    return this.backendService.get(Consts.BackendMapping.Answers.GET_ANSWERS, questionId).map(response => {
-      if (response.ok) {
-        return response.items;
+    return this.backendService.get(Consts.BackendMapping.Answers.GET_ANSWERS, questionId)
+      .map(response => {
+        if (response.ok) {
+          return response.items;
       } else {
-        return 0;
+          return 0;
       }
-
     });
   }
 
-  getResult(answers) {
-    return this.backendService.post(Consts.BackendMapping.Answers.CHECK_ANSWERS, answers).map(response => {
-      if (response.ok) {
-        return response.item;
+  validateAnswers(answers) {
+    return this.backendService.post(Consts.BackendMapping.Answers.CHECK_ANSWERS, answers)
+      .map(response => {
+        if (response.ok) {
+          return response.item;
       } else {
-        return 0;
+          return 0;
       }
-
     });
+  }
+
+  getResult() {
+    return this.backendService.get(Consts.BackendMapping.Answers.GET_RESULT)
+      .map(response => {
+        if (response.ok) {
+          return response.item;
+        } else {
+          return 0;
+        }
+      });
   }
 
   getImages () {
-    let images = [];
+    this.images = [];
     for ( let x = 1; x <= 40; x++) {
-      images.push('img/q' + x + '.jpg');
+      this.images.push('img/q' + x + '.jpg');
     }
-    return images;
+    return this.images;
 
   }
 

@@ -6,7 +6,7 @@ import { ResultholderService } from './../result/resultholder.service';
 import { BackendService } from './../general/backend/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'questions',
@@ -18,8 +18,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class QuestionsComponent implements OnInit {
 
- 
-  constructor(private route: ActivatedRoute, 
+
+  constructor(private route: ActivatedRoute,
               private router: Router,
               private timerService: TimerService,
               private questionsService: QuestionsService,
@@ -36,18 +36,19 @@ export class QuestionsComponent implements OnInit {
   }
 
   finish() {
-    if(this.answers = JSON.parse(localStorage.getItem('answers')))
-        this.questionsService.getResult(this.answers)
+    if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
+        this.questionsService.validateAnswers(this.answers)
           .subscribe(result => {
             this.result = result;
             this.holder.holdResult(this.result);
             this.router.navigate([resultPath]);
             this.timerService.stopTimer();
-            sessionStorage.setItem('wasStarted', 'no');        
-          });
-    else alert('Nie zaznaczono żadnej odpowiedzi!');
-    
-    
+            sessionStorage.setItem('wasStarted', 'no');
+          }); } else {
+      alert('Nie zaznaczono żadnej odpowiedzi!');
+    }
+
+
   }
 
 

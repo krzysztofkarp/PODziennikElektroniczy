@@ -23,6 +23,7 @@ export class Consts {
         static Answers = class {
             const static GET_ANSWERS = "/answers";
             const static CHECK_ANSWERS = "/validateAnswers";
+            const static GET_RESULT = "/getResult";
         }
 
         static Checkers = class {

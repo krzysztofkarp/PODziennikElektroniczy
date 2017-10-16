@@ -1,4 +1,4 @@
-package com.sollan.timer.service;
+package com.sollan.testsollan.timer.service;
 
 public interface TimerService {
 

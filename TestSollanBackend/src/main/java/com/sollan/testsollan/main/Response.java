@@ -1,4 +1,4 @@
-package com.sollan.main;
+package com.sollan.testsollan.main;
 
 import java.util.Collection;
 

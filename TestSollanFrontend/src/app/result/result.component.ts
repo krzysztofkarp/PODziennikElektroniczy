@@ -1,3 +1,4 @@
+import { QuestionsService } from './../questions/questions.service';
 import { questionPath, homePath } from './../general/utils/constants';
 import { TimerService } from './../timer/timer.service';
 import { ResultholderService } from './resultholder.service';
@@ -15,35 +16,40 @@ export class ResultComponent implements OnInit {
   constructor(private route: ActivatedRoute,
 
               private router: Router,
-              private timerService: TimerService) { }
+              private timerService: TimerService,
+              private questionService: QuestionsService) { }
 
   points: any;
   percent: any;
-  answers: any[];
+  answers;
   questionId;
 
   ngOnInit() {
 
     this.questionId = localStorage.getItem('currentQuestionId');
-    if (sessionStorage.getItem('wasStarted') == 'yes') {
+    if (sessionStorage.getItem('wasStarted') === 'yes') {
       this.router.navigate([questionPath, this.questionId]);
-    } else if (!sessionStorage.getItem('wasStarted')){
+    } else if (!sessionStorage.getItem('wasStarted')) {
       this.router.navigate([homePath]);
-    }  
- 
-    this.points = localStorage.getItem('points');
-    this.answers = JSON.parse(localStorage.getItem('final'));
-    this.percent = this.points/40;
-  }
+    }
 
- 
-      
-        
-        
-    
+    this.questionService.getResult()
+    .subscribe(result => {
+      this.points = result.points;
+      this.answers = result.results;
+    });
   }
 
 
-}
+
+
+
+
+
+
+  }
+
+
+
 
 

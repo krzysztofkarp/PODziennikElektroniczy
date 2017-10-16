@@ -51,11 +51,11 @@ export class TimerService {
   getTimer() {
     return this.backendService.get(Consts.BackendMapping.Timer.GET_TIME).map(response => {
       if (response.ok) {
-        if(response.item !== "0:00"){
+        if (response.item !== "0:00") {
         return response.item;
-        }else{
-          if(this.answers = JSON.parse(localStorage.getItem('answers')))
-          this.service.getResult(this.answers)
+        } else {
+          if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
+          this.service.validateAnswers(this.answers)
             .subscribe(result => {
               this.result = result;
               this.holder.holdResult(this.result);
@@ -63,8 +63,8 @@ export class TimerService {
               this.stopTimer();
               sessionStorage.setItem('wasStarted', 'no');
             });
+          }
         }
-      } else {
       }
     });
   }

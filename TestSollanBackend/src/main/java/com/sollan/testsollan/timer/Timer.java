@@ -1,4 +1,4 @@
-package com.sollan.timer;
+package com.sollan.testsollan.timer;
 
 import java.util.Date;
 

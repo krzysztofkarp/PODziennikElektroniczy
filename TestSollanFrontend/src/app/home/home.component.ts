@@ -14,33 +14,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+
   checker: boolean;
+  name;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private homeService: HomeService,
     private timerService: TimerService
   ) {}
 
   ngOnInit() {
     localStorage.clear();
+    console.log(name);
   }
 
 
-  ngDoCheck(){
+  ngDoCheck() {
     if (sessionStorage.getItem('wasStarted')) {
       this.homeService.getWasStarted()
         .subscribe(started => {
-          this.checker = started
+          this.checker = started;
           console.log(started);
         });
-      
+
         if (!this.checker) {
         this.router.navigate([questionPath, 1]);
       } else {
         this.router.navigate([homePath]);
-        sessionStorage.clear();                
+        sessionStorage.clear();
       }
     }
   }

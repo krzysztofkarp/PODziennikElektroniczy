@@ -9,7 +9,7 @@ export class ResultholderService {
   
   constructor() { }
 
-  holdResult(result){
+  holdResult(result) {
     this._answers = result.results;
     this._points = result.points;
     localStorage.setItem('final', JSON.stringify(this._answers));

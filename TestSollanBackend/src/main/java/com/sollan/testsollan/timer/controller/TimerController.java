@@ -1,12 +1,12 @@
-package com.sollan.timer.controller;
+package com.sollan.testsollan.timer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sollan.main.Response;
-import com.sollan.timer.service.TimerService;
+import com.sollan.testsollan.main.Response;
+import com.sollan.testsollan.timer.service.TimerService;
 
 @RestController
 public class TimerController {
