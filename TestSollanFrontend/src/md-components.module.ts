@@ -1,4 +1,4 @@
-import { MatRadioModule, MatIconModule, MatToolbarModule, MatGridListModule, MatCheckboxModule, MatButtonModule, MatListModule } from '@angular/material';
+import { MatRadioModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatCheckboxModule, MatButtonModule, MatListModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -9,7 +9,8 @@ import { NgModule } from '@angular/core';
   MatToolbarModule,
   MatIconModule,
   MatRadioModule,
-  MatListModule
+  MatListModule,
+  MatCardModule
  ]
 })
 export class MdComponentsModule { }

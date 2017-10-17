@@ -33,6 +33,7 @@ public class TimerController {
 		response.setItem(timerService.getCurrentTime());
 		return response;
 	}
+	
 	@RequestMapping(value ="/api/getTimerStarted", method = RequestMethod.GET)
 	public Response<Boolean> getTimerStarted() {
 		Response<Boolean> response = new Response<>();

@@ -9,21 +9,25 @@
     flex: 1 1 auto;
 }
 
-.goodanswer{
-  color: green;
+mat-list{
+  float: left;
+  width: 30%;
 }
 
-.wronganswer{
-  color: red;
-}
-
-mat-grid-tile{
-  background-color: lightblue;
+.result{
+  width: 70%;
+  float: left;
 }
 
 mat-list-item{
   padding-top: 1px;
+  height: 30px;
 }
+
+
+
+
+
 
 
 

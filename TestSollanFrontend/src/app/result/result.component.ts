@@ -17,7 +17,7 @@ export class ResultComponent implements OnInit {
               private timerService: TimerService,
               private questionService: QuestionsService) { }
 
-  points: any;
+  points;
   name;
   answers;
   questionId;
