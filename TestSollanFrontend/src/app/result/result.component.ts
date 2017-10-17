@@ -13,9 +13,15 @@ import 'rxjs/add/operator/map';
 export class ResultComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
+<<<<<<< HEAD:testsollan-frontend/src/app/result/result.component.ts
+
+    private router: Router,
+    private timerService: TimerService) { }
+=======
               private router: Router,
               private timerService: TimerService,
               private questionService: QuestionsService) { }
+>>>>>>> d85cc00af7c3602268435ab7458584d0884419be:TestSollanFrontend/src/app/result/result.component.ts
 
   points;
   name;
@@ -31,6 +37,13 @@ export class ResultComponent implements OnInit {
       this.router.navigate([homePath]);
     }
 
+<<<<<<< HEAD:testsollan-frontend/src/app/result/result.component.ts
+    this.points = localStorage.getItem('points');
+    this.answers = JSON.parse(localStorage.getItem('final'));
+    this.percent = this.points / 40;
+  }
+}
+=======
     this.questionService.getResult()
     .subscribe(result => {
       this.points = result.points;
@@ -42,5 +55,6 @@ export class ResultComponent implements OnInit {
 
 
 
+>>>>>>> d85cc00af7c3602268435ab7458584d0884419be:TestSollanFrontend/src/app/result/result.component.ts
 
 
