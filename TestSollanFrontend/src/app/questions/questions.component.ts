@@ -4,12 +4,7 @@ import { TimerService } from './../timer/timer.service';
 import { resultPath, questionPath } from './../general/utils/constants';
 import { BackendService } from './../general/backend/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
-<<<<<<< HEAD:testsollan-frontend/src/app/questions/questions.component.ts
-import { MatSidenavModule } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
-=======
 import { Component, OnInit, DoCheck, ViewEncapsulation } from '@angular/core';
->>>>>>> d85cc00af7c3602268435ab7458584d0884419be:TestSollanFrontend/src/app/questions/questions.component.ts
 
 @Component({
   selector: 'questions',
