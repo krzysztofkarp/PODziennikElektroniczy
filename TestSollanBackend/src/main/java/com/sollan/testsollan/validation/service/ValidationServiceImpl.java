@@ -18,9 +18,11 @@ public class ValidationServiceImpl implements ValidationService{
 
 	@Autowired
 	private QuestionService service;
+	
+	private ValidationResult result;
 
 	@Override
-	public ValidationResult validate(List<UserAnswer> answers) {
+	public void validate(List<UserAnswer> answers, String name) {
 		
 		Collection<AnswerResult> correctAnswers = new ArrayList<>();
 		int points = 0;
@@ -40,7 +42,7 @@ public class ValidationServiceImpl implements ValidationService{
 				
 		}
 		
-		return new ValidationResult(points, correctAnswers);
+		this.result =  new ValidationResult(points, correctAnswers, name);
 		
 			
 			
@@ -57,6 +59,16 @@ public class ValidationServiceImpl implements ValidationService{
 	private boolean verify(UserAnswer a, Question q) {
 		return a.getValue()==q.getAnswerId();
 	}
+
+	public ValidationResult getResult() {
+		return result;
+	}
+
+	public void setResult(ValidationResult result) {
+		this.result = result;
+	}
+	
+	
 	
 		
 	

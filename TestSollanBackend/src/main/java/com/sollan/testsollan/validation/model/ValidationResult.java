@@ -7,14 +7,17 @@ public class ValidationResult {
 	private int points;
 	
 	private Collection<AnswerResult> results;
+	
+	private String name;
 
 	
 	
 	
-	public ValidationResult(int points, Collection<AnswerResult> results) {
+	public ValidationResult(int points, Collection<AnswerResult> results, String name) {
 		super();
 		this.points = points;
 		this.results = results;
+		this.name = name;
 	}
 
 	public int getPoints() {
@@ -32,10 +35,20 @@ public class ValidationResult {
 	public void setResults(Collection<AnswerResult> results) {
 		this.results = results;
 	}
-
 	
+	public String getName() {
+		return name;
+	}
 
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+
+
+
 	public static class AnswerResult {
 
 		private int questionId;
