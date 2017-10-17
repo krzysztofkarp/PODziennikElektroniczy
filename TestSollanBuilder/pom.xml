@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sollan.testsollan</groupId>
   <artifactId>TestSollanBuilder</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>pom</packaging>
   <modules>
-  	<module>../testsollan-frontend</module>
+  	<module>../TestSollanFrontend</module>
   	<module>../TestSollanBackend</module>
   </modules>
 </project>
