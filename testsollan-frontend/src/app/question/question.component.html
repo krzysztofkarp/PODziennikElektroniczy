@@ -1,9 +1,11 @@
 <mat-grid-list cols="8" rowHeight="100px">
   <mat-grid-tile colspan="1" rowspan="8">
     <button (click)="firstQuestion()" color="accent" mat-fab>
-        <mat-icon>first_page</mat-icon></button>
+      <mat-icon>first_page</mat-icon>
+    </button>
     <button color="accent" (click)="previousQuestion()" mat-fab>
-        <mat-icon>chevron_left</mat-icon></button>
+      <mat-icon>chevron_left</mat-icon>
+    </button>
   </mat-grid-tile>
   <mat-grid-tile colspan="6" rowspan="8" *ngIf="answersLoaded">
     <div class="scrollable">
@@ -12,14 +14,18 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="1" rowspan="8">
     <button color="accent" (click)="nextQuestion()" mat-fab>
-        <mat-icon>chevron_right</mat-icon></button>
+      <mat-icon>chevron_right</mat-icon>
+    </button>
     <button (click)="lastQuestion()" color="accent" mat-fab>
-          <mat-icon>last_page</mat-icon></button>
-  <mat-grid-tile colspan="8" rowspan="2" class="answers-border">
-    <mat-radio-group [(ngModel)]="currentAnswerId" *ngIf="answersLoaded" name="group" class="example-radio-group">
-      <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer.id" #radio (change)="addAnswer(radio)">
-        {{answer.content}}
-      </mat-radio-button>
-    </mat-radio-group>
+      <mat-icon>last_page</mat-icon>
+    </button>
   </mat-grid-tile>
+  
+    <mat-grid-tile colspan="8" rowspan="2" class="answers-border">
+      <mat-radio-group [(ngModel)]="currentAnswerId" *ngIf="answersLoaded" name="group" class="example-radio-group">
+        <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer.id" #radio (change)="addAnswer(radio)">
+          {{answer.content}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
 </mat-grid-list>
