@@ -15,12 +15,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable()
 export class TimerComponent implements OnInit {
+
   time: string;
   constructor(private timerService: TimerService,
     private router: Router) { }
 
   startTimer() {
-    if (sessionStorage.getItem('wasStarted') === 'yes') {
+    if (sessionStorage.getItem(Consts.Other.WAS_STARTED) === Consts.Other.YES) {
       this.timerService.startTimer();
       Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
     } else {

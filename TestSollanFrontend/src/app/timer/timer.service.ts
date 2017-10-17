@@ -48,17 +48,18 @@ export class TimerService {
   getTimer() {
     return this.backendService.get(Consts.BackendMapping.Timer.GET_TIME).map(response => {
       if (response.ok) {
-        if (response.item !== "0:00") {
+        if (response.item !== Consts.Other.TIME_OVER) {
         return response.item;
         } else {
-          if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
-            const name = localStorage.getItem('name');
-          this.service.validateAnswers(this.answers, name)
+          if (this.answers = JSON.parse(localStorage.getItem(Consts.Other.ANSWERS))) {
+            const name = localStorage.getItem(Consts.Other.NAME);
+          
+            this.service.validateAnswers(this.answers, name)
             .subscribe(result => {
               this.result = result;
               this.router.navigate([Consts.BackendMapping.RouterPaths.RESULT]);
               this.stopTimer();
-              sessionStorage.setItem('wasStarted', 'no');
+              sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.NO);
             });
           }
         }

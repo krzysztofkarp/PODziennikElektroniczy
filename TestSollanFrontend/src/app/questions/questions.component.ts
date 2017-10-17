@@ -28,20 +28,23 @@ export class QuestionsComponent implements OnInit, DoCheck {
   ngOnInit() {}
 
   ngDoCheck() {
-    this.questionId = localStorage.getItem('currentQuestionId');
+    this.questionId = localStorage.getItem(Consts.Other.CURRENT_QUESTION_ID);
   }
 
   finish() {
-    if (this.answers = JSON.parse(localStorage.getItem('answers'))) {
-        const name = localStorage.getItem('name');
+    if (this.answers = JSON.parse(localStorage.getItem(Consts.Other.ANSWERS))) {
+        const name = localStorage.getItem(Consts.Other.NAME);
+        
         this.questionsService.validateAnswers(this.answers, name)
           .subscribe(result => {
             this.result = result;
+            localStorage.clear();
             this.router.navigate([Consts.BackendMapping.RouterPaths.RESULT]);
             this.timerService.stopTimer();
-            sessionStorage.setItem('wasStarted', 'no');
+            sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.NO);
           }); } else {
-      alert('Nie zaznaczono żadnej odpowiedzi!');
+     
+            alert(Consts.Other.NO_ANSWERS);
     }
 
 

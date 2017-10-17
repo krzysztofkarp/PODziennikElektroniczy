@@ -24,11 +24,14 @@ export class ResultComponent implements OnInit {
 
   ngOnInit() {
 
-    this.questionId = localStorage.getItem('currentQuestionId');
-    if (sessionStorage.getItem('wasStarted') === 'yes') {
-      this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, this.questionId]);
-    } else if (!sessionStorage.getItem('wasStarted')) {
-      this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
+    this.questionId = localStorage.getItem(Consts.Other.CURRENT_QUESTION_ID);
+    
+    if (sessionStorage.getItem(Consts.Other.WAS_STARTED) === Consts.Other.YES) {
+        this.router.navigate(
+          [Consts.BackendMapping.RouterPaths.QUESTION, this.questionId]);
+    } else if (!sessionStorage.getItem(Consts.Other.WAS_STARTED)) {
+        this.router.navigate(
+          [Consts.BackendMapping.RouterPaths.HOME]);
     }
 
     this.questionService.getResult()

@@ -38,5 +38,20 @@ export class Consts {
 
     }
 
+    static Other = class {
+        const static YES = 'yes';
+        const static NO = 'no';
+        const static QUESTION_ID = 'questionId';
+        const static CURRENT_QUESTION_ID = 'currentQuestionId';
+        const static WAS_STARTED = 'wasStarted';
+        const static ANSWERS = 'answers';
+        const static IMG = 'img/q';
+        const static JPG = '.jpg';
+        const static TIME_OVER = '0:00';
+        const static NO_ANSWERS = 'No answers checked!';
+        const static NAME = 'name';
+        const static ONE = '1';
+    }
+
     // Consts.BackendMapping.INDEX+
 }
