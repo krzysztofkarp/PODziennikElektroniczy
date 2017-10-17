@@ -1,15 +1,11 @@
+import { Consts } from './../general/utils/Consts';
 import { QuestionsService } from './questions.service';
 import { TimerComponent } from './../timer/timer.component';
 import { TimerService } from './../timer/timer.service';
-import { resultPath, questionPath } from './../general/utils/constants';
 import { BackendService } from './../general/backend/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
-<<<<<<< HEAD:testsollan-frontend/src/app/questions/questions.component.ts
 import { MatSidenavModule } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
-=======
-import { Component, OnInit, DoCheck, ViewEncapsulation } from '@angular/core';
->>>>>>> d85cc00af7c3602268435ab7458584d0884419be:TestSollanFrontend/src/app/questions/questions.component.ts
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'questions',
@@ -41,7 +37,7 @@ export class QuestionsComponent implements OnInit, DoCheck {
         this.questionsService.validateAnswers(this.answers, name)
           .subscribe(result => {
             this.result = result;
-            this.router.navigate([resultPath]);
+            this.router.navigate([Consts.BackendMapping.RouterPaths.RESULT]);
             this.timerService.stopTimer();
             sessionStorage.setItem('wasStarted', 'no');
           }); } else {
