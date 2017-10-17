@@ -30,6 +30,12 @@ export class Consts {
             const static GET_WAS_STARTED = "/getTimerStarted";            
         }
 
+        static RouterPaths = class {
+            const static RESULT = '/result';
+            const static QUESTION = '/question';
+            const static HOME = '';
+        }
+
     }
 
     // Consts.BackendMapping.INDEX+

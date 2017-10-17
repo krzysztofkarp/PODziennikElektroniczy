@@ -2,7 +2,6 @@ import { TimerService } from './../timer/timer.service';
 import { Observable } from 'rxjs/Rx';
 import { Consts } from '../general/utils/Consts';
 import { BackendService } from '../general/backend/backend.service';
-import { homePath, questionPath } from './../general/utils/constants';
 import { TimerComponent } from './../timer/timer.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -37,9 +36,9 @@ export class HomeComponent implements OnInit {
         });
 
         if (!this.checker) {
-        this.router.navigate([questionPath, 1]);
+        this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
       } else {
-        this.router.navigate([homePath]);
+        this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
         sessionStorage.clear();
       }
     }
@@ -50,7 +49,7 @@ export class HomeComponent implements OnInit {
       this.emptyName = true;
     } else {
       this.timerService.startTimer();
-      this.router.navigate([questionPath, 1]);
+      this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
       localStorage.setItem('currentQuestionId', '1');
       localStorage.setItem('name', name);
       sessionStorage.setItem('wasStarted', 'yes');

@@ -1,5 +1,5 @@
+import { Consts } from './../general/utils/Consts';
 import { QuestionsService } from './../questions/questions.service';
-import { questionPath, homePath } from './../general/utils/constants';
 import { TimerService } from './../timer/timer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +17,7 @@ export class ResultComponent implements OnInit {
               private timerService: TimerService,
               private questionService: QuestionsService) { }
 
-  points: any;
+  points;
   name;
   answers;
   questionId;
@@ -26,9 +26,9 @@ export class ResultComponent implements OnInit {
 
     this.questionId = localStorage.getItem('currentQuestionId');
     if (sessionStorage.getItem('wasStarted') === 'yes') {
-      this.router.navigate([questionPath, this.questionId]);
+      this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, this.questionId]);
     } else if (!sessionStorage.getItem('wasStarted')) {
-      this.router.navigate([homePath]);
+      this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
     }
 
     this.questionService.getResult()

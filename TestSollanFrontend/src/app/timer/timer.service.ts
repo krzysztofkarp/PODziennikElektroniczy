@@ -1,8 +1,7 @@
+import { Consts } from './../general/utils/Consts';
 import { QuestionsService } from './../questions/questions.service';
-import { resultPath } from './../general/utils/constants';
 import { QuestionsComponent } from '../questions/questions.component';
 import { QuestionComponent } from '../question/question.component';
-import { Consts } from '../general/utils/Consts';
 import { BackendService } from '../general/backend/backend.service';
 import { TimerComponent } from './../timer/timer.component';
 import { Injectable } from '@angular/core';
@@ -57,7 +56,7 @@ export class TimerService {
           this.service.validateAnswers(this.answers, name)
             .subscribe(result => {
               this.result = result;
-              this.router.navigate([resultPath]);
+              this.router.navigate([Consts.BackendMapping.RouterPaths.RESULT]);
               this.stopTimer();
               sessionStorage.setItem('wasStarted', 'no');
             });

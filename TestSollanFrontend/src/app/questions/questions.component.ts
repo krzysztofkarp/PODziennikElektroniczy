@@ -1,10 +1,11 @@
+import { Consts } from './../general/utils/Consts';
 import { QuestionsService } from './questions.service';
 import { TimerComponent } from './../timer/timer.component';
 import { TimerService } from './../timer/timer.service';
-import { resultPath, questionPath } from './../general/utils/constants';
 import { BackendService } from './../general/backend/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, DoCheck, ViewEncapsulation } from '@angular/core';
+import { MatSidenavModule } from '@angular/material';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'questions',
@@ -36,7 +37,7 @@ export class QuestionsComponent implements OnInit, DoCheck {
         this.questionsService.validateAnswers(this.answers, name)
           .subscribe(result => {
             this.result = result;
-            this.router.navigate([resultPath]);
+            this.router.navigate([Consts.BackendMapping.RouterPaths.RESULT]);
             this.timerService.stopTimer();
             sessionStorage.setItem('wasStarted', 'no');
           }); } else {

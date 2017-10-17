@@ -1,5 +1,5 @@
+import { Consts } from './../general/utils/Consts';
 import { log } from 'util';
-import { homePath } from '../general/utils/constants';
 import { timeout } from 'rxjs/operator/timeout';
 import { TimerService } from './timer.service';
 import { Http } from '@angular/http';
@@ -24,7 +24,7 @@ export class TimerComponent implements OnInit {
       this.timerService.startTimer();
       Observable.interval(1000).takeWhile(() => true).subscribe(() => this.getTimer());
     } else {
-      this.router.navigate([homePath]);
+      this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
       sessionStorage.clear();
     }
 

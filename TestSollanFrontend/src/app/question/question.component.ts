@@ -1,6 +1,6 @@
+import { Consts } from './../general/utils/Consts';
 import { QuestionsService } from './../questions/questions.service';
 import { TimerService } from './../timer/timer.service';
-import { homePath, questionPath, resultPath } from './../general/utils/constants';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -55,7 +55,7 @@ export class QuestionComponent implements OnInit {
     }
 
     if (!sessionStorage.getItem('wasStarted')) {
-      this.router.navigate([homePath]);
+      this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
     }
 
 
@@ -67,7 +67,7 @@ export class QuestionComponent implements OnInit {
       this.currentAnswerId = this.findAnswerById();
      }
      this.loadAnswers();
-     this.router.navigate([questionPath, this.questionId]);
+     this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, this.questionId]);
      this.storeCurrentQuestionId();
    }
 
@@ -77,19 +77,19 @@ export class QuestionComponent implements OnInit {
       this.currentAnswerId = this.findAnswerById();
     }
     this.loadAnswers();
-    this.router.navigate([questionPath, this.questionId]);
+    this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, this.questionId]);
     this.storeCurrentQuestionId();
   }
 
   firstQuestion() {
-    this.router.navigate([questionPath, 1]);
+    this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
     this.questionId = 1;
     this.storeCurrentQuestionId();
     this.loadAnswers();
   }
 
   lastQuestion() {
-    this.router.navigate([questionPath, 40]);
+    this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 40]);
     this.questionId = 40;
     this.storeCurrentQuestionId();
     this.loadAnswers();

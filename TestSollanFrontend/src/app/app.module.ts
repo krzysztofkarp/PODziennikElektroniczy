@@ -28,7 +28,7 @@ import { ResultComponent } from './result/result.component';
     QuestionsComponent,
     ResultComponent,
     TimerComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     FormsModule,
