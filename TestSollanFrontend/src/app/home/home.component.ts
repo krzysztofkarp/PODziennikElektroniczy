@@ -22,13 +22,11 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    localStorage.clear();
-    console.log(name);
   }
 
 
   ngDoCheck() {
-    if (sessionStorage.getItem('wasStarted')) {
+    if (sessionStorage.getItem(Consts.Other.WAS_STARTED)) {
       this.timerService.getWasStarted()
         .subscribe(started => {
           this.checker = started;
@@ -50,9 +48,9 @@ export class HomeComponent implements OnInit {
     } else {
       this.timerService.startTimer();
       this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
-      localStorage.setItem('currentQuestionId', '1');
-      localStorage.setItem('name', name);
-      sessionStorage.setItem('wasStarted', 'yes');
+      localStorage.setItem(Consts.Other.CURRENT_QUESTION_ID, Consts.Other.ONE);
+      localStorage.setItem(Consts.Other.NAME, name);
+      sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.YES);
     }
 
   }

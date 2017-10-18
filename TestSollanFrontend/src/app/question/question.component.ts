@@ -37,7 +37,7 @@ export class QuestionComponent implements OnInit {
       this.questionId = + params['id'];
     });
 
-    this.currentAnswers = JSON.parse(localStorage.getItem('answers'));
+    this.currentAnswers = JSON.parse(localStorage.getItem(Consts.Other.ANSWERS));
 
     if (!this.currentAnswers) {
 
@@ -54,7 +54,7 @@ export class QuestionComponent implements OnInit {
       this.loadAnswers();
     }
 
-    if (!sessionStorage.getItem('wasStarted')) {
+    if (!sessionStorage.getItem(Consts.Other.WAS_STARTED)) {
       this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
     }
 
@@ -111,7 +111,7 @@ export class QuestionComponent implements OnInit {
         this.currentAnswers.push(newAnswer);
       }
 
-    localStorage.setItem('answers', JSON.stringify(this.currentAnswers));
+    localStorage.setItem(Consts.Other.ANSWERS, JSON.stringify(this.currentAnswers));
   }
 
   findAnswerById() {
@@ -123,7 +123,7 @@ export class QuestionComponent implements OnInit {
   }
 
   storeCurrentQuestionId() {
-    localStorage.setItem('currentQuestionId', this.questionId);
+    localStorage.setItem(Consts.Other.CURRENT_QUESTION_ID, this.questionId);
   }
 
   loadAnswers() {

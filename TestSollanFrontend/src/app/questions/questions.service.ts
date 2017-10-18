@@ -9,10 +9,7 @@ export class QuestionsService {
 
  images;
 
-  constructor(private backendService: BackendService) {
-
-
-   }
+  constructor(private backendService: BackendService) {}
 
    getAnswers(questionId) {
     return this.backendService.get(Consts.BackendMapping.Answers.GET_ANSWERS, questionId)
@@ -52,7 +49,7 @@ export class QuestionsService {
   getImages () {
     this.images = [];
     for ( let x = 1; x <= 40; x++) {
-      this.images.push('img/q' + x + '.jpg');
+      this.images.push(Consts.Other.IMG + x + Consts.Other.JPG);
     }
     return this.images;
 
