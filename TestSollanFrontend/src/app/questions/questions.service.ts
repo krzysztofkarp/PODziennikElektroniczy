@@ -9,10 +9,7 @@ export class QuestionsService {
 
  images;
 
-  constructor(private backendService: BackendService) {
-
-
-   }
+  constructor(private backendService: BackendService) {}
 
    getAnswers(questionId) {
     return this.backendService.get(Consts.BackendMapping.Answers.GET_ANSWERS, questionId)
