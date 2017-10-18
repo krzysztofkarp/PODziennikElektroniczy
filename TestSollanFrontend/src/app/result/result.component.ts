@@ -29,17 +29,19 @@ export class ResultComponent implements OnInit {
     if (sessionStorage.getItem(Consts.Other.WAS_STARTED) === Consts.Other.YES) {
         this.router.navigate(
           [Consts.BackendMapping.RouterPaths.QUESTION, this.questionId]);
-    } else if (!sessionStorage.getItem(Consts.Other.WAS_STARTED)) {
+    } else if (sessionStorage.getItem(Consts.Other.WAS_STARTED) === Consts.Other.NO) {
         this.router.navigate(
           [Consts.BackendMapping.RouterPaths.HOME]);
+    } else {
+        this.questionService.getResult()
+        .subscribe(result => {
+          this.points = result.points;
+          this.answers = result.results;
+          this.name = result.name;
+        });
     }
 
-    this.questionService.getResult()
-    .subscribe(result => {
-      this.points = result.points;
-      this.answers = result.results;
-      this.name = result.name;
-    });
+    
   }
 }
 

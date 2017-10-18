@@ -41,7 +41,7 @@ export class QuestionsComponent implements OnInit, DoCheck {
             localStorage.clear();
             this.router.navigate([Consts.BackendMapping.RouterPaths.RESULT]);
             this.timerService.stopTimer();
-            sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.NO);
+            sessionStorage.setItem(Consts.Other.WAS_STARTED, 'finished');
           }); } else {
      
             alert(Consts.Other.NO_ANSWERS);
