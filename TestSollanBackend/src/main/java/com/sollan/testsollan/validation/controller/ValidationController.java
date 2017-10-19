@@ -16,21 +16,23 @@ import com.sollan.testsollan.validation.service.ValidationServiceImpl;
 
 @RestController
 public class ValidationController {
-	
+
 	@Autowired
 	ValidationServiceImpl validator;
 
-	@RequestMapping(value ="/api/validateAnswers", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/validateAnswers", method = RequestMethod.POST)
 	public Response<String> validate(@RequestBody List<UserAnswer> answers, @RequestParam("name") String name) {
 		validator.validate(answers, name);
 		Response<String> response = new Response<>();
 		response.setItem("Answers validated");
 		return response;
 	}
-	
-	@RequestMapping(value="/api/getResult", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/api/getResult", method = RequestMethod.GET)
 	public Response<ValidationResult> getResult() {
 		Response<ValidationResult> response = new Response<>(validator.getResult());
 		return response;
 	}
+
 }
+

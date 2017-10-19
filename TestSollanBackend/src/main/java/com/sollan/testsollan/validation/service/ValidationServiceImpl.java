@@ -1,7 +1,14 @@
 package com.sollan.testsollan.validation.service;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +28,28 @@ public class ValidationServiceImpl implements ValidationService{
 	
 	private ValidationResult result;
 
+	@Override
+	public void writeResultFile() throws IOException {
+		Date date = new Date() ;
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+		File file = new File("C://TEST//" + dateFormat.format(date) + ".txt") ;
+		BufferedWriter out = new BufferedWriter(new FileWriter(file));
+		out.write("Score was: " + result.getPoints());
+		out.close();
+		try {
+			Process p;
+			p = Runtime.getRuntime().exec("attrib +h " + file.getPath());
+			p.waitFor();
+			
+		} catch (IOException e) {
+			System.err.println("Things went wrong: " + e.getMessage());
+			e.printStackTrace();
+		} catch (InterruptedException ie) {
+			System.err.println("Things went wrong: " + ie.getMessage());
+			ie.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void validate(List<UserAnswer> answers, String name) {
 		
@@ -44,7 +73,11 @@ public class ValidationServiceImpl implements ValidationService{
 		
 		this.result =  new ValidationResult(points, correctAnswers, name);
 		
-			
+		try {
+			this.writeResultFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
 			
 	}
 	
