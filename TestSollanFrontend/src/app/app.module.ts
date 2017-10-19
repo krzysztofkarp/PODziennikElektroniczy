@@ -5,6 +5,7 @@ import { BackendService } from './general/backend/backend.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
 import { HttpModule } from '@angular/http';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
@@ -31,6 +32,7 @@ import { ResultComponent } from './result/result.component';
   ],
   imports: [
     BrowserModule,
+    Angular2FontawesomeModule,
     FormsModule,
     BrowserAnimationsModule,
     MdComponentsModule,
