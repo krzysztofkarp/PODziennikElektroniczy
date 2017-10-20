@@ -2,11 +2,10 @@ package com.sollan.testsollan.validation.service;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -49,7 +48,7 @@ public class ValidationServiceImpl implements ValidationService {
 		}
 
 		this.result = new ValidationResult(points, correctAnswers, name);
-		
+
 		try {
 			createResultFile(this.result);
 		} catch (IOException e) {
@@ -58,30 +57,26 @@ public class ValidationServiceImpl implements ValidationService {
 	}
 
 	@Override
-	public void createResultFile(ValidationResult result) throws IOException {
-
-		Date date = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-		File file = new File("D:/result.html");
-		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		bw.write("<html>");
-		bw.write("<body>");
-		bw.write("<h1>Name: " + result.getName() + "</h1>");
-		bw.write("<h2>Points: " + result.getPoints() + "</h2>");
-		bw.write("<table border=1>");
-		for(AnswerResult a : result.getResults()) {
-			bw.write("<tr><td>" + a.getQuestionId() + "</td><td>" + a.isCorrect()+ "</td></tr>");
-		}
-		bw.write("</body>");
-		bw.write("</html>");
-		bw.close();
-		System.out.println("File Created");
-
+	public boolean validatePassword(String password) {
+		return password.equals(Consts.PASSWORD);
 	}
 
 	@Override
-	public boolean validatePassword(String password) {
-		return password.equals(Consts.PASSWORD);
+	public void createResultFile(ValidationResult result) throws IOException {
+
+		File file = new File(Consts.RESULT_FILE_PATH);
+		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+		bw.write("<html>" + Consts.CSS_STYLE);
+		bw.write("<body><h1>Name: " + result.getName() + "</h1>");
+		bw.write("<h2>Points: " + result.getPoints() + "</h2>");
+		bw.write("<h3>Date finished: " + this.getDate() + "</h3>");
+		bw.write("<table border=1>");
+		for (AnswerResult a : result.getResults()) {
+			bw.write("<tr><td class='" + a.isCorrect() + "'>" + a.getQuestionId() + " " + a.isCorrect() + "</td></tr>");
+		}
+		bw.write("</body></html>");
+		bw.close();
+
 	}
 
 	private UserAnswer findAnswerByQuestionId(int questionId, List<UserAnswer> answers) {
@@ -91,6 +86,10 @@ public class ValidationServiceImpl implements ValidationService {
 
 	private boolean verify(UserAnswer a, Question q) {
 		return a.getValue() == q.getAnswerId();
+	}
+
+	private Date getDate() {
+		return Calendar.getInstance().getTime();
 	}
 
 	public ValidationResult getResult() {
