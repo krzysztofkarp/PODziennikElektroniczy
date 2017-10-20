@@ -34,7 +34,6 @@ public class ValidationController {
 		return response;
 	}
 	
-
 	@RequestMapping(value="/api/validatePassword", method = RequestMethod.GET)
 	public Response<Boolean> validatePassword(@RequestParam("password") String password) {
 		Response<Boolean> response = new Response<>(validator.validatePassword(password));

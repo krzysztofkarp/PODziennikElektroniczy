@@ -49,23 +49,29 @@ public class ValidationServiceImpl implements ValidationService {
 		}
 
 		this.result = new ValidationResult(points, correctAnswers, name);
+		
 		try {
-			createResultFile();
+			createResultFile(this.result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void createResultFile() throws IOException {
+	public void createResultFile(ValidationResult result) throws IOException {
 
 		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-		File file = new File("C://TEST//TestScore" + dateFormat.format(date) + ".htm");
+		File file = new File("D:/result.html");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 		bw.write("<html>");
 		bw.write("<body>");
-		bw.write("<h1>Result was: " + result.getPoints() + "</h1>");
+		bw.write("<h1>Name: " + result.getName() + "</h1>");
+		bw.write("<h2>Points: " + result.getPoints() + "</h2>");
+		bw.write("<table border=1>");
+		for(AnswerResult a : result.getResults()) {
+			bw.write("<tr><td>" + a.getQuestionId() + "</td><td>" + a.isCorrect()+ "</td></tr>");
+		}
 		bw.write("</body>");
 		bw.write("</html>");
 		bw.close();
