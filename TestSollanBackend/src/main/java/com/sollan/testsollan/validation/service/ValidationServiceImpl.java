@@ -65,7 +65,7 @@ public class ValidationServiceImpl implements ValidationService {
 	@Override
 	public void createResultFile(ValidationResult result) throws IOException {
 
-		File file = new File(Consts.RESULT_FILE_PATH);
+		File file = new File(this.createResultPath());
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 		bw.write("<html>" + Consts.CSS_STYLE);
 		bw.write("<body><h1>Name: " + result.getName() + "</h1>");
@@ -91,6 +91,10 @@ public class ValidationServiceImpl implements ValidationService {
 
 	private Date getDate() {
 		return Calendar.getInstance().getTime();
+	}
+	
+	private String createResultPath() {
+		return Consts.RESULT_FILE_PATH + result.getName().replaceAll("\\s+","") + ".html";
 	}
 
 	public ValidationResult getResult() {
