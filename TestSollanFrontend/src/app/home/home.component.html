@@ -16,6 +16,7 @@
                 <input formControlName="password" type="password" class="form-control">
                 <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
                     <div *ngIf="password.errors.required">Password is required</div>
+                    
                 </div>
             </div>
             <div><button type="button" (click)="start(form.value)" color="accent" mat-raised-button matDialogClose="yes">Start</button></div>
