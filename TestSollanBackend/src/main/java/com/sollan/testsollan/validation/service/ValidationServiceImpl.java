@@ -10,54 +10,57 @@ import org.springframework.stereotype.Service;
 import com.sollan.testsollan.answer.model.UserAnswer;
 import com.sollan.testsollan.question.model.Question;
 import com.sollan.testsollan.question.service.QuestionService;
+import com.sollan.testsollan.utils.Consts;
 import com.sollan.testsollan.validation.model.ValidationResult;
 import com.sollan.testsollan.validation.model.ValidationResult.AnswerResult;
 
 @Service
-public class ValidationServiceImpl implements ValidationService{
+public class ValidationServiceImpl implements ValidationService {
 
 	@Autowired
 	private QuestionService service;
-	
+
 	private ValidationResult result;
 
 	@Override
 	public void validate(List<UserAnswer> answers, String name) {
-		
+
 		Collection<AnswerResult> correctAnswers = new ArrayList<>();
 		int points = 0;
 		boolean correct = false;
-		
+
 		Collection<Question> questions = service.getQuestions();
-		
-		for(Question q : questions) {
+
+		for (Question q : questions) {
 			UserAnswer u = this.findAnswerByQuestionId(q.getQuestionId(), answers);
 			correct = verify(u, q);
-			if(correct) 
-				 points++;
-				
-			
-			
+			if (correct)
+				points++;
+
 			correctAnswers.add(new AnswerResult(q.getQuestionId(), correct));
-				
+
 		}
-		
-		this.result =  new ValidationResult(points, correctAnswers, name);
-		
-			
-			
+
+		this.result = new ValidationResult(points, correctAnswers, name);
+
 	}
 	
+	
+
+	@Override
+	public boolean validatePassword(String password) {
+		return password.equals(Consts.PASSWORD);
+	}
+
+
+
 	private UserAnswer findAnswerByQuestionId(int questionId, List<UserAnswer> answers) {
-		return answers
-			.stream()
-			.filter(a -> a.getId() == questionId)
-			.findFirst()
-			.orElseGet(() -> new UserAnswer(questionId, 0));
+		return answers.stream().filter(a -> a.getId() == questionId).findFirst()
+				.orElseGet(() -> new UserAnswer(questionId, 0));
 	}
-	
+
 	private boolean verify(UserAnswer a, Question q) {
-		return a.getValue()==q.getAnswerId();
+		return a.getValue() == q.getAnswerId();
 	}
 
 	public ValidationResult getResult() {
@@ -67,12 +70,5 @@ public class ValidationServiceImpl implements ValidationService{
 	public void setResult(ValidationResult result) {
 		this.result = result;
 	}
-	
-	
-	
-		
-	
-	
-	
-	
+
 }

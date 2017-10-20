@@ -3,8 +3,24 @@
     <mat-grid-tile rowspan="1">
             <span>This test contains 40 questions. You have 40 minutes. Type in your name and click start. Good luck!</span>
     </mat-grid-tile>
-    <mat-grid-tile rowspan="1">
-        <input type="text" #name></mat-grid-tile>
-        <mat-grid-tile rowspan="1" *ngIf="emptyName">Type in your name!</mat-grid-tile>
-    <mat-grid-tile rowspan="1"><button (click)="start(name.value)" color="accent" mat-raised-button matDialogClose="yes">Start</button></mat-grid-tile>
+    <mat-grid-tile rowspan="2">
+        <form [formGroup]="form"> 
+            <div class="form-group">
+                <label>Name</label>
+                <input formControlName="name" type="text" class="form-control">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                </div>
+                <div><br></div>
+                <label>Password</label>
+                <input formControlName="password" type="password" class="form-control">
+                <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div><button type="button" (click)="start(form.value)" color="accent" mat-raised-button matDialogClose="yes">Start</button></div>
+        </form>
+        </mat-grid-tile>
+        <mat-grid-tile rowspan="1" *ngIf="emptyName">Password invalid!</mat-grid-tile>
 </mat-grid-list>
+
