@@ -3,11 +3,8 @@
     <span class="example-spacer"></span>
     <span>{{name}}</span>
 </mat-toolbar>
-
-
-
 <ul class="list-group">
-    <li *ngFor="let answer of answers" class="list-group-item">Question {{answer.questionId}}
+    <li *ngFor="let answer of answers" class="list-group-item col-md-4">Question {{answer.questionId}}
        <i class="fa fa-check" style="color: green" *ngIf="answer.correct"></i> 
        <i class="fa fa-times" style="color: red" *ngIf="!answer.correct"></i> 
     </li>

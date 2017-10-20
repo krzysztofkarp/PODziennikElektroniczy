@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.sollan.testsollan.answer.model.UserAnswer;
 import com.sollan.testsollan.question.model.Question;
 import com.sollan.testsollan.question.service.QuestionService;
+import com.sollan.testsollan.utils.Consts;
 import com.sollan.testsollan.validation.model.ValidationResult;
 import com.sollan.testsollan.validation.model.ValidationResult.AnswerResult;
 
@@ -70,6 +71,20 @@ public class ValidationServiceImpl implements ValidationService {
 		bw.close();
 		System.out.println("File Created");
 	}
+
+		
+
+
+	
+	
+	
+
+	@Override
+	public boolean validatePassword(String password) {
+		return password.equals(Consts.PASSWORD);
+	}
+
+
 
 	private UserAnswer findAnswerByQuestionId(int questionId, List<UserAnswer> answers) {
 		return answers.stream().filter(a -> a.getId() == questionId).findFirst()

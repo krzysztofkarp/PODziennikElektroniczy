@@ -27,7 +27,9 @@ export class Consts {
         }
 
         static Checkers = class {
-            const static GET_WAS_STARTED = "/getTimerStarted";            
+            const static GET_WAS_STARTED = "/getTimerStarted";
+            const static VALIDATE_PASSWORD = "/validatePassword";
+
         }
 
         static RouterPaths = class {

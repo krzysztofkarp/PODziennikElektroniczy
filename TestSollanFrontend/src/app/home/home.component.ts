@@ -1,3 +1,5 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HomeService } from './home.service';
 import { TimerService } from './../timer/timer.service';
 import { Observable } from 'rxjs/Rx';
 import { Consts } from '../general/utils/Consts';
@@ -14,14 +16,26 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   checker: boolean;
-  emptyName: boolean;
+  form: FormGroup;
+  invalidPassword: boolean;
+  currentQuestionId;
 
   constructor(
     private router: Router,
-    private timerService: TimerService
-  ) {}
+    private timerService: TimerService,
+    private homeService: HomeService,
+    private fb: FormBuilder
+  ) {
+    this.form = fb.group({
+      password: ['', Validators.required],
+      name: ['', Validators.required]
+    })
+  }
+
+
 
   ngOnInit() {
+    this.currentQuestionId = localStorage.getItem(Consts.Other.CURRENT_QUESTION_ID);
   }
 
 
@@ -29,29 +43,32 @@ export class HomeComponent implements OnInit {
     if (sessionStorage.getItem(Consts.Other.WAS_STARTED)) {
       this.timerService.getWasStarted()
         .subscribe(started => {
-          this.checker = started;
-          console.log(started);
+          if(started) {
+            this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, this.currentQuestionId]);
+          } else {
+            this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
+            sessionStorage.clear();
+          }
         });
-
-        if (!this.checker) {
-        this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
-      } else {
-        this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
-        sessionStorage.clear();
-      }
     }
   }
 
-  start(name) {
-    if (!name) {
-      this.emptyName = true;
-    } else {
-      this.timerService.startTimer();
-      this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
-      localStorage.setItem(Consts.Other.CURRENT_QUESTION_ID, Consts.Other.ONE);
-      localStorage.setItem(Consts.Other.NAME, name);
-      sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.YES);
-    }
-
+  start(fg) {
+    this.homeService.validatePassword(fg.password)
+      .subscribe(response => {
+        if(response){
+          this.timerService.startTimer();
+          this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
+          localStorage.setItem(Consts.Other.CURRENT_QUESTION_ID, Consts.Other.ONE);
+          localStorage.setItem(Consts.Other.NAME, fg.name);
+          sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.YES);
+        } else {
+          this.invalidPassword = true;
+        }
+        
+      });
   }
+
+  get password(){ return this.form.get('password');}
+  get name(){ return this.form.get('name');}
 }

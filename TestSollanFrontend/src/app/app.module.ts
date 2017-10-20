@@ -1,3 +1,4 @@
+import { HomeService } from './home/home.service';
 import { QuestionsService } from './questions/questions.service';
 import { MdComponentsModule } from './../md-components.module';
 import { PercentPipe } from '@angular/common';
@@ -18,7 +19,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionsComponent } from './questions/questions.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ResultComponent } from './result/result.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ResultComponent } from './result/result.component';
     FormsModule,
     BrowserAnimationsModule,
     MdComponentsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
@@ -50,7 +52,9 @@ import { ResultComponent } from './result/result.component';
   ],
   providers: [QuestionsService,
     TimerService,
+    HomeService,
     BackendService,
+    FormBuilder,
     TimerComponent,
     { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }],
   bootstrap: [AppComponent]
