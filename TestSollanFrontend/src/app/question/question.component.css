@@ -23,3 +23,8 @@ mat-grid-tile{
   max-width: 1250px;  
   max-height: 850px;
 }  
+
+img{
+  width: 12px;
+  height: 12px;
+}

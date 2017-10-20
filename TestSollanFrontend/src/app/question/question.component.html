@@ -1,10 +1,10 @@
 <mat-grid-list cols="8" rowHeight="100px">
   <mat-grid-tile colspan="1" rowspan="7">
     <button (click)="firstQuestion()" color="accent" mat-fab>
-      <i class="fa fa-step-backward" aria-hidden="true"></i>
+        <img src="img/faFirst.png">
     </button>
     <button color="accent" (click)="previousQuestion()" mat-fab>
-      <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        <img src="img/faLeft.png">
     </button>
   </mat-grid-tile>
   <mat-grid-tile colspan="6" rowspan="7" *ngIf="answersLoaded">
@@ -14,11 +14,11 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="1" rowspan="7">
     <button color="accent" (click)="nextQuestion()" mat-fab>
-      <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+        <img src="img/faRight.png">
     </button>
     <button (click)="lastQuestion()" color="accent" mat-fab>
-        <i class="fa fa-step-forward" aria-hidden="true"></i>
-      </button>
+        <img src="img/faLast.png">
+    </button>
   </mat-grid-tile>
 
   <mat-grid-tile colspan="8" rowspan="2" class="answers-border">

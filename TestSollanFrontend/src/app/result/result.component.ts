@@ -35,9 +35,14 @@ export class ResultComponent implements OnInit {
     } else {
         this.questionService.getResult()
         .subscribe(result => {
-          this.points = result.points;
-          this.answers = result.results;
-          this.name = result.name;
+          if(!result) {
+            this.router.navigate(
+              [Consts.BackendMapping.RouterPaths.HOME]);
+          } else {
+            this.points = result.points;
+            this.answers = result.results;
+            this.name = result.name;}
+            
         });
     }
 

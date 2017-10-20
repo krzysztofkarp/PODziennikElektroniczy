@@ -5,8 +5,8 @@
 </mat-toolbar>
 <ul class="list-group">
     <li *ngFor="let answer of answers" class="list-group-item col-md-4">Question {{answer.questionId}}
-       <i class="fa fa-check" style="color: green" *ngIf="answer.correct"></i> 
-       <i class="fa fa-times" style="color: red" *ngIf="!answer.correct"></i> 
+       <img src="img/faCheck.png" *ngIf="answer.correct">
+       <img src="img/faX.png" *ngIf="!answer.correct"> 
     </li>
 </ul>
 

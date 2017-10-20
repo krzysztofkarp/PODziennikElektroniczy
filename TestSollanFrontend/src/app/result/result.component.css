@@ -10,7 +10,7 @@
 }
 
 ul{
-  width: 30%;
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -21,6 +21,11 @@ li{
   margin-right:5px;
 }
 
+
+img{
+  width: 12px;
+  height: 12px;
+}
 
 
 
