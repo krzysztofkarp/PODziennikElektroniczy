@@ -1,5 +1,6 @@
 package com.sollan.testsollan.timer.service;
 
+import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,7 @@ public class TimerServiceImpl implements TimerService {
 	AtomicLong timeInMilis = new AtomicLong(0);
 	long secondsForTest = 2400;
 	boolean timerStarted;
+	Date testStartedTime;
 	ScheduledExecutorService timer;
 	
 	@Override
@@ -21,6 +23,7 @@ public class TimerServiceImpl implements TimerService {
 		if (timerStarted == false) {
 			timeInMilis.set(0);
 			timerStarted = true;
+			testStartedTime = new Date();
 			System.out.println("started timer");
 			timer = Executors.newScheduledThreadPool(1);
 			timer.scheduleAtFixedRate(() -> {

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.sollan.testsollan.answer.model.UserAnswer;
 import com.sollan.testsollan.question.model.Question;
 import com.sollan.testsollan.question.service.QuestionService;
+import com.sollan.testsollan.timer.service.TimerService;
 import com.sollan.testsollan.utils.Consts;
 import com.sollan.testsollan.validation.model.ValidationResult;
 import com.sollan.testsollan.validation.model.ValidationResult.AnswerResult;
@@ -61,7 +62,7 @@ public class ValidationServiceImpl implements ValidationService {
 
 		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-		File file = new File("C://TEST//TestScore" + dateFormat.format(date) + ".htm");
+		File file = new File("C://TEST//TestScore " + dateFormat.format(date) + ".htm");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 		bw.write("<html>");
 		bw.write("<body>");
