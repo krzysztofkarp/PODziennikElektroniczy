@@ -59,32 +59,24 @@ public class ValidationServiceImpl implements ValidationService {
 	@Override
 	public void createResultFile() throws IOException {
 
-		Date date = new Date() ;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 		File file = new File("C://TEST//TestScore" + dateFormat.format(date) + ".htm");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 		bw.write("<html>");
 		bw.write("<body>");
-		bw.write("<h1>Result was: " + result.getPoints()+ "</h1>");
+		bw.write("<h1>Result was: " + result.getPoints() + "</h1>");
 		bw.write("</body>");
 		bw.write("</html>");
 		bw.close();
 		System.out.println("File Created");
+
 	}
-
-		
-
-
-	
-	
-	
 
 	@Override
 	public boolean validatePassword(String password) {
 		return password.equals(Consts.PASSWORD);
 	}
-
-
 
 	private UserAnswer findAnswerByQuestionId(int questionId, List<UserAnswer> answers) {
 		return answers.stream().filter(a -> a.getId() == questionId).findFirst()
