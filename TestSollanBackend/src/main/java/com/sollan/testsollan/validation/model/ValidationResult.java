@@ -5,14 +5,13 @@ import java.util.Collection;
 public class ValidationResult {
 
 	private int points;
-	
+
 	private Collection<AnswerResult> results;
-	
+
 	private String name;
 
-	
-	
-	
+	private String username;
+
 	public ValidationResult(int points, Collection<AnswerResult> results, String name) {
 		super();
 		this.points = points;
@@ -35,7 +34,7 @@ public class ValidationResult {
 	public void setResults(Collection<AnswerResult> results) {
 		this.results = results;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -44,19 +43,11 @@ public class ValidationResult {
 		this.name = name;
 	}
 
-
-
-
-
-
 	public static class AnswerResult {
 
 		private int questionId;
 		private boolean correct;
 
-		
-		
-		
 		public AnswerResult(int questionId, boolean correct) {
 			super();
 			this.questionId = questionId;
@@ -80,10 +71,18 @@ public class ValidationResult {
 		}
 
 	}
-	
+
 	@Override
 	public String toString() {
 		return " points:" + this.points;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

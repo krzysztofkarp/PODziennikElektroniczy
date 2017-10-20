@@ -10,5 +10,5 @@ public interface ValidationService {
 
 	void validate(List<UserAnswer> answers, String name);
 
-	void writeResultFile() throws IOException;
+	void createResultFile() throws IOException;
 }
