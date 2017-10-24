@@ -10,17 +10,23 @@ import javax.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Service;
 
 import com.sollan.testsollan.answer.model.Answer;
+import com.sollan.testsollan.encryption.service.EncryptionServiceImpl;
 import com.sollan.testsollan.question.model.Question;
 import com.sollan.testsollan.question.model.Questions;
+import com.sollan.testsollan.utils.Consts;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
 	 private Collection<Question> questions;
+	 private EncryptionServiceImpl encryption;
 	
 	 @PostConstruct
 	 private void init() {
 	 this.questions= loadQuestions();
+	 
+
+	 
 	 }
 	
 
@@ -33,6 +39,10 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public Collection<Question> loadQuestions() {
 
+
+				
+		
+		
 		try {
 			JAXBContext jc = JAXBContext.newInstance(Questions.class, Question.class);
 			Unmarshaller u = jc.createUnmarshaller();
