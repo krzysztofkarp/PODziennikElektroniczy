@@ -1,0 +1,20 @@
+<div>
+ <p><span>Ocena</span> <input type="number" max="6" min="1"  [(ngModel)]="grade.grade"></p>
+ <p><span>Za co</span> 
+  <mat-form-field>
+    <mat-select  [(ngModel)]="grade.type">
+      <mat-option *ngFor="let type of types" [value]="type">
+        {{type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
+<!-- <p><span>Data</span>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="grade.date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+</p> -->
+<p><button (click)="onAdd()">Dodaj</button></p>
+</div>

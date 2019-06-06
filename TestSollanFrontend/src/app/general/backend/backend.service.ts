@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Rx';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Response } from './response';
+import { BackendMappings } from '../utils/backendMappings';
 
 @Injectable()
 export class BackendService {
@@ -23,14 +24,12 @@ export class BackendService {
 
   private createParamsObject(params?: {}) {
     let headers = new Headers();
-    // headers.append(Consts.Headers.Key.ACCEPT, Consts.Header.Value.APPLICATION_JSON);
-    // headers.append(Consts.Header.Key.CONTENT_TYPE, Consts.Header.Value.APPLICATION_JSON);
-    // headers.append(Consts.Header.Key.TOKEN, this.storageService.getItem(Consts.Storage.Key.TOKEN));
+
 
     return { params: params, headers: headers };
   }
   private getUri(uri: string) {
-    return Consts.BackendMapping.INDEX+uri;
+    return BackendMappings.INDEX+uri;
   }
 }
 

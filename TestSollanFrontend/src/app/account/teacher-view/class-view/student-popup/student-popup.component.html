@@ -1,0 +1,13 @@
+<div class="student-popup">
+    <p>{{student.firstName}}</p>
+    <p>{{student.secondName}}</p>
+    <p>{{student.classId}}</p>
+    <div class="grades">
+      <p>Oceny:</p>
+      <grade *ngFor="let grade of grades" [grade]="grade" (delete)="removeGrade($event)" [teacherView]="teacherView"></grade>
+      <button (click)="addGrade()">+</button>
+    </div>
+  <div class="actions">
+    <button (click)="save()">Zapisz</button>
+  </div>
+</div>

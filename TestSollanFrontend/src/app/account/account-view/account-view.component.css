@@ -1,0 +1,15 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.account-view span{
+      margin: 5px;
+}
+
+.account-view span button{
+    border: none;
+    background-color: orange;
+    color: black;
+    display: block;
+    cursor: pointer;
+}

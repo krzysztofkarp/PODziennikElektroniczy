@@ -1,0 +1,22 @@
+<div class="teacher-view">
+    <mat-tab-group>
+        <mat-tab label="Informacje">
+          <table>
+            <tr><td class="subject">Login</td><td class="grades">{{ user.login }}</td></tr>
+            <tr><td class="subject">Imię</td><td class="grades">{{  user.firstName  }}</td></tr>
+            <tr><td class="subject">Nazwisko</td><td class="grades">{{ user.secondName }}</td></tr>
+            <tr><td class="subject">Klasy</td><td class="grades">{{ user.classesIds.join(',') }}</td></tr>
+           </table>
+        </mat-tab>
+        <mat-tab label="Moje klasy">
+            <mat-tab-group>
+            <mat-tab *ngFor="let class of classes" label="{{ class.classId }}" >
+          <class-view  [class]="class" [subject]="sub" [teacherView]="true"></class-view>
+          </mat-tab>
+          </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="Uwagi">
+          <notes-view [notes]="notes" [teacher]="user" [classes]="classes"></notes-view>
+      </mat-tab>
+      </mat-tab-group>
+</div>

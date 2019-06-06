@@ -1,0 +1,17 @@
+<div class="notes">
+  <div class="add-new" *ngIf="teacher">
+    <button (click)="onAdd()">Add new</button>
+  </div>
+  <table *ngIf="notes && notes.length>0">
+    <th>Od</th>
+    <th>Dla</th>
+    <th>Opis</th>
+    <th>Data</th>
+    <tr *ngFor="let note of notes">
+      <td>{{ note.fromLabel }}</td>
+      <td>{{ note.toLabel }}</td>
+      <td>{{ note.description }}</td>
+      <td>{{ note.date | date }}</td>
+    </tr>
+  </table>
+</div>

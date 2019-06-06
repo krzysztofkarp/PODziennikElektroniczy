@@ -1,0 +1,5 @@
+<mat-tab-group>
+    <mat-tab *ngFor="let child of children" label="{{ child.firstName }}">
+        <student-view [user]="child"></student-view>
+    </mat-tab>
+  </mat-tab-group>

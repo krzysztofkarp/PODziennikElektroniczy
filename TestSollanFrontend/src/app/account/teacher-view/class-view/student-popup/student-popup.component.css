@@ -1,0 +1,20 @@
+.student-popup{
+    width: 500px;    
+}
+
+.student-popup p{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.student-popup .grades {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.student-popup .actions{
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+}

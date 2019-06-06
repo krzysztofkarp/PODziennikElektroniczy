@@ -1,0 +1,14 @@
+<div class="account-view">
+  <mat-toolbar color="primary">
+    <span>{{currentUser.type}} :</span>
+    <span>{{currentUser.firstName }}</span>
+    <span>{{currentUser.secondName}}</span>
+    <span class="example-spacer"></span>
+    <span><button (click)="logout()">Logout</button></span>
+</mat-toolbar>
+<div class="content">
+  <student-view *ngIf="viewType == UserType.STUDENT" [user]="currentUser"></student-view>
+  <teacher-view *ngIf="viewType == UserType.TEACHER" [user]="currentUser"></teacher-view>
+  <parent-view *ngIf="viewType == UserType.PARENT" [user]="currentUser"></parent-view>
+</div>
+</div>

@@ -1,12 +1,10 @@
+import { AccountService } from './../account/account-view/account-service';
+import { StudentService } from './../students/student.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from './home.service';
-import { TimerService } from './../timer/timer.service';
-import { Observable } from 'rxjs/Rx';
 import { Consts } from '../general/utils/Consts';
-import { BackendService } from '../general/backend/backend.service';
-import { TimerComponent } from './../timer/timer.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -19,56 +17,53 @@ export class HomeComponent implements OnInit {
   form: FormGroup;
   invalidPassword: boolean;
   currentQuestionId;
+  login: string;
+  password: string;
 
   constructor(
     private router: Router,
-    private timerService: TimerService,
+    private studentService: StudentService,
     private homeService: HomeService,
+    private accountService: AccountService,
     private fb: FormBuilder
   ) {
     this.form = fb.group({
       password: ['', Validators.required],
-      name: ['', Validators.required]
+      login: ['', Validators.required]
     })
   }
 
 
 
   ngOnInit() {
-    this.currentQuestionId = localStorage.getItem(Consts.Other.CURRENT_QUESTION_ID);
+    this.checkIfLoggedIn();
   }
 
 
   ngDoCheck() {
-    if (sessionStorage.getItem(Consts.Other.WAS_STARTED)) {
-      this.timerService.getWasStarted()
-        .subscribe(started => {
-          if(started) {
-            this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, this.currentQuestionId]);
-          } else {
-            this.router.navigate([Consts.BackendMapping.RouterPaths.HOME]);
-            sessionStorage.clear();
-          }
-        });
+  
+  }
+
+  onLogin(fg) {
+    let login: any = fg["login"];
+    let pass: any = fg["password"];
+    this.homeService.login(login, pass).subscribe(resp => {
+      if(resp.ok && resp.item){
+        this.accountService.store(resp.item);
+        localStorage.setItem("user", JSON.stringify(resp.item));
+        this.router.navigate(["/account", resp.item.id])
+      } else {
+        alert("Wrong credentials");
+      }
+    })
+  }
+
+  checkIfLoggedIn(){
+    let id = localStorage.getItem("user");
+    if(id){
+      this.router.navigate(["/account", id])
     }
   }
 
-  start(fg) {
-    this.homeService.validatePassword(fg.password)
-      .subscribe(response => {
-        if(response){
-          this.timerService.startTimer();
-          this.router.navigate([Consts.BackendMapping.RouterPaths.QUESTION, 1]);
-          localStorage.setItem(Consts.Other.CURRENT_QUESTION_ID, Consts.Other.ONE);
-          localStorage.setItem(Consts.Other.NAME, fg.name);
-          sessionStorage.setItem(Consts.Other.WAS_STARTED, Consts.Other.YES);
-        } else {
-          this.invalidPassword = true;
-        }
-        
-      });
-  }
-
-  get password(){ return this.form.get('password');}
-  get name(){ return this.form.get('name');}
+  
 }

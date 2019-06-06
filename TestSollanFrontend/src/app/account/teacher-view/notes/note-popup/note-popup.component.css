@@ -1,0 +1,18 @@
+.note{
+    min-height: 300px;
+}
+
+.note textarea{
+    min-height: 200px;
+    border: 1px solid #c6c6c6;
+    resize: none;
+}
+
+.note button{
+    margin-top: 10px;
+}
+
+.note span{
+    margin-top: 5px;
+    display: block;
+}

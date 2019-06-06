@@ -1,0 +1,17 @@
+.notes table{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.notes table td{
+    border: 1px solid #c5c5c5;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+.notes .add-new{
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

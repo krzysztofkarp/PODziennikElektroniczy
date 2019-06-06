@@ -2,57 +2,32 @@ export class Consts {
 
     static Headers = class {
         static Key = class {
-            const static ACCEPT = 'Accept';
-            const static CONTENT_TYPE = 'Content-Type';
+            static readonly ACCEPT = 'Accept';
+            static readonly CONTENT_TYPE = 'Content-Type';
         };
         static Value = class {
-            const static APPLICATION_JSON = 'application/json';
+            static readonly APPLICATION_JSON = 'application/json';
         };
     };
 
-    static BackendMapping = class {
-        const static INDEX = '/api';
-        static Timer = class {
-            const static START = '/startTimer';
-            const static STOP = '/stopTimer';
-            const static TIME_ELAPSED = '/timeElapsed';
-            const static GET_TIME = '/getTime';
-            const static GET_STATUS = '/timerStatus';
-        };
-
-        static Answers = class {
-            const static GET_ANSWERS = "/answers";
-            const static CHECK_ANSWERS = "/validateAnswers";
-            const static GET_RESULT = "/getResult";
-        }
-
-        static Checkers = class {
-            const static GET_WAS_STARTED = "/getTimerStarted";
-            const static VALIDATE_PASSWORD = "/validatePassword";
-
-        }
-
-        static RouterPaths = class {
-            const static RESULT = '/result';
-            const static QUESTION = '/question';
-            const static HOME = '';
-        }
-
-    }
 
     static Other = class {
-        const static YES = 'yes';
-        const static NO = 'no';
-        const static QUESTION_ID = 'questionId';
-        const static CURRENT_QUESTION_ID = 'currentQuestionId';
-        const static WAS_STARTED = 'wasStarted';
-        const static ANSWERS = 'answers';
-        const static IMG = 'img/q';
-        const static JPG = '.jpg';
-        const static TIME_OVER = '0:00';
-        const static NO_ANSWERS = 'No answers checked!';
-        const static NAME = 'name';
-        const static ONE = '1';
+        static readonly YES = 'yes';
+        static readonly NO = 'no';
+        static readonly QUESTION_ID = 'questionId';
+        static readonly CURRENT_QUESTION_ID = 'currentQuestionId';
+        static readonly WAS_STARTED = 'wasStarted';
+        static readonly ANSWERS = 'answers';
+        static readonly IMG = 'img/q';
+        static readonly JPG = '.jpg';
+        static readonly TIME_OVER = '0:00';
+        static readonly NO_ANSWERS = 'No answers checked!';
+        static readonly NAME = 'name';
+        static readonly ONE = '1';
+    }
+
+    static Students = class {
+        static readonly ALL = "/student/all";
     }
 
     // Consts.BackendMapping.INDEX+
