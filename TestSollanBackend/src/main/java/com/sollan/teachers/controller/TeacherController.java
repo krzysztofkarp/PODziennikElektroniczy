@@ -27,7 +27,7 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = BackendMappings.Teachers.BY_ID, method = RequestMethod.GET)
-	public Response<Teacher> byId(@RequestParam("id") String id) {
+	public Response<Teacher> byId(@RequestParam("id") Long id) {
 		Response<Teacher> response = new Response<Teacher>();
 		response.setItem(teacherService.getById(id));
 		return response;

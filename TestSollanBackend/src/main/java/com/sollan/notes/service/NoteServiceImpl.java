@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sollan.notes.model.Note;
-import com.sollan.students.model.Student;
-import com.sollan.students.service.StudentService;
 import com.sollan.teachers.Teacher;
 import com.sollan.teachers.service.TeacherService;
 
@@ -23,9 +21,6 @@ public class NoteServiceImpl implements NoteService{
 	@Autowired
 	private TeacherService tService;
 	
-	@Autowired
-	private StudentService sService;
-
 	@Override
 	public Note addNote(Note n) {
 		Note note = new Note(n.getFrom(), n.getTo(), n.getDescription());
@@ -46,10 +41,10 @@ public class NoteServiceImpl implements NoteService{
 	}
 	
 	private void assignLabels(Note n) {
-		Student s = sService.getById(n.getTo());
-		Teacher t = tService.getById(n.getFrom());
-		n.setFromLabel(t.getFullName());
-		n.setToLabel(s.getFullName());
+		//Student s = sService.getById(n.getTo());
+		//Teacher t = tService.getById(n.getFrom());
+		//n.setFromLabel(t.getFullName());
+		//n.setToLabel(s.getFullName());
 		
 	}
 

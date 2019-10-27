@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.GsonBuilder;
-import com.sollan.parents.Parent;
+import com.sollan.parents.model.Parent;
 import com.sollan.students.model.Student;
 import com.sollan.students.service.StudentService;
 import com.sollan.util.BackendMappings;
@@ -35,7 +35,7 @@ public class StudentController {
 	@RequestMapping(value = BackendMappings.Students.PARENTS, method = RequestMethod.GET)
 	public Response<Parent> getAllParents() {
 		Response<Parent> response = new Response<Parent>();
-		response.setItems(service.getParents());
+		//response.setItems(service.getParents());
 		return response;
 	}
 	
@@ -43,14 +43,14 @@ public class StudentController {
 	@RequestMapping(value = BackendMappings.Students.BY_ID, method = RequestMethod.GET)
 	public Response<Student> byId(@RequestParam("id") String id) {
 		Response<Student> response = new Response<Student>();
-		response.setItem(service.getById(id));
+		//response.setItem(service.getById(id));
 		return response;
 	}
 	
 	@RequestMapping(value = BackendMappings.Students.BY_IDS, method = RequestMethod.GET)
 	public Response<Student> byIds(@RequestParam("ids") Collection<String> ids) {
 		Response<Student> response = new Response<Student>();
-		response.setItems(service.getByIds(ids));
+		//response.setItems(service.getByIds(ids));
 		return response;
 	}
 	
@@ -61,7 +61,7 @@ public class StudentController {
 		gsonBuilder.registerTypeAdapter(Date.class, new DateDeserializer());
 		
 		Response<Student> response = new Response<Student>();
-		response.setItem(service.update(gsonBuilder.create().fromJson(student, Student.class)));
+		//response.setItem(service.update(gsonBuilder.create().fromJson(student, Student.class)));
 		
 		return response;
 	}

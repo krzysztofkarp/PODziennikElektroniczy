@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.sollan.classes.model.StudentClass.ClassProfile;
-import com.sollan.parents.Parent;
+import com.sollan.parents.model.Parent;
 import com.sollan.students.model.Student;
 import com.sollan.students.model.Student.Grade;
 import com.sollan.subjects.Subjects;
@@ -30,12 +30,12 @@ public class RandomUserGeneratorImpl implements RandomUserGenerator {
 		List<Student> students = new ArrayList<>();
 		
 		while(amount > 0) {
-			String classId = UserFieldsGenerator.getClassId();
-			ClassProfile profile = UserFieldsGenerator.getProfile(classId);
-			Student s = new Student(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), UserFieldsGenerator.getSurname(), classId, profile);
-			setGrades(s, 5);
-			students.add(s);
-			amount--;
+//			String classId = UserFieldsGenerator.getClassId();
+//			ClassProfile profile = UserFieldsGenerator.getProfile(classId);
+//			Student s = new Student(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), UserFieldsGenerator.getSurname(), classId, profile);
+//			setGrades(s, 5);
+//			students.add(s);
+//			amount--;
 		}
 		
 		
@@ -56,8 +56,8 @@ public class RandomUserGeneratorImpl implements RandomUserGenerator {
 		List<Subject> subs = Subjects.getSubjectsForProfile(UserFieldsGenerator.getProfile(classId));
 		List<Teacher> teachers = new ArrayList<>();
 		subs.stream().forEach(s -> {
-			Teacher t = new Teacher(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), UserFieldsGenerator.getSurname(), false, Arrays.asList(s), Arrays.asList(classId));
-			teachers.add(t);
+			//Teacher t = new Teacher(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), UserFieldsGenerator.getSurname(), false, Arrays.asList(s), Arrays.asList(classId));
+			//teachers.add(t);
 			
 		});
 		
@@ -74,7 +74,8 @@ public class RandomUserGeneratorImpl implements RandomUserGenerator {
 			students.addAll(getStudents(amount, c));
 		}
 		
-		return students.stream().filter(distinctByKey(User::getLogin)).collect(Collectors.toList());
+		//return students.stream().filter(distinctByKey(User::getLogin)).collect(Collectors.toList());
+		return null;
 		
 		
 		
@@ -82,8 +83,8 @@ public class RandomUserGeneratorImpl implements RandomUserGenerator {
 	
 	@Override
 	public Parent getRandomParentForId(String childId, String surname) {
-		Parent p = new Parent(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), surname, Arrays.asList(childId));
-		return p;
+		//Parent p = new Parent(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), surname, Arrays.asList(childId));
+		return null;
 	}
 	
 	private List<Student> getStudents(int amount, String classId){
@@ -91,15 +92,15 @@ public class RandomUserGeneratorImpl implements RandomUserGenerator {
 		List<Student> students = new ArrayList<>();
 		
 		while(amount > 0) {
-			Student s = new Student(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), UserFieldsGenerator.getSurname(), classId, UserFieldsGenerator.getProfile(classId));
-			setGrades(s, 5);
-			
-			
-			if(!(students.stream().anyMatch(st -> st.getLogin().equals(s.getLogin()))))
-				students.add(s);
-			
-			
-			amount--;
+			//Student s = new Student(UUID.randomUUID().toString(), UserFieldsGenerator.getName(), UserFieldsGenerator.getSurname(), classId, UserFieldsGenerator.getProfile(classId));
+//			setGrades(s, 5);
+//			
+//			
+//			if(!(students.stream().anyMatch(st -> st.getLogin().equals(s.getLogin()))))
+//				students.add(s);
+//			
+//			
+//			amount--;
 		}
 		
 		

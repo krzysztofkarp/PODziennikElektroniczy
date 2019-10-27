@@ -1,14 +1,11 @@
 package com.sollan.teachers.service;
 
-import java.util.List;
-
 import com.sollan.teachers.Teacher;
+import com.sollan.user.UserService;
 
-public interface TeacherService {
+public interface TeacherService extends UserService<Teacher>{
 	
 	
-	List<Teacher> getAll();
-	Teacher getById(String id);
-	Teacher getByLogin(String login);
+
 
 }

@@ -39,7 +39,7 @@ public class StudentClassDAO {
 			StudentClass cs = new StudentClass();
 			cs.setClassId(c);
 			cs.setProfile(UserFieldsGenerator.getProfile(c));
-			cs.setStudents(service.getByClassId(c));
+			//cs.setStudents(service.getByClassId(c));
 			generated.add(cs);
 		}
 		

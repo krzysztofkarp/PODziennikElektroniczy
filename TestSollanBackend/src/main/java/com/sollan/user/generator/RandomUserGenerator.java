@@ -2,7 +2,7 @@ package com.sollan.user.generator;
 
 import java.util.List;
 
-import com.sollan.parents.Parent;
+import com.sollan.parents.model.Parent;
 import com.sollan.students.model.Student;
 import com.sollan.teachers.Teacher;
 

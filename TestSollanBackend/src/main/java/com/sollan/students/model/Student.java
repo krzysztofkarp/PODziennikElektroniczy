@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.springframework.context.annotation.Profile;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import com.sollan.classes.model.StudentClass.ClassProfile;
 import com.sollan.subjects.Subjects;
@@ -16,12 +17,17 @@ import com.sollan.user.model.User;
 
 
 
+@Entity
 public class Student extends User{
-	
+
 	private String classId;
 	private ClassProfile profile;
+	
+	@Transient
 	private Map<String, List<Grade>> grades;
+	@Transient
 	private List<StudentComment> comments;
+	@Transient
 	private List<String> parentIds;
 	
 	
@@ -29,12 +35,17 @@ public class Student extends User{
 		
 	}
 	
-	public Student(String id, String name, String surname, String classId, ClassProfile profile) {
-		super(id, name, surname, UserType.STUDENT);
-		this.profile = profile;
-		this.classId = classId;
-		initGradesMap();
+	public Student(String firstName, String secondName, String login, String password, String email) {
+		super(firstName, secondName, UserType.STUDENT, login, password, email);
 	}
+	
+	
+	
+	public Student(Long id, String firstName, String secondName, String login, String password, String email) {
+		super(id, firstName, secondName, UserType.STUDENT, login, password, email);
+	}
+
+
 
 	
 	public Map<String, List<Grade>> getGrades() {
@@ -53,9 +64,6 @@ public class Student extends User{
 			grades.put(s.getType().toString(), new ArrayList<Grade>());
 		});
 	}
-	
-	
-	
 	
 	
 	

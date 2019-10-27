@@ -1,35 +1,68 @@
 package com.sollan.user.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
-
-public abstract class User {
+@MappedSuperclass
+public class User {
 	
-	protected String id, firstName, secondName, login, password, email;
-	protected UserType type;
-	private static String studentPrefix = "S_";
-	private static String teacherPrefix = "T_";
-	private static String parentPrefix = "P_";
-	private static String passwordPostfix = "123!";
+	
+	@Id
+	@GeneratedValue(
+	        strategy = GenerationType.IDENTITY
+		    )
+	private Long id;
+	
+	private String firstName, secondName, password, email;
+	
+	@Column(unique=true)
+	private String login;
+	
+	private UserType type;
+	
+	@Transient
+	private boolean isAdmin;
 	
 	
 	public User() {
 		
 	}
 	
-	public User(String id, String name, String surname, UserType type) {
+	public User(Long id, String name, String surname) {
+		this.id = id;
+		this.firstName = name;
+		this.secondName = surname;				
+	}
+	
+	public User(String name, String surname, UserType type, String login, String password, String email) {
+		this.firstName = name;
+		this.secondName = surname;
+		this.type = type;
+		this.login = login;
+		this.password = password;
+		this.email = email;
+	}
+	
+	public User(Long id, String name, String surname, UserType type, String login, String password, String email) {
 		this.id = id;
 		this.firstName = name;
 		this.secondName = surname;
 		this.type = type;
-		generateLoginAndInitPassword();
+		this.login = login;
+		this.password = password;
+		this.email = email;
 	}
 	
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -84,38 +117,7 @@ public abstract class User {
 	}
 
 	public enum UserType {
-		TEACHER, STUDENT, PARENT
-	}
-	
-	private void generateLoginAndInitPassword() {
-		this.login = getPrefixForType() + this.firstName.toLowerCase() + "_" + this.secondName.toLowerCase();
-		this.password = this.secondName.toLowerCase() + passwordPostfix;
-	}
-	
-	private String getPrefixForType() {
-		String prefix = "X_";
-		
-		switch(this.type) {
-			case STUDENT: prefix = studentPrefix; break;
-			case TEACHER: prefix = teacherPrefix; break;
-			case PARENT: prefix = parentPrefix; break;
-		}
-		
-	return prefix;
-	}
-	
-	public static UserType typeByPrefix(String login) {
-			if(login.startsWith(studentPrefix))
-				return UserType.STUDENT;
-			
-			if(login.startsWith(teacherPrefix))
-				return UserType.TEACHER;
-			
-			if(login.startsWith(parentPrefix))
-				return UserType.PARENT;
-			
-			return null;
-			
+		TEACHER, STUDENT, PARENT, ADMIN
 	}
 	
 	public String getFullName() {

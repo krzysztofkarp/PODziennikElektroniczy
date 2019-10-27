@@ -1,6 +1,6 @@
 import { Consts } from '../utils/Consts';
 import { Observable } from 'rxjs/Rx';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers } from '@angular/core/http;
 import { Injectable } from '@angular/core';
 import { Response } from './response';
 import { BackendMappings } from '../utils/backendMappings';
