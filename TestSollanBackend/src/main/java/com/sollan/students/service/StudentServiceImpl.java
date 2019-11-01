@@ -1,6 +1,5 @@
 package com.sollan.students.service;
 
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sollan.students.model.Student;
 import com.sollan.students.repo.StudentRepository;
-import com.sollan.util.Crypter;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -17,7 +15,7 @@ public class StudentServiceImpl implements StudentService {
 	
 	@Autowired
 	private StudentRepository repo;
-	
+		
 	@Override
 	public List<Student> getAll() {
 		 return StreamSupport.stream(repo.findAll().spliterator(), false)
@@ -26,7 +24,6 @@ public class StudentServiceImpl implements StudentService {
 	
 	@Override
 	public void save(Student s) {
-		s.setPassword(Crypter.getInstance().encrypt(s.getPassword()));
 		repo.save(s);
 	}
 	

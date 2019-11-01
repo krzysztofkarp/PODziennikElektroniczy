@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.sollan.teachers.Teacher;
 import com.sollan.teachers.repo.TeacherRepository;
 
@@ -18,7 +16,7 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	@Autowired
 	private TeacherRepository repo;
-
+	
 	@Override
 	public List<Teacher> getAll() {
 		 return StreamSupport.stream(repo.findAll().spliterator(), false)

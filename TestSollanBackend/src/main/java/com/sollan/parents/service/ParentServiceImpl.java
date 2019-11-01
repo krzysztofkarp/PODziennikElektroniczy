@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 import com.sollan.parents.model.Parent;
 import com.sollan.parents.repo.ParentRepository;
 import com.sollan.user.model.User;
 
+@Service
 public class ParentServiceImpl implements ParentService {
 	
 	
 	@Autowired
 	private ParentRepository repo;
-
+	
 	@Override
 	public User findByUsername(String username) {
 		return Optional.ofNullable(repo.findByUsername(username)).orElse(null);

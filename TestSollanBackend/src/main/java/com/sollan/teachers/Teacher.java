@@ -1,59 +1,61 @@
 package com.sollan.teachers;
 
-import java.util.List;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.transaction.Transactional;
 
-import com.sollan.subjects.Subjects.Subject;
+import com.sollan.subjects.Subject;
 import com.sollan.user.model.User;
 
 
 
 @Entity
+@Table(name = "teacher")
+@Transactional
 public class Teacher extends User{
 	
-	private int age, experience;
-	@Transient
-	private List<Subject> subjects;
-	@Transient
-	private List<String> classesIds;
-		
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(
+			name = "teacher_subject", 
+			joinColumns = @JoinColumn(name = "teacher_id"), 
+			inverseJoinColumns = @JoinColumn(name = "subject_subjectId"))
+	private Set<Subject> subjects = new HashSet<>();
+	
+	
 	
 	public Teacher() {}
 	
-	public Teacher(Long id, String firstName, String secondName, String login, String password, String email) {
-		super(id, firstName, secondName, UserType.TEACHER, login, password, email);
-	}
 	
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public int getExperience() {
-		return experience;
-	}
-	public void setExperience(int experience) {
-		this.experience = experience;
-	}
-
-	public List<Subject> getSubjects() {
+	
+	
+	
+	public Set<Subject> getSubjects() {
 		return subjects;
 	}
-	public void setSubjects(List<Subject> subjects) {
+
+	public void setSubjects(Set<Subject> subjects) {
 		this.subjects = subjects;
 	}
 
-	public List<String> getClassesIds() {
-		return classesIds;
+	public void addSubject(Subject s) {
+		this.subjects.add(s);
+		s.getTeachers().add(this);
 	}
-
-	public void setClassesIds(List<String> classesIds) {
-		this.classesIds = classesIds;
+	
+	public void removeSubject(Subject s) {
+		this.subjects.remove(s);
+		s.getTeachers().remove(this);
 	}
-
 	
 	
 	

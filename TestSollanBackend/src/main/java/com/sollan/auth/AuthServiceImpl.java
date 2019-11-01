@@ -1,13 +1,8 @@
 package com.sollan.auth;
 
 import java.util.Collection;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.sollan.user.UserService;
 import com.sollan.user.model.User;
 import com.sollan.user.model.User.UserType;
@@ -24,14 +19,9 @@ public class AuthServiceImpl implements AuthService {
 	
 	@Autowired
 	private Collection<UserService<?>> services;
+
 		
 	
-	@PostConstruct
-	public void init() {
-		System.out.println(config.getAdminLogin());
-		System.out.println(login("admin", "*admin123!"));
-	}
-
 	@Override
 	public User login(String login, String password) {
 		

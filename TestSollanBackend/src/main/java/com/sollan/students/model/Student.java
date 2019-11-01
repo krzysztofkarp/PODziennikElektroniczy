@@ -1,34 +1,46 @@
 package com.sollan.students.model;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-import com.sollan.classes.model.StudentClass.ClassProfile;
-import com.sollan.subjects.Subjects;
-import com.sollan.subjects.Subjects.Subject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sollan.classes.model.StudentClass;
+import com.sollan.grades.model.Grade;
+import com.sollan.parents.model.Parent;
 import com.sollan.user.model.User;
 
 
 
 @Entity
+@Table(name = "student")
 public class Student extends User{
 
-	private String classId;
-	private ClassProfile profile;
 	
-	@Transient
-	private Map<String, List<Grade>> grades;
-	@Transient
-	private List<StudentComment> comments;
-	@Transient
-	private List<String> parentIds;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "parent_id")
+	@JsonIgnore
+	private Parent parent;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "studentClass_classId")
+	@JsonIgnore
+	private StudentClass studentClass;
+	
+	
+	@OneToMany(
+			mappedBy = "student",
+	        cascade = CascadeType.PERSIST,
+	        orphanRemoval = true)
+	private Set<Grade> grades = new HashSet<>();
 	
 	
 	public Student() {
@@ -45,163 +57,43 @@ public class Student extends User{
 		super(id, firstName, secondName, UserType.STUDENT, login, password, email);
 	}
 
-
-
-	
-	public Map<String, List<Grade>> getGrades() {
-		return grades;
+	public Parent getParent() {
+		return parent;
 	}
 
-	public void setGrades(Map<String, List<Grade>> grades) {
-		this.grades = grades;
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
 	
-	
-	private void initGradesMap() {
-		this.grades = new HashMap<>();
-		List<Subject> subs = Subjects.getSubjectsForProfile(this.profile);
-		subs.stream().forEach(s -> {
-			grades.put(s.getType().toString(), new ArrayList<Grade>());
-		});
-	}
-	
-	
-	
-	public String getClassId() {
-		return classId;
+	public StudentClass getStudentClass() {
+		return studentClass;
 	}
 
-	public void setClassId(String classId) {
-		this.classId = classId;
-	}
-
-	public ClassProfile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(ClassProfile profile) {
-		this.profile = profile;
+	public void setStudentClass(StudentClass studentClass) {
+		this.studentClass = studentClass;
 	}
 	
-	public List<StudentComment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<StudentComment> comments) {
-		this.comments = comments;
+	public void addGrade(Grade g) {
+		this.grades.add(g);
+		g.setStudent(this);
 	}
 	
-	
-
-
-
-
-
-
-
-
-	public List<String> getParentIds() {
-		return parentIds;
-	}
-
-	public void setParentIds(List<String> parentIds) {
-		this.parentIds = parentIds;
-	}
-
-
-
-
-
-
-
-
-
-
-	public static class Grade {
-		private int grade;
-		private Date date;
-		private GradeType type;
-		
-		private static int minGrade = 1;
-		private static int maxGrade = 6;
-		private static Random rand = new Random();
-		
-		
-		public Grade() {
-			
-		}
-		
-		public Grade(int grade, GradeType type, Date date) {
-			this.grade = grade;
-			this.date = date;
-			this.type = type;
-		}
-		
-		
-		
-		public int getGrade() {
-			return grade;
-		}
-
-
-		public void setGrade(int grade) {
-			this.grade = grade;
-		}
-
-
-		public Date getDate() {
-			return date;
-		}
-
-
-		public void setDate(Date date) {
-			this.date = date;
-		}
-
-
-		public GradeType getType() {
-			return type;
-		}
-
-		public void setType(GradeType type) {
-			this.type = type;
-		}
-		
-		public static Grade getRandom() {
-			int gr = rand.nextInt((maxGrade - minGrade) + 1) + minGrade;
-			GradeType t = GradeType.values()[rand.nextInt(4)];
-			return new Grade(gr, t ,new Date());
-		}
-
-
-
-		public enum GradeType{
-			SPRAWDZIAN, KRATKÓWKA, ODPOWIEDZ, ZADANIE
-		}
+	public void removeGrade(Grade g) {
+		this.grades.remove(g);
+		g.setStudent(this);
 	}
 	
-	public class StudentComment{
-		
-		private String description;
-		private String from;
-		
-		public String getDescription() {
-			return description;
-		}
-		public void setDescription(String description) {
-			this.description = description;
-		}
-		public String getFrom() {
-			return from;
-		}
-		public void setFrom(String from) {
-			this.from = from;
-		}
-		
-		
-	}
-	
-	
-	
 
+	@Override
+	 public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (!(o instanceof Student )) return false;
+	        return getId() != null && getId().equals(((Student) o).getId());
+	    }
+	 
+	 @Override
+	 public int hashCode() {
+	        return 31;
+	  }
+	
 }

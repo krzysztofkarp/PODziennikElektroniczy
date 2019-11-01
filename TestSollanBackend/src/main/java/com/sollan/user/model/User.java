@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import com.sollan.util.Crypter;
+
 @MappedSuperclass
 public class User {
 	
@@ -43,7 +45,7 @@ public class User {
 		this.secondName = surname;
 		this.type = type;
 		this.login = login;
-		this.password = password;
+		this.password = Crypter.getInstance().encrypt(password);
 		this.email = email;
 	}
 	
@@ -53,7 +55,7 @@ public class User {
 		this.secondName = surname;
 		this.type = type;
 		this.login = login;
-		this.password = password;
+		this.password = Crypter.getInstance().encrypt(password);
 		this.email = email;
 	}
 	
