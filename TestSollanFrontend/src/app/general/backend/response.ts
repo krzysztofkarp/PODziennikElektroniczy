@@ -1,5 +1,5 @@
-export class Response {
+export class Response<T> {
     ok: boolean;
-    item?: any;
-    items?: any;
+    item?: T;
+    items?: T[];
 }

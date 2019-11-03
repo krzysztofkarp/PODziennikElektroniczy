@@ -1,4 +1,7 @@
 <mat-grid-list cols="1" rowHeight="150px">
+    <mat-grid-tile class="sms"rowspan="2">
+            STUDENT MANAGEMENT SYSTEM
+    </mat-grid-tile>
     <mat-grid-tile rowspan="2">
         <form [formGroup]="form"> 
             <div class="form-group">
@@ -8,8 +11,10 @@
                 <label>Password</label>
                 <input formControlName="password" type="password" class="form-control">
             </div>
-            <div style="margin: 0 auto;"><button type="button" (click)="onLogin(form.value)" color="accent" mat-raised-button matDialogClose="yes">Login</button></div>
+            <div style="margin: 0 auto;">
+                <button type="submit" (click)="onLogin(form.value)" 
+                (keyup.enter)="onLogin(form.value)" mat-raised-button>Login</button></div>
         </form>
-        </mat-grid-tile>
+    </mat-grid-tile>
 </mat-grid-list>
 

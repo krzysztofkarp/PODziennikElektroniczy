@@ -8,6 +8,7 @@ import com.sollan.user.model.User;
 import com.sollan.user.model.User.UserType;
 import com.sollan.util.Config;
 import com.sollan.util.Crypter;
+import com.sollan.util.Response;
 import com.sollan.util.Utils;
 
 
@@ -20,10 +21,18 @@ public class AuthServiceImpl implements AuthService {
 	@Autowired
 	private Collection<UserService<?>> services;
 
-		
-	
 	@Override
-	public User login(String login, String password) {
+	public Response<User> login(String login, String password){
+		
+		try {
+			return new Response<User>(authenticate(login, password));
+		} catch (Exception e) {
+			return new Response<User>(e.getMessage());
+		}
+	}
+	
+
+	public User authenticate(String login, String password) {
 		
 		Utils.throwIfCondition(Utils.nullOrEmpty(login) || Utils.nullOrEmpty(password), ()-> new RuntimeException("Login and password must be provided"));
 		
@@ -54,7 +63,9 @@ public class AuthServiceImpl implements AuthService {
 	
 	public User loginAdmin(String login, String password) {
 		Utils.throwIfCondition(!config.getAdminLogin().equals(login) || !config.getAdminPassword().equals(password),() -> new RuntimeException("Login or password invalid"));
-		User admin = new User(config.getAdminLogin(), config.getAdminLogin(), UserType.ADMIN, config.getAdminLogin(), null, null);
+		User admin = new User(config.getAdminLogin(), null, UserType.ADMIN, config.getAdminLogin(), null, null);
+		admin.setId((long)99999);
+		admin.setAdmin(true);
 		return admin;
 	}
 

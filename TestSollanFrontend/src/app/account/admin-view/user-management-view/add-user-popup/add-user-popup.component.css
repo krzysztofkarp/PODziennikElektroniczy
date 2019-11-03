@@ -1,0 +1,70 @@
+.add-user{
+   width: 600px;
+}
+
+.add-user .header{
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid grey;
+}
+
+.add-user .table-container{
+    width: 100%;
+    padding: 20px;
+}
+
+.add-user .table-container table{
+    width: 100%;
+}
+
+.add-user .table-container table td{
+    padding: 10px;
+    width: 50%;
+}
+
+.add-user .table-container table td.title{
+    width: 30%;
+}
+
+
+.add-user .table-container table td.value{
+    width: 70%;
+}
+
+.add-user .table-container table td input{
+   min-width: 300px;
+   display: block;
+   margin: 0 auto;
+   background: rgb(88, 192, 240);
+   border: none;
+   padding: 5px;
+   color: white;
+}
+
+.add-user .action{
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.add-user .action button{
+    display: inline-block;
+}
+
+.add-user .action button.add{
+    background-color: #03A9F4;
+    color: white;
+}
+
+.add-user .action button.cancel{
+    background-color: white;
+}
+
+.add-user .table-container table td.value ::ng-deep .mat-select{
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+    background: rgb(88, 192, 240);
+    padding: 5px;
+    color: white;
+}

@@ -1,10 +1,11 @@
 package com.sollan.auth;
 
 import com.sollan.user.model.User;
+import com.sollan.util.Response;
 
 public interface AuthService {
 	
 	
-	User login(String login, String password);
+	Response<User> login(String login, String password);
 
 }

@@ -30,5 +30,32 @@ export class Consts {
         static readonly ALL = "/student/all";
     }
 
+    static Messages = class {
+        static readonly WRONG_CREDENTIALS = "Wrong credentials";
+        static readonly NOT_LOGGED_IN = "You are currently not logged in, please log in!"
+        static readonly NEW_USER = "New user";
+    }
+
+    static StorageKey = class {
+        static readonly USER = "user";
+    }
+
+    static FormFields = class {
+        static readonly LOGIN = "login";
+        static readonly PASSWORD = "password";
+    }
+
+    static RouterPaths = class {
+        static readonly ACCOUNT = "/account";
+        static readonly LOGIN = "/login";
+    }
+
+    static RequestParams = class {
+        static readonly STUDENT = "student";
+        static readonly ID = "id";
+    }
+
+
+
     // Consts.BackendMapping.INDEX+
 }

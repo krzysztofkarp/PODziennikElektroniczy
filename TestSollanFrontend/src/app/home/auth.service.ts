@@ -1,10 +1,9 @@
-import { BackendMappings } from './../general/utils/backendMappings';
-import { Consts } from './../general/utils/Consts';
-import { BackendService } from './../general/backend/backend.service';
+import { BackendMappings } from '../general/utils/backendMappings';
+import { BackendService } from '../general/backend/backend.service';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class HomeService {
+export class AuthService {
 
   constructor(private backendService: BackendService) { }
 

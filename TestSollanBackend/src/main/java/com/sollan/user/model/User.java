@@ -27,7 +27,7 @@ public class User {
 	private UserType type;
 	
 	@Transient
-	private boolean isAdmin;
+	private boolean admin = false;
 	
 	
 	public User() {
@@ -117,6 +117,18 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.admin = isAdmin;
+	}
+
+
 
 	public enum UserType {
 		TEACHER, STUDENT, PARENT, ADMIN

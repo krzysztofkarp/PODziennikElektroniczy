@@ -22,8 +22,8 @@ export class StudentViewComponent implements OnInit {
   constructor(private noteService: NoteService) { }
 
   ngOnInit() {
-    this.keys = Object.keys(this.user.grades);
-    this.noteService.forStudent(this.user.id).subscribe(resp => this.notes = resp.items);
+    //this.keys = Object.keys(this.user.grades);
+    //this.noteService.forStudent(this.user.id).subscribe(resp => this.notes = resp.items);
   }
 
 }

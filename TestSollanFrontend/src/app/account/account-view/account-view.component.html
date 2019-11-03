@@ -1,8 +1,11 @@
 <div class="account-view">
   <mat-toolbar color="primary">
-    <span>{{currentUser.type}} :</span>
-    <span>{{currentUser.firstName }}</span>
-    <span>{{currentUser.secondName}}</span>
+   <div class="info" *ngIf="!currentUser.admin">
+      <span>{{currentUser.type}} :</span>
+      <span>{{currentUser.firstName }}</span>
+      <span>{{currentUser.secondName}}</span>
+   </div>
+    <span *ngIf="currentUser.admin" style="color: white">ADMINISTRATOR</span>
     <span class="example-spacer"></span>
     <span><button (click)="logout()">Logout</button></span>
 </mat-toolbar>
@@ -10,5 +13,6 @@
   <student-view *ngIf="viewType == UserType.STUDENT" [user]="currentUser"></student-view>
   <teacher-view *ngIf="viewType == UserType.TEACHER" [user]="currentUser"></teacher-view>
   <parent-view *ngIf="viewType == UserType.PARENT" [user]="currentUser"></parent-view>
+  <admin-view *ngIf="viewType == UserType.ADMIN" [user]="currentUser"></admin-view>
 </div>
 </div>

@@ -1,32 +1,42 @@
-import { Consts } from '../utils/Consts';
 import { Observable } from 'rxjs/Rx';
-import { Http, Headers } from '@angular/core/http;
 import { Injectable } from '@angular/core';
 import { Response } from './response';
 import { BackendMappings } from '../utils/backendMappings';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class BackendService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  get(uri: string, params?: {}): Observable<Response> {
-    return this.http
-      .get(this.getUri(uri), this.createParamsObject(params))
-      .map(resp => resp.json());
+
+  get(uri: string, params?: {}): Observable<Response<any>> {
+    return this.getForResponse(uri, params);
   }
 
-  post(uri: string, body?: any, params?: {}): Observable<Response> {
-    return this.http
-      .post(this.getUri(uri), body, this.createParamsObject(params))
-      .map(resp => resp.json());
+  post(uri: string, body?: any, params?: {}): Observable<Response<any>> {
+    return this.postForResponse(uri, body, params);
   }
 
-  private createParamsObject(params?: {}) {
-    let headers = new Headers();
+  put(uri: string, body?: any, params?: {}): Observable<Response<any>> {
+    return this.putForResponse(uri, body, params).map(resp => resp.json());
+  }
+  
+  putForResponse(uri: string, body?: any, params?: {}): Observable<any> {
+    return this.http.put(this.getUri(uri), body, this.createParamsObject(params));
+  }
 
+  getForResponse(uri: string, params?: {}): Observable<any> {
+    return this.http.get(this.getUri(uri), this.createParamsObject(params));
+  }
 
-    return { params: params, headers: headers };
+  postForResponse(uri: string, body?: any, params?: {}): Observable<any> {
+    return this.http.post(this.getUri(uri), body, this.createParamsObject(params));
+  }
+
+  private createParamsObject(params?: any) {
+    let headers = new HttpHeaders();
+    return { headers: headers, params: params};
   }
   private getUri(uri: string) {
     return BackendMappings.INDEX+uri;

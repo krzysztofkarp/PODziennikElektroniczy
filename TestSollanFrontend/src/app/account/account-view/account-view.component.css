@@ -6,10 +6,16 @@
       margin: 5px;
 }
 
+.account-view .info{
+  color: white;
+}
+
 .account-view span button{
     border: none;
-    background-color: orange;
+    background-color: white;
     color: black;
     display: block;
     cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
 }

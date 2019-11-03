@@ -2,12 +2,14 @@ package com.sollan.students.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sollan.students.model.Student;
 import com.sollan.students.repo.StudentRepository;
+import com.sollan.util.Crypter;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -24,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
 	
 	@Override
 	public void save(Student s) {
+		s.setPassword(Crypter.getInstance().decrypt(s.getPassword()));
 		repo.save(s);
 	}
 	
@@ -46,6 +49,13 @@ public class StudentServiceImpl implements StudentService {
 	public Student findByUsername(String username) {
 		return Optional.ofNullable(repo.findByUsername(username)).orElse(null);
 	}
+
+	@Override
+	public Set<Student> byParentId(Long id) {
+		return repo.byParentId(id);
+	}
+	
+	
 	
 	
 

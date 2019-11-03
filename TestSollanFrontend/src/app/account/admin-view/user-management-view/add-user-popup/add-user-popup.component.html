@@ -1,0 +1,43 @@
+<div class="add-user">
+  <div class="header">
+      <p>{{title}}</p>
+  </div>
+ <div class="table-container">
+    <table>
+        <tr>
+          <td class="title">First name</td>
+          <td class="value"><input type="text" [(ngModel)]="user.firstName"></td>
+      </tr>
+        <tr> 
+          <td class="title">Second name</td>
+          <td class="value"><input type="text" [(ngModel)]="user.secondName"></td>
+        </tr>
+        <tr> 
+          <td class="title">Login</td>
+          <td class="value"><input type="text" [(ngModel)]="user.login"></td>
+        </tr>
+        <tr> 
+          <td class="title">Password</td>
+          <td class="value"><input type="password" [(ngModel)]="user.password"></td>
+        </tr>
+        <tr> 
+          <td class="title">E-mail</td>
+          <td class="value"><input type="text" [(ngModel)]="user.email"></td>
+        </tr>
+        <tr> 
+          <td class="title">User type</td>
+          <td class="value">
+                  <mat-select  [(ngModel)]="user.type">
+                      <mat-option *ngFor="let type of types" [value]="type">
+                        {{type}}
+                      </mat-option>
+                    </mat-select>
+            </td>
+        </tr>
+      </table>
+      <div class="action">
+          <button class="cancel" type="submit" (click)="onCancel()" mat-raised-button>Cancel</button>
+          <button class="add" type="submit" (click)="onAdd()" (keyup.enter)="onAdd()" mat-raised-button>Add</button>
+      </div>
+ </div>
+</div>

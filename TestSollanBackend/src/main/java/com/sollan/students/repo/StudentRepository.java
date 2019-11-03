@@ -2,6 +2,8 @@ package com.sollan.students.repo;
 
 
 
+import java.util.Set;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,4 +17,6 @@ public interface StudentRepository  extends CrudRepository<Student, Long>{
 	@Query("from Student where login=:username")
 	public Student findByUsername(@Param("username") String username);
 	
+	@Query("from Student s join s.parents p where p.id = :parentId")
+	public Set<Student> byParentId(@Param("parentId") Long parentId);
 }

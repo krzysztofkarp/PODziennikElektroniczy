@@ -3,21 +3,17 @@ import { StudentClassService } from './studentClass/class-service';
 import { AuthGuard } from './authentication/auth.guard';
 import { AccountService } from './account/account-view/account-service';
 import { StudentService } from './students/student.service';
-import { HomeService } from './home/home.service';
+import { AuthService } from './home/auth.service';
 import { MdComponentsModule } from './../md-components.module';
 import { DatePipe } from '@angular/common';
 import { BackendService } from './general/backend/backend.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
-
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +29,11 @@ import { dialogMock } from './user/mock';
 import { NotesComponent } from './account/teacher-view/notes/notes.component';
 import { NotePopupComponent } from './account/teacher-view/notes/note-popup/note-popup.component';
 import { ParentViewComponent } from './account/parent-view/parent-view.component';
+import { AdminViewComponent } from './account/admin-view/admin-view.component';
+import { NotificationComponent } from './notification/notification/notification.component';
+import { NotificationService } from './notification/notification.service';
+import { UserManagementViewComponent } from './account/admin-view/user-management-view/user-management-view.component';
+import { AddUserPopupComponent } from './account/admin-view/user-management-view/add-user-popup/add-user-popup.component';
 
 
 @NgModule({
@@ -49,7 +50,11 @@ import { ParentViewComponent } from './account/parent-view/parent-view.component
     NewGradePopupComponent,
     NotesComponent,
     NotePopupComponent,
-    ParentViewComponent
+    ParentViewComponent,
+    AdminViewComponent,
+    NotificationComponent,
+    UserManagementViewComponent,
+    AddUserPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,7 @@ import { ParentViewComponent } from './account/parent-view/parent-view.component
     MdComponentsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path      : '',
@@ -71,7 +76,7 @@ import { ParentViewComponent } from './account/parent-view/parent-view.component
       ])
   ],
   providers: [
-    HomeService,
+    AuthService,
     BackendService,
     FormBuilder,
     AuthGuard,
@@ -80,11 +85,11 @@ import { ParentViewComponent } from './account/parent-view/parent-view.component
     StudentClassService,
     AccountService,
     NoteService,
-    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true },
+    NotificationService,
     {provide: MatDialogRef, useValue: dialogMock }
   ],
     
   bootstrap: [AppComponent],
-  entryComponents: [StudentPopupComponent, NewGradePopupComponent, NotePopupComponent]
+  entryComponents: [StudentPopupComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent]
 })
 export class AppModule { }

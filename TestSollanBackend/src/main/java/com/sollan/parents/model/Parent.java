@@ -3,10 +3,12 @@ package com.sollan.parents.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import com.sollan.students.model.Student;
 import com.sollan.user.model.User;
@@ -18,10 +20,11 @@ public class Parent extends User {
 	
 	
 	
-	@OneToMany(
-			mappedBy = "parent",
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(
+			name = "parent_student", 
+			joinColumns = @JoinColumn(name = "parent_id"), 
+			inverseJoinColumns = @JoinColumn(name = "student_id"))
 	private Set<Student> children = new HashSet<>();
 	
 	
@@ -35,12 +38,12 @@ public class Parent extends User {
 	
 	public void addChild(Student s) {
 		children.add(s);
-		s.setParent(this);
+		s.getParent().add(this);
 	}
 	
 	public void removeChild(Student s) {
 		children.remove(s);
-		s.setParent(this);
+		s.getParent().remove(this);
 	}
 
 	

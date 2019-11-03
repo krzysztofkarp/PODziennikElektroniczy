@@ -21,12 +21,12 @@ export class StudentPopupComponent implements OnInit {
 
   ngOnInit() {
     this.student = this.data.student;
-    this.grades = this.student.grades[this.data.subject.type];
+    //this.grades = this.student.grades[this.data.subject.type];
     this.teacherView = this.data.teacherView;
   }
 
   save(){
-    this.student.grades[this.data.subject.type] = this.grades;
+    //this.student.grades[this.data.subject.type] = this.grades;
     this.dialogRef.close(this.student)
   }
 

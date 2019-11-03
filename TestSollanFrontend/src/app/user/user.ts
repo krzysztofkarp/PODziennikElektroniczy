@@ -7,6 +7,7 @@ export class User {
     login: string;
     password: string; 
     email: string;
-	type: UserType;
+    type: UserType;
+    admin: boolean;
 
 }

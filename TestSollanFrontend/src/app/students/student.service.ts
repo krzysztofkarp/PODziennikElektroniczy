@@ -4,6 +4,7 @@ import { BackendService } from './../general/backend/backend.service';
 import { Injectable } from "@angular/core";
 import { Consts } from '../general/utils/Consts';
 import { Student } from './student';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class StudentService {
@@ -19,21 +20,19 @@ export class StudentService {
     }
 
     update(student: Student){
-        let params = {};
-        params["student"] = JSON.stringify(student);
-        return this.backendService.get(BackendMappings.Students.UPDATE, params);
+        return this.backendService.post(BackendMappings.Students.UPDATE, student);
     }
 
     byId(id: string){
-        let params = {};
-        params["id"] = id;
+        let params = new HttpParams();
+        params[Consts.RequestParams.ID] = id;
         return this.backendService.get(BackendMappings.Students.BY_ID, params);
 
     }
 
     byIds(ids: string[]){
-        let params = {};
-        params["ids"] = ids;
+        let params = new HttpParams();
+        //params.set()
         return this.backendService.get(BackendMappings.Students.BY_IDS, params);
 
     }

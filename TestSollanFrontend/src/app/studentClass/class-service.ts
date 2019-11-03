@@ -1,6 +1,7 @@
 import { BackendMappings } from './../general/utils/backendMappings';
 import { BackendService } from './../general/backend/backend.service';
 import { Injectable } from "@angular/core";
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class StudentClassService{
@@ -13,7 +14,7 @@ export class StudentClassService{
 
 
     getByIds(ids: string[]){
-        let params = {};
+        let params = new HttpParams();
         params["ids"] = ids;
         return this.backendService.get(BackendMappings.StudentClass.BY_IDS, params);
     }

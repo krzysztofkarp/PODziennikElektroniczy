@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,10 +26,8 @@ import com.sollan.user.model.User;
 public class Student extends User{
 
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "parent_id")
-	@JsonIgnore
-	private Parent parent;
+	@ManyToMany(mappedBy = "children")
+	private Set<Parent> parents;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "studentClass_classId")
@@ -57,12 +56,12 @@ public class Student extends User{
 		super(id, firstName, secondName, UserType.STUDENT, login, password, email);
 	}
 
-	public Parent getParent() {
-		return parent;
+	public Set<Parent> getParent() {
+		return parents;
 	}
 
-	public void setParent(Parent parent) {
-		this.parent = parent;
+	public void setParent(Set<Parent> parents) {
+		this.parents = parents;
 	}
 	
 	public StudentClass getStudentClass() {

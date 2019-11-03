@@ -1,0 +1,20 @@
+.notification{
+    color: white;
+    text-align: center;
+}
+
+.notification p{
+    padding: 20px;
+}
+
+.notification.error{
+    background-color: rgb(224, 75, 75);
+}
+
+.notification.warning{
+    background-color: rgb(238, 174, 54);
+}
+
+.notification.success{
+    background-color: rgb(63, 170, 63);
+}
