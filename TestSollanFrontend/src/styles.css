@@ -10,3 +10,15 @@ body {
     padding: 0;
     overflow: inherit;
 }
+
+button.blue{
+    border: none;
+    padding: 10px;
+    color: white;
+    background: #03A9F4;
+    border-radius: 5px;
+}
+
+button.blue:hover{
+    opacity: 0.7;
+}

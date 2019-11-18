@@ -11,5 +11,8 @@ public interface ParentRepository extends CrudRepository<Parent, Long>{
 	
 	@Query("from Parent where login=:username")
 	public Parent findByUsername(@Param("username") String username);
+	
+	@Query("from Parent p join p.children c where c.id = :studentId")
+	public Parent findByStudentId(@Param("studentId") Long studentId);
 
 }

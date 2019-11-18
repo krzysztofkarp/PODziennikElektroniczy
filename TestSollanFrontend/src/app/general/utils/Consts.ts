@@ -34,6 +34,8 @@ export class Consts {
         static readonly WRONG_CREDENTIALS = "Wrong credentials";
         static readonly NOT_LOGGED_IN = "You are currently not logged in, please log in!"
         static readonly NEW_USER = "New user";
+        static readonly USER_SAVED = "User saved";
+        static readonly USER_SAVE_ERROR = "Cannot save user! Error occured"
     }
 
     static StorageKey = class {

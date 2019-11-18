@@ -1,14 +1,26 @@
  export class BackendMappings {
     static readonly INDEX = '/api';
    
-    static Students = class {
+    static Student = class {
         static readonly ALL = "/student/all";
-        static readonly UPDATE = "/student/update";
+        static readonly SAVE_OR_UPDATE = "/student/saveOrUpdate";
         static readonly BY_ID = "/student/byId";
         static readonly BY_IDS = "/student/byIds";
     }
 
+    static Parent = class {
+        static readonly ALL = "/parent/all";
+        static readonly SAVE_OR_UPDATE = "/parent/saveOrUpdate";
+        static readonly BY_ID = "/parent/byId";
+        static readonly BY_IDS = "/parent/byIds";
+    }
 
+    static Teacher = class {
+        static readonly ALL = "/teacher/all";
+        static readonly SAVE_OR_UPDATE = "/teacher/saveOrUpdate";
+        static readonly BY_ID = "/teacher/byId";
+        static readonly BY_IDS = "/teacher/byIds";
+    }
 
     static Login = class {
         static readonly LOGIN = "/login"

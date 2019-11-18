@@ -19,4 +19,7 @@ public interface StudentRepository  extends CrudRepository<Student, Long>{
 	
 	@Query("from Student s join s.parents p where p.id = :parentId")
 	public Set<Student> byParentId(@Param("parentId") Long parentId);
+	
+	@Query("from Student s where s.studentClass.classId=:classId")
+	public Student byClassId(@Param("classId") Long classId);
 }

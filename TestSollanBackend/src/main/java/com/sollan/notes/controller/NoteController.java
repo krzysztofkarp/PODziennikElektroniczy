@@ -22,22 +22,8 @@ public class NoteController {
 	
 	
 	
-	@RequestMapping(value = BackendMappings.Notes.BY_STUDENT_ID, method = RequestMethod.GET)
-	public Response<Note> byStudentId(@RequestParam("id") String id) {
-		Response<Note> response = new Response<Note>();
-		response.setItems(service.byStudentId(id));
-		return response;
-	}
-	
-	
-	@RequestMapping(value = BackendMappings.Notes.BY_TEACHER_ID, method = RequestMethod.GET)
-	public Response<Note> byTeacherId(@RequestParam("id") String id) {
-		Response<Note> response = new Response<Note>();
-		response.setItems(service.byTeacherId(id));
-		return response;
-	}
-	
-	@RequestMapping(value = BackendMappings.Notes.ADD, method = RequestMethod.POST)
+		
+	@RequestMapping(value = BackendMappings.Note.ADD, method = RequestMethod.POST)
 	public Response<Note> addNote(@RequestParam("note") String note) {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Response<Note> response = new Response<Note>();

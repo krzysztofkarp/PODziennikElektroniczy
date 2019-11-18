@@ -4,6 +4,11 @@ import { AddUserPopupComponent } from './add-user-popup/add-user-popup.component
 import { StudentService } from '../../../students/student.service';
 import { User } from '../../../user/user';
 import { Student } from '../../../students/student';
+import { UserType } from '../../../user/userType';
+import { UserService } from '../../../user/user.service';
+import { BackendMappings } from '../../../general/utils/backendMappings';
+import { NotificationService } from '../../../notification/notification.service';
+import { Consts } from '../../../general/utils/Consts';
 
 @Component({
   selector: 'user-management-view',
@@ -13,11 +18,14 @@ import { Student } from '../../../students/student';
 export class UserManagementViewComponent implements OnInit {
 
   students: Student[];
+  type2Uri: any;
 
-  constructor(private dialog: MatDialog, private sService: StudentService) { }
+  constructor(private dialog: MatDialog,
+    private userService: UserService,
+    private nService: NotificationService) { }
 
   ngOnInit() {
-    this.sService.getAll().subscribe(resp => console.log(resp))
+    this.initMap();
   }
 
   onAddUser(){
@@ -28,8 +36,21 @@ export class UserManagementViewComponent implements OnInit {
 
   saveUser(user: User){
     if(user){
-      this.sService.update(user).subscribe(resp => console.log(resp));
+      this.userService.saveUser(user, this.type2Uri[user.type]).subscribe(resp =>{
+        if(resp.ok){
+          this.nService.showError(Consts.Messages.USER_SAVED)
+        } else {
+          this.nService.showError(Consts.Messages.USER_SAVE_ERROR);
+        }
+      });
     }
+  }
+
+  initMap(){
+    this.type2Uri = {};
+    this.type2Uri[UserType.STUDENT] = BackendMappings.Student.SAVE_OR_UPDATE;
+    this.type2Uri[UserType.TEACHER] = BackendMappings.Teacher.SAVE_OR_UPDATE;
+    this.type2Uri[UserType.PARENT] = BackendMappings.Parent.SAVE_OR_UPDATE;
   }
 
 }

@@ -1,4 +1,3 @@
-import { Grade } from './grade';
 import { BackendMappings } from './../general/utils/backendMappings';
 import { BackendService } from './../general/backend/backend.service';
 import { Injectable } from "@angular/core";
@@ -20,20 +19,20 @@ export class StudentService {
     }
 
     update(student: Student){
-        return this.backendService.post(BackendMappings.Students.UPDATE, student);
+        return this.backendService.post(BackendMappings.Student.SAVE_OR_UPDATE, student);
     }
 
     byId(id: string){
         let params = new HttpParams();
         params[Consts.RequestParams.ID] = id;
-        return this.backendService.get(BackendMappings.Students.BY_ID, params);
+        return this.backendService.get(BackendMappings.Student.BY_ID, params);
 
     }
 
     byIds(ids: string[]){
         let params = new HttpParams();
         //params.set()
-        return this.backendService.get(BackendMappings.Students.BY_IDS, params);
+        return this.backendService.get(BackendMappings.Student.BY_IDS, params);
 
     }
 

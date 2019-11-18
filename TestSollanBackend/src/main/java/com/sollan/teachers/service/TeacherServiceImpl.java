@@ -1,5 +1,6 @@
 package com.sollan.teachers.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,8 +20,10 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	@Override
 	public List<Teacher> getAll() {
-		 return StreamSupport.stream(repo.findAll().spliterator(), false)
+		List<Teacher> ts= StreamSupport.stream(repo.findAll().spliterator(), false)
 				    .collect(Collectors.toList());
+		ts.forEach(t -> t.setSubjects(new HashSet<>()));
+		return ts;
 	}
 
 	@Override

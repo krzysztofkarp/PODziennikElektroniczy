@@ -34,6 +34,12 @@ import { NotificationComponent } from './notification/notification/notification.
 import { NotificationService } from './notification/notification.service';
 import { UserManagementViewComponent } from './account/admin-view/user-management-view/user-management-view.component';
 import { AddUserPopupComponent } from './account/admin-view/user-management-view/add-user-popup/add-user-popup.component';
+import { ParentService } from './parents/parent.service';
+import { TeacherService } from './teachers/teacher.service';
+import { UserService } from './user/user.service';
+import { UserManagementStudentViewComponent } from './account/admin-view/user-management-view/user-management-student-view/user-management-student-view.component';
+import { UserManagementTeacherViewComponent } from './account/admin-view/user-management-view/user-management-teacher-view/user-management-teacher-view.component';
+import { UserManagementParentViewComponent } from './account/admin-view/user-management-view/user-management-parent-view/user-management-parent-view.component';
 
 
 @NgModule({
@@ -54,7 +60,10 @@ import { AddUserPopupComponent } from './account/admin-view/user-management-view
     AdminViewComponent,
     NotificationComponent,
     UserManagementViewComponent,
-    AddUserPopupComponent
+    AddUserPopupComponent,
+    UserManagementStudentViewComponent,
+    UserManagementTeacherViewComponent,
+    UserManagementParentViewComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +95,9 @@ import { AddUserPopupComponent } from './account/admin-view/user-management-view
     AccountService,
     NoteService,
     NotificationService,
+    ParentService,
+    TeacherService,
+    UserService,
     {provide: MatDialogRef, useValue: dialogMock }
   ],
     

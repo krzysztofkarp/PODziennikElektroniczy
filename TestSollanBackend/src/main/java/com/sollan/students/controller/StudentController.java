@@ -23,7 +23,7 @@ public class StudentController {
 	@Autowired
 	private StudentService service;
 	
-	@RequestMapping(value = BackendMappings.Students.ALL, method = RequestMethod.GET)
+	@RequestMapping(value = BackendMappings.Student.ALL, method = RequestMethod.GET)
 	public Response<Student> getAll() {
 		Response<Student> response = new Response<Student>();
 		response.setItems(service.getAll());
@@ -32,7 +32,7 @@ public class StudentController {
 	
 
 	
-	@RequestMapping(value = BackendMappings.Students.BY_ID, method = RequestMethod.GET)
+	@RequestMapping(value = BackendMappings.Student.BY_ID, method = RequestMethod.GET)
 	public Response<Student> byId(@RequestParam("id") Long id) {
 		Response<Student> response = new Response<Student>();
 		response.setItem(service.getById(id));
@@ -40,7 +40,7 @@ public class StudentController {
 	}
 	
 	
-	@RequestMapping(value = BackendMappings.Students.UPDATE, method = RequestMethod.POST)
+	@RequestMapping(value = BackendMappings.Student.SAVE_OR_UPDATE, method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody void update(@RequestBody Student student) throws Exception {
 		service.save(student);
