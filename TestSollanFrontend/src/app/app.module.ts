@@ -40,6 +40,8 @@ import { UserService } from './user/user.service';
 import { UserManagementStudentViewComponent } from './account/admin-view/user-management-view/user-management-student-view/user-management-student-view.component';
 import { UserManagementTeacherViewComponent } from './account/admin-view/user-management-view/user-management-teacher-view/user-management-teacher-view.component';
 import { UserManagementParentViewComponent } from './account/admin-view/user-management-view/user-management-parent-view/user-management-parent-view.component';
+import { UserRowComponent } from './account/admin-view/user-management-view/user-row/user-row.component';
+import { GenericUserContainerComponent } from './account/admin-view/user-management-view/generic-user-container/generic-user-container.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { UserManagementParentViewComponent } from './account/admin-view/user-man
     AddUserPopupComponent,
     UserManagementStudentViewComponent,
     UserManagementTeacherViewComponent,
-    UserManagementParentViewComponent
+    UserManagementParentViewComponent,
+    UserRowComponent,
+    GenericUserContainerComponent
   ],
   imports: [
     BrowserModule,

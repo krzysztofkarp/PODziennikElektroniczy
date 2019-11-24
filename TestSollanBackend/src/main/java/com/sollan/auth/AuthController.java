@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sollan.user.model.User;
 import com.sollan.util.BackendMappings;
-import com.sollan.util.Response;
+import com.sollan.util.response.ItemResponse;
+import com.sollan.util.response.ResponseUtil;
 
 @RestController
 public class AuthController {
@@ -18,8 +19,8 @@ public class AuthController {
 	private AuthService authService;
 	
 	@RequestMapping(value = BackendMappings.Login.LOGIN, method = RequestMethod.GET)
-	public Response<User> login(@RequestParam String login, @RequestParam String password){
-		return authService.login(login, password);
+	public ItemResponse<User> login(@RequestParam String login, @RequestParam String password){
+		return ResponseUtil.runInItemTemplate(() -> authService.login(login, password));
 	}
 
 }

@@ -11,11 +11,6 @@
 }
 
 .account-view span button{
-    border: none;
-    background-color: white;
-    color: black;
-    display: block;
-    cursor: pointer;
     font-size: 12px;
-    border-radius: 5px;
+    padding: 5px;
 }

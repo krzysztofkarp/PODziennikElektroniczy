@@ -36,4 +36,10 @@ export class StudentService {
 
     }
 
+    remove(id: string){
+        let params = {};
+        params[Consts.RequestParams.ID] = id;
+        return this.backendService.get(BackendMappings.Student.REMOVE, params);
+    }
+
 }

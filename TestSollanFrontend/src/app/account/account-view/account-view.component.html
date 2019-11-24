@@ -7,7 +7,7 @@
    </div>
     <span *ngIf="currentUser.admin" style="color: white">ADMINISTRATOR</span>
     <span class="example-spacer"></span>
-    <span><button (click)="logout()">Logout</button></span>
+    <span><button class="orange" (click)="logout()">Logout</button></span>
 </mat-toolbar>
 <div class="content">
   <student-view *ngIf="viewType == UserType.STUDENT" [user]="currentUser"></student-view>

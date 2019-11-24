@@ -1,0 +1,33 @@
+<div class="user-row" *ngIf="user">
+  <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          {{ headerLabel }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  
+    <mat-form-field>
+      <input placeholder="First name" matInput [(ngModel)]="user.firstName">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input placeholder="Second name" matInput [(ngModel)]="user.secondName">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input placeholder="E-mail" matInput [(ngModel)]="user.email">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input placeholder="Login" matInput [(ngModel)]="user.login">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input placeholder="Password" matInput [(ngModel)]="user.password">
+    </mat-form-field>
+  
+    <button class="blue" (click)="onSave()">Save</button>
+    <button class="orange" (click)="onDelete()">Delete</button>
+  
+  </mat-expansion-panel>
+</div>

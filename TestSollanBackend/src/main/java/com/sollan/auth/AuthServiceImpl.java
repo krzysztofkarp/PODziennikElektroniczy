@@ -1,14 +1,15 @@
 package com.sollan.auth;
 
 import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sollan.user.UserService;
 import com.sollan.user.model.User;
 import com.sollan.user.model.User.UserType;
 import com.sollan.util.Config;
 import com.sollan.util.Crypter;
-import com.sollan.util.Response;
 import com.sollan.util.Utils;
 
 
@@ -22,13 +23,8 @@ public class AuthServiceImpl implements AuthService {
 	private Collection<UserService<?>> services;
 
 	@Override
-	public Response<User> login(String login, String password){
-		
-		try {
-			return new Response<User>(authenticate(login, password));
-		} catch (Exception e) {
-			return new Response<User>(e.getMessage());
-		}
+	public User login(String login, String password){
+		return authenticate(login, password);
 	}
 	
 

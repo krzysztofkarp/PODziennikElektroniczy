@@ -1,5 +1,7 @@
 package com.sollan.user.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +30,8 @@ public class User {
 	
 	@Transient
 	private boolean admin = false;
+	
+	private Date birthdate;
 	
 	
 	public User() {
@@ -127,6 +131,16 @@ public class User {
 	public void setAdmin(boolean isAdmin) {
 		this.admin = isAdmin;
 	}
+	
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+
 
 
 

@@ -1,17 +1,17 @@
 <div class="user-management">
     <div class="actions">
-        <button class="blue" (click)="onAddUser()">ADD USER</button>
+        <button class="blue" (click)="onAddUser()">Add user</button>
     </div>
     <div class="tabs">
-        <mat-tab-group>
-            <mat-tab  label="Students">
-                <user-management-student-view></user-management-student-view>
+        <mat-tab-group (selectedTabChange)="tabChange($event)">
+            <mat-tab  label="Students" >
+                <user-management-student-view *ngIf="tabIndex == 0"></user-management-student-view>
             </mat-tab>
             <mat-tab  label="Teachers">
-                <user-management-teacher-view></user-management-teacher-view>
+                <user-management-teacher-view *ngIf="tabIndex == 1"></user-management-teacher-view>
             </mat-tab>
             <mat-tab  label="Parents">
-                <user-management-parent-view></user-management-parent-view>
+                <user-management-parent-view *ngIf="tabIndex == 2"></user-management-parent-view>
             </mat-tab>
         </mat-tab-group>
     </div>

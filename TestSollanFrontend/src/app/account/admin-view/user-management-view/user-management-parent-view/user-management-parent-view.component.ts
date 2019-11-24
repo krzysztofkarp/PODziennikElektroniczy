@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentService } from '../../../../parents/parent.service';
 import { Parent } from '../../../../parents/parent';
+import { User } from '../../../../user/user';
+import { NotificationService } from '../../../../notification/notification.service';
+import { Consts } from '../../../../general/utils/Consts';
 
 @Component({
   selector: 'user-management-parent-view',
@@ -12,7 +15,7 @@ export class UserManagementParentViewComponent implements OnInit {
 
   parents: Parent[];
 
-  constructor(private pService: ParentService) { }
+  constructor(private pService: ParentService, private nService: NotificationService) { }
 
   ngOnInit() {
     this.loadParents();
@@ -20,6 +23,20 @@ export class UserManagementParentViewComponent implements OnInit {
 
   loadParents(){
     this.pService.getAll().subscribe(resp => this.parents = resp.items);
+  }
+
+  parentDeleted(user: User){
+    this.pService.remove(user.id).subscribe(resp => console.log(resp));
+  }
+
+  parentSaved(p){
+    this.pService.remove(p.id).subscribe(resp => {
+      if(resp.ok){
+        this.nService.showSuccess(Consts.Messages.PARENT_SAVED)
+      } else {
+        this.nService.showError(Consts.Messages.USER_SAVE_ERROR);
+      }
+    })
   }
 
 }

@@ -18,6 +18,7 @@ public class BackendMappings {
 		public static final String BY_IDS = API +"/student/byIds";
 		public static final String PARENTS = API +"/student/parents";
 		public static final String SAVE_OR_UPDATE = API +"/student/saveOrUpdate";
+		public static final String REMOVE = API +"/student/remove";
 	}
 	
 	public class Teacher{
@@ -30,6 +31,7 @@ public class BackendMappings {
 		public static final String ALL = API + "/parent/all";
 		public static final String BY_ID = API +"/parent/byId";
 		public static final String SAVE_OR_UPDATE = API +"/parent/saveOrUpdate";
+		public static final String REMOVE = API +"/parent/remove";
 	}
 
 	

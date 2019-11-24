@@ -6,6 +6,7 @@
         static readonly SAVE_OR_UPDATE = "/student/saveOrUpdate";
         static readonly BY_ID = "/student/byId";
         static readonly BY_IDS = "/student/byIds";
+        static readonly REMOVE = "/student/remove";
     }
 
     static Parent = class {
@@ -13,6 +14,7 @@
         static readonly SAVE_OR_UPDATE = "/parent/saveOrUpdate";
         static readonly BY_ID = "/parent/byId";
         static readonly BY_IDS = "/parent/byIds";
+        static readonly REMOVE = "/parent/remove";
     }
 
     static Teacher = class {

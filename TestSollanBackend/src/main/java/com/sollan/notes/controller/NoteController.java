@@ -10,7 +10,6 @@ import com.google.gson.GsonBuilder;
 import com.sollan.notes.model.Note;
 import com.sollan.notes.service.NoteService;
 import com.sollan.util.BackendMappings;
-import com.sollan.util.Response;
 
 @RestController
 public class NoteController {
@@ -21,15 +20,6 @@ public class NoteController {
 	private NoteService service;
 	
 	
-	
-		
-	@RequestMapping(value = BackendMappings.Note.ADD, method = RequestMethod.POST)
-	public Response<Note> addNote(@RequestParam("note") String note) {
-		GsonBuilder gsonBuilder = new GsonBuilder();
-		Response<Note> response = new Response<Note>();
-		response.setItem(service.addNote(gsonBuilder.create().fromJson(note, Note.class)));
-		return response;
-	}
 	
 	
 

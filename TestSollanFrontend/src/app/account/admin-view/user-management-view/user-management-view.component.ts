@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatTabChangeEvent } from '@angular/material';
 import { AddUserPopupComponent } from './add-user-popup/add-user-popup.component';
 import { StudentService } from '../../../students/student.service';
 import { User } from '../../../user/user';
@@ -9,6 +9,7 @@ import { UserService } from '../../../user/user.service';
 import { BackendMappings } from '../../../general/utils/backendMappings';
 import { NotificationService } from '../../../notification/notification.service';
 import { Consts } from '../../../general/utils/Consts';
+import { Response } from '../../../general/backend/response';
 
 @Component({
   selector: 'user-management-view',
@@ -19,6 +20,7 @@ export class UserManagementViewComponent implements OnInit {
 
   students: Student[];
   type2Uri: any;
+  tabIndex: number = 0;
 
   constructor(private dialog: MatDialog,
     private userService: UserService,
@@ -37,7 +39,7 @@ export class UserManagementViewComponent implements OnInit {
   saveUser(user: User){
     if(user){
       this.userService.saveUser(user, this.type2Uri[user.type]).subscribe(resp =>{
-        if(resp.ok){
+        if(Response.isOk(resp)){
           this.nService.showError(Consts.Messages.USER_SAVED)
         } else {
           this.nService.showError(Consts.Messages.USER_SAVE_ERROR);
@@ -51,6 +53,10 @@ export class UserManagementViewComponent implements OnInit {
     this.type2Uri[UserType.STUDENT] = BackendMappings.Student.SAVE_OR_UPDATE;
     this.type2Uri[UserType.TEACHER] = BackendMappings.Teacher.SAVE_OR_UPDATE;
     this.type2Uri[UserType.PARENT] = BackendMappings.Parent.SAVE_OR_UPDATE;
+  }
+
+  tabChange(evt: MatTabChangeEvent){
+      this.tabIndex = evt.index;
   }
 
 }

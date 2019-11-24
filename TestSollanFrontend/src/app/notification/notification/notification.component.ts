@@ -25,7 +25,6 @@ export class NotificationComponent implements OnInit {
       case NotificationType.SUCCESS: this.addedClass = NotificationType.SUCCESS.toString().toLowerCase(); break;
       case NotificationType.WARNING: this.addedClass = NotificationType.WARNING.toString().toLowerCase(); break;
     }
-    console.log(this.addedClass)
   }
 
 }

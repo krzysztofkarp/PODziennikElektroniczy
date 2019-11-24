@@ -36,6 +36,12 @@ export class Consts {
         static readonly NEW_USER = "New user";
         static readonly USER_SAVED = "User saved";
         static readonly USER_SAVE_ERROR = "Cannot save user! Error occured"
+        static readonly STUDENT_SAVED= "Student saved"
+        static readonly STUDENT_DELETED= "Student deleted"
+        static readonly TEACHER_SAVED= "Teacher saved"
+        static readonly TEACHER_DELETED= "Teacher deleted"
+        static readonly PARENT_SAVED= "Parent saved"
+        static readonly PARENT_DELETED= "Parent deleted"
     }
 
     static StorageKey = class {
