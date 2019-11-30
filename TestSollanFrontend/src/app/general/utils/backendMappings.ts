@@ -37,6 +37,8 @@
     static StudentClass = class {
         static readonly BY_IDS = "/classes/byIds";
         static readonly ALL = "/classes/all";
+        static readonly SAVE_OR_UPDATE = "/classes/saveOrUpdate";
+        static readonly REMOVE = "/classes/remove";
     }
 
     static Note = class {

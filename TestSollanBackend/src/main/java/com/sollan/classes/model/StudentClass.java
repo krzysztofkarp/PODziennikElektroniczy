@@ -16,7 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.sollan.students.model.Student;
-import com.sollan.subjects.Subject;;
+import com.sollan.subjects.Subject;
+import com.sollan.teachers.Teacher;;
 
 @Entity
 @Table(name = "student_class")
@@ -39,6 +40,9 @@ public class StudentClass {
 	cascade = CascadeType.PERSIST,
     orphanRemoval = true)
 	private Set<Student> students = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "classes")
+	private Set<Teacher> teachers = new HashSet<>();
 	
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
@@ -121,7 +125,7 @@ public class StudentClass {
 
 	public enum ClassProfile{
 		
-		MAT_INF, HUMAN, MAT_GEO, BIOL_CHEM, DEFAULT
+		MAT_INF, HUMAN, MAT_GEO, BIOL_CHEM, LANG
 		
 	}
 	

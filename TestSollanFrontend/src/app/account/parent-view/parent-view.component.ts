@@ -24,11 +24,8 @@ export class ParentViewComponent implements OnInit {
   }
 
   ngOnChanges(){
-    if(this.user){
-      this.studentService.byIds(this.user.childrenIds).subscribe(resp => this.children = resp.items);
-      console.log(this.children)
-    }
-      
+  
+    
   }
 
 }

@@ -42,6 +42,8 @@ import { UserManagementTeacherViewComponent } from './account/admin-view/user-ma
 import { UserManagementParentViewComponent } from './account/admin-view/user-management-view/user-management-parent-view/user-management-parent-view.component';
 import { UserRowComponent } from './account/admin-view/user-management-view/user-row/user-row.component';
 import { GenericUserContainerComponent } from './account/admin-view/user-management-view/generic-user-container/generic-user-container.component';
+import { ClassManagementViewComponent } from './account/admin-view/class-management-view/class-management-view.component';
+import { AddClassPopupComponent } from './account/admin-view/class-management-view/add-class-popup/add-class-popup.component';
 
 
 @NgModule({
@@ -67,7 +69,9 @@ import { GenericUserContainerComponent } from './account/admin-view/user-managem
     UserManagementTeacherViewComponent,
     UserManagementParentViewComponent,
     UserRowComponent,
-    GenericUserContainerComponent
+    GenericUserContainerComponent,
+    ClassManagementViewComponent,
+    AddClassPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +110,6 @@ import { GenericUserContainerComponent } from './account/admin-view/user-managem
   ],
     
   bootstrap: [AppComponent],
-  entryComponents: [StudentPopupComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent]
+  entryComponents: [StudentPopupComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent]
 })
 export class AppModule { }

@@ -1,14 +1,14 @@
 import { Subject } from './../students/subject';
 import { User } from './../user/user';
+import { UserType } from '../user/userType';
 
 export class Teacher extends User{
 
 
-    age: number; 
-    experience: number;
-	isHeadTeacher: boolean;
-	subjects: Subject[];
-	classesIds: string[];
+	constructor(){
+        super();
+        this.type = UserType.TEACHER;
+    }
 
 
 

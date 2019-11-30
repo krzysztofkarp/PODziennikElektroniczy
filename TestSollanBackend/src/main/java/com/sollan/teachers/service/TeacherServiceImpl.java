@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sollan.teachers.Teacher;
 import com.sollan.teachers.repo.TeacherRepository;
+import com.sollan.util.Crypter;
 
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -43,6 +44,7 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public void save(Teacher t) {
+		t.setPassword(Crypter.getInstance().encrypt(t.getPassword()));
 		repo.save(t);
 		
 	}

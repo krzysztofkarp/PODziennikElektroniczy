@@ -34,6 +34,7 @@ export class Consts {
         static readonly WRONG_CREDENTIALS = "Wrong credentials";
         static readonly NOT_LOGGED_IN = "You are currently not logged in, please log in!"
         static readonly NEW_USER = "New user";
+        static readonly NEW_CLASS = "New class";
         static readonly USER_SAVED = "User saved";
         static readonly USER_SAVE_ERROR = "Cannot save user! Error occured"
         static readonly STUDENT_SAVED= "Student saved"
@@ -42,6 +43,8 @@ export class Consts {
         static readonly TEACHER_DELETED= "Teacher deleted"
         static readonly PARENT_SAVED= "Parent saved"
         static readonly PARENT_DELETED= "Parent deleted"
+        static readonly CLASS_SAVE_ERROR = "Cannot save class! Error occured"
+        static readonly CLASS_SAVED = "Class saved";
     }
 
     static StorageKey = class {
@@ -61,6 +64,10 @@ export class Consts {
     static RequestParams = class {
         static readonly STUDENT = "student";
         static readonly ID = "id";
+    }
+
+    static Regex = class {
+        static CLASS_NAME = new RegExp("\w*[0-9]\w*[A-Z]\w*");    
     }
 
 

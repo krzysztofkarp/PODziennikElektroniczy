@@ -9,5 +9,7 @@ public interface StudentClassService {
 	
 	List<StudentClass> getClassesByIds(List<Long> ids);
 	List<StudentClass> getAll();
+	void save(StudentClass c);
+	void addStudent(Long classId, Long studentId) throws Exception;
 
 }

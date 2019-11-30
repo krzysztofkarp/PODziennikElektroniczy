@@ -1,0 +1,70 @@
+.add-class{
+    width: 600px;
+ }
+ 
+ .add-class .header{
+     font-size: 20px;
+     text-align: center;
+     border-bottom: 1px solid grey;
+ }
+ 
+ .add-class .table-container{
+     width: 100%;
+     padding: 20px;
+ }
+ 
+ .add-class .table-container table{
+     width: 100%;
+ }
+ 
+ .add-class .table-container table td{
+     padding: 10px;
+     width: 50%;
+ }
+ 
+ .add-class .table-container table td.title{
+     width: 30%;
+ }
+ 
+ 
+ .add-class .table-container table td.value{
+     width: 70%;
+ }
+ 
+ .add-class .table-container table td input{
+    min-width: 300px;
+    display: block;
+    margin: 0 auto;
+    background: rgb(88, 192, 240);
+    border: none;
+    padding: 5px;
+    color: white;
+ }
+ 
+ .add-class .action{
+     width: max-content;
+     margin: 0 auto;
+     margin-top: 40px;
+ }
+ 
+ .add-class .action button{
+     display: inline-block;
+ }
+ 
+ .add-class .action button.add{
+     background-color: #03A9F4;
+     color: white;
+ }
+ 
+ .add-class .action button.cancel{
+     background-color: white;
+ }
+ 
+ .add-class .table-container table td.value ::ng-deep .mat-select{
+     width: 300px;
+     display: block;
+     margin: 0 auto;
+     background: rgb(88, 192, 240);
+     padding: 5px;
+     color: white;
+ }

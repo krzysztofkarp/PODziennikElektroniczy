@@ -4,6 +4,7 @@ import { Parent } from '../../../../parents/parent';
 import { User } from '../../../../user/user';
 import { NotificationService } from '../../../../notification/notification.service';
 import { Consts } from '../../../../general/utils/Consts';
+import { Response } from '../../../../general/backend/response';
 
 @Component({
   selector: 'user-management-parent-view',
@@ -31,7 +32,7 @@ export class UserManagementParentViewComponent implements OnInit {
 
   parentSaved(p){
     this.pService.remove(p.id).subscribe(resp => {
-      if(resp.ok){
+      if(Response.isOk(resp)){
         this.nService.showSuccess(Consts.Messages.PARENT_SAVED)
       } else {
         this.nService.showError(Consts.Messages.USER_SAVE_ERROR);

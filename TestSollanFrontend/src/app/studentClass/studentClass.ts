@@ -1,11 +1,16 @@
 import { ClassProfile } from './classProfile';
 import { Teacher } from './../teachers/teacher';
 import { Student } from '../students/student';
+import { Subject } from '../students/subject';
+
 export class StudentClass{
 
     classId: string;
-	studentsAmount: number;
-	headTeacher: Teacher;
+	name: string;
 	profile: ClassProfile;
-	students: Student[];
+	subjects: Subject;
+	teachers: Teacher;
 }
+
+
+

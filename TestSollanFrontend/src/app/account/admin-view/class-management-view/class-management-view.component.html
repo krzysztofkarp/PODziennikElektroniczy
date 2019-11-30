@@ -1,0 +1,10 @@
+<div class="class-management">
+  <div class="actions">
+      <button class="blue" (click)="onAddClass()">Add class</button>
+  </div>
+  <div class="class-container">
+      <p *ngFor="let c of classes">
+        {{ c.name }}
+      </p>
+  </div>
+</div>

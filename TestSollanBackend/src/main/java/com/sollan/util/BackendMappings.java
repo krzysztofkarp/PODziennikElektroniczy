@@ -10,13 +10,15 @@ public class BackendMappings {
 		
 		public static final String ALL = API+"/classes/all";
 		public static final String BY_IDS = API + "/classes/byIds";
+		public static final String SAVE_OR_UPDATE = API +"/classes/saveOrUpdate";
+		public static final String REMOVE = API +"/classes/remove";
+		public static final String ADD_STUDENT = API +"/classes/addStudent";
 	}
 	
 	public class Student{
 		public static final String ALL = API +"/student/all";
 		public static final String BY_ID = API +"/student/byId";
 		public static final String BY_IDS = API +"/student/byIds";
-		public static final String PARENTS = API +"/student/parents";
 		public static final String SAVE_OR_UPDATE = API +"/student/saveOrUpdate";
 		public static final String REMOVE = API +"/student/remove";
 	}

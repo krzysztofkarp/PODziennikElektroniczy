@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sollan.parents.model.Parent;
 import com.sollan.parents.repo.ParentRepository;
 import com.sollan.user.model.User;
+import com.sollan.util.Crypter;
 
 @Service
 public class ParentServiceImpl implements ParentService {
@@ -30,6 +31,7 @@ public class ParentServiceImpl implements ParentService {
 
 	@Override
 	public void save(Parent t) {
+		t.setPassword(Crypter.getInstance().encrypt(t.getPassword()));
 		repo.save(t);
 		
 	}

@@ -26,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
 	
 	@Override
 	public void save(Student s) {
-		s.setPassword(Crypter.getInstance().decrypt(s.getPassword()));
+		s.setPassword(Crypter.getInstance().encrypt(s.getPassword()));
 		repo.save(s);
 	}
 	

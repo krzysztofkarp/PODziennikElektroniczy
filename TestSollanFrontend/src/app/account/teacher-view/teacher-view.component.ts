@@ -26,9 +26,6 @@ export class TeacherViewComponent implements OnInit {
   constructor(private classService: StudentClassService, private noteService: NoteService) { }
 
   ngOnInit() {
-    this.sub = this.user.subjects[0];
-    this.classService.getByIds(this.user.classesIds).subscribe(resp => this.classes = resp.items);
-    this.noteService.fromTeacher(this.user.id).subscribe(resp => this.notes = resp.items)
   }
 
 }

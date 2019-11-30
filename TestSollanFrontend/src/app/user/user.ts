@@ -9,5 +9,6 @@ export class User {
     email: string;
     type: UserType;
     admin: boolean;
+    birthdate: Date;
 
 }

@@ -37,19 +37,6 @@ public class UserFieldsGenerator {
 		return classNumbers[rand.nextInt(classNumbers.length)] + classLetters[rand.nextInt(classLetters.length)];
 	}
 	
-	public static ClassProfile getProfile(String classId) {
-		String classLetter = classId.substring(1);
-		ClassProfile cp = ClassProfile.DEFAULT;
-		switch(classLetter) {
-		
-			case "A": cp = ClassProfile.MAT_INF;
-			case "B": cp  = ClassProfile.BIOL_CHEM;
-			case "C": cp = ClassProfile.MAT_GEO;
-			case "D": cp = ClassProfile.HUMAN;
-		
-		}
-		
-		return cp;
-	}
+	
 
 }

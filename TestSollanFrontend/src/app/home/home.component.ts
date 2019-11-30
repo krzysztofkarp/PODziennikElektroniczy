@@ -5,6 +5,7 @@ import { Consts } from '../general/utils/Consts';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { NotificationService } from '../notification/notification.service';
+import { Response } from '../general/backend/response';
 
 @Component({
   selector: 'home',
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
     let login: any = fg[Consts.FormFields.LOGIN];
     let pass: any = fg[Consts.FormFields.PASSWORD];
     this.authService.login(login, pass).subscribe(resp => {
-      if(resp.ok && resp.item){
+      if(Response.isOk(resp) && resp.item){
         this.accountService.store(resp.item);
         localStorage.setItem(Consts.StorageKey.USER, JSON.stringify(resp.item));
         this.router.navigate([Consts.RouterPaths.ACCOUNT, resp.item.id])

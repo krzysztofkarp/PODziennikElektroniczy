@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 
+import com.sollan.classes.model.StudentClass;
 import com.sollan.subjects.Subject;
 import com.sollan.user.model.User;
 
@@ -30,6 +31,14 @@ public class Teacher extends User{
 			joinColumns = @JoinColumn(name = "teacher_id"), 
 			inverseJoinColumns = @JoinColumn(name = "subject_subjectId"))
 	private Set<Subject> subjects = new HashSet<>();
+	
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(
+			name = "teacher_class", 
+			joinColumns = @JoinColumn(name = "teacher_id"), 
+			inverseJoinColumns = @JoinColumn(name = "student_class_classId"))
+	private Set<StudentClass> classes = new HashSet<>();
 	
 	
 	
