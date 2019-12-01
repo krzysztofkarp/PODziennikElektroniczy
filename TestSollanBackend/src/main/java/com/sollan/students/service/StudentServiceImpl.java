@@ -2,7 +2,6 @@ package com.sollan.students.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +50,20 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Set<Student> byParentId(Long id) {
-		return repo.byParentId(id);
+	public  List<Student> byParentId(Long id) {
+		return StreamSupport.stream(repo.byParentId(id).spliterator(), false)
+			    .collect(Collectors.toList());
+	}
+
+	@Override
+	public Long studentCountForClass(Long classId) {
+		return repo.countForClass(classId);
+	}
+
+	@Override
+	public List<Student> byClassId(Long id) {
+		return StreamSupport.stream(repo.byClassId(id).spliterator(), false)
+			    .collect(Collectors.toList());
 	}
 	
 	

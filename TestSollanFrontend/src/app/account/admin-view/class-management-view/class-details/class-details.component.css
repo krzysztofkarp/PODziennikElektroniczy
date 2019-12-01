@@ -1,0 +1,20 @@
+.class-details{
+    padding: 10px;
+    width: 100%;
+}
+
+.class-details .bar{
+    height: 40px;
+}
+
+.class-details .info{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #03A9F4;
+}
+
+.class-details .bar .close{
+    display: block;
+    float: right;
+    padding: 3px;
+}

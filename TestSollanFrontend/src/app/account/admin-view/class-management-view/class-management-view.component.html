@@ -1,10 +1,13 @@
 <div class="class-management">
-  <div class="actions">
-      <button class="blue" (click)="onAddClass()">Add class</button>
+  <div *ngIf="!selectedClass">
+      <div class="actions">
+          <button class="blue" (click)="onAddClass()">Add class</button>
+      </div>
+      <div class="class-container">
+          <p *ngFor="let c of classes" (click)="selectClass(c)">
+            {{ c.name }}
+          </p>
+      </div>
   </div>
-  <div class="class-container">
-      <p *ngFor="let c of classes">
-        {{ c.name }}
-      </p>
-  </div>
+  <class-details *ngIf="selectedClass" [selectedClass]="selectedClass" (closeDetails)="closeDetails()"></class-details>
 </div>

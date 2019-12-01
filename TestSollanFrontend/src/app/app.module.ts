@@ -44,6 +44,7 @@ import { UserRowComponent } from './account/admin-view/user-management-view/user
 import { GenericUserContainerComponent } from './account/admin-view/user-management-view/generic-user-container/generic-user-container.component';
 import { ClassManagementViewComponent } from './account/admin-view/class-management-view/class-management-view.component';
 import { AddClassPopupComponent } from './account/admin-view/class-management-view/add-class-popup/add-class-popup.component';
+import { ClassDetailsComponent } from './account/admin-view/class-management-view/class-details/class-details.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { AddClassPopupComponent } from './account/admin-view/class-management-vi
     UserRowComponent,
     GenericUserContainerComponent,
     ClassManagementViewComponent,
-    AddClassPopupComponent
+    AddClassPopupComponent,
+    ClassDetailsComponent
   ],
   imports: [
     BrowserModule,

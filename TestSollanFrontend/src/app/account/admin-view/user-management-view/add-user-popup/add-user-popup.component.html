@@ -4,6 +4,16 @@
   </div>
  <div class="table-container">
     <table>
+        <tr> 
+          <td class="title">User type</td>
+          <td class="value">
+            <mat-select  [(ngModel)]="user.type">
+              <mat-option *ngFor="let type of types" [value]="type">
+                  {{type}}
+              </mat-option>
+            </mat-select>
+          </td>
+        </tr>
         <tr>
           <td class="title">First name</td>
           <td class="value"><input type="text" [(ngModel)]="user.firstName"></td>
@@ -24,16 +34,26 @@
           <td class="title">E-mail</td>
           <td class="value"><input type="text" [(ngModel)]="user.email"></td>
         </tr>
-        <tr> 
-          <td class="title">User type</td>
-          <td class="value">
-                  <mat-select  [(ngModel)]="user.type">
-                      <mat-option *ngFor="let type of types" [value]="type">
-                        {{type}}
-                      </mat-option>
-                    </mat-select>
-            </td>
+        <tr>
+          <td class="title">Birth date</td>
+          <td class="picker">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" (dateChange)="addEvent('change', $event)">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
         </tr>
+        <tr *ngIf="user.type == UserType.STUDENT"> 
+            <td class="title">Associate with class</td>
+            <td class="value">
+              <mat-select  [(ngModel)]="user.type">
+                <mat-option *ngFor="let type of types" [value]="type">
+                    {{type}}
+                </mat-option>
+              </mat-select>
+            </td>
+          </tr>
       </table>
       <div class="action">
           <button class="cancel" type="submit" (click)="onCancel()" mat-raised-button>Cancel</button>

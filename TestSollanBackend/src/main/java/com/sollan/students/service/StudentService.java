@@ -1,7 +1,7 @@
 package com.sollan.students.service;
 
 
-import java.util.Set;
+import java.util.List;
 
 import com.sollan.students.model.Student;
 import com.sollan.user.UserService;
@@ -10,7 +10,9 @@ import com.sollan.user.UserService;
 public interface StudentService extends UserService<Student>{
 	
 
-	Set<Student> byParentId(Long id);
+	List<Student> byParentId(Long id);
+	List<Student> byClassId(Long id);
+	Long studentCountForClass(Long classId);
 	
 
 }

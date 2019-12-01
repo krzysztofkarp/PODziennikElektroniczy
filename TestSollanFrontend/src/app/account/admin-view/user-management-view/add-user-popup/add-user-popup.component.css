@@ -1,5 +1,6 @@
 .add-user{
-   width: 600px;
+   width: 550px;
+   overflow-x:hidden ;
 }
 
 .add-user .header{
@@ -9,7 +10,7 @@
 }
 
 .add-user .table-container{
-    width: 100%;
+    width: 90%;
     padding: 20px;
 }
 
@@ -34,12 +35,22 @@
 .add-user .table-container table td input{
    min-width: 300px;
    display: block;
-   margin: 0 auto;
-   background: rgb(88, 192, 240);
+   margin: 0 auto;;
    border: none;
    padding: 5px;
-   color: white;
+   border-bottom: 1px solid #03A9F4;
 }
+
+.add-user .table-container table td.picker input{
+    background: white;
+    border: none;
+ }
+
+ .add-user .table-container table td.picker ::ng-deep .mat-input-container{
+     min-width: 300px;
+ }
+
+
 
 .add-user .action{
     width: max-content;
@@ -64,7 +75,6 @@
     width: 300px;
     display: block;
     margin: 0 auto;
-    background: rgb(88, 192, 240);
     padding: 5px;
     color: white;
 }

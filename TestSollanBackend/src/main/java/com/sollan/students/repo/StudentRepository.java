@@ -21,5 +21,9 @@ public interface StudentRepository  extends CrudRepository<Student, Long>{
 	public Set<Student> byParentId(@Param("parentId") Long parentId);
 	
 	@Query("from Student s where s.studentClass.classId=:classId")
-	public Student byClassId(@Param("classId") Long classId);
+	public Set<Student> byClassId(@Param("classId") Long classId);
+	
+	@Query("select count(s) from Student s where s.studentClass.classId=:classId")
+	public Long countForClass(@Param("classId") Long classId);
+	
 }

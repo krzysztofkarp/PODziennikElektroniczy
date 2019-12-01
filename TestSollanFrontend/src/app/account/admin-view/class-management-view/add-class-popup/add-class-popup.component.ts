@@ -3,6 +3,7 @@ import { StudentClass } from '../../../../studentClass/studentClass';
 import { ClassProfile } from '../../../../studentClass/classProfile';
 import { Consts } from '../../../../general/utils/Consts';
 import { MatDialogRef } from '@angular/material';
+import { NotificationService } from '../../../../notification/notification.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class AddClassPopupComponent implements OnInit {
   title: string = Consts.Messages.NEW_CLASS;
   profiles = [ClassProfile.MAT_GEO, ClassProfile.MAT_INF, ClassProfile.HUMAN, ClassProfile.LANG, ClassProfile.BIOL_CHEM];
 
-  constructor(private dialogRef: MatDialogRef<AddClassPopupComponent>) { 
+  constructor(private dialogRef: MatDialogRef<AddClassPopupComponent>, private nService: NotificationService) { 
     this.newClass = new StudentClass();
   }
 
@@ -25,17 +26,18 @@ export class AddClassPopupComponent implements OnInit {
   }
 
   onAdd(){
-    this.validate();
-    this.dialogRef.close(this.newClass);
+    if(this.nameValid())
+      this.dialogRef.close(this.newClass);
+    else  
+      this.nService.showError(Consts.Messages.CLASS_NAME_NOT_VALID);
   }
 
   onCancel(){
     this.dialogRef.close();
   }
 
-  validate(){
-    let result = Consts.Regex.CLASS_NAME.test(this.newClass.name);
-    console.log(result)
+  nameValid(){
+    return Consts.Regex.CLASS_NAME.test(this.newClass.name);
   }
 
 }

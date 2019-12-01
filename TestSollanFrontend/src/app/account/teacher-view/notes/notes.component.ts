@@ -35,7 +35,7 @@ export class NotesComponent implements OnInit {
 
   ngOnChanges(){
     if(this.classes){
-      this.classes.forEach(c => this.students.push(...c.students.filter(s => !this.students.includes(s))));
+      //this.classes.forEach(c => this.students.push(...c.students.filter(s => !this.students.includes(s))));
     }
   }
 

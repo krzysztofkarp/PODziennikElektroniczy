@@ -23,15 +23,22 @@ export class StudentService {
     }
 
     byId(id: string){
-        let params = new HttpParams();
+        let params = {};
         params[Consts.RequestParams.ID] = id;
         return this.backendService.get(BackendMappings.Student.BY_ID, params);
 
     }
 
+    byClassId(classId: string){
+        let params = {};
+        params[Consts.RequestParams.ID] = classId;
+        return this.backendService.get(BackendMappings.Student.BY_CLASS_ID, params);
+
+    }
+
     byIds(ids: string[]){
-        let params = new HttpParams();
-        //params.set()
+        let params = {};
+        params[Consts.RequestParams.ID] = ids;
         return this.backendService.get(BackendMappings.Student.BY_IDS, params);
 
     }

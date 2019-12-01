@@ -5,6 +5,7 @@
         static readonly ALL = "/student/all";
         static readonly SAVE_OR_UPDATE = "/student/saveOrUpdate";
         static readonly BY_ID = "/student/byId";
+        static readonly BY_CLASS_ID = "/student/byClassId";
         static readonly BY_IDS = "/student/byIds";
         static readonly REMOVE = "/student/remove";
     }

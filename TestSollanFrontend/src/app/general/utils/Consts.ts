@@ -45,6 +45,7 @@ export class Consts {
         static readonly PARENT_DELETED= "Parent deleted"
         static readonly CLASS_SAVE_ERROR = "Cannot save class! Error occured"
         static readonly CLASS_SAVED = "Class saved";
+        static readonly CLASS_NAME_NOT_VALID = "Class name is not valid!"
     }
 
     static StorageKey = class {
@@ -64,6 +65,7 @@ export class Consts {
     static RequestParams = class {
         static readonly STUDENT = "student";
         static readonly ID = "id";
+        static readonly IDS = "ids";
     }
 
     static Regex = class {

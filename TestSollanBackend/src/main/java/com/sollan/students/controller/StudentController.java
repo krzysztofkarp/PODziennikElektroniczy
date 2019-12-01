@@ -36,6 +36,12 @@ public class StudentController {
 		return ResponseUtil.runInItemTemplate(() -> service.getById(id));
 	}
 	
+	@RequestMapping(value = BackendMappings.Student.BY_CLASS_ID, method = RequestMethod.GET)
+	public ItemsResponse<Student> byClassId(@RequestParam("id") String id) {
+		return ResponseUtil.runInMultiTemplate(() -> service.byClassId(Long.parseLong(id)));
+	}
+	
+	
 	
 	@RequestMapping(value = BackendMappings.Student.SAVE_OR_UPDATE, method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)

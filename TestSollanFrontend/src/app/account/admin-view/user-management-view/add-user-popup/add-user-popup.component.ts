@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDatepickerInputEvent } from '@angular/material';
 import { Consts } from '../../../../general/utils/Consts';
 import { User } from '../../../../user/user';
 import { UserType } from '../../../../user/userType';
@@ -13,6 +13,7 @@ export class AddUserPopupComponent implements OnInit {
 
   title: string = Consts.Messages.NEW_USER;
   user: User;
+  UserType = UserType;
   types = [UserType.STUDENT, UserType.PARENT, UserType.TEACHER];
 
   constructor(private dialogRef: MatDialogRef<AddUserPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -29,6 +30,11 @@ export class AddUserPopupComponent implements OnInit {
 
   onCancel(){
     this.dialogRef.close();
+  }
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log(event.value)
+    this.user.birthdate = event.value;
   }
 
 }

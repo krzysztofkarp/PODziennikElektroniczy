@@ -17,6 +17,7 @@ export class ClassManagementViewComponent implements OnInit {
 
 
   classes: StudentClass[];
+  selectedClass: StudentClass;
 
   constructor(private dialog: MatDialog, private service: StudentClassService, private nService: NotificationService) { }
 
@@ -48,8 +49,15 @@ export class ClassManagementViewComponent implements OnInit {
   loadClasses(){
     this.service.getAll().subscribe(resp => {
       this.classes = resp.items;
-      console.log(this.classes);
     });
+  }
+
+  selectClass(c){
+    this.selectedClass = c;
+  }
+
+  closeDetails(){
+    this.selectedClass = null;
   }
 
 }
