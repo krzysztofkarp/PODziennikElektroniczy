@@ -13,6 +13,7 @@ public class BackendMappings {
 		public static final String SAVE_OR_UPDATE = API +"/classes/saveOrUpdate";
 		public static final String REMOVE = API +"/classes/remove";
 		public static final String ADD_STUDENT = API +"/classes/addStudent";
+		public static final String REMOVE_STUDENT = API +"/classes/removeStudent";
 	}
 	
 	public class Student{

@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 .custom-dialog-container .mat-dialog-container {
@@ -15,6 +16,11 @@ button{
     border: none;
     padding: 10px;
     border-radius: 5px;
+}
+
+button:disabled{
+    opacity: 0.6;
+    pointer-events: none;;
 }
 
 button.blue{

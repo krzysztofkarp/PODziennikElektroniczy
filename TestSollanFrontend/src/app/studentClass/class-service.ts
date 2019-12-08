@@ -17,7 +17,7 @@ export class StudentClassService{
 
     getByIds(ids: string[]){
         let params = new HttpParams();
-        params["ids"] = ids;
+        params[Consts.RequestParams.IDS] = ids;
         return this.backendService.get(BackendMappings.StudentClass.BY_IDS, params);
     }
 
@@ -27,6 +27,20 @@ export class StudentClassService{
 
     saveOrUpdate(cl: StudentClass){
         return this.backendService.post(BackendMappings.StudentClass.SAVE_OR_UPDATE, cl);
+    }
+
+    addStudent(classId: string , studentId: string){
+        let params = {};
+        params[Consts.RequestParams.CLASS_ID] = classId;
+        params[Consts.RequestParams.STUDENT_ID] = studentId;
+        return this.backendService.get(BackendMappings.StudentClass.ADD_STUDENT, params);
+    }
+
+    removeStudent(classId: string , studentId: string){
+        let params = {};
+        params[Consts.RequestParams.CLASS_ID] = classId;
+        params[Consts.RequestParams.STUDENT_ID] = studentId;
+        return this.backendService.get(BackendMappings.StudentClass.REMOVE_STUDENT, params);
     }
 
     remove(id: string){

@@ -23,7 +23,7 @@ public class StudentClassServiceImpl implements StudentClassService {
 	
 	@Override
 	public List<StudentClass> getClassesByIds(List<Long> ids) {
-		 return StreamSupport.stream(repo.findAll(ids).spliterator(), false)
+		 return StreamSupport.stream(repo.findAllById(ids).spliterator(), false)
 				    .collect(Collectors.toList());
 	}
 
@@ -40,8 +40,8 @@ public class StudentClassServiceImpl implements StudentClassService {
 
 	@Override
 	public void addStudent(Long classId, Long studentId) throws Exception {
-		StudentClass cl = repo.findOne(classId);
-		Student s = students.findOne(studentId);
+		StudentClass cl = repo.findById(classId).orElseThrow();
+		Student s = students.findById(studentId).orElseThrow();
 		
 		if(Utils.nullOrEmpty(cl) || Utils.nullOrEmpty(s))
 			throw new Exception("Student or class does not exist!");
@@ -49,6 +49,15 @@ public class StudentClassServiceImpl implements StudentClassService {
 		cl.addStudent(s);
 		repo.save(cl);
 	}
+
+	@Override
+	public void removeStudent(Long classId,Long studentId) {
+		StudentClass cl = repo.findById(classId).orElseThrow();
+		cl.removeStudent(students.findById(studentId).orElseThrow());
+		repo.save(cl);
+	}
+	
+	
 	
 	
 	

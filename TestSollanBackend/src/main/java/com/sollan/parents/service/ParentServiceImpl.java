@@ -30,21 +30,21 @@ public class ParentServiceImpl implements ParentService {
 	}
 
 	@Override
-	public void save(Parent t) {
+	public Parent save(Parent t) {
 		t.setPassword(Crypter.getInstance().encrypt(t.getPassword()));
-		repo.save(t);
+		return repo.save(t);
 		
 	}
 
 	@Override
 	public void delete(Long id) {
-		repo.delete(id);
+		repo.deleteById(id);
 		
 	}
 
 	@Override
 	public Parent getById(Long id) {
-		return repo.findOne(id);
+		return repo.findById(id).orElseThrow();
 	}
 
 	@Override

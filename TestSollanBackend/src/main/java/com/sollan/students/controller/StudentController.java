@@ -45,8 +45,8 @@ public class StudentController {
 	
 	@RequestMapping(value = BackendMappings.Student.SAVE_OR_UPDATE, method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public Response update(@RequestBody Student student) throws Exception {
-		return  ResponseUtil.runInVoidTemplate(() -> service.save(student));
+	public ItemResponse<Student> update(@RequestBody Student student) throws Exception {
+		return  ResponseUtil.runInItemTemplate(() -> service.save(student));
 	}
 	
 	@RequestMapping(value = BackendMappings.Student.REMOVE, method = RequestMethod.GET)

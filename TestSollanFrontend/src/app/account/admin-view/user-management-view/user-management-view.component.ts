@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatTabChangeEvent } from '@angular/material';
 import { AddUserPopupComponent } from './add-user-popup/add-user-popup.component';
 import { StudentService } from '../../../students/student.service';
@@ -13,6 +13,8 @@ import { Response } from '../../../general/backend/response';
 import { UserManagementStudentViewComponent } from './user-management-student-view/user-management-student-view.component';
 import { UserManagementTeacherViewComponent } from './user-management-teacher-view/user-management-teacher-view.component';
 import { UserManagementParentViewComponent } from './user-management-parent-view/user-management-parent-view.component';
+import { StudentClassService } from '../../../studentClass/class-service';
+import { StudentClass } from '../../../studentClass/studentClass';
 
 @Component({
   selector: 'user-management-view',
@@ -34,17 +36,23 @@ export class UserManagementViewComponent implements OnInit {
   @ViewChild(UserManagementParentViewComponent)
   parents: UserManagementParentViewComponent;
 
+  @Input()
+  classes: StudentClass[];
+
   constructor(private dialog: MatDialog,
     private userService: UserService,
+    private classService: StudentClassService,
     private nService: NotificationService) { }
 
   ngOnInit() {
     this.initMap();
+    this.loadClasses();
   }
 
   onAddUser(){
     let config = new MatDialogConfig();
     config.width = "600px";
+    config.data = {classes:this.classes};
     this.dialog.open(AddUserPopupComponent, config).afterClosed().subscribe(user => this.saveUser(user));
   }
 
@@ -54,6 +62,7 @@ export class UserManagementViewComponent implements OnInit {
         if(Response.isOk(resp)){
           this.refreshUsers(user);
           this.nService.showSuccess(Consts.Messages.USER_SAVED);
+          this.classService.addStudent(user.properties[Consts.Properties.STUDENT_CLASS].classId, resp.item.id).subscribe(resp => console.log(resp));
         } else {
           this.nService.showError(Consts.Messages.USER_SAVE_ERROR);
         }
@@ -78,6 +87,12 @@ export class UserManagementViewComponent implements OnInit {
         case UserType.PARENT : this.parents.parents.push(user); break;
         case UserType.TEACHER : this.teachers.teachers.push(user); break;
       }
+  }
+
+  loadClasses(){
+    this.classService.getAll().subscribe(resp => {
+      this.classes = resp.items;
+    })
   }
 
 }

@@ -40,6 +40,8 @@
         static readonly ALL = "/classes/all";
         static readonly SAVE_OR_UPDATE = "/classes/saveOrUpdate";
         static readonly REMOVE = "/classes/remove";
+        static readonly ADD_STUDENT = "/classes/addStudent";
+        static readonly REMOVE_STUDENT = "/classes/removeStudent";
     }
 
     static Note = class {

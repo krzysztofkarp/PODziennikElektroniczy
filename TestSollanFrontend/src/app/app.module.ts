@@ -13,7 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -108,7 +108,8 @@ import { ClassDetailsComponent } from './account/admin-view/class-management-vie
     ParentService,
     TeacherService,
     UserService,
-    {provide: MatDialogRef, useValue: dialogMock }
+    {provide: MatDialogRef, useValue: dialogMock },
+    {provide: MAT_DIALOG_DATA, useValue: {} }
   ],
     
   bootstrap: [AppComponent],

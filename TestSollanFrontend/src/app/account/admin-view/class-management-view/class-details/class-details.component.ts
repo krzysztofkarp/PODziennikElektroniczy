@@ -14,7 +14,7 @@ export class ClassDetailsComponent implements OnInit {
   @Input()
   selectedClass: StudentClass;
 
-  students: Student[];
+  students: Student[] = [];
 
   @Output()
   closeDetails: EventEmitter<any> = new EventEmitter<any>();

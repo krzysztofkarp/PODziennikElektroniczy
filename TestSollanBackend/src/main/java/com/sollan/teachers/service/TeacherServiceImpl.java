@@ -29,7 +29,7 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public Teacher getById(Long id) {
-		return repo.findOne(id);
+		return repo.findById(id).orElseThrow();
 	}
 	
 	@Override
@@ -43,15 +43,14 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public void save(Teacher t) {
+	public Teacher save(Teacher t) {
 		t.setPassword(Crypter.getInstance().encrypt(t.getPassword()));
-		repo.save(t);
-		
+		return repo.save(t);
 	}
 
 	@Override
 	public void delete(Long id) {
-		repo.delete(id);
+		repo.deleteById(id);
 	}
 
 }

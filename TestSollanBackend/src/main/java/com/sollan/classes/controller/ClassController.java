@@ -37,6 +37,11 @@ public class ClassController {
 		return ResponseUtil.runInVoidTemplate(() -> service.addStudent(classId, studentId));
 	}
 	
+	@RequestMapping(value = BackendMappings.StudentClass.REMOVE_STUDENT , method = RequestMethod.GET)
+	public Response removeStudent(@RequestParam("classId")Long classId, @RequestParam("studentId")Long studentId) {
+		return ResponseUtil.runInVoidTemplate(() -> service.addStudent(classId, studentId));
+	}
+	
 
 
 }

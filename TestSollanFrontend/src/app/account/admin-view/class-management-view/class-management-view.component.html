@@ -5,7 +5,9 @@
       </div>
       <div class="class-container">
           <p *ngFor="let c of classes" (click)="selectClass(c)">
-            {{ c.name }}
+            <span>{{ c.name }}</span>
+            <span class="example-spacer"></span>
+            <button class="orange" (click)="onAddClass()" style="margin-left: 93%">Remove</button>
           </p>
       </div>
   </div>

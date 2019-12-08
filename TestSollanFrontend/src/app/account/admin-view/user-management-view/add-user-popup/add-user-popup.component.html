@@ -47,9 +47,9 @@
         <tr *ngIf="user.type == UserType.STUDENT"> 
             <td class="title">Associate with class</td>
             <td class="value">
-              <mat-select  [(ngModel)]="user.type">
-                <mat-option *ngFor="let type of types" [value]="type">
-                    {{type}}
+              <mat-select  [(ngModel)]="user.properties['studentClass']">
+                <mat-option *ngFor="let cl of data.classes" [value]="cl">
+                    {{cl.name}}
                 </mat-option>
               </mat-select>
             </td>
@@ -57,7 +57,7 @@
       </table>
       <div class="action">
           <button class="cancel" type="submit" (click)="onCancel()" mat-raised-button>Cancel</button>
-          <button class="add" type="submit" (click)="onAdd()" (keyup.enter)="onAdd()" mat-raised-button>Add</button>
+          <button class="add" type="submit" (click)="onAdd()" (keyup.enter)="onAdd()" mat-raised-button [disabled]="!canAdd()">Add</button>
       </div>
  </div>
 </div>

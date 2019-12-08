@@ -66,10 +66,18 @@ export class Consts {
         static readonly STUDENT = "student";
         static readonly ID = "id";
         static readonly IDS = "ids";
+        static readonly CLASS_ID = "classId";
+        static readonly STUDENT_ID = "studentId";
     }
 
     static Regex = class {
-        static CLASS_NAME = new RegExp("\w*[0-9]\w*[A-Z]\w*");    
+        static CLASS_NAME = new RegExp("\w*[0-9]\w*[A-Z]\w*");
+        static NAME_OR_SURNAME = new RegExp("^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$");
+        static EMAIL = new RegExp("/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/")  ;
+    }
+
+    static Properties = class {
+        static STUDENT_CLASS = "studentClass"
     }
 
 

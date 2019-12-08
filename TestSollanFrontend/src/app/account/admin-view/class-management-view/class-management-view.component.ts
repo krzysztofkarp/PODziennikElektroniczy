@@ -38,7 +38,8 @@ export class ClassManagementViewComponent implements OnInit {
   saveClass(cl){
     this.service.saveOrUpdate(cl).subscribe(resp => {
       if(Response.isOk(resp)){
-        this.classes.unshift(cl);
+        this.classes.push(cl);
+        this.sortClasses();
         this.nService.showSuccess(Consts.Messages.CLASS_SAVED);
       } else {
         this.nService.showError(Consts.Messages.CLASS_SAVE_ERROR);
@@ -49,6 +50,7 @@ export class ClassManagementViewComponent implements OnInit {
   loadClasses(){
     this.service.getAll().subscribe(resp => {
       this.classes = resp.items;
+      this.sortClasses();
     });
   }
 
@@ -58,6 +60,10 @@ export class ClassManagementViewComponent implements OnInit {
 
   closeDetails(){
     this.selectedClass = null;
+  }
+
+  sortClasses(){
+    this.classes.sort((c1, c2) => c1.name.localeCompare(c2.name));
   }
 
 }
