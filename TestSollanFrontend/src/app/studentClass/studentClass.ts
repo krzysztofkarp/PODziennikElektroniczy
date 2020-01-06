@@ -8,8 +8,9 @@ export class StudentClass{
     classId: string;
 	name: string;
 	profile: ClassProfile;
-	subjects: Subject;
-	teachers: Teacher;
+	subjects: Subject[];
+	teachers: Teacher[];
+	numberOfStudents: number;
 }
 
 

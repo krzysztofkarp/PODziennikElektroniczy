@@ -1,0 +1,14 @@
+.student-row .grade-container{
+    width: 50%;
+    display: inline-block;
+}
+
+.student-row .actions{
+    width: max-content;
+    float: right;
+}
+
+.student-row .avg{
+    padding: 10px;
+    font-size: 18px;;
+}

@@ -1,5 +1,7 @@
 .user-management{
     padding: 10px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
 }
 
 .user-management .actions{

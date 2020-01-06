@@ -1,10 +1,33 @@
 <div class="class-details">
-    <div class="bar"><div class="close" (click)="onClose()">X</div></div>
+    <div class="bar">
+      <div class="close" (click)="onClose()">
+        <mat-icon aria-hidden="false"  (click)="onClose()">clear</mat-icon>
+      </div>
+    </div>
     <div class="info">
-      <h1>Class <span>{{ selectedClass.name }}</span></h1>
-      <h3>Number of students: <span>{{ students.length }}</span></h3>
+      <h1>Klasa <span>{{ selectedClass.name }}</span></h1>
+      <h3>Liczba uczniów: <span>{{ students.length }}</span></h3>
+      <button class="blue" (click)="assignUser()">Przypisz ucznia</button>
+      <button class="blue" (click)="assignSubject()">Przypisz przedmiot</button>
     </div>
-    <div class="students-container">
-      <user-row *ngFor="let s of students" [user]="s"></user-row>
-    </div>
+    <mat-tab-group>
+      <mat-tab  label="Uczniowie" >
+        <div class="students-container">
+          <user-row *ngFor="let s of students" [user]="s" [class]="selectedClass" 
+          (classChange)="classChange($event)"
+          [classes]="allClasses"
+          (deleteUser)="deleteUser($event)" [deleteLabel]="buttonLabel" [noDelete]="true"></user-row>
+        </div>
+      </mat-tab>
+      <mat-tab  label="Przedmioty">
+        <div class="subjects-container" style="margin-top: 10px;">
+          <p *ngFor="let s of subjects">
+            <span style="display: inline-block; width: 250px;">{{ s.name }}</span>
+            <span style="width: 300px; display: inline-block; margin-left: 50%;">{{ getTeacher(s.subjectId) }}</span>
+            <button class="blue" (click)="chooseTeacher(s)" >Wybierz prowadzącego</button>
+            <button class="orange" (click)="onRemove(s)">Usuń z klasy</button>
+          </p>
+        </div>
+      </mat-tab>
+  </mat-tab-group>
 </div>

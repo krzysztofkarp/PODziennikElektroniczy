@@ -22,12 +22,15 @@
       <input placeholder="Login" matInput [(ngModel)]="user.login">
     </mat-form-field>
 
-    <mat-form-field>
-      <input placeholder="Password" matInput [(ngModel)]="user.password">
+    <mat-form-field *ngIf="!passwordChange">
+      <input type="password" placeholder="Password" matInput [(ngModel)]="user.password">
     </mat-form-field>
   
-    <button class="blue" (click)="onSave()">Save</button>
-    <button class="orange" (click)="onDelete()">Delete</button>
-  
+    <button *ngIf="passwordChange" class="blue" (click)="onPasswordChange()">Zmień hasło</button>
+    <button class="blue" (click)="onSave()">Zapisz</button>
+    <button *ngIf="!noDelete" class="orange" (click)="onDelete()">{{ deleteLabel ?  deleteLabel : 'Usuń' }}</button>
+
+    <user-type-details [user]="user" [subjects]="subjects" [classes]="classes" [studentClass]="class" (classChanged)="classChanged($event)"></user-type-details>
+        
   </mat-expansion-panel>
 </div>

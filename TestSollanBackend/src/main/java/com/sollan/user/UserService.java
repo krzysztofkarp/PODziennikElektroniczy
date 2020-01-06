@@ -13,5 +13,6 @@ public interface UserService<T extends User> {
 	void delete(Long id);
 	T getById(Long id);
 	long count();
+	void changePassword(Long userId, String newPassword);
 
 }

@@ -1,15 +1,15 @@
 <div class="class-management">
   <div *ngIf="!selectedClass">
       <div class="actions">
-          <button class="blue" (click)="onAddClass()">Add class</button>
+          <button class="blue" (click)="onAddClass()">Dodaj klasę</button>
       </div>
       <div class="class-container">
-          <p *ngFor="let c of classes" (click)="selectClass(c)">
+          <p *ngFor="let c of classes">
             <span>{{ c.name }}</span>
-            <span class="example-spacer"></span>
-            <button class="orange" (click)="onAddClass()" style="margin-left: 93%">Remove</button>
+            <button class="blue" (click)="selectClass(c)" style="margin-left: 90%;">Szczegóły</button>
+            <button class="orange" (click)="removeClass(c)">Usuń</button>
           </p>
       </div>
   </div>
-  <class-details *ngIf="selectedClass" [selectedClass]="selectedClass" (closeDetails)="closeDetails()"></class-details>
+  <class-details *ngIf="selectedClass" [allClasses]="classes" [selectedClass]="selectedClass" [allTeachers]="teachers" [allStudents]="students"  [allSubjects]="subjects" (closeDetails)="closeDetails()"></class-details>
 </div>

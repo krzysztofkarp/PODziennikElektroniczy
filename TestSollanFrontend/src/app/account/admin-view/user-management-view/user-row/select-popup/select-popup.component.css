@@ -1,0 +1,9 @@
+.select-items{
+    padding: 10px;
+    width: 300px;
+}
+
+.select-items .select,
+.select-items .checkboxes{
+    padding: 20px;
+}

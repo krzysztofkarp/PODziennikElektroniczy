@@ -1,0 +1,38 @@
+.note{
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #c6c6c6;
+}
+
+.note .header{
+    padding: 5px;
+    border-bottom: 1px solid #03A9F4;;
+}
+
+
+.note .header table{
+    width: 100%;
+}
+
+.note .header table td{
+   padding: 5px;
+}
+
+.note .header table td.date{
+    text-align: right;
+ }
+
+ .note .header table td.date  ::ng-deep .mat-icon{
+    color: rgb(240, 165, 27);
+    cursor: pointer;
+}
+
+
+.note .header table td.date ::ng-deep .mat-icon:hover{
+    opacity: 0.8;
+ }
+
+.note .description{
+    height: 100px;
+    padding: 10px;
+}

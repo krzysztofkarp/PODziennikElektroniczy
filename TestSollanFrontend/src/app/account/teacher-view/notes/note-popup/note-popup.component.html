@@ -1,13 +1,13 @@
 <div class="note">
-  <span>Uczeń</span>
-  <mat-form-field>
-      <mat-select  [(ngModel)]="note.to">
-        <mat-option *ngFor="let s of students" [value]="s.id">
-          {{ s.firstName + ' ' + s.secondName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  <span>Tresć</span>
-  <textarea type="text" [(ngModel)]="note.description" matInput></textarea>
-  <button (click)="onAdd()">Dodaj</button>
+  <div class="header">
+    <p>Nowa uwaga</p>
+  </div>
+ <div class="desc">
+  <span>Opis</span>
+  <textarea type="text" [(ngModel)]="note.description" matInput maxlength="256"></textarea>
+ </div>
+  <div class="actions">
+    <button class="blue" (click)="onAdd()" [disabled]="!note.description">Zapisz</button>
+    <button class="orange"(click)="onCancel()">Anuluj</button>
+  </div>
 </div>

@@ -15,6 +15,15 @@ export class User {
 
     constructor(){
         this.properties = {};
+        this.id="";
+        this.firstName="";
+        this.secondName="";
+        this.login="";
+        this.password="";
+        this.email="";
     }
+
+
+    
 
 }

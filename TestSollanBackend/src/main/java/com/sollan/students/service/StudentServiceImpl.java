@@ -1,53 +1,60 @@
 package com.sollan.students.service;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import javax.mail.MessagingException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sollan.students.model.Student;
 import com.sollan.students.repo.StudentRepository;
 import com.sollan.util.Crypter;
-import com.sollan.util.email.EmailService;
-import com.sollan.util.email.TemplateParam;
+import com.sollan.util.Utils;
+import com.sollan.util.notification.NotificationService;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 	
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(StudentServiceImpl.class);
-
 	
 	
 	@Autowired
 	private StudentRepository repo;
 	
 	@Autowired
-	private EmailService emailService;
+	private NotificationService notification;
 		
 	@Override
 	public List<Student> getAll() {
-		 return StreamSupport.stream(repo.findAll().spliterator(), false)
-		    .collect(Collectors.toList());
+		 return Utils.asList(repo.findAll());
 	}
 	
 	@Override
 	public Student save(Student s) {
-		s.setPassword(Crypter.getInstance().encrypt(s.getPassword()));
-		notifyUser(s);
-		return repo.save(s);
+		if(Utils.nullOrEmpty(s.getId())) {
+			s.setPassword(Crypter.getInstance().encrypt(s.getPassword()));
+			Student saved = repo.save(s);
+			notification.notifyAfterCreation(saved);
+			return saved;
+		} else {
+			Student toUpdate = repo.findById(s.getId()).get();
+			toUpdate.updateFields(s);
+			Student saved = repo.save(toUpdate);
+			return saved;
+		}
+		
+		
+	
+		
+	
 	}
 	
 	@Override
 	public void delete(Long id) {
+		Student s = repo.findById(id).get();		
+		s.getParent().forEach(p -> p.removeChild(s));
+		repo.save(s);
 		repo.deleteById(id);
 	}
 
@@ -63,13 +70,12 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student findByUsername(String username) {
-		return Optional.ofNullable(repo.findByUsername(username)).orElse(null);
+		return repo.findByUsername(username);
 	}
 
 	@Override
 	public  List<Student> byParentId(Long id) {
-		return StreamSupport.stream(repo.byParentId(id).spliterator(), false)
-			    .collect(Collectors.toList());
+		return Utils.asList(repo.byParentId(id));
 	}
 
 	@Override
@@ -82,27 +88,30 @@ public class StudentServiceImpl implements StudentService {
 		return StreamSupport.stream(repo.byClassId(id).spliterator(), false)
 			    .collect(Collectors.toList());
 	}
+
+	@Override
+	public List<Student> byIds(List<Long> ids) {
+		return Utils.asList(repo.findAllById(ids));
+	}
 	
-	private void notifyUser(Student s){
-		Map<String, Object> props = new HashMap<>();
-		props.put(TemplateParam.FIRST_NAME, s.getFirstName());
-		props.put(TemplateParam.SECOND_NAME, s.getSecondName());
-		props.put(TemplateParam.LOGIN, s.getLogin());
-		props.put(TemplateParam.PASSWORD, s.getPassword());
-		props.put(TemplateParam.ADMIN, "Administrator");
-		try {
-			emailService.send("krzysztofskarp@gmail.com", props);
-		} catch (MessagingException e) {
-			LOGGER.error(e.getMessage());
-		}
+	@Override
+	public void changePassword(Long userId, String newPassword) {
+		repo.updatePassword(userId, newPassword);
+	}
 	
+
+	@Override
+	public List<Student> byClassIds(List<Long> ids) {
+		List<Student> students = new ArrayList<>();
+		ids.forEach(id ->{
+			students.addAll(repo.byClassId(id));
+		});
+		
+		return students;
 	}
 	
 	
 	
 	
-
-	
-
 
 }

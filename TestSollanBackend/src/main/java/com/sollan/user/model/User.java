@@ -21,7 +21,10 @@ public class User {
 		    )
 	private Long id;
 	
-	private String firstName, secondName, password, email;
+	private String firstName, secondName, email;
+	
+	@Column(name="password",columnDefinition="LONGTEXT")
+	private String password;
 	
 	@Column(unique=true)
 	private String login;
@@ -150,6 +153,20 @@ public class User {
 	
 	public String getFullName() {
 		return this.firstName + " " + this.secondName;
+	}
+	
+	public void updateFields(User u) {
+		if(this.login != u.getLogin())
+			this.login = u.getLogin();
+		
+		if(this.email != u.getEmail())
+			this.email = u.getEmail();
+		
+		if(this.firstName != u.getFirstName())
+			this.firstName = u.getFirstName();
+		
+		if(this.secondName != u.getSecondName())
+			this.secondName = u.getSecondName();
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.sollan.subjects;
+package com.sollan.subjects.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sollan.classes.model.StudentClass;
 import com.sollan.grades.model.Grade;
 import com.sollan.teachers.Teacher;
@@ -32,9 +34,11 @@ public class Subject {
 	
 	
 	@ManyToMany(mappedBy = "subjects")
+	@JsonIgnore
 	private Set<StudentClass> classes = new HashSet<>();
 	
 	@ManyToMany(mappedBy = "subjects")
+	@JsonIgnore
 	private Set<Teacher> teachers = new HashSet<>();
 	
 	
@@ -98,6 +102,16 @@ public class Subject {
 	public void removeClass(StudentClass cl) {
 		this.classes.remove(cl);
 		cl.removeSubject(this);
+	}
+	
+	public void addGrade(Grade g) {
+		this.grades.add(g);
+		g.setSubject(this);
+	}
+	
+	public void removeGrade(Grade g) {
+		this.grades.remove(g);
+		g.setSubject(null);
 	}
 	
 	

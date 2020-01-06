@@ -9,7 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.sollan.messages.Message;
 import com.sollan.students.model.Student;
 import com.sollan.user.model.User;
 
@@ -26,6 +29,13 @@ public class Parent extends User {
 			joinColumns = @JoinColumn(name = "parent_id"), 
 			inverseJoinColumns = @JoinColumn(name = "student_id"))
 	private Set<Student> children = new HashSet<>();
+	
+	
+	@OneToMany(
+			mappedBy = "student",
+	        cascade = CascadeType.PERSIST,
+	        orphanRemoval = true)
+	private Set<Message> messages = new HashSet<>();
 	
 	
 	public Parent() {

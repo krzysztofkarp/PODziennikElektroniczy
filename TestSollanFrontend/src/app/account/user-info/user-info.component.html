@@ -1,0 +1,30 @@
+<div class="user-info">
+  <div style="padding-top: 10px;">
+    <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Dane osobowe
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <table *ngIf="user">
+       <tr>
+         <p class="title">Imię i nazwisko</p>
+         <p>{{  user.firstName+' '+user.secondName  }}</p>
+       </tr>
+       <tr>
+         <p class="title">Data urodzenia</p>
+         <p>{{  parsedDate   }}</p>
+       </tr>
+       <tr *ngFor="let k of keys">
+         <p class="title">{{ k }}</p>
+         <p>{{ values[k] }}</p>
+       </tr>
+      </table>
+  </mat-expansion-panel>
+    </div>
+  
+  
+   <div class="actions">
+      <change-password [user]="user"></change-password>
+   </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="teacher-subject">
+  <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          {{ subject.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    
+    <mat-tab-group  (selectedTabChange)="tabChange($event)">
+      <mat-tab *ngFor="let class of classes" label="{{ class.name }}">
+        <class-view [class]="class" [subject]="subject" [teacher]="teacher"></class-view>
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-expansion-panel>
+</div>

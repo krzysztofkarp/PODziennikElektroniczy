@@ -13,10 +13,3 @@
     display: block;
     border-bottom: 1px solid #03A9F4;
 }
-
-.class-management .class-container p:hover{
-    opacity:0.8;
-    cursor: pointer;
-    background-color: rgb(181, 186, 189);
-    color: white;
-}

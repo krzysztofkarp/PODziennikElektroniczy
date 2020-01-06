@@ -14,3 +14,13 @@
     font-size: 12px;
     padding: 5px;
 }
+
+.account-view .actions{
+  padding: 20px;
+  border-top: 1px solid #03a9f4;
+}
+
+.account-view .content{
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+}

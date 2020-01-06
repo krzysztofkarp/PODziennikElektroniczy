@@ -1,0 +1,17 @@
+<div class="add-subject">
+  <div class="header">
+      <p>{{title}}</p>
+  </div>
+ <div class="table-container">
+    <table>
+        <tr>
+          <td class="title">Nazwa</td>
+          <td class="value"><input type="text" [(ngModel)]="newSubject.name"></td>
+      </tr>
+      </table>
+      <div class="action">
+          <button class="cancel" type="submit" (click)="onCancel()" mat-raised-button>Anuluj</button>
+          <button class="add" type="submit" (click)="onAdd()" (keyup.enter)="onAdd()" mat-raised-button [disabled]="!newSubject.name">Zapisz</button>
+      </div>
+ </div>
+</div>

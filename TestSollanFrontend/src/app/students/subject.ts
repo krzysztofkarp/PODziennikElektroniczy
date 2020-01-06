@@ -1,10 +1,10 @@
+import { StudentClass } from "../studentClass/studentClass";
+import { Teacher } from "../teachers/teacher";
+
 export class Subject {
 
-    subjectName: string;
-    type: SubjectType;
-}
-
-export enum SubjectType{
-		
-    MATEMATYKA, POLSKI, ANGIELSKI, GEOGRAFIA, HISTORIA, BIOLOGIA, FIZYKA, CHEMIA, WOS, WF, INFORMATYKA, NIEMIECKI
+    subjectId: string;
+    name: string;
+    classes: StudentClass[];
+    teachers: Teacher[];
 }

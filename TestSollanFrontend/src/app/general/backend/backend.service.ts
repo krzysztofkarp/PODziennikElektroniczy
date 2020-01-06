@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Response } from './response';
 import { BackendMappings } from '../utils/backendMappings';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Consts } from '../utils/Consts';
 
 @Injectable()
 export class BackendService {
@@ -36,6 +37,11 @@ export class BackendService {
 
   private createParamsObject(params?: any) {
     let headers = new HttpHeaders();
+    headers = headers.append(Consts.Headers.Key.ACCEPT, Consts.Headers.Value.APPLICATION_JSON);
+    headers = headers.append(Consts.Headers.Key.CONTENT_TYPE, Consts.Headers.Value.APPLICATION_JSON);
+    
+    if(localStorage.getItem(Consts.StorageKey.AUTH_TOKEN))
+      headers = headers.append(Consts.StorageKey.AUTH_TOKEN, localStorage.getItem(Consts.StorageKey.AUTH_TOKEN));
     return { headers: headers, params: params};
   }
   private getUri(uri: string) {

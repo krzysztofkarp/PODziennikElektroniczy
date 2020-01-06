@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { NotificationService } from '../notification/notification.service';
 import { Response } from '../general/backend/response';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'home',
@@ -17,7 +18,6 @@ export class HomeComponent implements OnInit {
   checker: boolean;
   form: FormGroup;
   invalidPassword: boolean;
-  currentQuestionId;
   login: string;
   password: string;
 
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private accountService: AccountService,
     private notificationService: NotificationService,
+    private cookieService: CookieService,
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
@@ -37,18 +38,19 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.checkIfLoggedIn();
+
   }
 
 
   onLogin(fg: FormGroup) {
-    let login: any = fg[Consts.FormFields.LOGIN];
+    let login: any = fg[Consts.FormFields.LOGIN].trim();
     let pass: any = fg[Consts.FormFields.PASSWORD];
     this.authService.login(login, pass).subscribe(resp => {
       if(Response.isOk(resp) && resp.item){
-        this.accountService.store(resp.item);
-        localStorage.setItem(Consts.StorageKey.USER, JSON.stringify(resp.item));
-        this.router.navigate([Consts.RouterPaths.ACCOUNT, resp.item.id])
+        this.accountService.store(resp.item.user);
+        localStorage.setItem(Consts.StorageKey.USER, JSON.stringify(resp.item.user));
+        localStorage.setItem(Consts.StorageKey.AUTH_TOKEN, resp.item.token);
+        this.router.navigate([Consts.RouterPaths.ACCOUNT, resp.item.user.type, resp.item.user.id])
       } else {
         this.notificationService.showError(Consts.Messages.WRONG_CREDENTIALS);
         this.form.reset();
@@ -56,12 +58,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  checkIfLoggedIn(){
-    let id = localStorage.getItem(Consts.StorageKey.USER);
-    if(id){
-      this.router.navigate([Consts.RouterPaths.ACCOUNT, id])
-    }
-  }
 
   
 }

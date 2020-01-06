@@ -16,5 +16,8 @@ public interface GradeRepository extends CrudRepository<Grade, Long>{
 	
 	@Query("from Grade where student.id=:id")
 	public Set<Grade> byStudentId(@Param("id") Long id);
+	
+	@Query("from Grade where student.id=:studentId and subject.subjectId=:subjectId")
+	public Set<Grade> byStudentAndSubjectId(@Param("studentId") Long studentId, @Param("subjectId") Long subjectId);
 
 }

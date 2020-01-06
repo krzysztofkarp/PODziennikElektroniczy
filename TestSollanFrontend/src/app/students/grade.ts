@@ -1,7 +1,15 @@
+import { Student } from "./student";
+import { Subject } from "./subject";
+
+
 export class Grade {
-    grade: number;
-    date: any;
-    type: GradeType;
+    gradeId: string;
+    date: Date;
+    value: number;
+    description: string;
+    student: Student;
+    subject: Subject;
+    importance: number;
 
 
 
@@ -9,8 +17,3 @@ export class Grade {
    
 }
 
-export enum GradeType{
-    SPRAWDZIAN = "SPRAWDZIAN", KRATKÓWKA="KARTKÓWKA", ODPOWIEDZ="ODPOWIEDZ", ZADANIE="ZADANIE"
-
-   
-}

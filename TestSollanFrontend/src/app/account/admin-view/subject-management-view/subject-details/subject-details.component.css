@@ -1,0 +1,29 @@
+.subject-details{
+    padding: 20px;
+    width: 100%;
+}
+
+.subject-details .bar{
+    height: 40px;
+}
+
+.subject-details .info{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #03A9F4;
+}
+
+.subject-details .bar .close{
+    display: block;
+    float: right;
+    opacity: 1;
+}
+
+.subject-details ::ng-deep .mat-icon{
+    color: rgb(240, 165, 27);
+}
+
+.subject-details ::ng-deep .mat-icon:hover{
+   opacity: 0.8;
+}

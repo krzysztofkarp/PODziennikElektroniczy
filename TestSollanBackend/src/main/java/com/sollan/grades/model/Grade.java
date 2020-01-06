@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sollan.students.model.Student;
-import com.sollan.subjects.Subject;
+import com.sollan.subjects.model.Subject;
 
 @Entity
 @Table(name = "grade")
@@ -30,6 +30,8 @@ public class Grade {
 	private Date date;
 	
 	private int Value;
+	
+	private int importance;
 	
 	private String description;
 	
@@ -92,6 +94,16 @@ public class Grade {
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
+
+	public int getImportance() {
+		return importance;
+	}
+
+	public void setImportance(int importance) {
+		this.importance = importance;
+	}
+	
+	
 	
 	
 	

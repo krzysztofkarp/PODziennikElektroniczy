@@ -1,0 +1,73 @@
+.add-subject{
+    width: 600px;
+ }
+ 
+ .add-subject
+ .header{
+     font-size: 20px;
+     text-align: center;
+     border-bottom: 1px solid grey;
+ }
+ 
+ .add-subject
+ .table-container{
+     width: 100%;
+     padding: 20px;
+ }
+ 
+ .add-subject
+ .table-container table{
+     width: 100%;
+ }
+ 
+ .add-subject
+ .table-container table td{
+     padding: 10px;
+     width: 50%;
+ }
+ 
+ .add-subject
+ .table-container table td.title{
+     width: 30%;
+ }
+ 
+ 
+ .add-subject
+ .table-container table td.value{
+     width: 70%;
+ }
+ 
+ .add-subject
+ .table-container table td input{
+    min-width: 300px;
+    display: block;
+    margin: 0 auto;
+    background: rgb(88, 192, 240);
+    border: none;
+    padding: 5px;
+    color: white;
+ }
+ 
+ .add-subject
+ .action{
+     width: max-content;
+     margin: 0 auto;
+     margin-top: 40px;
+ }
+ 
+ .add-subject
+ .action button{
+     display: inline-block;
+ }
+ 
+ .add-subject
+ .action button.add{
+     background-color: #03A9F4;
+     color: white;
+ }
+ 
+ .add-subject
+ .action button.cancel{
+     background-color: white;
+ }
+ 

@@ -1,6 +1,7 @@
-<mat-tab-group>
-    <mat-tab *ngFor="let v of views"  label="{{ v.title }}">
+<mat-tab-group (selectedTabChange)="tabChange($event)">
+    <mat-tab *ngFor="let v of views"  label="{{ v.title }}" >
         <user-management-view *ngIf="v.type == AdminViewType.USER_MANAGEMENT"></user-management-view>
         <class-management-view *ngIf="v.type == AdminViewType.CLASS_MANAGEMENT"></class-management-view>
+        <subject-management-view *ngIf="v.type == AdminViewType.SUBJECT_MANAGEMENT"></subject-management-view>
     </mat-tab>
 </mat-tab-group>

@@ -1,0 +1,14 @@
+.user-type-details{
+    padding: 15px;
+}
+
+.user-type-details .teacher-details .subjects,
+.user-type-details .teacher-details .classes{
+    display: inline-block;
+    width: 45%;
+}
+
+.user-type-details  p{
+    font-size: 16px;
+    font-weight: bold;
+}

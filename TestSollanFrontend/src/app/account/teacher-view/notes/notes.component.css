@@ -1,17 +1,12 @@
-.notes table{
+.notes{
+    padding: 20px;
+}
+.notes .notes-container{
     width: 95%;
     margin: 0 auto;
+    padding: 10px;
 }
 
-.notes table td{
-    border: 1px solid #c5c5c5;
-    border-collapse: collapse;
-    padding: 5px;
-}
-
-.notes .add-new{
-    width: max-content;
-    margin: 0 auto;
+.notes .notes-container ::ng-deep .note{
     margin-top: 10px;
-    margin-bottom: 10px;
 }

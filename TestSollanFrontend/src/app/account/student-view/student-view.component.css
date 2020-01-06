@@ -1,32 +1,33 @@
+.student-view {
+    padding: 20px;
+}
 .student-view table{
-    width: 90%;
+    width: 99%;
     margin: 0 auto;
     margin-top: 20px;
 }
 
-.student-view table td.subject{
-    width: 20%;
-    padding: 20px;
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: rgb(248, 186, 105);
-}
-
-.student-view table td.grades{
-    width: 80%;
-    padding: 20px;
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-}
-
 .student-view p {
-    padding: 20px;
+    padding: 5px;
     width: 100%;
-
 }
 
-.student-view p span{
-    margin-right: 200px;
-    background-color: rgb(248, 186, 105);
+.student-view p.title {
+   background-color: #03a9f4;
+   color: white;
+   
+}
+
+.student-view .actions {
+    padding-top: 10px;
+}
+
+.student-view ::ng-deep .mat-expansion-panel{
+    box-shadow: none;
+}
+
+.student-view ::ng-deep .mat-expansion-panel-header{
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid #03a9f4;
 }

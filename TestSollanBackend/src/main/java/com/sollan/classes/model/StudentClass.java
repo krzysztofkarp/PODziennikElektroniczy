@@ -15,9 +15,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sollan.classes.model.teacherClass.TeacherClass;
 import com.sollan.students.model.Student;
-import com.sollan.subjects.Subject;
-import com.sollan.teachers.Teacher;;
+import com.sollan.subjects.model.Subject;
 
 @Entity
 @Table(name = "student_class")
@@ -37,12 +40,18 @@ public class StudentClass {
 	@OneToMany(
 	mappedBy = "studentClass",
 	fetch = FetchType.EAGER,
-	cascade = CascadeType.PERSIST,
-    orphanRemoval = true)
+	cascade = CascadeType.ALL,
+    orphanRemoval = false)
+	@JsonIgnore
 	private Set<Student> students = new HashSet<>();
 	
-	@ManyToMany(mappedBy = "classes")
-	private Set<Teacher> teachers = new HashSet<>();
+	 @OneToMany(
+		        mappedBy = "teacherClass",
+		        cascade = CascadeType.ALL,
+		        orphanRemoval = false
+		    )
+	@JsonIgnore
+	private Set<TeacherClass> teachers = new HashSet<>();
 	
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
@@ -50,11 +59,14 @@ public class StudentClass {
 			name = "studentClass_subject", 
 			joinColumns = @JoinColumn(name = "studentClass_classId"), 
 			inverseJoinColumns = @JoinColumn(name = "subject_subjectId"))
+	@JsonIgnore
 	private Set<Subject> subjects = new HashSet<>();
 	
 	private ClassProfile profile;
 	
-	private int numberOfStudents = 0;
+	
+	@Transient
+	private Long numberOfStudents;
 	
 	
 	
@@ -90,24 +102,22 @@ public class StudentClass {
 		this.profile = profile;
 	}
 	
-	public int getNumberOfStudents() {
+	public Long getNumberOfStudents() {
 		return numberOfStudents;
 	}
 
-	public void setNumberOfStudents(int numberOfStudents) {
+	public void setNumberOfStudents(Long numberOfStudents) {
 		this.numberOfStudents = numberOfStudents;
 	}
 	
 	public void addStudent(Student s) {
 		this.students.add(s);
 		s.setStudentClass(this);
-		this.numberOfStudents++;
 	}
 	
 	public void removeStudent(Student s) {
 		this.students.remove(s);
 		s.setStudentClass(this);
-		this.numberOfStudents--;
 	}
 	
 	public void addSubject(Subject s) {
@@ -119,6 +129,24 @@ public class StudentClass {
 		this.subjects.remove(s);
 		s.getClasses().remove(this);
 	}
+	
+	public Set<TeacherClass> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(Set<TeacherClass> teachers) {
+		this.teachers = teachers;
+	}
+
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
+	}
+
+
 
 
 

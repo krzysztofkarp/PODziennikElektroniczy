@@ -1,0 +1,10 @@
+<div class="grades">
+  <table class="grade-table">
+    <tr *ngFor="let s of subjects">
+      <td class="subject">{{ s.name }}</td>
+      <td>
+        <grade *ngFor="let grade of subject2Grades[s.subjectId]" [grade]="grade" [canDelete]="false"></grade>
+      </td>
+    </tr>
+  </table>
+</div>

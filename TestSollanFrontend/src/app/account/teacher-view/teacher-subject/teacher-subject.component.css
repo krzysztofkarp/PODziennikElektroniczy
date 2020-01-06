@@ -1,0 +1,18 @@
+.teacher-subject{
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.teacher-subject ::ng-deep .mat-expansion-panel{
+    box-shadow: none;
+}
+
+.teacher-subject ::ng-deep .mat-expansion-panel-header{
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid #03a9f4;
+}
+
+.teacher-subject ::ng-deep .mat-expansion-panel-body{
+    padding-top: 20px;
+}

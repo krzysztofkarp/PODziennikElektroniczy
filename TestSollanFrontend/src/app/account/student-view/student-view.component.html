@@ -1,26 +1,13 @@
 <div class="student-view">
     <mat-tab-group>
-        <mat-tab label="Informacje">
-         <table>
-          <tr><td class="subject">Login</td><td class="grades">{{ user.login }}</td></tr>
-          <tr><td class="subject">Imię</td><td class="grades">{{  user.firstName  }}</td></tr>
-          <tr><td class="subject">Nazwisko</td><td class="grades">{{ user.secondName }}</td></tr>
-          <tr><td class="subject">Klasa</td><td class="grades">{{ user.classId }}</td></tr>
-          <tr><td class="subject">Profil</td><td class="grades">{{ user.profile }}</td></tr>
-         </table>
+        <mat-tab label="Moje konto">
+          <user-info *ngIf="info" [user]="user" [values]="info"></user-info>
         </mat-tab>
         <mat-tab label="Oceny">
-          <table>
-            <tr *ngFor="let key of keys">
-              <td class="subject">{{ key }}</td>
-              <td class="grades">
-                <grade *ngFor="let g of user.grades[key]" [grade]="g" [teacherView]="teacherView"></grade>
-              </td>
-            </tr>
-          </table>
+          <student-grade [student]="user"></student-grade>
         </mat-tab>
         <mat-tab label="Uwagi">
-          <notes-view [notes]="notes"></notes-view> 
+          <notes-view [student]="user" [deleteDisabled]="true"></notes-view>
         </mat-tab>
       </mat-tab-group>
 </div>

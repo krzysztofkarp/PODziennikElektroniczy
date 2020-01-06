@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sollan.classes.model.StudentClass;
 import com.sollan.grades.model.Grade;
+import com.sollan.messages.Message;
+import com.sollan.notes.model.Note;
 import com.sollan.parents.model.Parent;
 import com.sollan.user.model.User;
 
@@ -40,6 +42,19 @@ public class Student extends User{
 	        cascade = CascadeType.PERSIST,
 	        orphanRemoval = true)
 	private Set<Grade> grades = new HashSet<>();
+	
+	@OneToMany(
+			mappedBy = "student",
+	        cascade = CascadeType.PERSIST,
+	        orphanRemoval = true)
+	private Set<Note> notes = new HashSet<>();
+	
+	
+	@OneToMany(
+			mappedBy = "student",
+	        cascade = CascadeType.PERSIST,
+	        orphanRemoval = true)
+	private Set<Message> messages = new HashSet<>();
 	
 	
 	public Student() {
@@ -79,7 +94,17 @@ public class Student extends User{
 	
 	public void removeGrade(Grade g) {
 		this.grades.remove(g);
-		g.setStudent(this);
+		g.setStudent(null);
+	}
+	
+	public void addNote(Note n) {
+		this.notes.add(n);
+		n.setStudent(this);
+	}
+	
+	public void removeNote(Note n) {
+		this.notes.remove(n);
+		n.setStudent(null);
 	}
 	
 

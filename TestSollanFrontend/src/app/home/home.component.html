@@ -1,6 +1,6 @@
 <mat-grid-list cols="1" rowHeight="150px">
     <mat-grid-tile class="sms"rowspan="2">
-            STUDENT MANAGEMENT SYSTEM
+            DZIENNIK ELEKTRONICZNY
     </mat-grid-tile>
     <mat-grid-tile rowspan="2">
         <form [formGroup]="form"> 
@@ -8,12 +8,12 @@
                 <label>Login</label>
                 <input formControlName="login" type="text" class="form-control">
                 <div><br></div>
-                <label>Password</label>
+                <label>Hasło</label>
                 <input formControlName="password" type="password" class="form-control">
             </div>
             <div style="margin: 0 auto;">
                 <button class="orange" type="submit" (click)="onLogin(form.value)" 
-                (keyup.enter)="onLogin(form.value)" mat-raised-button>Login</button></div>
+                (keyup.enter)="onLogin(form.value)" mat-raised-button>Zaloguj się</button></div>
         </form>
     </mat-grid-tile>
 </mat-grid-list>

@@ -1,21 +1,19 @@
 <div class="teacher-view">
-    <mat-tab-group>
-        <mat-tab label="Informacje">
-          <table>
-            <tr><td class="subject">Login</td><td class="grades">{{ user.login }}</td></tr>
-            <tr><td class="subject">Imię</td><td class="grades">{{  user.firstName  }}</td></tr>
-            <tr><td class="subject">Nazwisko</td><td class="grades">{{ user.secondName }}</td></tr>
-           </table>
+    <mat-tab-group  (selectedTabChange)="tabChange($event)">
+        <mat-tab label="Moje konto">
+          <div *ngIf="tabIndex==0">
+            <user-info *ngIf="info" [user]="user" [values]="info"></user-info>
+          </div>
         </mat-tab>
-        <mat-tab label="Moje klasy">
-            <mat-tab-group>
-            <mat-tab *ngFor="let class of classes" label="{{ class.classId }}" >
-          <class-view  [class]="class" [subject]="sub" [teacherView]="true"></class-view>
-          </mat-tab>
-          </mat-tab-group>
+        <mat-tab label="Moje przedmioty">
+          <div *ngIf="tabIndex==1">
+            <teacher-subject *ngFor="let s of subjects" [subject]="s" [teacher]="user"></teacher-subject>
+            </div>
         </mat-tab>
         <mat-tab label="Uwagi">
-          <notes-view [notes]="notes" [teacher]="user" [classes]="classes"></notes-view>
+          <div *ngIf="tabIndex==2">
+            <notes-view [teacher]="user"></notes-view>
+            </div>
       </mat-tab>
       </mat-tab-group>
 </div>

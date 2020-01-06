@@ -5,6 +5,7 @@ import { StudentClass } from '../../../studentClass/studentClass';
 import { Student } from '../../../students/student';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StudentService } from '../../../students/student.service';
+import { Teacher } from '../../../teachers/teacher';
 
 @Component({
   selector: 'class-view',
@@ -21,21 +22,18 @@ export class ClassViewComponent implements OnInit {
   subject: Subject;
 
   @Input()
-  teacherView: boolean;
+  teacher: Teacher;
+
+  students: Student[];
 
   constructor(private dialog: MatDialog, private studentService: StudentService) { }
 
   ngOnInit() {
   }
 
-
-  onManage(student: Student){
-    let config: MatDialogConfig = {};
-    config.data = { student: student, subject: this.subject, teacherView: this.teacherView};
-    config.disableClose = true;
-    this.dialog.open(StudentPopupComponent, config).afterClosed().subscribe(student => {
-        this.studentService.update(student).subscribe(resp => console.log(resp));
-    })
+  ngOnChanges(){
+    this.studentService.byClassId(this.class.classId).subscribe(resp => this.students = resp.items);
   }
+
 
 }

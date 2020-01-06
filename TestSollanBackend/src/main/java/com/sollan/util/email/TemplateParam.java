@@ -4,6 +4,7 @@ public class TemplateParam {
 	
 	public static class Names {
 		public static final String GREETING_EMAIL = "greeting";
+		public static final String RESET = "reset";
 	}
 	
 	

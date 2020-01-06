@@ -45,6 +45,23 @@ import { GenericUserContainerComponent } from './account/admin-view/user-managem
 import { ClassManagementViewComponent } from './account/admin-view/class-management-view/class-management-view.component';
 import { AddClassPopupComponent } from './account/admin-view/class-management-view/add-class-popup/add-class-popup.component';
 import { ClassDetailsComponent } from './account/admin-view/class-management-view/class-details/class-details.component';
+import { SubjectManagementViewComponent } from './account/admin-view/subject-management-view/subject-management-view.component';
+import { GradeService } from './students/grade.service';
+import { SubjectService } from './account/admin-view/subject-management-view/subject.service';
+import { NewSubjectPopupComponent } from './account/admin-view/subject-management-view/new-subject-popup/new-subject-popup.component';
+import { UserTypeDetailsComponent } from './account/admin-view/user-management-view/user-row/user-type-details/user-type-details.component';
+import { SelectPopupComponent } from './account/admin-view/user-management-view/user-row/select-popup/select-popup.component';
+import { CookieService } from 'ngx-cookie-service';
+import { DateParser } from './general/utils/dateParser';
+import { ChangePasswordComponent } from './account/change-password/change-password.component';
+import { ChangePasswordService } from './account/change-password/change.password.service';
+import { SubjectDetailsComponent } from './account/admin-view/subject-management-view/subject-details/subject-details.component';
+import { UserInfoComponent } from './account/user-info/user-info.component';
+import { TeacherSubjectComponent } from './account/teacher-view/teacher-subject/teacher-subject.component';
+import { TeacherStudentRowComponent } from './account/teacher-view/class-view/teacher-student-row/teacher-student-row.component';
+import { ResetPasswordComponent } from './account/change-password/reset-password/reset-password.component';
+import { NoteComponent } from './account/teacher-view/notes/note/note.component';
+import { StudentGradeComponent } from './account/student-view/student-grade/student-grade.component';
 
 
 @NgModule({
@@ -73,7 +90,19 @@ import { ClassDetailsComponent } from './account/admin-view/class-management-vie
     GenericUserContainerComponent,
     ClassManagementViewComponent,
     AddClassPopupComponent,
-    ClassDetailsComponent
+    ClassDetailsComponent,
+    SubjectManagementViewComponent,
+    NewSubjectPopupComponent,
+    UserTypeDetailsComponent,
+    SelectPopupComponent,
+    ChangePasswordComponent,
+    SubjectDetailsComponent,
+    UserInfoComponent,
+    TeacherSubjectComponent,
+    TeacherStudentRowComponent,
+    ResetPasswordComponent,
+    NoteComponent,
+    StudentGradeComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +120,7 @@ import { ClassDetailsComponent } from './account/admin-view/class-management-vie
         redirectTo: 'login'
       },
       { path: 'login', component: HomeComponent},
-      { path: 'account/:id', component: AccountViewComponent, canActivate: [AuthGuard] },
+      { path: 'account/:type/:id', component: AccountViewComponent, canActivate: [AuthGuard] },
       ])
   ],
   providers: [
@@ -108,11 +137,16 @@ import { ClassDetailsComponent } from './account/admin-view/class-management-vie
     ParentService,
     TeacherService,
     UserService,
+    GradeService,
+    SubjectService,
+    CookieService,
+    DateParser,
+    ChangePasswordService,
     {provide: MatDialogRef, useValue: dialogMock },
     {provide: MAT_DIALOG_DATA, useValue: {} }
   ],
     
   bootstrap: [AppComponent],
-  entryComponents: [StudentPopupComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent]
+  entryComponents: [StudentPopupComponent, ResetPasswordComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent, NewSubjectPopupComponent, SelectPopupComponent]
 })
 export class AppModule { }

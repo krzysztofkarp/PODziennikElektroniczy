@@ -1,9 +1,11 @@
 package com.sollan.util;
 
 import java.lang.reflect.Array;
+import java.security.InvalidParameterException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -56,6 +58,18 @@ public class Utils {
 	public static boolean notNullAndNotEmpty(Object object) {
 		return !nullOrEmpty(object);
 	}
+	
+	public static <T> List<T> asList(Iterable<T> items){
+		 return StreamSupport.stream(items.spliterator(), false)
+		    .collect(Collectors.toList());
+	}
+	
+	public static void requireNonNullOrEmpty(Object object, String errorMessage) {
+		if (nullOrEmpty(object)) {
+			throw new InvalidParameterException(errorMessage);
+		}
+	}
+
 
 
 

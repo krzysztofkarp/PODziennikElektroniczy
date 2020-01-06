@@ -29,7 +29,7 @@
 
 
 .add-user .table-container table td.value{
-    width: 70%;
+    width: 60%;
 }
 
 .add-user .table-container table td input{
@@ -39,6 +39,10 @@
    border: none;
    padding: 5px;
    border-bottom: 1px solid #03A9F4;
+}
+
+.add-user .table-container table td.not-valid input{
+    border: 1px solid rgb(241, 57, 57);
 }
 
 .add-user .table-container table td.picker input{

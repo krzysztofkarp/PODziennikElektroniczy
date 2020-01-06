@@ -1,34 +1,56 @@
-import { BackendMappings } from './../general/utils/backendMappings';
-import { BackendService } from './../general/backend/backend.service';
 import { Injectable } from '@angular/core';
+import { RequestParams } from '../general/utils/requestParams';
+import { BackendService } from './../general/backend/backend.service';
+import { BackendMappings } from './../general/utils/backendMappings';
 import { Note } from './note';
-import { HttpParams } from '@angular/common/http';
 
 @Injectable()
-export class NoteService{
+export class NoteService {
 
 
-    constructor(private backendService: BackendService){
+    constructor(private backendService: BackendService) {
 
     }
 
 
-    add(note: Note){
-        let params = new HttpParams();
-        params["note"] = note;
-        return this.backendService.post(BackendMappings.Note.ADD, null, params);
+    add(note: Note, studentId: string, teacherId: string) {
+        let params = {};
+        params[RequestParams.TEACHER_ID] = teacherId;
+        params[RequestParams.STUDENT_ID] = studentId;
+        return this.backendService.post(BackendMappings.Note.ADD, note, params);
     }
 
-    fromTeacher(id: string){
-        let params = new HttpParams();
-        params["id"] = id;
+    remove(note: Note, studentId: string, teacherId: string) {
+        let params = {};
+        params[RequestParams.TEACHER_ID] = teacherId;
+        params[RequestParams.STUDENT_ID] = studentId;
+        return this.backendService.post(BackendMappings.Note.REMOVE, note, params);
+    }
+
+    byTeacherId(teacherId: string) {
+        let params = {};
+        params[RequestParams.TEACHER_ID] = teacherId;
         return this.backendService.get(BackendMappings.Note.BY_TEACHER_ID, params);
     }
 
-    forStudent(id: string){
-        let params = new HttpParams();
-        params["id"] = id;
+    byStudentId(studentId: string) {
+        let params = {};
+        params[RequestParams.ID] = studentId;
         return this.backendService.get(BackendMappings.Note.BY_STUDENT_ID, params);
     }
+
+    studentByNoteId(noteId: string) {
+        let params = {};
+        params[RequestParams.NOTE_ID] = noteId;
+        return this.backendService.get(BackendMappings.Note.STUDENT_BY_NOTE_ID, params);
+    }
+
+
+    teacherByNoteId(noteId: string) {
+        let params = {};
+        params[RequestParams.NOTE_ID] = noteId;
+        return this.backendService.get(BackendMappings.Note.TEACHER_BY_NOTE_ID, params);
+    }
+
 
 }

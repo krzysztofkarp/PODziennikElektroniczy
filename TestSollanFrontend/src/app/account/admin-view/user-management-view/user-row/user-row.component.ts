@@ -1,5 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../../../user/user';
+import { Subject } from '../../../../students/subject';
+import { StudentClass } from '../../../../studentClass/studentClass';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ChangePasswordComponent } from '../../../change-password/change-password.component';
+import { Util } from '../../../../general/utils/util';
+import { ResetPasswordComponent } from '../../../change-password/reset-password/reset-password.component';
 
 @Component({
   selector: 'user-row',
@@ -12,6 +19,15 @@ export class UserRowComponent implements OnInit {
   @Input()
   user: User;
 
+  @Input()
+  classes: StudentClass[];
+
+  @Input()
+  class: StudentClass;
+
+  @Input()
+  subjects: Subject[];
+
   headerLabel: string;
 
   @Output()
@@ -20,14 +36,30 @@ export class UserRowComponent implements OnInit {
   @Output()
   deleteUser: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  @Output()
+  classChange: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input()
+  deleteLabel: string;
+
+  @Input()
+  noDelete: boolean = false;
+
+  @Input()
+  passwordChange: boolean = false;
+
+  originalUser: User;
+
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    
   }
 
   ngOnChanges(){
     if(this.user){
       this.headerLabel = [this.user.firstName, this.user.secondName].join(" ");
+      this.originalUser = Util.clone(this.user);
     }   
   }
 
@@ -37,6 +69,16 @@ export class UserRowComponent implements OnInit {
 
   onDelete(){
     this.deleteUser.emit(this.user);
+  }
+
+  classChanged($event){
+    this.classChange.emit($event)
+  }
+
+  onPasswordChange(){
+    let conf = new MatDialogConfig();
+    conf.data = this.user;
+    this.dialog.open(ResetPasswordComponent, conf);
   }
 
 }

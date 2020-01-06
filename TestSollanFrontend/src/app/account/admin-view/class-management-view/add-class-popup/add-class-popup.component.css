@@ -68,3 +68,8 @@
      padding: 5px;
      color: white;
  }
+
+ .add-class .table-container table td.value ::ng-deep  .mat-select-value-text{
+    color: white;
+}
+

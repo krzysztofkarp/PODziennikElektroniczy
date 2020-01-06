@@ -1,0 +1,28 @@
+<div class="user-type-details">
+
+  <div class="teacher-details" *ngIf="user.type == UserType.TEACHER">
+    <div class="subjects">
+      <p>Przedmioty</p>
+      <span *ngIf="teacherSubjects.length == 0">Nie przypisano żadnych</span>
+      <span *ngIf="teacherSubjects.length > 0"> {{ subjectsString }}</span>
+      <button class="blue" (click)="changeSubjects()">Zmień</button>
+    </div>
+    <div class="classes">
+      <p>Klasy</p>
+      <span *ngIf="!subjectsString">Nie przypisano żadnych</span>
+      <span *ngIf="subjectsString"> {{ subjectsString }}</span>
+    </div>
+  </div>
+
+  <div class="student-details" *ngIf="user.type == UserType.STUDENT">
+    <p>Klasa</p>
+    <span *ngIf="!studentClass">Nie przypisano</span>
+    <span *ngIf="studentClass"> {{ studentClass.name }}</span>
+    <button class="blue" (click)="changeClass()">Zmień</button>
+  </div>
+
+  <div class="parent-details" *ngIf="user.type == UserType.PARENT">
+
+  </div>
+
+</div>

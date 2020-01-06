@@ -1,16 +1,28 @@
 .grade{
     display: inline-block;
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
     background-color: rgb(241, 200, 111)
 }
 
-.delete-grade{
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 10px;
+.grade span{
+    font-size: 20px;
 }
 
-.delete-grade:hover{
-    color: white;
+.grade ::ng-deep .mat-icon{
+    width: 15px;
+    height: 15px;
 }
+
+.grade ::ng-deep .mat-icon:hover{
+   color: white;
+   cursor: pointer;
+}
+
+.grade ::ng-deep .mat-icon.material-icons{
+    font-size: 15px;
+}
+
+.grade .line-broken-tooltip {
+    white-space: pre-line;
+  }

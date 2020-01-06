@@ -1,1 +1,1 @@
-<user-container [users]="teachers"></user-container>
+<user-container [users]="teachers"  (userSaved)="teacherSaved($event)" (userDeleted)="teacherDeleted($event)" [subjects]="subjects" [classes]="classes"></user-container>

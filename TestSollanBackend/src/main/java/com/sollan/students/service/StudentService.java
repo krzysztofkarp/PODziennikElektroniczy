@@ -13,6 +13,9 @@ public interface StudentService extends UserService<Student>{
 	List<Student> byParentId(Long id);
 	List<Student> byClassId(Long id);
 	Long studentCountForClass(Long classId);
+	List<Student> byIds(List<Long> ids);
+	List<Student> byClassIds(List<Long> ids);
+	
 	
 
 }

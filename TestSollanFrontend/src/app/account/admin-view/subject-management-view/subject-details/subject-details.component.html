@@ -1,0 +1,13 @@
+<div class="subject-details">
+  <div class="bar">
+  <div class="close">
+    <mat-icon aria-hidden="false"  (click)="onClose()">clear</mat-icon>
+  </div>
+</div>
+  <div class="info">
+    <h1>{{ subject.name }}</h1>
+    <h3>Liczba nauczycieli: <span>{{ teachers.length }}</span></h3>
+    <button class="blue" (click)="onSelect()">Dodaj nauczyciela</button>
+  </div>
+  <user-row *ngFor="let t of teachers" [user]="t" [noDelete]="true" [subjects]="subjects"></user-row>
+</div>

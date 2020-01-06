@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { User } from '../../../../user/user';
+import { Subject } from '../../../../students/subject';
+import { StudentClass } from '../../../../studentClass/studentClass';
 
 @Component({
   selector: 'user-container',
@@ -13,8 +15,15 @@ export class GenericUserContainerComponent implements OnInit {
   @Input()
   users: User[];
 
+  @Input()
+  data: any[];
 
-  
+  @Input()
+  classes: StudentClass[];
+
+  @Input()
+  subjects: Subject[];
+
   @Output()
   userSaved: EventEmitter<any> = new EventEmitter<any>();
 
@@ -27,7 +36,6 @@ export class GenericUserContainerComponent implements OnInit {
   }
 
   deleteUser(user: User){
-    console.log(user)
     this.userDeleted.emit(user);
   }
 

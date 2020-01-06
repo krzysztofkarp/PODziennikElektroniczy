@@ -1,0 +1,17 @@
+<div class="select-items">
+  <span>{{ data.label}}</span>
+  <div class="checkboxes" *ngIf="!data.select">
+    <p *ngFor="let item of data.items"><mat-checkbox  [value]="item">{{ item.name ? item.name : item.firstName + ' ' + item.secondName }}</mat-checkbox></p>
+  </div>
+  <div class="select">
+    <mat-select  *ngIf="data.select" [(ngModel)]="selectedItem">
+      <mat-option *ngFor="let item of data.items" [value]="item">
+          {{item.name ? item.name : item.firstName + ' ' + item.secondName }}
+      </mat-option>
+    </mat-select>
+  </div>
+  <div class="actions">
+    <button class="blue" (click)="onSave()">Zapisz</button>
+    <button class="orange" (click)="onCancel()">Anuluj</button>
+  </div>
+</div>

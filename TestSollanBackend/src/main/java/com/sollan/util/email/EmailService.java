@@ -10,6 +10,6 @@ public interface EmailService {
 	
 	
 	void send(String to, SimpleMailMessage message);
-	void send(String to, Map<String, Object> properites) throws MessagingException;
+	void send(String to, String template, Map<String, Object> properites) throws MessagingException;
 
 }

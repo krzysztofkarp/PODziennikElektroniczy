@@ -1,0 +1,9 @@
+.subject-management{
+    padding: 20px;
+}
+
+.subject-management .subjects-container p {
+    padding:10px;
+    border-bottom: 1px solid #03A9F4;
+    display: block;
+}

@@ -1,0 +1,30 @@
+.user-info table{
+    width: 99%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.user-info  p {
+    padding: 5px;
+    width: 100%;
+}
+
+.user-info  p.title {
+   background-color: #03a9f4;
+   color: white;
+   
+}
+
+.user-info  .actions {
+    padding-top: 10px;
+}
+
+.user-info ::ng-deep .mat-expansion-panel{
+    box-shadow: none;
+}
+
+.user-info  ::ng-deep .mat-expansion-panel-header{
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid #03a9f4;
+}

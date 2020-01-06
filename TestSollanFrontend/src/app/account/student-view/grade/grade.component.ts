@@ -1,4 +1,3 @@
-import { GradeType } from './../../../students/grade';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Grade } from '../../../students/grade';
 import { DatePipe } from '@angular/common';
@@ -14,15 +13,17 @@ export class GradeComponent implements OnInit {
   @Input()
   grade: Grade;
 
+  @Input()
+  canDelete: boolean = true;
+
   @Output()
   delete: EventEmitter<any> = new EventEmitter<any>();
 
-  GradeType = GradeType;
-
-  grade2color
-
   @Input()
   teacherView: boolean = false;
+
+
+  tooltip: string;
 
   constructor(private pipe: DatePipe) { }
 
@@ -30,9 +31,10 @@ export class GradeComponent implements OnInit {
     
   }
 
-  getFormatted(){
-    let values = [GradeType[this.grade.type], this.pipe.transform(this.grade.date)]
-    return values.join(",")
+  ngOnChanges(){
+    if(this.grade){
+      this.tooltip = "Waga: "+this.grade.importance + "\n"+ this.grade.description;
+    }
   }
 
   deleteGrade(){

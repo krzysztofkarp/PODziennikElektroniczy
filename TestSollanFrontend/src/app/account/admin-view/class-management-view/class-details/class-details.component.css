@@ -10,11 +10,21 @@
 .class-details .info{
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #03A9F4;
 }
 
 .class-details .bar .close{
     display: block;
     float: right;
-    padding: 3px;
+    opacity: 1;
 }
+
+.class-details ::ng-deep .mat-icon{
+    color: rgb(240, 165, 27);
+}
+
+
+.class-details ::ng-deep .mat-icon:hover{
+    opacity: 0.8;
+ }

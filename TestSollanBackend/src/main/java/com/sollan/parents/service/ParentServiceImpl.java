@@ -1,15 +1,21 @@
 package com.sollan.parents.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sollan.parents.model.Parent;
 import com.sollan.parents.repo.ParentRepository;
+import com.sollan.students.model.Student;
+import com.sollan.students.service.StudentService;
+import com.sollan.teachers.Teacher;
 import com.sollan.user.model.User;
 import com.sollan.util.Crypter;
+import com.sollan.util.Utils;
+import com.sollan.util.notification.NotificationService;
 
 @Service
 public class ParentServiceImpl implements ParentService {
@@ -18,9 +24,15 @@ public class ParentServiceImpl implements ParentService {
 	@Autowired
 	private ParentRepository repo;
 	
+	@Autowired
+	private StudentService studentService;
+	
+	@Autowired
+	private NotificationService notification;
+	
 	@Override
 	public User findByUsername(String username) {
-		return Optional.ofNullable(repo.findByUsername(username)).orElse(null);
+		return repo.findByUsername(username);
 	}
 
 	@Override
@@ -31,8 +43,17 @@ public class ParentServiceImpl implements ParentService {
 
 	@Override
 	public Parent save(Parent t) {
-		t.setPassword(Crypter.getInstance().encrypt(t.getPassword()));
-		return repo.save(t);
+		if(Utils.nullOrEmpty(t.getId())) {
+			t.setPassword(Crypter.getInstance().encrypt(t.getPassword()));
+			Parent saved = repo.save(t);
+			notification.notifyAfterCreation(saved);
+			return saved;
+		} else {
+			Parent toUpdate = repo.findById(t.getId()).get();
+			toUpdate.updateFields(t);
+			Parent saved = repo.save(toUpdate);
+			return saved;
+		}
 		
 	}
 
@@ -44,12 +65,26 @@ public class ParentServiceImpl implements ParentService {
 
 	@Override
 	public Parent getById(Long id) {
-		return repo.findById(id).orElseThrow();
+		return repo.findById(id).get();
 	}
 
 	@Override
 	public long count() {
 		return repo.count();
+	}
+
+	@Override
+	public void addChildren(List<Long> ids, Long parentId) {
+		List<Student> childs = studentService.byIds(ids);
+		Parent p = repo.findById(parentId).get();
+		childs.forEach(ch -> p.addChild(ch));
+		repo.save(p);
+		
+	}
+	
+	@Override
+	public void changePassword(Long userId, String newPassword) {
+		repo.updatePassword(userId, newPassword);
 	}
 	
 	

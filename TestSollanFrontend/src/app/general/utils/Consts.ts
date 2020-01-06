@@ -31,25 +31,58 @@ export class Consts {
     }
 
     static Messages = class {
-        static readonly WRONG_CREDENTIALS = "Wrong credentials";
-        static readonly NOT_LOGGED_IN = "You are currently not logged in, please log in!"
-        static readonly NEW_USER = "New user";
-        static readonly NEW_CLASS = "New class";
-        static readonly USER_SAVED = "User saved";
-        static readonly USER_SAVE_ERROR = "Cannot save user! Error occured"
-        static readonly STUDENT_SAVED= "Student saved"
-        static readonly STUDENT_DELETED= "Student deleted"
-        static readonly TEACHER_SAVED= "Teacher saved"
-        static readonly TEACHER_DELETED= "Teacher deleted"
-        static readonly PARENT_SAVED= "Parent saved"
-        static readonly PARENT_DELETED= "Parent deleted"
-        static readonly CLASS_SAVE_ERROR = "Cannot save class! Error occured"
-        static readonly CLASS_SAVED = "Class saved";
-        static readonly CLASS_NAME_NOT_VALID = "Class name is not valid!"
+        static readonly WRONG_CREDENTIALS = "Nieprawidłowe dane logowania!";
+        static readonly NOT_LOGGED_IN = "Nie jesteś obecnie zalogowany, zaloguj się!"
+        static readonly NEW_USER = "Nowy użytkownik";
+        static readonly NEW_CLASS = "Nowa klasa";
+        static readonly USER_SAVED = "Zapisano użytkownika";
+        static readonly USER_SAVE_ERROR = "Nie można zapisać użytkownika! Nieoczekiwany błąd"
+        static readonly USER_REMOVE_ERROR = "Nie można usunąć użytkownika! Nieoczekiwany błąd"
+        static readonly STUDENT_SAVED= "Zapisano studenta"
+        static readonly STUDENT_DELETED= "Konto studenta pomyślnie usunięte"
+        static readonly STUDENT_REMOVED_FROM_CLASS= "Uczeń usunięty z klasy"
+        static readonly TEACHER_SAVED= "Zapisano nauczyciela"
+        static readonly TEACHER_DELETED= "Konto nauczyciela pomyślnie usunięte"
+        static readonly PARENT_SAVED= "Zapisano rodzica"
+        static readonly PARENT_DELETED= "Konto rodzica pomyślnie usunięte"
+        static readonly CLASS_SAVE_ERROR = "Nie można zapisać klasy! Nieoczekiwany błąd"
+        static readonly CLASS_SAVED = "Zapisano klasę";
+        static readonly CLASS_DELETED = "Usunięto klasę";
+        static readonly CLASS_DELETE_ERROR = "Nie można usunąć klasy! Nieoczekiwany bład";
+        static readonly CLASS_NAME_NOT_VALID = "Nazwa klasy nie spełnia wymagań!";
+        static readonly ADD_SUBJECT = "Nowy przedmiot"
+        static readonly SUBJECT_SAVED = "Zapisano przedmiot";
+        static readonly SUBJECT_DELETED = "Usunieto przedmiot";
+        static readonly SUBJECT_DELETE_ERROR = "Nie można usunąć przedmiotu! Nieoczekiwany bład";
+        static readonly SUBJECT_SAVED_ERROR = "Nie można zapisać przedmiotu! Nieoczekiwany błąd";
+        static readonly SUBJECT_EXISTS = "Nie można zapisać przedmiotu! Przedmiot o danej nazwie już istnieje";
+        static readonly SUBJECT_NAME_NOT_VALID = "Niepoprawna nazwa przedmiotu!"
+        static readonly CHANGES_SAVED="Zmiany zostały zapisane"
+        static readonly CHANGES_SAVED_ERROR="Nie udało się zapisać zmian! Nieoczekiwany bład"
+        static readonly NO_STUDENTS = "Nie ma uczniów do przypisania!";
+        static readonly NO_SUBJECTS = "Nie ma przedmiotów do przypisania!";
+        static readonly NO_TEACHERS = "Nie ma nauczycieli do przypisania!"
+        static readonly TEACHER_ASSIGNED = "Przypisano nauczyciela";
+        static readonly TEACHER_ASSIGN_ERROR = "Nie udało się przypisać nauczyciela! Nieoczekiwany błąd";
+        static readonly PASSWORD_CHANGED = "Hasło zostało zmienione";
+        static readonly PASSWORD_CHANGE_ERROR = "Nie udało się zmienić hasła! Nieoczekiwany błąd";
+        static readonly PASSWORDS_NOT_EQUAL = "Podane hasła nie są jednakowe!"
+        static readonly FILL_ALL_FIELDS = "Nie wszystkie pola wypełnione!"
+        static readonly AGE_ERROR = "Uzytkownik nie spełnia wymagań wiekowych!"
+        static readonly FIELDS_NOT_VALID = "Nie wszystkie pola wypełniono poprawnie"
+        static readonly GRADE_SAVED = "Ocena zapisana";
+        static readonly GRADE_SAVED_ERROR = "Nie udało się zapisać oceny";
+        static readonly GRADE_REMOVED = "Ocena usunieta";
+        static readonly GRADE_REMOVED_ERROR = "Nie udało się usunąć oceny";
+        static readonly NOTE_SAVED = "Uwaga zapisana";
+        static readonly NOTE_SAVED_ERROR = "Nie udało się zapisać uwagi";
+        static readonly NOTE_REMOVED = "Uwaga usunieta";
+        static readonly NOTE_REMOVED_ERROR = "Nie udało się usunąć uwagi";
     }
 
     static StorageKey = class {
         static readonly USER = "user";
+        static readonly AUTH_TOKEN = "X-AUTH-TOKEN";
     }
 
     static FormFields = class {
@@ -62,25 +95,30 @@ export class Consts {
         static readonly LOGIN = "/login";
     }
 
-    static RequestParams = class {
-        static readonly STUDENT = "student";
-        static readonly ID = "id";
-        static readonly IDS = "ids";
-        static readonly CLASS_ID = "classId";
-        static readonly STUDENT_ID = "studentId";
-    }
-
     static Regex = class {
         static CLASS_NAME = new RegExp("\w*[0-9]\w*[A-Z]\w*");
-        static NAME_OR_SURNAME = new RegExp("^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$");
-        static EMAIL = new RegExp("/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/")  ;
+        static EMAIL_REGEX = new RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        static SUBJECT_NAME = new RegExp('[0-9!@#$%^&*(),.?":{}|<>]');
+        static PASSWORD_PATTERN = /^.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*:+]).{8,}$/;
+        static ONLY_LETTERS = /^[a-zA-Z]+$/i;
+        static FIRST_NAME = new RegExp("^[A-ZĄĆĘŁŃÓŚŹŻ]+(([',. -][a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ])?[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]*)*$");
     }
 
     static Properties = class {
         static STUDENT_CLASS = "studentClass"
+        static CHILDREN = "children"
+        static TEACHER_SUBJECTS = "teacherSubjects"
     }
 
+    static Fields = class{
+        static readonly USER_EMAIL = "email";
+        static readonly USER_LOGIN = "login";
+        static readonly USER_PASSWORD = "password";
+        static readonly USER_FIRST_NAME = "firstName";
+        static readonly USER_SECOND_NAME = "secondName";
+    }
+    
 
 
-    // Consts.BackendMapping.INDEX+
+
 }

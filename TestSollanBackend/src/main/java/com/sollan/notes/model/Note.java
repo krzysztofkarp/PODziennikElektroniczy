@@ -1,55 +1,58 @@
 package com.sollan.notes.model;
 
 import java.util.Date;
-import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sollan.students.model.Student;
+import com.sollan.teachers.Teacher;
+
+
+@Entity
+@Table(name = "note")
 public class Note {
 	
-	private String id;
-	private String from;
-	private String to;
+	@Id
+	@GeneratedValue(
+	        strategy = GenerationType.IDENTITY
+		    )
+	private Long noteId;
+	
+	@Column(name="password",columnDefinition="LONGTEXT")
 	private String description;
 	private Date date;
-	private String fromLabel;
-	private String toLabel;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "student_id")
+	@JsonIgnore
+	private Student student;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "teacher_id")
+	@JsonIgnore
+	private Teacher teacher;
 	
 	public Note() {
 		
 	}
-	
-	public Note(String from, String to, String description) {
-		this.id = UUID.randomUUID().toString();
-		this.from = from;
-		this.to= to;
-		this.description = description;
-		this.date = new Date();
-	}
-	
-	
-	
-	
-	
-	
-	public String getId() {
-		return id;
+		
+	public Long getId() {
+		return noteId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(Long id) {
+		this.noteId = id;
 	}
 
-	public String getFrom() {
-		return from;
-	}
-	public void setFrom(String from) {
-		this.from = from;
-	}
-	public String getTo() {
-		return to;
-	}
-	public void setTo(String to) {
-		this.to = to;
-	}
 	public String getDescription() {
 		return description;
 	}
@@ -63,22 +66,24 @@ public class Note {
 		this.date = date;
 	}
 
-	public String getFromLabel() {
-		return fromLabel;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setFromLabel(String fromLabel) {
-		this.fromLabel = fromLabel;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public String getToLabel() {
-		return toLabel;
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setToLabel(String toLabel) {
-		this.toLabel = toLabel;
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 	
+	
+
 	
 	
 	

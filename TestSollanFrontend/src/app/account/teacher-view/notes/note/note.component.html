@@ -1,0 +1,15 @@
+<div class="note" *ngIf="student && teacher">
+  <div class="header">
+    <table>
+      <tr>
+        <td><b>Autor:</b> {{ teacher.firstName + ' ' + teacher.secondName }}</td>
+        <td><b>Dla:</b> {{ student.firstName + ' ' + student.secondName }}</td>
+        <td class="date"><b>Data:</b> {{ date }}</td>
+        <td class="date" *ngIf="canDelete"><mat-icon (click)="onDelete()">clear</mat-icon></td>
+      </tr>
+    </table>
+  </div>
+  <div class="description">
+    {{ note.description }}
+  </div>
+</div>

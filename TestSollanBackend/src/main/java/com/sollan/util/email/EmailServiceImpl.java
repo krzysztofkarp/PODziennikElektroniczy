@@ -30,13 +30,13 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	@Override
-	public void send(String to, Map<String, Object> properites) throws MessagingException {
+	public void send(String to, String template, Map<String, Object> properites) throws MessagingException {
 		MimeMessage message = emailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
 				StandardCharsets.UTF_8.name());
 		Context context = new Context();
 		context.setVariables(properites);
-		String html = templateEngine.process(TemplateParam.Names.GREETING_EMAIL, context);
+		String html = templateEngine.process(template, context);
 		helper.setTo(to);
 		helper.setText(html, true);
 		emailSender.send(message);

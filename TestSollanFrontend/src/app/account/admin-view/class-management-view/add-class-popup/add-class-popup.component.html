@@ -5,11 +5,11 @@
  <div class="table-container">
     <table>
         <tr>
-          <td class="title">Name</td>
+          <td class="title">Nazwa</td>
           <td class="value"><input type="text" [(ngModel)]="newClass.name" maxlength="2"></td>
       </tr>
       <tr>
-        <td class="title">Profile</td>
+        <td class="title">Profil</td>
         <td class="value">
           <mat-select  [(ngModel)]="newClass.profile">
             <mat-option *ngFor="let p of profiles" [value]="p">
@@ -20,8 +20,8 @@
     </tr>
       </table>
       <div class="action">
-          <button class="cancel" type="submit" (click)="onCancel()" mat-raised-button>Cancel</button>
-          <button class="add" type="submit" (click)="onAdd()" (keyup.enter)="onAdd()" mat-raised-button>Add</button>
+          <button class="cancel" type="submit" (click)="onCancel()" mat-raised-button>Anuluj</button>
+          <button class="add" type="submit" (click)="onAdd()" (keyup.enter)="onAdd()" mat-raised-button [disabled]="!newClass.name || !newClass.profile">Zapisz</button>
       </div>
  </div>
 </div>

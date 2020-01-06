@@ -1,13 +1,12 @@
 <div class="account-view">
   <mat-toolbar color="primary">
    <div class="info" *ngIf="!currentUser.admin">
-      <span>{{currentUser.type}} :</span>
-      <span>{{currentUser.firstName }}</span>
-      <span>{{currentUser.secondName}}</span>
+      <span>{{currentUser.firstName+' '+currentUser.secondName+' ('+currentUser.login+')'}}</span>
    </div>
     <span *ngIf="currentUser.admin" style="color: white">ADMINISTRATOR</span>
     <span class="example-spacer"></span>
-    <span><button class="orange" (click)="logout()">Logout</button></span>
+    <span>{{ dateString }}</span>
+    <span><button class="orange" (click)="logout()">Wyloguj</button></span>
 </mat-toolbar>
 <div class="content">
   <student-view *ngIf="viewType == UserType.STUDENT" [user]="currentUser"></student-view>

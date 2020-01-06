@@ -1,7 +1,8 @@
 import { Note } from './../../../../note/note';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
-import { Student } from '../../../../students/student';
+import { NotificationService } from '../../../../notification/notification.service';
+import { Consts } from '../../../../general/utils/Consts';
 
 @Component({
   selector: 'app-note-popup',
@@ -12,24 +13,25 @@ export class NotePopupComponent implements OnInit {
 
 
   note: Note;
-  teacherId: string
-  students: Student[];
 
-  constructor(public dialogRef: MatDialogRef<NotePopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(public dialogRef: MatDialogRef<NotePopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private nService: NotificationService) {
     this.note = new Note();
    }
 
   ngOnInit() {
-    this.teacherId = this.data.teacherId;
-    this.students = this.data.students;
-    this.note.from = this.teacherId;
+
   }
 
   onAdd(){
-    if(this.note.description && this.note.to)
+    if(this.note.description){
       this.dialogRef.close(this.note);
-    else
-      alert("Uzupełnij wszystkie pola!")
+    } else{
+      this.nService.showWarning(Consts.Messages.FILL_ALL_FIELDS);
+    }
+  }
+
+  onCancel(){
+    this.dialogRef.close();
   }
 
 }

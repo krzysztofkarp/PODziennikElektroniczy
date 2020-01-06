@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { User } from '../../user/user';
 import { AdminView, AdminViewType } from './adminViews';
+import { ClassManagementViewComponent } from './class-management-view/class-management-view.component';
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'admin-view',
@@ -16,6 +18,9 @@ export class AdminViewComponent implements OnInit {
   view2Title: any;
   AdminViewType = AdminViewType;
 
+  @ViewChild(ClassManagementViewComponent)
+  classView: ClassManagementViewComponent;
+
   constructor() { }
 
   ngOnInit() {
@@ -23,7 +28,13 @@ export class AdminViewComponent implements OnInit {
   }
 
   initMap(){
-    let titles = ["User management"]
+    
+  }
+
+  tabChange(evt: MatTabChangeEvent){
+    if(evt.index != 1){
+      this.classView.closeDetails()
+    }
   }
 
 

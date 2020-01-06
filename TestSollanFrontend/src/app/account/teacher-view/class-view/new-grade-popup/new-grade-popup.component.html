@@ -1,20 +1,29 @@
-<div>
- <p><span>Ocena</span> <input type="number" max="6" min="1"  [(ngModel)]="grade.grade"></p>
- <p><span>Za co</span> 
-  <mat-form-field>
-    <mat-select  [(ngModel)]="grade.type">
-      <mat-option *ngFor="let type of types" [value]="type">
-        {{type}}
-      </mat-option>
+<div class="new-grade">
+  <div class="header">
+    <p>Dodaj ocenę</p>
+</div>
+<table style="width: 100%;">
+  <tr>
+    <td>Ocena</td>
+    <td><input type="number" max="6" min="1"  [(ngModel)]="grade.value"></td>
+  </tr>
+  <tr>
+    <td>Waga</td>
+    <td>  
+      <mat-select  [(ngModel)]="grade.importance">
+        <mat-option *ngFor="let w of wages" [value]="w">
+          {{w}}
+        </mat-option>
     </mat-select>
-  </mat-form-field>
-</p>
-<!-- <p><span>Data</span>
-    <mat-form-field>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="grade.date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-</p> -->
-<p><button (click)="onAdd()">Dodaj</button></p>
+  </td>
+  </tr>
+  <tr>
+    <td>Opis</td>
+    <td><textarea [(ngModel)]="grade.description" maxlength="100"></textarea></td>
+  </tr>
+</table>
+<div class="actions">
+  <button class="blue" (click)="onAdd()">Zapisz</button>
+  <button class="orange" (click)="onCancel()">Anuluj</button>
+</div>
 </div>

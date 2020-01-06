@@ -12,9 +12,9 @@ export class AdminView{
         this.type = type;
     }
 
-    static USER_MAN = new AdminView("User management", AdminViewType.USER_MANAGEMENT);
-    static CLASS_MAN = new AdminView("Class management", AdminViewType.CLASS_MANAGEMENT);
-    static SUBJECT_MAN = new AdminView("Subject management", AdminViewType.SUBJECT_MANAGEMENT);
+    static USER_MAN = new AdminView("Użytkownicy", AdminViewType.USER_MANAGEMENT);
+    static CLASS_MAN = new AdminView("Klasy", AdminViewType.CLASS_MANAGEMENT);
+    static SUBJECT_MAN = new AdminView("Przedmioty", AdminViewType.SUBJECT_MANAGEMENT);
     static ADMIN_VIEWS = [AdminView.USER_MAN, AdminView.CLASS_MAN, AdminView.SUBJECT_MAN];
    
 }

@@ -1,0 +1,20 @@
+<div class="student-row">
+  <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          {{ headerLabel }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="avg" *ngIf="avg">
+      {{ 'Średnia ocen: '+avg}}
+    </div>
+    <div class="grade-container" *ngIf="grades">
+        <grade *ngFor="let g of grades" [grade]="g" (delete)="deleteGrade($event)"></grade>
+    </div>
+    <div class="actions">    
+      <button class="blue" (click)="onGrade()">Wpisz ocenę</button>
+      <button class="orange" (click)="onNote()">Wpisz uwagę</button>
+    </div>
+        
+  </mat-expansion-panel>
+</div>

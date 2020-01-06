@@ -1,0 +1,13 @@
+<div class="subject-management" *ngIf="!selectedSubject">
+  <div class="actions">
+    <button class="blue" (click)="onAdd()">Dodaj przedmiot</button>
+  </div>
+  <div class="subjects-container" >
+    <p *ngFor="let s of subjects">
+      <span style="display: inline-block; width: 250px;">{{ s.name }}</span>
+      <button class="blue" (click)="onDetails(s)" style="margin-left: 75%;">Szczegóły</button>
+      <button class="orange" (click)="onRemove(s)">Usuń</button>
+    </p>
+  </div>
+</div>
+<subject-details *ngIf="selectedSubject" [subject]="selectedSubject" (close)="closeDetails()" [subjects]="subjects"></subject-details>
