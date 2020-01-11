@@ -1,0 +1,19 @@
+<div class="message-view">
+  <button class="blue" (click)="onSend()">Napisz wiadomość</button>
+
+  <div class="messages">
+    <mat-tab-group (selectedTabChange)="tabChange($event)">
+   
+      <mat-tab label="Odebrane">
+        <div *ngIf="tabIndex==0">
+          <message *ngFor="let m of received" [message]="m" [sent]="false"></message>
+        </div>
+      </mat-tab>
+      <mat-tab label="Wysłane">
+        <div *ngIf="tabIndex==1">
+          <message *ngFor="let m of sent" [message]="m" [sent]="true"></message>
+        </div>
+      </mat-tab>
+  </mat-tab-group>
+  </div>
+</div>

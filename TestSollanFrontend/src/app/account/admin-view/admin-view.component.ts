@@ -37,6 +37,10 @@ export class AdminViewComponent implements OnInit {
     }
   }
 
+  updateSubjects($event){
+    console.log($event)
+  }
+
 
 
 }

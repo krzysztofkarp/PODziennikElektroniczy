@@ -14,6 +14,11 @@
           <div *ngIf="tabIndex==2">
             <notes-view [teacher]="user"></notes-view>
             </div>
-      </mat-tab>
+        </mat-tab>
+        <mat-tab label="Wiadomości">
+          <div *ngIf="tabIndex==3">
+            <message-view [sender]="user"></message-view>
+          </div>
+        </mat-tab>
       </mat-tab-group>
 </div>

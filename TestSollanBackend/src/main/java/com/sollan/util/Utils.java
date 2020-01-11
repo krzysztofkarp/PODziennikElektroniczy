@@ -69,6 +69,17 @@ public class Utils {
 			throw new InvalidParameterException(errorMessage);
 		}
 	}
+	
+	public static boolean objectIn(Object value, Collection<? extends Object> values) {
+		if (nullOrEmpty(values))
+			return false;
+		for (Object v : values) {
+			if (v == value || (v != null && value != null && v.equals(value)))
+				return true;
+		}
+		return false;
+	}
+
 
 
 

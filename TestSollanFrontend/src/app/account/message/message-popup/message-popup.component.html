@@ -1,0 +1,32 @@
+<div class="message">
+  <div class="header">
+    Nowa wiadomość
+  </div>
+
+  <div class="send">
+    <table>
+      <tr>
+        <td>Odbiorca</td>
+        <td>  
+          <mat-select  [(ngModel)]="recipient">
+            <mat-option *ngFor="let r of data" [value]="r">
+              {{ r.firstName + ' ' + r.secondName + ' (' + type2Label[r.type] + ')' }}
+            </mat-option>
+          </mat-select>
+        </td>
+      </tr>
+      <tr>
+        <td>Tytuł</td>
+        <td><input type="text"  [(ngModel)]="message.title"></td>
+      </tr>
+      <tr>
+        <td>Treść</td>
+        <td><textarea  [(ngModel)]="message.message"></textarea></td>
+      </tr>
+    </table>
+  </div>
+  <div class="actions">
+    <button class="blue" (click)="onSend()">Wyślij</button>
+    <button class="orange" (click)="onCancel()">Anuluj </button>
+  </div>
+</div>

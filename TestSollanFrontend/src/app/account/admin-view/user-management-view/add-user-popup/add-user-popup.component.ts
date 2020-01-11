@@ -7,6 +7,11 @@ import { StudentClass } from '../../../../studentClass/studentClass';
 import { NotificationService } from '../../../../notification/notification.service';
 import { Validators } from '@angular/forms';
 import { DateParser } from '../../../../general/utils/dateParser';
+import { StudentClassService } from '../../../../studentClass/class-service';
+import { StudentService } from '../../../../students/student.service';
+import { SubjectService } from '../../subject-management-view/subject.service';
+import { Student } from '../../../../students/student';
+import { Subject } from '../../../../students/subject';
 
 @Component({
   selector: 'add-user-popup',
@@ -20,15 +25,23 @@ export class AddUserPopupComponent implements OnInit {
   UserType = UserType;
   types = [UserType.STUDENT, UserType.PARENT, UserType.TEACHER];
   field2Valid: object = {};
+  classes: StudentClass[];
+  subjects: Subject[];
+  students: Student[];
 
 
-  constructor(private dialogRef: MatDialogRef<AddUserPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private nService: NotificationService, private parser: DateParser) {
+  constructor(private dialogRef: MatDialogRef<AddUserPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any, 
+    private nService: NotificationService,
+    private classService: StudentClassService,
+    private studentService: StudentService, 
+    private subService: SubjectService, 
+    private parser: DateParser) {
     this.user = new User();
     Object.keys(this.user).forEach(k => this.field2Valid[k] = true);
    }
 
   ngOnInit() {
-    
+    this.load();
   }
 
   onAdd(){
@@ -37,6 +50,12 @@ export class AddUserPopupComponent implements OnInit {
 
   onCancel(){
     this.dialogRef.close();
+  }
+
+  load(){
+    this.classService.getAll().subscribe(resp => this.classes = resp.items);
+    this.studentService.getAll().subscribe(resp => this.students = resp.items);
+    this.subService.getAll().subscribe(resp => this.subjects = resp.items);
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {

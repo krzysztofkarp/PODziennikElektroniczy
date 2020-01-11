@@ -91,6 +91,17 @@ public class BackendMappings {
 	 public class  ChangePassword  {
 		 public static final String INDEX = API + "/changePassword";
 		 public static final String RESET = API + "/resetPassword";
-	   }
+	}
+	 
+	 public class  Message  {
+		 public static final String SEND_MESSAGE = API + "/message/sendMessage";
+		 public static final String DELETE_MESSAGE = API + "/message/deleteMessage";
+		 public static final String BY_TEACHER_ID = API + "/message/byTeacherId";
+		 public static final String BY_STUDENT_ID = API + "/message/byStudentId";
+		 public static final String BY_PARENT_ID = API + "/message/byParentId";
+		 public static final String BY_TYPE_AND_ID = API + "/message/byTypeAndId";
+		 public static final String SET_OPENED = API + "/message/setOpened";
+	}
+	 
 
 }

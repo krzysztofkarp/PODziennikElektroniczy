@@ -40,6 +40,7 @@ export class UserTypeDetailsComponent implements OnInit {
 
   teacherSubjects: Subject[] = [];
   subjectsString: string;
+  classesString: string;
   teacherClasses: StudentClass[] = [];
 
   @Input()
@@ -67,11 +68,11 @@ export class UserTypeDetailsComponent implements OnInit {
         this.teacherSubjects = resp.items;
         this.setSubjectsString();
         this.subjectsString = this.teacherSubjects.map(s => s.name).join(",")
-        console.log(this.subjectsString)
       });
 
       this.classService.byTeacherId(this.user.id).subscribe(resp => {
         this.teacherClasses = resp.items;
+        this.classesString = this.teacherClasses.map(cl =>cl.name).join(",")
       })
     }
 

@@ -96,4 +96,15 @@
         static readonly RESET = "/resetPassword"
     }
 
+
+    static Message = class {
+        static readonly SEND_MESSAGE ="/message/sendMessage";
+        static readonly DELETE_MESSAGE = "/message/deleteMessage";
+        static readonly BY_TEACHER_ID = "/message/byTeacherId";
+        static readonly BY_STUDENT_ID = "/message/byStudentId";
+        static readonly BY_PARENT_ID = "/message/byParentId";
+        static readonly BY_TYPE_AND_ID = "/message/byTypeAndId";
+        static readonly SET_OPENED = "/message/setOpened";
+    }
+
 }

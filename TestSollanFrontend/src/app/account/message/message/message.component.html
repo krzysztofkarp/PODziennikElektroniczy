@@ -1,0 +1,17 @@
+<div class="message">
+  <mat-expansion-panel (opened)="updateMessage($event)">
+    <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="{ 'new' : !message.opened && !sent}">
+          <span style="width: 150px;">{{ title }}</span>
+          <span style="font-style: italic;margin-left: 50px;">{{ message.title }} </span>
+          <span class="example-spacer"></span>
+          <span class="date">{{ dateString }}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  <div class="content">
+      <div class="mes">
+        {{message.message}}
+      </div>
+  </div>
+  </mat-expansion-panel>
+</div>

@@ -107,6 +107,16 @@ public class Student extends User{
 		n.setStudent(null);
 	}
 	
+	public void addMessage(Message m) {
+		this.messages.add(m);
+		m.setStudent(this);
+	}
+	
+	public void removeMessage(Message m) {
+		this.messages.remove(m);
+		m.setStudent(null);
+	}
+	
 
 	@Override
 	 public boolean equals(Object o) {

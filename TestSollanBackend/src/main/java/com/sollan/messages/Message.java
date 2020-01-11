@@ -1,5 +1,7 @@
 package com.sollan.messages;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sollan.parents.model.Parent;
@@ -42,11 +45,18 @@ public class Message {
 	@JsonIgnore
 	private Parent parent;
 	
-	@Column(name="password",columnDefinition="LONGTEXT")
+	@Column(name="message",columnDefinition="LONGTEXT")
 	private String message;
 	
+	private String title;
 	
-	private UserType sender;
+	
+	private UserType sender, recipient;
+	
+	@Column(name = "opened")
+	private Boolean opened;
+	
+	private Date date;
 
 
 	public Student getStudent() {
@@ -97,6 +107,67 @@ public class Message {
 	public void setSender(UserType sender) {
 		this.sender = sender;
 	}
+
+
+	public Long getMessageId() {
+		return messageId;
+	}
+
+
+	public void setMessageId(Long messageId) {
+		this.messageId = messageId;
+	}
+
+	public UserType getRecipient() {
+		return recipient;
+	}
+
+
+	public void setRecipient(UserType recipient) {
+		this.recipient = recipient;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public Boolean getOpened() {
+		return opened;
+	}
+
+
+	public void setOpened(Boolean opened) {
+		this.opened = opened;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

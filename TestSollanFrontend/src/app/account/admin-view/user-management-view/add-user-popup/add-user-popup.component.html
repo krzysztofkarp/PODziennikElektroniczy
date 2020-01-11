@@ -48,7 +48,7 @@
             <td class="title">Przypisz klasę</td>
             <td class="value">
               <mat-select  [(ngModel)]="user.properties['studentClass']">
-                <mat-option *ngFor="let cl of data.classes" [value]="cl">
+                <mat-option *ngFor="let cl of classes" [value]="cl">
                     {{cl.name}}
                 </mat-option>
               </mat-select>
@@ -58,7 +58,7 @@
             <td class="title">Przypisz przedmioty</td>
             <td class="value">
               <mat-select  [(ngModel)]="user.properties['teacherSubjects']" multiple>
-                <mat-option *ngFor="let cl of data.subjects" [value]="cl">
+                <mat-option *ngFor="let cl of subjects" [value]="cl">
                     {{cl.name}}
                 </mat-option>
               </mat-select>
@@ -68,7 +68,7 @@
             <td class="title">Przypisz dzieci</td>
             <td class="value">
               <mat-select  [(ngModel)]="user.properties['children']" multiple>
-                <mat-option *ngFor="let cl of data.students" [value]="cl">
+                <mat-option *ngFor="let cl of students" [value]="cl">
                     {{cl.firstName + ' ' + cl.secondName }}
                 </mat-option>
               </mat-select>

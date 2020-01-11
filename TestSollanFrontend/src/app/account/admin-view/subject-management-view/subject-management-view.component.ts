@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { SubjectService } from './subject.service';
 import { Subject } from '../../../students/subject';
 import { MatDialog } from '@angular/material';
@@ -23,6 +23,9 @@ export class SubjectManagementViewComponent implements OnInit {
 
   selectedSubject: Subject;
 
+  @Input()
+  subjectsChange: EventEmitter<any> = new  EventEmitter<any>();
+
   constructor(private subService: SubjectService, private dialog: MatDialog, private notficationService: NotificationService, private tService: TeacherService) { }
 
   ngOnInit() {
@@ -44,6 +47,7 @@ export class SubjectManagementViewComponent implements OnInit {
             if(Response.isOk(resp)){
               this.notficationService.showSuccess(Consts.Messages.SUBJECT_SAVED);
               this.subjects.push(resp.item);
+              this.subjectsChange.emit(resp.item)
             } else {
               this.notficationService.showError(Consts.Messages.SUBJECT_SAVED_ERROR)
             }
@@ -58,6 +62,7 @@ export class SubjectManagementViewComponent implements OnInit {
       if(Response.isOk(resp)){
         this.notficationService.showSuccess(Consts.Messages.SUBJECT_DELETED);
         this.subjects = this.subjects.filter(sb => sb.subjectId != subject.subjectId);
+        this.subjectsChange.emit(subject)
       } else {
         this.notficationService.showError(Consts.Messages.SUBJECT_DELETE_ERROR);
       }

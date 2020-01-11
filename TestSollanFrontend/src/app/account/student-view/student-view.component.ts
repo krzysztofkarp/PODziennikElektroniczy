@@ -9,6 +9,7 @@ import { StudentClass } from '../../studentClass/studentClass';
 import { SubjectService } from '../admin-view/subject-management-view/subject.service';
 import { Subject } from '../../students/subject';
 import { DateParser } from '../../general/utils/dateParser';
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'student-view',
@@ -34,6 +35,8 @@ export class StudentViewComponent implements OnInit {
   parsedDate: string;
 
   info: object;
+
+  tabIndex: number = 0;
 
   constructor(private noteService: NoteService,
     private subService: SubjectService, 
@@ -63,6 +66,10 @@ export class StudentViewComponent implements OnInit {
     this.info = {};
     this.info["Klasa"] = this.studentClass.name;
     this.info["Profil"] = this.studentClass.profile;
+  }
+
+  tabChange(evt: MatTabChangeEvent){
+    this.tabIndex = evt.index;
   }
 
 }

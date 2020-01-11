@@ -115,6 +115,16 @@ public class Teacher extends User{
 		this.subjects.removeAll(s);
 		s.forEach(su -> su.getTeachers().remove(this));
 	}
+	
+	public void addMessage(Message m) {
+		this.messages.add(m);
+		m.setTeacher(this);
+	}
+	
+	public void removeMessage(Message m) {
+		this.messages.remove(m);
+		m.setTeacher(null);
+	}
 
 
 	public Set<TeacherClass> getClasses() {

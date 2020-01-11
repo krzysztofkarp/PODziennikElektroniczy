@@ -62,6 +62,10 @@ import { TeacherStudentRowComponent } from './account/teacher-view/class-view/te
 import { ResetPasswordComponent } from './account/change-password/reset-password/reset-password.component';
 import { NoteComponent } from './account/teacher-view/notes/note/note.component';
 import { StudentGradeComponent } from './account/student-view/student-grade/student-grade.component';
+import { MessageViewComponent } from './account/message/message-view/message-view.component';
+import { MessageComponent } from './account/message/message/message.component';
+import { MessageService } from './account/message/message.service';
+import { MessagePopupComponent } from './account/message/message-popup/message-popup.component';
 
 
 @NgModule({
@@ -102,7 +106,10 @@ import { StudentGradeComponent } from './account/student-view/student-grade/stud
     TeacherStudentRowComponent,
     ResetPasswordComponent,
     NoteComponent,
-    StudentGradeComponent
+    StudentGradeComponent,
+    MessageViewComponent,
+    MessageComponent,
+    MessagePopupComponent
   ],
   imports: [
     BrowserModule,
@@ -142,11 +149,12 @@ import { StudentGradeComponent } from './account/student-view/student-grade/stud
     CookieService,
     DateParser,
     ChangePasswordService,
+    MessageService,
     {provide: MatDialogRef, useValue: dialogMock },
     {provide: MAT_DIALOG_DATA, useValue: {} }
   ],
     
   bootstrap: [AppComponent],
-  entryComponents: [StudentPopupComponent, ResetPasswordComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent, NewSubjectPopupComponent, SelectPopupComponent]
+  entryComponents: [StudentPopupComponent, ResetPasswordComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent, NewSubjectPopupComponent, SelectPopupComponent, MessagePopupComponent]
 })
 export class AppModule { }

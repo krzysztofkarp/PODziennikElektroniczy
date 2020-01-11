@@ -1,0 +1,29 @@
+.message .content{
+    padding: 20px;
+}
+
+.message .example-spacer {
+    flex: 1 1 auto;
+}
+
+.message .date{
+    margin-right: 30px;
+}
+
+.message .content p.title{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.message .content .mes{
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.message ::ng-deep .mat-expansion-panel-header{
+    border-bottom: 1px solid #c6c6c6;
+}
+
+.message .new{
+    font-weight: bold;
+}

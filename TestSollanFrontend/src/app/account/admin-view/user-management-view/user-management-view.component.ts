@@ -72,7 +72,6 @@ export class UserManagementViewComponent implements OnInit {
   onAddUser(){
     let config = new MatDialogConfig();
     config.width = "600px";
-    config.data = {classes:this.classes, students: this.students, subjects: this.subjects};
     this.dialog.open(AddUserPopupComponent, config).afterClosed().subscribe(user => this.saveUser(user));
   }
 
@@ -104,7 +103,7 @@ export class UserManagementViewComponent implements OnInit {
 
   refreshUsers(user: User){
       switch(user.type){
-        case UserType.STUDENT : this.studentsView.students.push(user); break;
+        case UserType.STUDENT : this.students.push(user); break;
         case UserType.PARENT : this.parents.push(user); break;
         case UserType.TEACHER : this.teachers.push(user); break;
       }

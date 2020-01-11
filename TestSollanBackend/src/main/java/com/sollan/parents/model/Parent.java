@@ -55,6 +55,16 @@ public class Parent extends User {
 		children.remove(s);
 		s.getParent().remove(this);
 	}
+	
+	public void addMessage(Message m) {
+		this.messages.add(m);
+		m.setParent(this);
+	}
+	
+	public void removeMessage(Message m) {
+		this.messages.remove(m);
+		m.setParent(null);
+	}
 
 	
 

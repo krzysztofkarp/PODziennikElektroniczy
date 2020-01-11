@@ -22,12 +22,3 @@
     padding-top: 10px;
 }
 
-.student-view ::ng-deep .mat-expansion-panel{
-    box-shadow: none;
-}
-
-.student-view ::ng-deep .mat-expansion-panel-header{
-    font-weight: bold;
-    font-size: 20px;
-    border-bottom: 1px solid #03a9f4;
-}

@@ -19,4 +19,7 @@ export class RequestParams{
     static readonly NOTE_ID = "noteId";
     static readonly AUTH_TOKEN = "X-AUTH-TOKEN";
     static readonly NEW_PASSWORD = "newPassword";
+    static readonly SENDER_ID = "senderId";
+    static readonly RECIPIENT_ID = "recipientId";
+    static readonly MESSAGE_ID = "messageId";
 }
