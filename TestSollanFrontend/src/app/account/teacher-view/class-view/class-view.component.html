@@ -1,8 +1,22 @@
 <div class="class-view">
-
-          <div class="student" *ngFor="let student of students">
-                <teacher-student-row [student]="student" [subject]="subject" [teacher]="teacher"></teacher-student-row>
-          </div>    
+      <div *ngIf="!attendanceView">
+            <div class="student" *ngFor="let student of students">
+                  <teacher-student-row [student]="student" [subject]="subject" [teacher]="teacher"></teacher-student-row>
+            </div>    
+      </div>
+      <div *ngIf="attendanceView && students" style="margin-top: 20px;">
+            <table>
+                  <th>Uczeń</th>
+                  <th>Obecny</th>
+                  <tr  *ngFor="let s of students">
+                        <td>{{ s.firstName + ' ' + s.secondName }}</td>
+                        <td class="present">
+                              <mat-checkbox [(ngModel)]="student2Present[s.id]" [checked]="student2Present[s.id]" (change)="attendanceChange($event, s)"></mat-checkbox>
+                        </td>
+                  </tr>
+            </table>
+      </div>
+        
 
 
     

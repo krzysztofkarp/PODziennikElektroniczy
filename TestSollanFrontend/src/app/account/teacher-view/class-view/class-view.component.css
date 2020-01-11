@@ -5,3 +5,26 @@
 .class-view .student ::ng-deep .student-row{
     margin-top: 10px;
 }
+
+.class-view table{
+    width: 95%; 
+    margin: 0 auto;
+}
+
+.class-view table td, .class-view table th{
+    padding: 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.class-view table th{
+    background-color: #c6c6c6;
+}
+
+.class-view table td.present{
+    width: 5%;
+}
+
+.class-view table td.present .mat-checkbox{
+    margin-left: 20px;
+}

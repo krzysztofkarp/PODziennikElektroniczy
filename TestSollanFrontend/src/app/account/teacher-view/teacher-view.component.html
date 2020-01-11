@@ -20,5 +20,10 @@
             <message-view [sender]="user"></message-view>
           </div>
         </mat-tab>
+        <mat-tab label="Obecność">
+          <div *ngIf="tabIndex==4">
+            <teacher-attendance [teacher]="user" [subjects]="subjects"></teacher-attendance>
+          </div>
+        </mat-tab>
       </mat-tab-group>
 </div>

@@ -18,6 +18,9 @@ export class MessageComponent implements OnInit {
   @Input()
   sent: boolean;
 
+  @Input()
+  statement: boolean = false;
+
 
   author: User;
   recipient: User;
@@ -35,7 +38,8 @@ export class MessageComponent implements OnInit {
 
 
   load(){
-    if(this.sent)
+    if(!this.statement){
+      if(this.sent)
       this.service.byTypeAndId(this.message.messageId, this.message.recipient).subscribe(resp => {
         this.recipient = resp.item;
         this.setTitle();
@@ -46,17 +50,24 @@ export class MessageComponent implements OnInit {
         this.setTitle();
       });
     }
-     
+    } else {
+      this.setTitle();
+    }
   }
 
 
 
   setTitle(){
-    if(this.sent){
-      this.title = "Do: " + [this.recipient.firstName, this.recipient.secondName].join(" ");
+    if(!this.statement){
+      if(this.sent){
+        this.title = "Do: " + [this.recipient.firstName, this.recipient.secondName].join(" ");
+      } else {
+        this.title = "Od: " + [this.author.firstName, this.author.secondName].join(" ");
+      }
     } else {
-      this.title = "Od: " + [this.author.firstName, this.author.secondName].join(" ");
+      this.title = "Administrator";
     }
+
     this.dateString = this.parser.parse(this.message.date);
   }
 

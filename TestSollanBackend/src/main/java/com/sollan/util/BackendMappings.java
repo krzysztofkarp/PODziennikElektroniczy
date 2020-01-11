@@ -78,6 +78,7 @@ public class BackendMappings {
 		public static final String BY_STUDENT_AND_SUBJECT = API + "/grade/studentSubjectId";
 		public static final String ADD = API + "/grade/add";
 		public static final String REMOVE = API + "/grade/add";
+		public static final String DOWNLOAD_GRADES = API + "/grade/download";
 	}
 	
 	public class Subject{
@@ -95,6 +96,8 @@ public class BackendMappings {
 	 
 	 public class  Message  {
 		 public static final String SEND_MESSAGE = API + "/message/sendMessage";
+		 public static final String SEND_STATEMENT = API + "/message/sendStatement";
+		 public static final String GET_STATEMENTS = API + "/message/getStatements";
 		 public static final String DELETE_MESSAGE = API + "/message/deleteMessage";
 		 public static final String BY_TEACHER_ID = API + "/message/byTeacherId";
 		 public static final String BY_STUDENT_ID = API + "/message/byStudentId";
@@ -102,6 +105,14 @@ public class BackendMappings {
 		 public static final String BY_TYPE_AND_ID = API + "/message/byTypeAndId";
 		 public static final String SET_OPENED = API + "/message/setOpened";
 	}
+	 
+	 public class Attendance {
+		 public static final String BY_STUDENT_ID = API + "/attendance/byStudentId";
+		 public static final String SAVE = API + "/attendance/save";
+		 public static final String UPDATE_ATTENDANCE = API + "/attendance/update";
+		 public static final String BY_STUDENT_ID_AND_DATE = API + "/attendance/byIdAndDate";
+		 public static final String BY_STUDENT_SUBJECT_AND_DATE = API + "/attendance/byStudentSubjectDate";
+	 }
 	 
 
 }

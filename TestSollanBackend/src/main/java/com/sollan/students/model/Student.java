@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sollan.attendance.Attendance;
 import com.sollan.classes.model.StudentClass;
 import com.sollan.grades.model.Grade;
 import com.sollan.messages.Message;
@@ -42,6 +43,13 @@ public class Student extends User{
 	        cascade = CascadeType.PERSIST,
 	        orphanRemoval = true)
 	private Set<Grade> grades = new HashSet<>();
+	
+	
+	@OneToMany(
+			mappedBy = "student",
+	        cascade = CascadeType.PERSIST,
+	        orphanRemoval = true)
+	private Set<Attendance> attendances = new HashSet<>();
 	
 	@OneToMany(
 			mappedBy = "student",

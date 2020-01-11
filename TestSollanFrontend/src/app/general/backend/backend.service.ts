@@ -47,5 +47,29 @@ export class BackendService {
   private getUri(uri: string) {
     return BackendMappings.INDEX+uri;
   }
+
+  getUriWithParams(uri:string,params?:{}) {
+    return this.getUri(uri)+this.constructQueryString(params);
+  }
+
+ private constructQueryString(params?: {}) {
+    let keys = Object.keys(params);
+    if (!keys) {
+      return "";
+    }
+    let queryString = "?";
+    for (let i = 0, n = keys.length; i < n; i++) {
+      let paramName = keys[i];
+      let paramValue = params[paramName];
+      queryString += `${paramName}=${paramValue}`;
+      if (i + 1 < n) {
+        queryString += "&";
+      }
+
+    }
+    return queryString;
+
+  }
+
 }
 

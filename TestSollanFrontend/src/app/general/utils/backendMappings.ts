@@ -80,7 +80,8 @@
 		static readonly BY_STUDENT_ID ="/grade/studentId";
 		static readonly BY_STUDENT_AND_SUBJECT = "/grade/studentSubjectId";
 		static readonly ADD ="/grade/add";
-		static readonly REMOVE ="/grade/add";
+        static readonly REMOVE ="/grade/add";
+        static readonly DOWNLOAD ="/grade/download";
     }
     
     static  Subject = class {
@@ -105,6 +106,16 @@
         static readonly BY_PARENT_ID = "/message/byParentId";
         static readonly BY_TYPE_AND_ID = "/message/byTypeAndId";
         static readonly SET_OPENED = "/message/setOpened";
+        static readonly SEND_STATEMENT ="/message/sendStatement";
+        static readonly GET_STATEMENTS ="/message/getStatements";
+    }
+
+    static Attendance = class {
+        static readonly BY_STUDENT_ID = "/attendance/byStudentId";
+        static readonly SAVE = "/attendance/save";
+        static readonly UPDATE_ATTENDANCE = "/attendance/update";
+        static readonly BY_STUDENT_ID_AND_DATE = "/attendance/byIdAndDate";
+        static readonly BY_STUDENT_SUBJECT_AND_DATE = "/attendance/byStudentSubjectDate";
     }
 
 }

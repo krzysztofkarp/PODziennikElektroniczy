@@ -2,6 +2,19 @@
    padding: 10px;
 }
 
+.grades .average{
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.grades .average .stripe {
+    width: 5px; 
+    height: 20px; 
+    background-color: red; 
+    display: inline-block;
+}
+
 .grades .grade-table{
     width: 95%;
     margin: 0 auto;
@@ -16,4 +29,10 @@
 
 .grades .grade-table td.subject{
    width: 20%;
+}
+
+.grades .download{
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 20px;
 }

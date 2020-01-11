@@ -22,4 +22,5 @@ export class RequestParams{
     static readonly SENDER_ID = "senderId";
     static readonly RECIPIENT_ID = "recipientId";
     static readonly MESSAGE_ID = "messageId";
+    static readonly VALUE = "value";
 }

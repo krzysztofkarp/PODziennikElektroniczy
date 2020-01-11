@@ -80,6 +80,8 @@ export class Consts {
         static readonly NOTE_REMOVED_ERROR = "Nie udało się usunąć uwagi";
         static readonly MESSAGE_SENT = "Wiadomosć wysłana";
         static readonly MESSAGE_SENT_ERROR = "Nie udało się wysłać wiadomosci";
+        static readonly ATTENDANCE_SAVED = "Obecność zapisana";
+        static readonly ATTENDANCE_SAVE_ERROR = " Nie udało sie zapisać obecnosci!";
     }
 
     static StorageKey = class {

@@ -1,0 +1,9 @@
+<div class="statements">
+  <div class="header">
+    <button *ngIf="isAdmin" class="blue" (click)="onSend()">Wyślij</button>
+  </div>
+  <div class="container" *ngIf="statements">
+    <message *ngFor="let s of statements" [statement]="true" [message]="s"></message>
+  </div>
+</div>
+

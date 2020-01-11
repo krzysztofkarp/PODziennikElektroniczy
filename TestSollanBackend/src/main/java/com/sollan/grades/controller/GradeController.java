@@ -1,5 +1,7 @@
 package com.sollan.grades.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.sollan.grades.model.Grade;
+import com.sollan.grades.service.GradeDownloadService;
 import com.sollan.grades.service.GradeService;
 import com.sollan.util.BackendMappings;
 import com.sollan.util.response.ItemsResponse;
@@ -21,6 +24,9 @@ public class GradeController {
 	
 	@Autowired
 	private GradeService service;
+	
+	@Autowired
+	private GradeDownloadService dService;
 	
 	
 	@RequestMapping(value = BackendMappings.Grade.BY_STUDENT_ID, method = RequestMethod.GET)
@@ -46,6 +52,11 @@ public class GradeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public Response remove(@RequestParam("studentId") Long id, @RequestParam("gradeId") Long gradeId, @RequestParam("subjectId")Long subjectId) throws Exception {
 		return  ResponseUtil.runInVoidTemplate(() -> service.removeGrade(gradeId, id, subjectId));
+	}
+	
+	@RequestMapping(value = BackendMappings.Grade.DOWNLOAD_GRADES, method = RequestMethod.GET)
+	public void download(@RequestParam("studentId") Long studentId, @RequestParam("classId") Long classId, HttpServletResponse resp) throws Exception {
+		dService.download(studentId, classId, resp);
 	}
 	
 	

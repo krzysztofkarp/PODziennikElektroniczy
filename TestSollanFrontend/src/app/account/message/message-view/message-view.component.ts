@@ -64,7 +64,7 @@ export class MessageViewComponent implements OnInit {
         params.message.sender = this.sender.type;
         this.service.send(params.message, this.sender.id, params.recipientId).subscribe(resp => {
             if(Response.isOk(resp)){
-              this.sent.push(resp.item);
+              this.sent.unshift(resp.item);
               this.nService.showSuccess(Consts.Messages.MESSAGE_SENT);
             } else {
               this.nService.showError(Consts.Messages.MESSAGE_SENT_ERROR);

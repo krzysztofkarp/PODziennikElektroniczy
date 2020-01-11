@@ -105,4 +105,14 @@ public class MessageServiceImpl implements MessageService {
 		repo.setOpened(messageId, true);
 	}
 
+	@Override
+	public Message sendStatement(Message m) {
+		return repo.save(m);
+	}
+
+	@Override
+	public List<Message> getStatements() {
+		return Utils.asList(repo.getStatements());
+	}
+
 }

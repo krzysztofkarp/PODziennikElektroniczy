@@ -5,6 +5,7 @@
           {{ headerLabel }}
       </mat-panel-title>
     </mat-expansion-panel-header>
+    <div class="info">{{ student.birthdate | date }}</div>
     <div class="avg" *ngIf="avg">
       {{ 'Średnia ocen: '+avg}}
     </div>

@@ -3,5 +3,6 @@
         <user-management-view *ngIf="v.type == AdminViewType.USER_MANAGEMENT"></user-management-view>
         <class-management-view *ngIf="v.type == AdminViewType.CLASS_MANAGEMENT"></class-management-view>
         <subject-management-view *ngIf="v.type == AdminViewType.SUBJECT_MANAGEMENT" (subjectsChange)="updateSubjects($event)"></subject-management-view>
+        <statements *ngIf="v.type == AdminViewType.STATEMENTS" [isAdmin]="true"></statements>
     </mat-tab>
 </mat-tab-group>

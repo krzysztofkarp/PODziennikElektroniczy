@@ -40,4 +40,12 @@ export class GradeService{
         return this.backendService.get(BackendMappings.Grade.BY_STUDENT_ID, params);
    }
 
+   download(studentId: string, classId: string){
+    let params = {};
+    params[RequestParams.STUDENT_ID] = studentId;
+    params[RequestParams.CLASS_ID] = classId;
+    let url = this.backendService.getUriWithParams(BackendMappings.Grade.DOWNLOAD, params);
+    window.open(url, "_blank")
+}
+
 }

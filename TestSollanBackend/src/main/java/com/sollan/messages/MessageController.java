@@ -29,10 +29,23 @@ public class MessageController {
 	
 	@ValidateToken
 	@RequestMapping(value = BackendMappings.Message.SEND_MESSAGE, method = RequestMethod.POST)
-	public ItemResponse<Message> getAll(@RequestHeader("X-AUTH-TOKEN") @Token String token, @RequestBody Message message,
+	public ItemResponse<Message> sendMessage(@RequestHeader("X-AUTH-TOKEN") @Token String token, @RequestBody Message message,
 			@RequestParam("senderId") Long senderId, @RequestParam("recipientId") Long recipientId) {
 		return ResponseUtil.runInItemTemplate(() -> service.sendMessage(message, senderId, recipientId));
 	}
+	
+	@ValidateToken
+	@RequestMapping(value = BackendMappings.Message.SEND_STATEMENT, method = RequestMethod.POST)
+	public ItemResponse<Message> sendStatement(@RequestHeader("X-AUTH-TOKEN") @Token String token, @RequestBody Message message) {
+		return ResponseUtil.runInItemTemplate(() -> service.sendStatement(message));
+	}
+	
+	@ValidateToken
+	@RequestMapping(value = BackendMappings.Message.GET_STATEMENTS, method = RequestMethod.GET)
+	public ItemsResponse<Message> getStatements(@RequestHeader("X-AUTH-TOKEN") @Token String token) {
+		return ResponseUtil.runInMultiTemplate(() -> service.getStatements());
+	}
+	
 	
 
 	@ValidateToken

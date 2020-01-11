@@ -9,6 +9,8 @@ public interface MessageService {
 	
 	
 	Message sendMessage(Message m, Long senderId, Long recipientId);
+	Message sendStatement(Message m);
+	List<Message> getStatements();
 	List<Message> byTeacherId(Long teacherId);
 	List<Message> byStudentId(Long studentId);
 	List<Message> byParentId(Long parentId);

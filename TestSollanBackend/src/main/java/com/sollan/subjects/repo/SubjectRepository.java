@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sollan.subjects.model.Subject;
+import com.sollan.teachers.Teacher;
 
 @Repository(value = "subjectRepository")
 public interface SubjectRepository extends CrudRepository<Subject, Long>{
@@ -17,6 +18,7 @@ public interface SubjectRepository extends CrudRepository<Subject, Long>{
 	
 	@Query("from Subject s join s.classes c where c.classId=:classId")
 	public Set<Subject> byClassId(@Param("classId") Long classId);
+	
 
 
 }

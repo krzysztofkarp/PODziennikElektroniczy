@@ -66,6 +66,10 @@ import { MessageViewComponent } from './account/message/message-view/message-vie
 import { MessageComponent } from './account/message/message/message.component';
 import { MessageService } from './account/message/message.service';
 import { MessagePopupComponent } from './account/message/message-popup/message-popup.component';
+import { TeacherAttendanceComponent } from './account/teacher-view/teacher-attendance/teacher-attendance.component';
+import { StatementsComponent } from './account/statements/statements.component';
+import { StatementService } from './account/statements/statement.service';
+import { AttendanceService } from './account/teacher-view/teacher-attendance/attendance.service';
 
 
 @NgModule({
@@ -109,7 +113,9 @@ import { MessagePopupComponent } from './account/message/message-popup/message-p
     StudentGradeComponent,
     MessageViewComponent,
     MessageComponent,
-    MessagePopupComponent
+    MessagePopupComponent,
+    TeacherAttendanceComponent,
+    StatementsComponent
   ],
   imports: [
     BrowserModule,
@@ -150,6 +156,8 @@ import { MessagePopupComponent } from './account/message/message-popup/message-p
     DateParser,
     ChangePasswordService,
     MessageService,
+    StatementService,
+    AttendanceService,
     {provide: MatDialogRef, useValue: dialogMock },
     {provide: MAT_DIALOG_DATA, useValue: {} }
   ],

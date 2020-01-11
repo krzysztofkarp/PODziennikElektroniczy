@@ -20,6 +20,10 @@
     font-size: 16px;
 }
 
+.message ::ng-deep .mat-expansion-panel{
+    box-shadow: none;
+}
+
 .message ::ng-deep .mat-expansion-panel-header{
     border-bottom: 1px solid #c6c6c6;
 }

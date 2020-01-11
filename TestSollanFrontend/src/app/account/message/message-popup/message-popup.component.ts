@@ -37,8 +37,8 @@ export class MessagePopupComponent implements OnInit {
   }
 
   onSend(){
-    this.message.recipient = this.recipient.type;
-    this.dialogRef.close(new MessageParams(this.message, this.recipient.id));
+    this.message.recipient = this.recipient ? this.recipient.type : null;
+    this.dialogRef.close(new MessageParams(this.message, this.recipient ? this.recipient.id : ""));
   }
 
 }

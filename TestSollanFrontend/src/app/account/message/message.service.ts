@@ -22,6 +22,10 @@ export class MessageService{
         return this.backendService.post(BackendMappings.Message.SEND_MESSAGE, m, params);
     }
 
+    sendStatement(m: Message){
+        return this.backendService.post(BackendMappings.Message.SEND_STATEMENT, m);
+    }
+
     byTeacherId(teacherId:string){
         let params = {};
         params[RequestParams.TEACHER_ID] = teacherId;

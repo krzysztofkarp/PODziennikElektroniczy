@@ -39,7 +39,7 @@ public class NotificationServiceImpl implements NotificationService {
 	@Override
 	public void notifyAfterReset(User u) {
 		try {
-			emailService.send("krzysztofskarp@gmail.com",TemplateParam.Names.RESET, getPropertiesForUser(u, false));
+			emailService.send(u.getEmail(),TemplateParam.Names.RESET, getPropertiesForUser(u, false));
 		} catch (MessagingException e) {
 			LOGGER.error(e.getMessage());
 		}

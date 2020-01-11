@@ -1,4 +1,8 @@
 <div class="grades">
+  <div class="average" *ngIf="avg">
+    <span>Średnia ocen: {{ avg }}</span>
+    <div class="stripe" *ngIf="avg>4.75"></div>
+  </div>
   <table class="grade-table">
     <tr *ngFor="let s of subjects">
       <td class="subject">{{ s.name }}</td>
@@ -7,4 +11,7 @@
       </td>
     </tr>
   </table>
+  <div class="download">
+    <button class="blue" (click)="download()">Zapisz do pliku</button>
+  </div>
 </div>

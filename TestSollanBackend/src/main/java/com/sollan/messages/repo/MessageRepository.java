@@ -25,6 +25,9 @@ public interface MessageRepository  extends CrudRepository<Message, Long>{
 	@Query("from Message m where m.teacher.id=:teacherId")
 	public Set<Message> byTeacherId(@Param("teacherId") Long teacherId);
 	
+	@Query("from Message m where m.sender is null")
+	public Set<Message> getStatements();
+	
 	@Query("from Message m where m.student.id=:teacherId")
 	public Set<Message> byStudentId(@Param("teacherId") Long teacherId);
 	

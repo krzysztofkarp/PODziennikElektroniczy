@@ -1,15 +1,22 @@
 package com.sollan.util;
 
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.security.InvalidParameterException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.pdfbox.io.IOUtils;
 
 public class Utils {
 	
@@ -79,6 +86,44 @@ public class Utils {
 		}
 		return false;
 	}
+	
+	public static void serveFile(InputStream stream,String fileName,String mimeType,HttpServletResponse response) throws Exception {
+		serveFile(stream, fileName, mimeType, response, Optional.empty());
+	}
+	
+	public static  void serveFile(InputStream stream,
+			String fileName,
+			String mimeType,
+			HttpServletResponse response,
+			Optional<Integer> contentLength) throws Exception {
+		serveFile(stream, fileName, mimeType, response,contentLength,true);
+	}
+
+
+	
+	public static  void serveFile(InputStream stream,
+			String fileName,
+			String mimeType,
+			HttpServletResponse response,
+			Optional<Integer> contentLength,
+			boolean asAttachment) throws Exception {
+		ServletOutputStream outputStream =null;
+		try {
+			if(asAttachment) {
+				response.setHeader("Content-Disposition", "attachment; filename= " +fileName);
+			}
+			response.setContentType(mimeType);
+			contentLength.ifPresent(response::setContentLength);
+			outputStream=response.getOutputStream();
+			IOUtils.copy(stream, outputStream);
+		} finally {
+			outputStream.flush();
+			outputStream.close();
+		}
+	
+	
+	}
+
 
 
 
