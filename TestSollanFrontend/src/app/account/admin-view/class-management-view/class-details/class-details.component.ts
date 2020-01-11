@@ -78,7 +78,9 @@ export class ClassDetailsComponent implements OnInit {
           this.sub2Teacher[s.subjectId] = resp.item;
         })
       })
-    })
+    });
+
+    this.subService.getAll().subscribe(resp => this.allSubjects = resp.items);
   }
 
 
