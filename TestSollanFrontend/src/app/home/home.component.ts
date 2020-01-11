@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { NotificationService } from '../notification/notification.service';
 import { Response } from '../general/backend/response';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'home',
@@ -26,7 +25,6 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private accountService: AccountService,
     private notificationService: NotificationService,
-    private cookieService: CookieService,
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({

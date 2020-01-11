@@ -51,7 +51,6 @@ import { SubjectService } from './account/admin-view/subject-management-view/sub
 import { NewSubjectPopupComponent } from './account/admin-view/subject-management-view/new-subject-popup/new-subject-popup.component';
 import { UserTypeDetailsComponent } from './account/admin-view/user-management-view/user-row/user-type-details/user-type-details.component';
 import { SelectPopupComponent } from './account/admin-view/user-management-view/user-row/select-popup/select-popup.component';
-import { CookieService } from 'ngx-cookie-service';
 import { DateParser } from './general/utils/dateParser';
 import { ChangePasswordComponent } from './account/change-password/change-password.component';
 import { ChangePasswordService } from './account/change-password/change.password.service';
@@ -152,7 +151,6 @@ import { AttendanceService } from './account/teacher-view/teacher-attendance/att
     UserService,
     GradeService,
     SubjectService,
-    CookieService,
     DateParser,
     ChangePasswordService,
     MessageService,
