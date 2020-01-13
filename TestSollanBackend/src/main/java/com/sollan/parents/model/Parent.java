@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.sollan.messages.Message;
+import com.sollan.messages.model.Message;
 import com.sollan.students.model.Student;
 import com.sollan.user.model.User;
 

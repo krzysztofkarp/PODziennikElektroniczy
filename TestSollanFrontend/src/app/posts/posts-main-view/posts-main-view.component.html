@@ -1,0 +1,6 @@
+<div class="posts-view">
+  <div class="actions" *ngIf="isAdmin">
+    <button class="blue" (click)="onAdd()">Dodaj</button>
+  </div>
+  <post *ngFor="let post of posts" [post]="post" [editable]="isAdmin" (postSaved)="savePost($event)" (postDeleted)="removePost($event)"></post>
+</div>

@@ -58,7 +58,7 @@ export class ClassViewComponent implements OnInit {
 
   attendanceChange(evt: MatCheckboxChange, s: Student){
     if(this.student2Att[s.id] != null){
-      this.attService.update(s.id, evt.checked).subscribe(resp => {
+      this.attService.update(s.id, this.subject.subjectId, new Date(this.student2Att[s.id].date), evt.checked).subscribe(resp => {
         if(Response.isOk(resp)){
           this.student2Present[s.id] = evt.checked
           this.student2Att[s.id].present = evt.checked

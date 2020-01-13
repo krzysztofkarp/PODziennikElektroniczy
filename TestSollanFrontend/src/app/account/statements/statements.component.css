@@ -10,3 +10,11 @@
 .statements .container ::ng-deep .message{
     margin-top: 10px;
 }
+
+.statements.non-admin{
+    padding: 0px;
+}
+
+.statements.non-admin .container{
+    margin-top: 0px;
+}

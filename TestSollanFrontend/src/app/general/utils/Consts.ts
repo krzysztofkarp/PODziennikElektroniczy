@@ -82,6 +82,13 @@ export class Consts {
         static readonly MESSAGE_SENT_ERROR = "Nie udało się wysłać wiadomosci";
         static readonly ATTENDANCE_SAVED = "Obecność zapisana";
         static readonly ATTENDANCE_SAVE_ERROR = " Nie udało sie zapisać obecnosci!";
+        static readonly POST_ADDED = "Post dodany"
+        static readonly POST_ADDED_ERROR = "Nie udało się dodac posta"
+        static readonly POST_SAVED = "Post zapisany"
+        static readonly POST_SAVED_ERROR = "Nie udało się zapisać posta"
+        static readonly ADMIN = "Administrator";
+        static readonly POST_REMOVED = "Post usunięty"
+        static readonly POST_REMOVED_ERROR = "Nie udało się usunąc posta"
     }
 
     static StorageKey = class {

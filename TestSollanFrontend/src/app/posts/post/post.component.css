@@ -1,0 +1,24 @@
+.post .example-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .post .example-card textarea{
+      width: 100%;
+      min-height: 200px;
+      resize: none;
+  }
+  
+ .post .example-header-image {
+    background-image: url('https://i.ibb.co/MGdvMjC/adm.jpg');
+    background-size: cover;
+  }
+
+  .post .example-card .content{
+      padding-top: 10px ;
+      min-height: 200px;
+  }
+
+  .post .example-card ::ng-deep .mat-card-header{
+    border-bottom: 1px solid #03a9f4;
+  }

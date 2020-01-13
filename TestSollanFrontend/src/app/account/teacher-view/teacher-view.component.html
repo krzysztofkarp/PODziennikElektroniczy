@@ -1,27 +1,32 @@
 <div class="teacher-view">
     <mat-tab-group  (selectedTabChange)="tabChange($event)">
+      <mat-tab label="Aktualności">
+        <div *ngIf="tabIndex == 0">
+          <posts-main-view [isAdmin]="false"></posts-main-view>
+        </div>
+      </mat-tab>
         <mat-tab label="Moje konto">
-          <div *ngIf="tabIndex==0">
+          <div *ngIf="tabIndex==1">
             <user-info *ngIf="info" [user]="user" [values]="info"></user-info>
           </div>
         </mat-tab>
         <mat-tab label="Moje przedmioty">
-          <div *ngIf="tabIndex==1">
+          <div *ngIf="tabIndex==2">
             <teacher-subject *ngFor="let s of subjects" [subject]="s" [teacher]="user"></teacher-subject>
             </div>
         </mat-tab>
         <mat-tab label="Uwagi">
-          <div *ngIf="tabIndex==2">
+          <div *ngIf="tabIndex==3">
             <notes-view [teacher]="user"></notes-view>
             </div>
         </mat-tab>
         <mat-tab label="Wiadomości">
-          <div *ngIf="tabIndex==3">
+          <div *ngIf="tabIndex==4">
             <message-view [sender]="user"></message-view>
           </div>
         </mat-tab>
         <mat-tab label="Obecność">
-          <div *ngIf="tabIndex==4">
+          <div *ngIf="tabIndex==5">
             <teacher-attendance [teacher]="user" [subjects]="subjects"></teacher-attendance>
           </div>
         </mat-tab>

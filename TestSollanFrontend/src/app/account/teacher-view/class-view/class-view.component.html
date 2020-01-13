@@ -1,7 +1,7 @@
 <div class="class-view">
       <div *ngIf="!attendanceView">
             <div class="student" *ngFor="let student of students">
-                  <teacher-student-row [student]="student" [subject]="subject" [teacher]="teacher"></teacher-student-row>
+                  <teacher-student-row [student]="student" [subject]="subject" [teacher]="teacher" [sClass]="class"></teacher-student-row>
             </div>    
       </div>
       <div *ngIf="attendanceView && students" style="margin-top: 20px;">

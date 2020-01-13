@@ -11,6 +11,7 @@ import { Response } from '../../../../general/backend/response';
 import { NoteService } from '../../../../note/note.service';
 import { NotePopupComponent } from '../../notes/note-popup/note-popup.component';
 import { Teacher } from '../../../../teachers/teacher';
+import { StudentClass } from '../../../../studentClass/studentClass';
 
 @Component({
   selector: 'teacher-student-row',
@@ -28,6 +29,9 @@ export class TeacherStudentRowComponent implements OnInit {
 
   @Input()
   teacher: Teacher;
+
+  @Input()
+  sClass: StudentClass
 
   headerLabel: string;
 
@@ -105,6 +109,10 @@ export class TeacherStudentRowComponent implements OnInit {
       values.forEach(w => valuesSum += w[0] * w[1]);
       this.avg = (valuesSum/wagesSum).toFixed(2);
     }
+  }
+
+  download(){
+    this.gradeService.download(this.student.id, this.sClass.classId);
   }
 
 }

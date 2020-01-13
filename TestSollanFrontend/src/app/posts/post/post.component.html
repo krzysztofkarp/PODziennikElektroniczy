@@ -1,0 +1,26 @@
+<div class="post">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <span *ngIf="!editable">
+          {{ post.title }}
+        </span>
+        <input *ngIf="editable" type="text" [(ngModel)]="post.title">
+      </mat-card-title>
+      <mat-card-subtitle>{{ parsedDate }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="content" *ngIf="!editable">
+      {{ post.description }}
+      </div>
+      <textarea *ngIf="editable" [(ngModel)]="post.description">
+
+      </textarea>
+     <div class="actions" *ngIf="editable">
+      <button class="blue" (click)="onSave()">Zapisz</button>
+      <button class="orange" (click)="onDelete()">Usuń</button>
+     </div>
+    </mat-card-content>
+  </mat-card>
+</div>

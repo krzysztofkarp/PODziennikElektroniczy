@@ -1,0 +1,7 @@
+.posts-view{
+    padding: 20px;
+}
+
+.posts-view ::ng-deep .post{
+    margin-top: 20px;
+}

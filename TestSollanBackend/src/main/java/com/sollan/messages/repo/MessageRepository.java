@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.sollan.messages.Message;
+import com.sollan.messages.model.Message;
 import com.sollan.parents.model.Parent;
 import com.sollan.students.model.Student;
 import com.sollan.teachers.Teacher;

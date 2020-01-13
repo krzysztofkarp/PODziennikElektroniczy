@@ -14,4 +14,14 @@ export class Util{
 
         return results;
     }
+
+    static onlyUnique(value, index, self) { 
+        return self.indexOf(value) === index;
+    }
+
+    static soryByDate(array){
+        return array.sort(function(a,b){
+            return new Date(b.date).getMilliseconds() - new Date(a.date).getMilliseconds();
+          });
+    }
 }

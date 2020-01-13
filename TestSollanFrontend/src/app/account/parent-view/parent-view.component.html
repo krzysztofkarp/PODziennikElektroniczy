@@ -1,10 +1,15 @@
 <div class="parent-view">
     <mat-tab-group (selectedTabChange)="tabChange($event)">
+      <mat-tab label="Aktualności">
+        <div *ngIf="tabIndex == 0">
+          <posts-main-view [isAdmin]="false"></posts-main-view>
+        </div>
+      </mat-tab>
         <mat-tab label="Moje konto">
-          <user-info  *ngIf="tabIndex == 0" [user]="user" [values]="info"></user-info>
+          <user-info  *ngIf="tabIndex == 1" [user]="user" [values]="info"></user-info>
         </mat-tab>
         <mat-tab label="Dzieci" >
-            <div  *ngIf="tabIndex == 1">
+            <div  *ngIf="tabIndex == 2">
                 <mat-expansion-panel *ngFor="let student of children">
                     <mat-expansion-panel-header>
                       <mat-panel-title>

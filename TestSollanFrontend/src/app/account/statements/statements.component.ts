@@ -20,6 +20,8 @@ export class StatementsComponent implements OnInit {
 
   statements: Message[] = [];
 
+  loading: boolean;
+
   constructor(private service: StatementService, private dialog: MatDialog, private nService: NotificationService) { }
 
   ngOnInit() {
@@ -27,9 +29,11 @@ export class StatementsComponent implements OnInit {
   }
 
   load(){
+    this.loading = true;
     this.service.getStatements().subscribe(resp => setTimeout(() => {
       this.statements = resp.items.reverse();
-    }, 500));
+      this.loading = false;
+    }, 1000));
   }
 
   onSend(){

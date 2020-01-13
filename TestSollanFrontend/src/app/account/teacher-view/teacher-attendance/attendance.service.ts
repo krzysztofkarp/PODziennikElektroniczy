@@ -42,11 +42,19 @@ export class AttendanceService{
         return this.backendService.post(BackendMappings.Attendance.SAVE, a, params)
     }
 
-    update(id: string, value: boolean){
+    update(studentId: string, subjectId: string, date: Date,  value: boolean){
         let params = {};
         params[RequestParams.VALUE] = value;
-        params[RequestParams.ID] = id;
-        return this.backendService.get(BackendMappings.Attendance.UPDATE_ATTENDANCE, params)
+        params[RequestParams.STUDENT_ID] = studentId;
+        params[RequestParams.SUBJECT_ID] = subjectId;
+        return this.backendService.post(BackendMappings.Attendance.UPDATE_ATTENDANCE, date, params)
     }
+
+    fromThisYear(id: string){
+        let params = {};
+        params[RequestParams.STUDENT_ID] = id;
+        return this.backendService.get(BackendMappings.Attendance.FROM_THIS_YEAR, params);
+    }
+
 
 }

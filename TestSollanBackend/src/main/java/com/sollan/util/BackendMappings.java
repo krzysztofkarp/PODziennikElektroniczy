@@ -112,6 +112,14 @@ public class BackendMappings {
 		 public static final String UPDATE_ATTENDANCE = API + "/attendance/update";
 		 public static final String BY_STUDENT_ID_AND_DATE = API + "/attendance/byIdAndDate";
 		 public static final String BY_STUDENT_SUBJECT_AND_DATE = API + "/attendance/byStudentSubjectDate";
+		 public static final String FROM_THIS_YEAR = API + "/attendance/fromThisYear";
+		 
+	 }
+	 
+	 public class Post {
+		 public static final String ALL = API + "/post/all";
+		 public static final String SAVE = API + "/post/save";
+		 public static final String REMOVE = API + "/post/remove";
 	 }
 	 
 

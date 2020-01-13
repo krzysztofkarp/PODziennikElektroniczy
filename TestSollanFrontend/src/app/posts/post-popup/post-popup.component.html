@@ -1,0 +1,22 @@
+<div class="post">
+  <div class="header">
+   Nowy post
+  </div>
+
+  <div class="add">
+    <table>
+      <tr>
+        <td>Tytuł</td>
+        <td><input type="text"  [(ngModel)]="post.title"></td>
+      </tr>
+      <tr>
+        <td>Treść</td>
+        <td><textarea  [(ngModel)]="post.description"></textarea></td>
+      </tr>
+    </table>
+  </div>
+  <div class="actions">
+    <button class="blue" (click)="onAdd()" [disabled]="!post.title && !post.description">Dodaj</button>
+    <button class="orange" (click)="onCancel()">Anuluj </button>
+  </div>
+</div>

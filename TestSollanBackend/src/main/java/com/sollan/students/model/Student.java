@@ -14,10 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sollan.attendance.Attendance;
+import com.sollan.attendance.model.Attendance;
 import com.sollan.classes.model.StudentClass;
 import com.sollan.grades.model.Grade;
-import com.sollan.messages.Message;
+import com.sollan.messages.model.Message;
 import com.sollan.notes.model.Note;
 import com.sollan.parents.model.Parent;
 import com.sollan.user.model.User;

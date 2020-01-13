@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sollan.classes.model.StudentClass;
 import com.sollan.classes.model.teacherClass.TeacherClass;
-import com.sollan.messages.Message;
+import com.sollan.messages.model.Message;
 import com.sollan.notes.model.Note;
 import com.sollan.subjects.model.Subject;
 import com.sollan.user.model.User;

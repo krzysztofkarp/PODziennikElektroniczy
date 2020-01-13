@@ -116,6 +116,13 @@
         static readonly UPDATE_ATTENDANCE = "/attendance/update";
         static readonly BY_STUDENT_ID_AND_DATE = "/attendance/byIdAndDate";
         static readonly BY_STUDENT_SUBJECT_AND_DATE = "/attendance/byStudentSubjectDate";
+        static readonly FROM_THIS_YEAR = "/attendance/fromThisYear";
+    }
+
+    static Post = class {
+        static readonly ALL = "/post/all";
+        static readonly SAVE = "/post/save";
+        static readonly REMOVE =  "/post/remove";
     }
 
 }

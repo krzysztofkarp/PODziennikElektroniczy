@@ -1,0 +1,37 @@
+.student-attendance{
+    padding: 10px;
+}
+
+.student-attendance .header {
+    font-size: 30px;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.student-attendance .date{
+    padding: 10px;
+    border: 1px solid #03A9F4;
+    border-collapse:  collapse;
+    margin-top: 10px;
+}
+
+.student-attendance .date .header {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #03A9F4;
+    color: white;
+}
+
+.student-attendance .date span{
+    font-weight: bold;
+    padding: 10px;
+}
+
+.student-attendance .date .present{
+    color: rgb(29, 173, 29);
+}
+
+.student-attendance .date .absent{
+    color: rgb(223, 64, 53);
+}

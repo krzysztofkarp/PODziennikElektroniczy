@@ -69,6 +69,11 @@ import { TeacherAttendanceComponent } from './account/teacher-view/teacher-atten
 import { StatementsComponent } from './account/statements/statements.component';
 import { StatementService } from './account/statements/statement.service';
 import { AttendanceService } from './account/teacher-view/teacher-attendance/attendance.service';
+import { PostService } from './posts/post.service';
+import { PostsMainViewComponent } from './posts/posts-main-view/posts-main-view.component';
+import { PostComponent } from './posts/post/post.component';
+import { PostPopupComponent } from './posts/post-popup/post-popup.component';
+import { StudentAttendanceComponent } from './account/student-view/student-attendance/student-attendance.component';
 
 
 @NgModule({
@@ -114,7 +119,11 @@ import { AttendanceService } from './account/teacher-view/teacher-attendance/att
     MessageComponent,
     MessagePopupComponent,
     TeacherAttendanceComponent,
-    StatementsComponent
+    StatementsComponent,
+    PostsMainViewComponent,
+    PostComponent,
+    PostPopupComponent,
+    StudentAttendanceComponent
   ],
   imports: [
     BrowserModule,
@@ -156,11 +165,12 @@ import { AttendanceService } from './account/teacher-view/teacher-attendance/att
     MessageService,
     StatementService,
     AttendanceService,
+    PostService,
     {provide: MatDialogRef, useValue: dialogMock },
     {provide: MAT_DIALOG_DATA, useValue: {} }
   ],
     
   bootstrap: [AppComponent],
-  entryComponents: [StudentPopupComponent, ResetPasswordComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent, NewSubjectPopupComponent, SelectPopupComponent, MessagePopupComponent]
+  entryComponents: [StudentPopupComponent,PostPopupComponent, ResetPasswordComponent, NewGradePopupComponent, NotePopupComponent, NotificationComponent, AddUserPopupComponent, AddClassPopupComponent, NewSubjectPopupComponent, SelectPopupComponent, MessagePopupComponent]
 })
 export class AppModule { }
