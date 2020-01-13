@@ -51,7 +51,7 @@ export class PostsMainViewComponent implements OnInit {
     this.service.save(post).subscribe(resp => {
       if(Response.isOk(resp)){
         this.nService.showSuccess(Consts.Messages.POST_SAVED);
-        let found = this.posts.find(p => p.postId = post.postId);
+        let found = this.posts.find(p => p.postId == post.postId);
         found.description = resp.item.description;
         found.title = resp.item.title;
       } else {
