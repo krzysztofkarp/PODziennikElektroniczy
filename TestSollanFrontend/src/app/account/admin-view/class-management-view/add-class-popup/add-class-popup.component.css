@@ -52,7 +52,7 @@
  }
  
  .add-class .action button.add{
-     background-color: #03A9F4;
+     background-color: #1565C0;
      color: white;
  }
  
@@ -64,7 +64,7 @@
      width: 300px;
      display: block;
      margin: 0 auto;
-     background: rgb(88, 192, 240);
+     background: #1565C0;
      padding: 5px;
      color: white;
  }

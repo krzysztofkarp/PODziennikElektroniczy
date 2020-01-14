@@ -10,16 +10,14 @@
 
 .student-attendance .date{
     padding: 10px;
-    border: 1px solid #03A9F4;
     border-collapse:  collapse;
     margin-top: 10px;
 }
 
 .student-attendance .date .header {
     padding: 10px;
-    font-weight: bold;
-    font-size: 20px;
-    background-color: #03A9F4;
+    font-size: 16px;
+    background-color: #1565C0;
     color: white;
 }
 
@@ -28,10 +26,7 @@
     padding: 10px;
 }
 
-.student-attendance .date .present{
-    color: rgb(29, 173, 29);
-}
-
-.student-attendance .date .absent{
-    color: rgb(223, 64, 53);
+.student-attendance .date table td{
+    padding: 5px;
+    font-weight: bold;
 }

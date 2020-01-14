@@ -10,7 +10,7 @@
 .teacher-subject ::ng-deep .mat-expansion-panel-header{
     font-weight: bold;
     font-size: 20px;
-    border-bottom: 1px solid #03a9f4;
+    border-bottom: 1px solid #1565C0;
 }
 
 .teacher-subject ::ng-deep .mat-expansion-panel-body{

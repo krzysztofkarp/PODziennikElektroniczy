@@ -56,7 +56,7 @@ export class StudentAttendanceComponent implements OnInit {
   }
 
   getFrequency(atts: Attendance[]){
-    return (atts.filter(att => att.present).length / atts.length) * 100;
+    return ((atts.filter(att => att.present).length / atts.length) * 100).toFixed(2);
   }
 
 }

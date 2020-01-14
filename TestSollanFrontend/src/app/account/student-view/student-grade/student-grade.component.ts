@@ -26,7 +26,7 @@ export class StudentGradeComponent implements OnInit {
 
   subjects: Subject[]
 
-  avg;
+  avg: any = "";
 
   constructor(private gradeService: GradeService, private subService: SubjectService, private classService: StudentClassService) { }
 
@@ -78,8 +78,8 @@ export class StudentGradeComponent implements OnInit {
     let sum = 0;
     let values = Object.entries(this.subject2Avg).filter(pair => pair[1]).map(pair => pair[1]);
     values.forEach(v => sum += Number.parseInt(v));
-    this.avg = (sum/values.length).toFixed(2);
-    console.log(this.avg)
+    let val = (sum/values.length).toFixed(2);
+    this.avg = val;
   }
 
   download(){

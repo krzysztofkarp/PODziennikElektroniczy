@@ -1,4 +1,4 @@
 <div class="grade" matTooltip="{{grade.description}} - Waga: {{grade.importance}}"  matTooltipClass="line-broken-tooltip">
     <span >{{ grade.value }}</span>
-    <mat-icon *ngIf="canDelete" aria-hidden="false"  (click)="deleteGrade()">clear</mat-icon>
+    <mat-icon *ngIf="canDelete" aria-hidden="false"  (click)="deleteGrade()" matTooltip="Usuń" >clear</mat-icon>
 </div>

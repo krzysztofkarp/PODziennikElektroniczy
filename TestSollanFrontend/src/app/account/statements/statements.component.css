@@ -4,11 +4,6 @@
 
 .statements .container{
     width: 100%;
-    margin-top: 10px;
-}
-
-.statements .container ::ng-deep .message{
-    margin-top: 10px;
 }
 
 .statements.non-admin{

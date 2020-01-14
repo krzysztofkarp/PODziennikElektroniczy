@@ -13,18 +13,25 @@
 
 .class-view table td, .class-view table th{
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid #1565c0;
     border-collapse: collapse;
 }
 
 .class-view table th{
-    background-color: #c6c6c6;
+    background-color: #1565c0;
+    color: white
 }
 
 .class-view table td.present{
     width: 5%;
 }
 
-.class-view table td.present .mat-checkbox{
+.class-view table td.present ::ng-deep .mat-checkbox{
     margin-left: 20px;
 }
+
+.class-view table td.present ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+    background-color: rgb(240, 165, 27);
+}
+
+

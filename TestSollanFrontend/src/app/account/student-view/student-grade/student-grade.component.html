@@ -1,7 +1,8 @@
 <div class="grades">
-  <div class="average" *ngIf="avg">
-    <span>Średnia ocen: {{ avg }}</span>
-    <div class="stripe" *ngIf="avg>4.75"></div>
+  <div class="average">
+    <span *ngIf="avg">Średnia ocen: {{ avg }}</span> 
+    <mat-icon style="color:rgb(240, 27, 27);" matTooltip="Czerwony pasek" *ngIf="avg>4.75">bookmark</mat-icon>
+    <mat-icon style="color:rgb(240, 165, 27);" matTooltip="Kwalifikuje się do stypendium" *ngIf="avg>5.1">grade</mat-icon>
   </div>
   <table class="grade-table">
     <tr *ngFor="let s of subjects">

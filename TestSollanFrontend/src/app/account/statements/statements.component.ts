@@ -30,10 +30,11 @@ export class StatementsComponent implements OnInit {
 
   load(){
     this.loading = true;
-    this.service.getStatements().subscribe(resp => setTimeout(() => {
+    this.service.getStatements().subscribe(resp => {
       this.statements = resp.items.reverse();
       this.loading = false;
-    }, 1000));
+     })
+
   }
 
   onSend(){

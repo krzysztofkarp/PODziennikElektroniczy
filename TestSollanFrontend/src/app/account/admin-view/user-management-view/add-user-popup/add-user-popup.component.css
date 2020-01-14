@@ -38,7 +38,7 @@
    margin: 0 auto;;
    border: none;
    padding: 5px;
-   border-bottom: 1px solid #03A9F4;
+   border-bottom: 1px solid #1565C0;
 }
 
 .add-user .table-container table td.not-valid input{
@@ -67,7 +67,7 @@
 }
 
 .add-user .action button.add{
-    background-color: #03A9F4;
+    background-color: #1565C0;
     color: white;
 }
 

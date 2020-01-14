@@ -20,5 +20,12 @@
   }
 
   .post .example-card ::ng-deep .mat-card-header{
-    border-bottom: 1px solid #03a9f4;
+    border-bottom: 1px solid #1565C0;
+  }
+
+  .post .example-card ::ng-deep .mat-card-footer{
+    padding: 10px;
+    font-style: italic;
+    text-align: right;
+    border-top: 1px solid #c6c6c6;
   }

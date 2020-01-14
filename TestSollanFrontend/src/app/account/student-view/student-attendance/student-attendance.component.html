@@ -5,12 +5,18 @@
   <div class="date"  *ngFor="let d of dates">
       <p class="header">
         <span>{{ d[0] }}</span>
-        <span>Frekwencja {{ getFrequency(d[1]) }} %</span>
+        <span>{{ getFrequency(d[1])}}%</span>
       </p>
-      <p *ngFor="let a of d[1]">
-        <span>{{ a.subject.name }}</span>
-        <span class="absent" *ngIf="!a.present">Nieobecny</span>
-        <span class="present" *ngIf="a.present">Obecny</span>
-        </p>
+
+      <table>
+        <tr *ngFor="let a of d[1]">
+          <td>{{ a.subject.name }}</td>
+          <td>  
+            <mat-icon *ngIf="a.present" style="color: green;">done</mat-icon>
+            <mat-icon *ngIf="!a.present" style="color: red;">clear</mat-icon>
+          </td>
+        </tr>
+      </table>
+
   </div>
 </div>
