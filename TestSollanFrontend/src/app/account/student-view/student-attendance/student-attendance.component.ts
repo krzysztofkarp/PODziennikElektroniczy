@@ -51,7 +51,7 @@ export class StudentAttendanceComponent implements OnInit {
       this.date2Att[date.toString()] = this.atts.filter(att => att.date == date);
     });
 
-    this.dates = Object.entries(this.date2Att);
+    this.dates = Object.entries(this.date2Att).reverse();
 
   }
 
