@@ -57,15 +57,15 @@ public class MessageServiceImpl implements MessageService {
 		switch(type) {
 		case STUDENT: 
 			Student s = sRepo.findById(userId).get();
-			s.addMessage(m);
+			m.setStudent(s);
 			return repo.save(m);
 		case TEACHER: 
 			Teacher t = tRepo.findById(userId).get();
-			t.addMessage(m);
+			m.setTeacher(t);
 			return repo.save(m);
 		case PARENT: 
 			Parent p = pRepo.findById(userId).get();
-			p.addMessage(m);
+			m.setParent(p);
 			return repo.save(m);
 		default: return null;
 		

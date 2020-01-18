@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
           return new Observable(observer => {
           this.auth.isAuthenticated()
             .subscribe(response => {
-              if (response.item == true) {
+              if (Response.isOk(response) && response.item == true) {
                 observer.next(true);
               } else {
                 localStorage.removeItem(Consts.StorageKey.AUTH_TOKEN);

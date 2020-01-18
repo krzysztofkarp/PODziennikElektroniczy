@@ -23,7 +23,7 @@
   </tr>
 </table>
 <div class="actions">
-  <button class="blue" (click)="onAdd()">Zapisz</button>
+  <button class="blue" (click)="onAdd()" [disabled]="!canAdd()">Zapisz</button>
   <button class="orange" (click)="onCancel()">Anuluj</button>
 </div>
 </div>

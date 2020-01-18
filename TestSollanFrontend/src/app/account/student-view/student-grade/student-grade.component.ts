@@ -78,7 +78,7 @@ export class StudentGradeComponent implements OnInit {
     let sum = 0;
     let values = Object.entries(this.subject2Avg).filter(pair => pair[1]).map(pair => pair[1]);
     values.forEach(v => sum += Number.parseInt(v));
-    let val = (sum/values.length).toFixed(2);
+    let val = sum > 0 ? (sum/values.length).toFixed(2) : "";
     this.avg = val;
   }
 

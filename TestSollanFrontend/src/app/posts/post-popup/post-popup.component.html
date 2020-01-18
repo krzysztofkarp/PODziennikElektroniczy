@@ -16,7 +16,7 @@
     </table>
   </div>
   <div class="actions">
-    <button class="blue" (click)="onAdd()" [disabled]="!post.title && !post.description">Dodaj</button>
+    <button class="blue" (click)="onAdd()" [disabled]="!(post.title && post.description)">Dodaj</button>
     <button class="orange" (click)="onCancel()">Anuluj </button>
   </div>
 </div>

@@ -23,7 +23,7 @@ export class GradeService{
         let params = {};
         params[RequestParams.STUDENT_ID] = studentId;
         params[RequestParams.SUBJECT_ID] = subjectId;
-        params[RequestParams.GRADE_ID] = subjectId;
+        params[RequestParams.GRADE_ID] = gradeId;
         return this.backendService.get(BackendMappings.Grade.REMOVE, params);
     }
 

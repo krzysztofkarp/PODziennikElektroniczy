@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sollan.classes.model.StudentClass;
+import com.sollan.classes.model.teacherClass.TeacherClassRepository;
 import com.sollan.classes.repo.StudentClassRepository;
 import com.sollan.students.model.Student;
 import com.sollan.students.repo.StudentRepository;
@@ -25,6 +26,9 @@ public class StudentClassServiceImpl implements StudentClassService {
 	
 	@Autowired
 	private SubjectService subjectService;
+	
+	@Autowired
+	private TeacherClassRepository tcRepo;
 	
 	@Override
 	public List<StudentClass> getClassesByIds(List<Long> ids) {
@@ -77,6 +81,7 @@ public class StudentClassServiceImpl implements StudentClassService {
 		StudentClass cl = repo.findById(classId).orElseThrow();
 		cl.removeSubject(sub);
 		repo.save(cl);
+		tcRepo.removeBySubjectAndId(sub.getName(), classId);
 	}
 
 	@Override

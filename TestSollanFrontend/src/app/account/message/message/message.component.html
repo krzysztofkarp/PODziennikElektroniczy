@@ -1,7 +1,8 @@
 <div class="message">
+  <mat-accordion *ngIf="message"> 
   <mat-expansion-panel (opened)="updateMessage($event)">
     <mat-expansion-panel-header>
-      <mat-panel-title [ngClass]="{ 'new' : !message.opened && !sent && !statement}">
+      <mat-panel-title [ngClass]="{ 'new' : !message.opened && !sent && !isAdmin}">
           <span style="width: 150px;">{{ title }}</span>
           <span style="font-style: italic;margin-left: 50px;">{{ message.title }} </span>
           <span class="example-spacer"></span>
@@ -14,4 +15,5 @@
       </div>
   </div>
   </mat-expansion-panel>
+</mat-accordion>
 </div>

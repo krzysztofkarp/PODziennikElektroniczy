@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren } from '@angular/core';
 import { Message } from '../message';
 import { MessageService } from '../message.service';
 import { User } from '../../../user/user';
 import { DateParser } from '../../../general/utils/dateParser';
 import { Response } from '../../../general/backend/response';
+import { MatExpansionPanel } from '@angular/material';
 
 @Component({
   selector: 'message',
@@ -18,18 +19,27 @@ export class MessageComponent implements OnInit {
   @Input()
   sent: boolean;
 
+
+  @Input()
+  isAdmin: boolean;
+
   @Input()
   statement: boolean = false;
-
 
   author: User;
   recipient: User;
   title: string;
   dateString: string;
 
+  exapnded;
+
   constructor(private service: MessageService, private parser: DateParser) { }
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.exapnded = false;
+    }, 1000);
   }
 
   ngOnChanges(){

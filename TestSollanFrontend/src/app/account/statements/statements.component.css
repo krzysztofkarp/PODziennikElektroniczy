@@ -4,6 +4,7 @@
 
 .statements .container{
     width: 100%;
+    padding: 10px;
 }
 
 .statements.non-admin{
@@ -12,4 +13,8 @@
 
 .statements.non-admin .container{
     margin-top: 0px;
+}
+
+.statements.not{
+    display: none;
 }

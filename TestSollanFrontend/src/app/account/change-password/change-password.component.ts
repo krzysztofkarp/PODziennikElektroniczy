@@ -37,6 +37,10 @@ export class ChangePasswordComponent implements OnInit {
    
   }
 
+  canChange(){
+    return this.params.oldPassword && this.params.newPassword && this.params.repeatPassword;
+  }
+
   private changePassword(){
     this.service.changePassword(this.user, this.params).subscribe(resp => {
       if(Response.isOk(resp)){

@@ -29,4 +29,8 @@ export class NewGradePopupComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  canAdd(){
+    return this.grade.value && this.grade.importance && this.grade.description;
+  }
+
 }

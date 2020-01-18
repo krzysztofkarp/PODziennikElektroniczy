@@ -12,7 +12,10 @@
       </td>
     </tr>
   </table>
-  <div class="download">
+  <div class="download" *ngIf="subjects && subjects.length > 0">
     <button class="blue" (click)="download()">Zapisz do pliku</button>
+  </div>
+  <div class="no-subjects" *ngIf="!subjects || subjects.length == 0">
+    Brak danych do wyświetlenia
   </div>
 </div>

@@ -10,17 +10,13 @@
   }
   
  .post .example-header-image {
-    background-image: url('https://i.ibb.co/MGdvMjC/adm.jpg');
+    background-image: url('https://i.ibb.co/PNpJ8t6/a.png');
     background-size: cover;
   }
 
   .post .example-card .content{
       padding-top: 10px ;
       min-height: 200px;
-  }
-
-  .post .example-card ::ng-deep .mat-card-header{
-    border-bottom: 1px solid #1565C0;
   }
 
   .post .example-card ::ng-deep .mat-card-footer{

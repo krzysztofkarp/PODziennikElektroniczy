@@ -22,6 +22,7 @@ export class StatementsComponent implements OnInit {
 
   loading: boolean;
 
+
   constructor(private service: StatementService, private dialog: MatDialog, private nService: NotificationService) { }
 
   ngOnInit() {

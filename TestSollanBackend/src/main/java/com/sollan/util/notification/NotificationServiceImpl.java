@@ -30,7 +30,8 @@ public class NotificationServiceImpl implements NotificationService {
 	public void notifyAfterCreation(User u) {
 		try {
 			emailService.send(u.getEmail(),TemplateParam.Names.GREETING_EMAIL, getPropertiesForUser(u, true));
-		} catch (MessagingException e) {
+		} catch (Exception e) {
+			LOGGER.error("Notification not sent!");
 			LOGGER.error(e.getMessage());
 		}
 
@@ -40,7 +41,8 @@ public class NotificationServiceImpl implements NotificationService {
 	public void notifyAfterReset(User u) {
 		try {
 			emailService.send(u.getEmail(),TemplateParam.Names.RESET, getPropertiesForUser(u, false));
-		} catch (MessagingException e) {
+		} catch (Exception e) {
+			LOGGER.error("Notification not sent!");
 			LOGGER.error(e.getMessage());
 		}
 	}

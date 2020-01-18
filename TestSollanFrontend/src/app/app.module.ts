@@ -73,6 +73,7 @@ import { PostsMainViewComponent } from './posts/posts-main-view/posts-main-view.
 import { PostComponent } from './posts/post/post.component';
 import { PostPopupComponent } from './posts/post-popup/post-popup.component';
 import { StudentAttendanceComponent } from './account/student-view/student-attendance/student-attendance.component';
+import { CommuniactionViewComponent } from './account/admin-view/communiaction-view/communiaction-view.component';
 
 
 @NgModule({
@@ -121,7 +122,8 @@ import { StudentAttendanceComponent } from './account/student-view/student-atten
     PostsMainViewComponent,
     PostComponent,
     PostPopupComponent,
-    StudentAttendanceComponent
+    StudentAttendanceComponent,
+    CommuniactionViewComponent
   ],
   imports: [
     BrowserModule,

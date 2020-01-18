@@ -80,7 +80,7 @@
 		static readonly BY_STUDENT_ID ="/grade/studentId";
 		static readonly BY_STUDENT_AND_SUBJECT = "/grade/studentSubjectId";
 		static readonly ADD ="/grade/add";
-        static readonly REMOVE ="/grade/add";
+        static readonly REMOVE ="/grade/remove";
         static readonly DOWNLOAD ="/grade/download";
     }
     

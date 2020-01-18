@@ -108,6 +108,8 @@ export class TeacherStudentRowComponent implements OnInit {
       wages.forEach(w => wagesSum+=w);
       values.forEach(w => valuesSum += w[0] * w[1]);
       this.avg = (valuesSum/wagesSum).toFixed(2);
+    } else {
+      this.avg = null;
     }
   }
 

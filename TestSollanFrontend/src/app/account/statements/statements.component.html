@@ -3,7 +3,7 @@
     <button *ngIf="isAdmin" class="blue" (click)="onSend()">Wyślij</button>
   </div>
   <div class="container" *ngIf="!loading">
-    <message *ngFor="let s of statements" [statement]="true" [message]="s"></message>
+    <message *ngFor="let s of statements" [statement]="true" [message]="s" [isAdmin]="isAdmin"></message>
   </div>
 </div>
 

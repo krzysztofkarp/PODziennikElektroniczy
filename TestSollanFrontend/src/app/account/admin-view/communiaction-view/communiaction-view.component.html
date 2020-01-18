@@ -1,0 +1,8 @@
+<mat-tab-group (selectedTabChange)="tabChange($event)">
+  <mat-tab label="Aktualności" >
+    <posts-main-view  *ngIf="tabIndex == 0" [isAdmin]="true"></posts-main-view>
+  </mat-tab>
+  <mat-tab label="Komunikaty" >
+    <statements *ngIf="tabIndex == 1" [isAdmin]="true"></statements>
+  </mat-tab>
+</mat-tab-group>

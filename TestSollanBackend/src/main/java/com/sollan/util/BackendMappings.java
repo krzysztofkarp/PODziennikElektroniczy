@@ -77,7 +77,7 @@ public class BackendMappings {
 		public static final String BY_STUDENT_ID = API + "/grade/studentId";
 		public static final String BY_STUDENT_AND_SUBJECT = API + "/grade/studentSubjectId";
 		public static final String ADD = API + "/grade/add";
-		public static final String REMOVE = API + "/grade/add";
+		public static final String REMOVE = API + "/grade/remove";
 		public static final String DOWNLOAD_GRADES = API + "/grade/download";
 	}
 	

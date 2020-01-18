@@ -18,6 +18,11 @@ public interface TeacherClassRepository extends CrudRepository<TeacherClass, Lon
 	@Query("delete from TeacherClass t where t.teacher.id=:teacherId")
 	public void removeByTeacherId(@Param("teacherId") Long teacherId);
 	
+	@Transactional
+	@Modifying
+	@Query("delete from TeacherClass t where t.subjectName=:subjectName and t.teacherClass.classId=:classId")
+	public void removeBySubjectAndId(@Param("subjectName") String subjectName, @Param("classId") Long classId);
+	
 	
 	
 

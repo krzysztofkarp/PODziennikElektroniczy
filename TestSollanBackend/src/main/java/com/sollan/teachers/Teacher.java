@@ -2,10 +2,8 @@ package com.sollan.teachers;
 
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,9 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sollan.classes.model.StudentClass;
 import com.sollan.classes.model.teacherClass.TeacherClass;
 import com.sollan.messages.model.Message;
 import com.sollan.notes.model.Note;
