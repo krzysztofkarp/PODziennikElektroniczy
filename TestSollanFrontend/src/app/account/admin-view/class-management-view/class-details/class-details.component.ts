@@ -101,28 +101,32 @@ export class ClassDetailsComponent implements OnInit {
   }
 
   assignUser(){
-    let config = new MatDialogConfig();
-    let sts = this.allStudents.filter(a => !this.students.map(st => st.id).includes(a.id));
-    config.data = { items: sts, select: false, label: "Wybierz ucznia"}
 
-    if(sts.length == 0){
-      this.nService.showWarning(Consts.Messages.NO_STUDENTS);
-    } else {
-      this.dialog.open(SelectPopupComponent, config).afterClosed().subscribe(items => {
-        if(items){
-          items = items.filter(it => !this.students.map(s => s.id).includes(it.id))
-          if(items.length> 0){
-            this.classService.addStudents(this.selectedClass.classId, items.map(i => i.id)).subscribe(resp => {
-              if(Response.isOk(resp)){
-                this.students.push(...items);
-                this.selectedClass.numberOfStudents = this.students.length;
-              }
-            })
+    this.studentService.getAll().subscribe(resp => {
+      let config = new MatDialogConfig();
+      let sts = resp.items.filter(a => !this.students.map(st => st.id).includes(a.id));
+      config.data = { items: sts, select: false, label: "Wybierz ucznia"}
+  
+      if(sts.length == 0){
+        this.nService.showWarning(Consts.Messages.NO_STUDENTS);
+      } else {
+        this.dialog.open(SelectPopupComponent, config).afterClosed().subscribe(items => {
+          if(items){
+            items = items.filter(it => !this.students.map(s => s.id).includes(it.id))
+            if(items.length> 0){
+              this.classService.addStudents(this.selectedClass.classId, items.map(i => i.id)).subscribe(resp => {
+                if(Response.isOk(resp)){
+                  this.students.push(...items);
+                  this.selectedClass.numberOfStudents = this.students.length;
+                }
+              })
+            }
+          
           }
-        
-        }
-      })
-    }
+        })
+      }
+    })
+  
 
  
   }

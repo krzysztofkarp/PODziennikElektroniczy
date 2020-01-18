@@ -105,6 +105,7 @@ public class TeacherServiceImpl implements TeacherService {
 	public void addMultipleSubjects(List<Long> ids, Long teacherId) {
 		List<Subject> subjects = subService.byIds(ids);
 		Teacher t = repo.findById(teacherId).get();
+		t.setSubjects(new HashSet<Subject>());
 		subjects.forEach(sub -> t.addSubject(sub));
 		repo.save(t);
 	}

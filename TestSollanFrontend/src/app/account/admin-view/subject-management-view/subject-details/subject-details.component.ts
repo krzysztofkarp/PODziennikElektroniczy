@@ -61,6 +61,7 @@ export class SubjectDetailsComponent implements OnInit {
         this.tService.addSubject(this.subject.subjectId, item.id).subscribe(resp => {
           if(Response.isOk(resp)){
             this.nService.showSuccess(Consts.Messages.TEACHER_ASSIGNED);
+            this.loadTeachers();
           } else {
             this.nService.showError(Consts.Messages.TEACHER_ASSIGN_ERROR);
           }
@@ -70,6 +71,13 @@ export class SubjectDetailsComponent implements OnInit {
 
 
 
+  }
+
+  subjectsChanged(evt){
+    console.log(evt)
+    if(!evt.items.map(i => i.subjectId).includes(this.subject.subjectId)){
+      this.teachers = this.teachers.filter(t => t.id != evt.teacher)
+    }
   }
 
 }

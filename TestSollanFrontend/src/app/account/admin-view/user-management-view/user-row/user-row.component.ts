@@ -39,6 +39,9 @@ export class UserRowComponent implements OnInit {
   @Output()
   classChange: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output()
+  subjectChange: EventEmitter<any> = new EventEmitter<any>();
+
   @Input()
   deleteLabel: string;
 
@@ -79,6 +82,10 @@ export class UserRowComponent implements OnInit {
     let conf = new MatDialogConfig();
     conf.data = this.user;
     this.dialog.open(ResetPasswordComponent, conf);
+  }
+
+  subjectsChanged($event){
+    this.subjectChange.emit($event)
   }
 
 }

@@ -30,7 +30,7 @@
     <button class="blue" (click)="onSave()">Zapisz</button>
     <button *ngIf="!noDelete" class="orange" (click)="onDelete()">{{ deleteLabel ?  deleteLabel : 'Usuń' }}</button>
 
-    <user-type-details [user]="user" [subjects]="subjects" [classes]="classes" [studentClass]="class" (classChanged)="classChanged($event)"></user-type-details>
+    <user-type-details [user]="user" [subjects]="subjects" [classes]="classes" [studentClass]="class" (classChanged)="classChanged($event)" (subjectsChanged)="subjectsChanged($event)"></user-type-details>
         
   </mat-expansion-panel>
 </div>

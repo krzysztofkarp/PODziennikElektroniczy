@@ -35,6 +35,9 @@ export class UserTypeDetailsComponent implements OnInit {
   @Output()
   classChanged: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output()
+  subjectsChanged: EventEmitter<any> = new EventEmitter<any>();
+
   mappedUser;
 
 
@@ -127,6 +130,7 @@ export class UserTypeDetailsComponent implements OnInit {
             if(Response.isOk(resp)){
               this.teacherSubjects = items;
               this.setSubjectsString();
+              this.subjectsChanged.emit({ teacher: this.user.id, items: items});
               this.notificationService.showSuccess(Consts.Messages.CHANGES_SAVED)
             } else {
               this.notificationService.showError(Consts.Messages.CHANGES_SAVED_ERROR)

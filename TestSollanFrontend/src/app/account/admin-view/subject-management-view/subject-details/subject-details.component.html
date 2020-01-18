@@ -9,5 +9,5 @@
     <h3>Liczba nauczycieli: <span>{{ teachers.length }}</span></h3>
     <button class="blue" (click)="onSelect()">Dodaj nauczyciela</button>
   </div>
-  <user-row *ngFor="let t of teachers" [user]="t" [noDelete]="true" [subjects]="subjects"></user-row>
+  <user-row *ngFor="let t of teachers" [user]="t" [noDelete]="true" [subjects]="subjects" (subjectChange)="subjectsChanged($event)"></user-row>
 </div>
