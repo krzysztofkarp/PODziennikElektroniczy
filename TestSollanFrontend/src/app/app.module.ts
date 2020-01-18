@@ -17,7 +17,6 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ResultComponent } from './result/result.component';
 import { AccountViewComponent } from './account/account-view/account-view.component';
 import { StudentViewComponent } from './account/student-view/student-view.component';
 import { GradeComponent } from './account/student-view/grade/grade.component';
@@ -80,7 +79,6 @@ import { StudentAttendanceComponent } from './account/student-view/student-atten
   declarations: [
     AppComponent,
     HomeComponent,
-    ResultComponent,
     AccountViewComponent,
     StudentViewComponent,
     GradeComponent,
